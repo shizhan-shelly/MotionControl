@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Database">
+      <UniqueIdentifier>{287aad6d-18e6-4df7-ab73-ed06f7ab03e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Pages">
+      <UniqueIdentifier>{aceb13bb-4552-4262-8b4b-67417500ea51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\ModbusSet">
+      <UniqueIdentifier>{475d2e55-758f-426a-b580-2d4528ea64b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DatabaseModel">
+      <UniqueIdentifier>{8131e2fd-7a10-44f8-b391-a97e39f94d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DatabaseView">
+      <UniqueIdentifier>{852ac8a1-de0f-4bb0-9d41-a71f33c0ce11}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Database\SQLiteAccess.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Database\SQLiteAccess.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

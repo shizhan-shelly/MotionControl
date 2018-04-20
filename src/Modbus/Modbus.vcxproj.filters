@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{68d9ff46-a42c-48ac-b659-b36b0c23bb43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{c90a88fd-03ab-49a9-8fc1-1e6e0780298a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="modbus.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="modbus-private.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="modbus-rtu.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="modbus-rtu-private.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="modbus-tcp-private.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="modbus-version.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="modbus-tcp.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="modbus.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="modbus-data.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="modbus-rtu.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="modbus-tcp.c">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
