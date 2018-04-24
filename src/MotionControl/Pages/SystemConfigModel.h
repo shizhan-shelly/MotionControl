@@ -1,14 +1,17 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#include <QtCore/QAbstractTableModel.h>
+#ifndef SYSTEMCONFIGMODEL_H
+#define SYSTEMCONFIGMODEL_H
+
+#include <QtCore/QAbstractTableModel>
 
 class SystemConfigModel : public QAbstractTableModel {
   Q_OBJECT
 
  public:
   explicit SystemConfigModel(QObject *parent = NULL);
-  ~SystemConfigModel();
+  virtual ~SystemConfigModel();
 
   int rowCount(const QModelIndex &parent = QModelIndex()) const;
   int columnCount(const QModelIndex &parent = QModelIndex()) const;
@@ -22,3 +25,5 @@ class SystemConfigModel : public QAbstractTableModel {
   bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
 }; // class SystemConfigModel
+
+#endif // SYSTEMCONFIGMODEL_H

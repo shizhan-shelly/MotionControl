@@ -5,7 +5,9 @@
 
 #include "ui_ModbusSetWidget.h"
 
-ModbusSetWidget::ModbusSetWidget(QWidget *parent) : QWidget(parent) {
+ModbusSetWidget::ModbusSetWidget(QWidget *parent)
+    : ::widget::BaseWidget(parent) {
+
   ui_ = new Ui::ModbusSetWidgetForm;
   ui_->setupUi(this);
 }

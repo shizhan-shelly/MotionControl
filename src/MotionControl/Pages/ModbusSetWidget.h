@@ -4,13 +4,13 @@
 #ifndef MODBUSSETWIDGET_H
 #define MODBUSSETWIDGET_H
 
-#include <QWidget>
+#include "../../Widget/basewidget/BaseWidget.h"
 
 namespace Ui {
   class ModbusSetWidgetForm;
 }
 
-class ModbusSetWidget : public QWidget {
+class ModbusSetWidget : public ::widget::BaseWidget {
   Q_OBJECT
 
  public:

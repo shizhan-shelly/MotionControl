@@ -27,10 +27,36 @@
     <ClCompile Include="Database\SQLiteAccess.cpp">
       <Filter>Database</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\ModbusSetWidget.cpp">
+      <Filter>Pages\ModbusSet</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\SystemConfigModel.cpp">
+      <Filter>Pages\DatabaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\SystemConfigWidget.cpp">
+      <Filter>Pages\DatabaseView</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
       <Filter>Database</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Pages\ModbusSetWidget.h">
+      <Filter>Pages\ModbusSet</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\ModbusSetWidget.ui">
+      <Filter>Pages\ModbusSet</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\SystemConfigModel.h">
+      <Filter>Pages\DatabaseModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\SystemConfigWidget.h">
+      <Filter>Pages\DatabaseView</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\SystemConfigWidget.ui">
+      <Filter>Pages\DatabaseView</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

@@ -4,12 +4,26 @@
 #ifndef SYSTEMCONFIGWIDGET_H
 #define SYSTEMCONFIGWIDGET_H
 
-#include "../widget/basewidget/BaseWidget.h"
+#include "../../Widget/basewidget/BaseWidget.h"
 
-class SystemConfigWidget : widget::BaseWidget {
+namespace Ui {
+  class SystemConfigWidgetForm;
+}
+
+class SystemConfigModel;
+
+class SystemConfigWidget : public ::widget::BaseWidget {
+  Q_OBJECT
+
  public:
-  explicit SystemConfigWidget(QWidget *widget = NULL);
+  explicit SystemConfigWidget(QWidget *parent = NULL);
   virtual ~SystemConfigWidget();
+
+  void setModel(SystemConfigModel *model);
+
+ private:
+  SystemConfigModel *system_config_model_;
+  Ui::SystemConfigWidgetForm *ui_;
 
 }; // class SystemConfigWidget
 
