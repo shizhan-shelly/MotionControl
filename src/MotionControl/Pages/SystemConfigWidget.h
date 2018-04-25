@@ -17,7 +17,7 @@ class SystemConfigWidget : public ::widget::BaseWidget {
 
  public:
   explicit SystemConfigWidget(QWidget *parent = NULL);
-  virtual ~SystemConfigWidget();
+  ~SystemConfigWidget();
 
   void setModel(SystemConfigModel *model);
 

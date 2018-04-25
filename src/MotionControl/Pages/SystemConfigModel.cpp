@@ -39,7 +39,7 @@ QVariant SystemConfigModel::data(const QModelIndex &index, int role) const {
    case Qt::EditRole:
     return 100;
    case Qt::BackgroundRole:
-    return QAbstractTableModel::data(index, role);
+    return QVariant();
    case Qt::TextAlignmentRole:
     return QVariant(Qt::AlignCenter);
    default :
