@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Database\PlasmaCutTechnology\SystemConfigDefine.h" />
     <ClInclude Include="Database\SQLiteAccess.h" />
     <CustomBuild Include="Pages\SystemConfigWidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>

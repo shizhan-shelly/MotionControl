@@ -36,6 +36,9 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Database\PlasmaCutTechnology">
+      <UniqueIdentifier>{5ca39adf-d742-467d-ae6e-58db05a747b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -73,6 +76,9 @@
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
       <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\SystemConfigDefine.h">
+      <Filter>Database\PlasmaCutTechnology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

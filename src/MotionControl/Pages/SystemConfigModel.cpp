@@ -42,7 +42,7 @@ QVariant SystemConfigModel::data(const QModelIndex &index, int role) const {
     return QVariant();
    case Qt::TextAlignmentRole:
     return QVariant(Qt::AlignCenter);
-   default :
+   default:
     return QVariant();
   }
 }
