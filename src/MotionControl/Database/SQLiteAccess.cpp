@@ -10,14 +10,11 @@ static const std::string DATABASE_ACCESS_KEY = "123456";
 SQLiteAccess::SQLiteAccess() : database_(NULL) {}
 
 SQLiteAccess::~SQLiteAccess() {
-  if (database_) {
-    sqlite3_close(database_);
-    database_ = NULL;
-  }
+  Close();
 }
 
-bool SQLiteAccess::InitializeAccess(const std::string &db_file,
-                                    const std::string &db_key) {
+bool SQLiteAccess::Open(const std::string &db_file,
+                        const std::string &db_key) {
 
   int rc = sqlite3_open(db_file.c_str(), &database_);
   if (rc != SQLITE_OK) {
@@ -29,4 +26,11 @@ bool SQLiteAccess::InitializeAccess(const std::string &db_file,
     return false;
   }
   return true;
+}
+
+void SQLiteAccess::Close() {
+  if (database_) {
+    sqlite3_close(database_);
+    database_ = NULL;
+  }
 }
