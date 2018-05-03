@@ -72,6 +72,12 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_SystemConfigWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Database\SQLiteQuery.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="Database\SQLiteCommand.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -79,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="Database\PlasmaCutTechnology\SystemConfigDefine.h">
       <Filter>Database\PlasmaCutTechnology</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\SQLiteQuery.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\SQLiteCommand.h">
+      <Filter>Database</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

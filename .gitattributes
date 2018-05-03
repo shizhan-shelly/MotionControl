@@ -1,4 +1,7 @@
 * text=auto
+*.c text
+*.h text
+*.sln text eol=crlf
 *.png binary
 *.bmp binary
 *.jpg binary
