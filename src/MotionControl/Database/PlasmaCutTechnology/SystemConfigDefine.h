@@ -1,8 +1,8 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef SYSTEMCONFIGDEFINE_H__
-#define SYSTEMCONFIGDEFINE_H__
+#ifndef DATABASE_PLASMACUTTECHNOLOGY_SYSTEMCONFIGDEFINE_H__
+#define DATABASE_PLASMACUTTECHNOLOGY_SYSTEMCONFIGDEFINE_H__
 
 typedef enum _SystemConfigFilter {
   VendorID = 0,
@@ -15,4 +15,4 @@ typedef enum _SystemConfigFilter {
 
 } SystemConfigFilter;
 
-#endif // SYSTEMCONFIGDEFINE_H__
+#endif // DATABASE_PLASMACUTTECHNOLOGY_SYSTEMCONFIGDEFINE_H__

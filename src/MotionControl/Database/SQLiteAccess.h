@@ -13,9 +13,19 @@ class SQLiteAccess {
   SQLiteAccess();
   virtual ~SQLiteAccess();
 
-  bool Open(const std::string &db_file, const std::string &db_key);
+  bool Open(const std::string &db_file);
+
+  bool Key(const std::string &db_key);
 
   void Close();
+
+  bool BeginTransaction();
+
+  bool CommitTransaction();
+
+  bool RollbackTransaction();
+
+  std::string GetLastErrorMsg();
 
  protected:
   sqlite3 *database_;
