@@ -4,6 +4,13 @@
 #ifndef DATABASE_PLASMACUTTECHNOLOGY_SYSTEMCONFIGDEFINE_H__
 #define DATABASE_PLASMACUTTECHNOLOGY_SYSTEMCONFIGDEFINE_H__
 
+typedef enum _PlasmaPowerVendor {
+  Kjellberg = 1,
+  Hypertherm,
+  LiuHe,
+
+} PlasmaPowerVendor;
+
 typedef enum _SystemConfigFilter {
   VendorID = 0,
   PlasmaPowerModel,
