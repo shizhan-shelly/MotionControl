@@ -16,6 +16,7 @@ SystemConfigFilterView::SystemConfigFilterView(QWidget *parent)
   setLayout(view_layout_);
 
   initialVendor();
+  arrangeKeywordFilter();
 }
 
 SystemConfigFilterView::~SystemConfigFilterView() {}
@@ -31,7 +32,10 @@ void SystemConfigFilterView::initialVendor() {
 
   vendor_layout_->addWidget(vendor_);
   vendor_layout_->addStretch();
-  arrangeKeywordFilter();
+
+  connect(vendor_, SIGNAL(currentIndexChanged(int)), this,
+      SLOT(onSelectVendor(int)));
+
 }
 
 void SystemConfigFilterView::arrangeKeywordFilter() {

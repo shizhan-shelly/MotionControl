@@ -13,13 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,2">
    <property name="spacing">
     <number>5</number>
    </property>
    <property name="margin">
-    <number>5</number>
+    <number>0</number>
    </property>
+   <item>
+    <widget class="SystemConfigFilterView" name="filter_view_" native="true"/>
+   </item>
    <item>
     <widget class="SystemConfigTableView" name="table_view_"/>
    </item>
@@ -30,6 +33,12 @@
    <class>SystemConfigTableView</class>
    <extends>QTableView</extends>
    <header>SystemConfigTableView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SystemConfigFilterView</class>
+   <extends>QWidget</extends>
+   <header>SystemConfigFilterView.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
