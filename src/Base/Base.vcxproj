@@ -70,6 +70,18 @@
   <ItemGroup>
     <ClInclude Include="Factory.h" />
     <ClInclude Include="Runnable.h" />
+    <ClInclude Include="singleton\Singleton.h" />
+    <ClInclude Include="singleton\SingletonMaster.h" />
+    <ClInclude Include="singleton\SingletonSlave.h" />
+    <ClInclude Include="thread\Mutex.h" />
+    <ClInclude Include="thread\MutexLocker.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="singleton\Singleton.cpp" />
+    <ClCompile Include="singleton\SingletonMaster.cpp" />
+    <ClCompile Include="singleton\SingletonSlave.cpp" />
+    <ClCompile Include="thread\Mutex_pthread.cpp" />
+    <ClCompile Include="thread\Mutex_Win32.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

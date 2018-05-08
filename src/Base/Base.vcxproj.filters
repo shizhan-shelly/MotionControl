@@ -3,5 +3,45 @@
   <ItemGroup>
     <ClInclude Include="Runnable.h" />
     <ClInclude Include="Factory.h" />
+    <ClInclude Include="singleton\Singleton.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton\SingletonMaster.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton\SingletonSlave.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\Mutex.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\MutexLocker.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Singleton">
+      <UniqueIdentifier>{7930a1fc-0c12-4792-b05c-bee9f97511d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thread">
+      <UniqueIdentifier>{a3478c7e-be35-4fd3-a43a-6d22847e42a8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="singleton\Singleton.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="singleton\SingletonMaster.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="singleton\SingletonSlave.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Mutex_pthread.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Mutex_Win32.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
