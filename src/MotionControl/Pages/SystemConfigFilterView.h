@@ -27,7 +27,7 @@ class SystemConfigFilterView : public QWidget {
  private:
   void initialVendor();
 
-  void refreshKeywordFilter();
+  void arrangeKeywordFilter();
 
   QHBoxLayout *vendor_layout_;
   QHBoxLayout *keyword_layout_;

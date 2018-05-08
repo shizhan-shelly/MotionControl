@@ -31,10 +31,10 @@ void SystemConfigFilterView::initialVendor() {
 
   vendor_layout_->addWidget(vendor_);
   vendor_layout_->addStretch();
-  refreshKeywordFilter();
+  arrangeKeywordFilter();
 }
 
-void SystemConfigFilterView::refreshKeywordFilter() {
+void SystemConfigFilterView::arrangeKeywordFilter() {
   keyword_filter_.clear();
   keyword_filter_.push_back(new QComboBox(this));
   keyword_filter_.push_back(new QComboBox(this));
