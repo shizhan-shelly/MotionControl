@@ -1,7 +1,7 @@
 // Copyright 2008 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: thinkfly@gmail.com (Yiyuan Zhong)
 
-#include "SingletonMaster.h"
+#include "base/singleton/SingletonMaster.h"
 
 void SingletonMaster::Activate() {
   master_.manager_.RunAsMaster();

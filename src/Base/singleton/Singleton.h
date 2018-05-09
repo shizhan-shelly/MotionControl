@@ -11,8 +11,8 @@
 #include <vector>
 #include <string>
 
-#include "thread/Mutex.h"
-#include "thread/MutexLocker.h"
+#include "base/thread/Mutex.h"
+#include "base/thread/MutexLocker.h"
 
 /*
  * Place this macro in class definition for instantiation

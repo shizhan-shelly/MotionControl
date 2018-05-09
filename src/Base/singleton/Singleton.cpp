@@ -1,8 +1,8 @@
 // Copyright 2008 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: thinkfly@gmail.com (Yiyuan Zhong)
 
-#include "Singleton.h"
-#include "SingletonMaster.h"
+#include "base/singleton/Singleton.h"
+#include "base/singleton/SingletonMaster.h"
 
 namespace internal {
 

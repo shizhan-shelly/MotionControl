@@ -4,8 +4,8 @@
 #ifndef BASE_SINGLETON_SINGLETONSLAVE_H__
 #define BASE_SINGLETON_SINGLETONSLAVE_H__
 
-#include "Singleton.h"
-#include "SingletonMaster.h"
+#include "base/singleton/Singleton.h"
+#include "base/singleton/SingletonMaster.h"
 
 class SingletonSlave {
  public:

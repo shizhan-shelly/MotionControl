@@ -4,7 +4,7 @@
 #ifndef BASE_SINGLETON_SINGLETONMASTER_H__
 #define BASE_SINGLETON_SINGLETONMASTER_H__
 
-#include "Singleton.h"
+#include "base/singleton/Singleton.h"
 
 class SingletonMaster {
  public:
