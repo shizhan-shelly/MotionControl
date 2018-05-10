@@ -2,19 +2,19 @@
 
 import sys, sqlite3, xlrd
 
-database_name = "test.db"
+database_name = sys.argv[1]
 connect = sqlite3.connect(database_name)
 cursor = connect.cursor()
 
 cursor.execute('''
-    CREATE TABLE Vendor(
-        ID    INT  PRIMARY KEY NOT NULL,
+    CREATE TABLE IF NOT EXISTS Vendor(
+        ID    INTEGER  PRIMARY KEY AUTOINCREMENT,
         NAME  TEXT             NOT NULL
     )
     ''')
 
 cursor.execute('''
-    CREATE TABLE SystemConfig(
+    CREATE TABLE IF NOT EXISTS SystemConfig(
         CUTTING_CHART_ID   INT     NOT NULL,  --对应一张切割表的ID，不唯一
         VENDOR_ID          INT     NOT NULL,  --等离子电源厂商ID
         PLASMA_POWER_MODEL TEXT    NOT NULL,  --等离子电源型号
@@ -28,7 +28,7 @@ cursor.execute('''
     ''')
 
 cursor.execute('''
-    CREATE TABLE PlasmaPower(
+    CREATE TABLE IF NOT EXISTS PlasmaPower(
         ID        INTEGER  PRIMARY KEY AUTOINCREMENT,
         MODEL     TEXT             NOT NULL,
         VENDOR_ID INT              NOT NULL,       -- foreign key
@@ -38,7 +38,7 @@ cursor.execute('''
     ''')
 
 cursor.execute('''
-    CREATE TABLE KjellbergCuttingData(
+    CREATE TABLE IF NOT EXISTS KjellbergCuttingData(
         ID                    INT    NOT NULL,  --切割数据的ID号，可重复
         RECORD_NUMBER         INT    NOT NULL,  --没有具体的数据含义，只是excel中切割数据编号
         MATERIAL              TEXT,             --切割材料
@@ -90,7 +90,7 @@ cursor.execute('''
     ''')
 
 cursor.execute('''
-    CREATE TABLE KjellbergAttribute(
+    CREATE TABLE IF NOT EXISTS KjellbergAttribute(
         NAME                 TEXT    NOT NULL,
         KEYWORD_FLAG         INT     NOT NULL,
         DATA_TYPE            TEXT    NOT NULL,
@@ -110,28 +110,22 @@ cursor.execute('''
     )
     ''')
 
-def VendorInitial():
-  "Init Vendor table."
-  query = "INSERT INTO Vendor VALUES (?, ?)"
-  vendor = [(1, 'Kjellberg'),
-            (2, 'Hypertherm'),
-            (3, 'LiuHe'),
-            ]
-  cursor.executemany(query, vendor)
-
 def GetVendorID(vendor_name):
-  cursor.execute("SELECT ID FROM Vendor WHERE NAME=:value",
-                 {"value" : vendor_name})
-
+  cursor.execute("SELECT ID FROM Vendor WHERE NAME=:name", {"name" : vendor_name})
   return cursor.fetchone()[0]
 
-def LastCuttingChartID():
+def GetLastCuttingChartID():
   cursor.execute("SELECT CUTTING_CHART_ID FROM SystemConfig ORDER BY CUTTING_CHART_ID")
   list = cursor.fetchone()
   if list == None:
     return 0
   else :
     return max(list)
+
+def AppendVendorInfor(vendor_name):
+  cursor.execute("SELECT ID FROM Vendor WHERE NAME=:name", {"name" : vendor_name})
+  if cursor.fetchone() == None:
+    cursor.execute("INSERT INTO Vendor (NAME) VALUES (:name)", {"name" : vendor_name})
 
 def AppendPlasmaPowerInfor(plasma_power_model, vendor_id):
   cursor.execute("SELECT ID FROM PlasmaPower \
@@ -159,7 +153,7 @@ def AppendSystemConfigInfor(cutting_chart_id, vendor_id, plasma_power_model, gas
     cursor.execute("INSERT INTO SystemConfig VALUES (?, ?, ?, ?, ?, ?, ?)",
                    (cutting_chart_id, vendor_id, plasma_power_model, gas_box_model, torch_model, version, 0))
 
-xls_file_name = sys.argv[1]
+xls_file_name = sys.argv[2]
 work_book = xlrd.open_workbook(xls_file_name)
 config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
@@ -179,6 +173,7 @@ def SystemConfig(cutting_chart_id):
     torch_model = config_sheet.cell_value(row, titles['Torch Type'])
     version = config_sheet.cell_value(row, titles['Version'])
 
+    AppendVendorInfor(vendor_name)
     vendor_id = GetVendorID(vendor_name)
     AppendPlasmaPowerInfor(plasma_power_model, vendor_id)
     AppendSystemConfigInfor(cutting_chart_id, vendor_id, plasma_power_model, gas_box_model, torch_model, version)
@@ -320,8 +315,7 @@ def KjellbergCuttingChart(cutting_chart_id):
                    marking_record,
                    technology_range))
 
-VendorInitial()
-id = LastCuttingChartID() + 1
+id = GetLastCuttingChartID() + 1
 SystemConfig(id)
 Attribute()
 KjellbergCuttingChart(id)
