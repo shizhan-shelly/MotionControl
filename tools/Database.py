@@ -40,7 +40,7 @@ cursor.execute('''
 cursor.execute('''
     CREATE TABLE KjellbergCuttingData(
         ID                    INT    NOT NULL,  --切割数据的ID号，可重复
-        RECORD_NUMBER         INT,              --没有具体的数据含义，只是excel中切割数据编号
+        RECORD_NUMBER         INT    NOT NULL,  --没有具体的数据含义，只是excel中切割数据编号
         MATERIAL              TEXT,             --切割材料
         THICKNESS             REAL,             --钢板厚度，单位为mm
         CUTTING_CURRENT       REAL,             --切Attribute割电流，单位为A
@@ -126,11 +126,12 @@ def GetVendorID(vendor_name):
   return cursor.fetchone()[0]
 
 def LastCuttingChartID():
-  cursor.execute("SELECT MAX(CUTTING_CHART_ID) FFROM SystemConfig ORDER BY CUTTING_CHART_ID)
-  if cursor.fetchone() == None:
-    return 1
+  cursor.execute("SELECT CUTTING_CHART_ID FROM SystemConfig ORDER BY CUTTING_CHART_ID")
+  list = cursor.fetchone()
+  if list == None:
+    return 0
   else :
-    return cursor.fetchone()[0]
+    return max(list)
 
 def AppendPlasmaPowerInfor(plasma_power_model, vendor_id):
   cursor.execute("SELECT ID FROM PlasmaPower \
@@ -158,7 +159,7 @@ def AppendSystemConfigInfor(cutting_chart_id, vendor_id, plasma_power_model, gas
     cursor.execute("INSERT INTO SystemConfig VALUES (?, ?, ?, ?, ?, ?, ?)",
                    (cutting_chart_id, vendor_id, plasma_power_model, gas_box_model, torch_model, version, 0))
 
-xls_file_name = "kjellberg-test.xlsx"
+xls_file_name = sys.argv[1]
 work_book = xlrd.open_workbook(xls_file_name)
 config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
@@ -320,9 +321,10 @@ def KjellbergCuttingChart(cutting_chart_id):
                    technology_range))
 
 VendorInitial()
-SystemConfig(500)
+id = LastCuttingChartID() + 1
+SystemConfig(id)
 Attribute()
-KjellbergCuttingChart(500)
+KjellbergCuttingChart(id)
 
 connect.commit()
 connect.close()
