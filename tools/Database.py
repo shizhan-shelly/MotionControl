@@ -115,12 +115,12 @@ def GetVendorID(vendor_name):
   return cursor.fetchone()[0]
 
 def GetLastCuttingChartID():
-  cursor.execute("SELECT CUTTING_CHART_ID FROM SystemConfig ORDER BY CUTTING_CHART_ID")
-  list = cursor.fetchone()
+  cursor.execute("SELECT MAX(CUTTING_CHART_ID) FROM SystemConfig")
+  list = cursor.fetchone()[0]
   if list == None:
     return 0
   else :
-    return max(list)
+    return list
 
 def AppendVendorInfor(vendor_name):
   cursor.execute("SELECT ID FROM Vendor WHERE NAME=:name", {"name" : vendor_name})
