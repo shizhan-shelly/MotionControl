@@ -65,6 +65,7 @@ cursor.execute('''
         PLASMA_GAS3_KPA       REAL,             --等离子气体3压强，单位为kpa
         SWIRL_GAS1_KPA        REAL,             --涡流器气体1压强，单位为kpa
         SWIRL_GAS2_KPA        REAL,             --涡流器气体2压强，单位为kpa
+        IGNITION_GAS_KPA      REAL,             --点火气体压强，单位为kpa
         CUTTING_PRESSURE      REAL,             --切割压强，单位为kpa
         IGNITION_HEIGHT       REAL,             --引弧高度，单位为mm
         CUTTING_HEIGHT        REAL,             --切割高度，单位为mm
@@ -253,6 +254,7 @@ def KjellbergCuttingChart(cutting_chart_id):
     plasma_gas_3_pressure = cut_chart_sheet.cell_value(row, collumn_dis['plasma gas 3 pressure']) * scale_dis['plasma gas 3 pressure'] + offset_dis['plasma gas 3 pressure']
     swirl_gas_1_pressure = cut_chart_sheet.cell_value(row, collumn_dis['swirl gas 1 pressure']) * scale_dis['swirl gas 1 pressure'] + offset_dis['swirl gas 1 pressure']
     swirl_gas_2_pressure = cut_chart_sheet.cell_value(row, collumn_dis['swirl gas 2 pressure']) * scale_dis['swirl gas 2 pressure'] + offset_dis['swirl gas 2 pressure']
+    ignition_gas_pressure = cut_chart_sheet.cell_value(row, collumn_dis['ignition gas pressure']) * scale_dis['ignition gas pressure'] + offset_dis['ignition gas pressure']
     cutting_pressure = cut_chart_sheet.cell_value(row, collumn_dis['cutting pressure']) * scale_dis['cutting pressure'] + offset_dis['cutting pressure']
     additional_height = cut_chart_sheet.cell_value(row, collumn_dis['additional height']) * scale_dis['additional height'] + offset_dis['additional height']
     up_slope =cut_chart_sheet.cell_value(row, collumn_dis['up slope']) * scale_dis['up slope'] + offset_dis['up slope']
@@ -267,7 +269,7 @@ def KjellbergCuttingChart(cutting_chart_id):
     technology_range = cut_chart_sheet.cell_value(row, collumn_dis['technology range'])
     marking_record = cut_chart_sheet.cell_value(row, collumn_dis['marking record'])
 
-    query = "INSERT INTO KjellbergCuttingData VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    query = "INSERT INTO KjellbergCuttingData VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     cursor.execute(query, (cutting_chart_id,
                    record_number,
                    material,
@@ -294,6 +296,7 @@ def KjellbergCuttingChart(cutting_chart_id):
                    plasma_gas_3_pressure,
                    swirl_gas_1_pressure,
                    swirl_gas_2_pressure,
+                   ignition_gas_pressure,
                    cutting_pressure,
                    ignition_height,
                    cutting_height,
