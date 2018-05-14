@@ -3,6 +3,8 @@
 
 #include "SystemConfigFilterView.h"
 
+#include "../Database/PlasmaCutTechnology/PlasmaCutDataHandler.h"
+
 SystemConfigFilterView::SystemConfigFilterView(QWidget *parent)
     : QWidget(parent) {
 
@@ -26,10 +28,12 @@ void SystemConfigFilterView::onSelectVendor(int vendor_id) {
 
 void SystemConfigFilterView::initialVendor() {
   vendor_ = new QComboBox(this);
-  vendor_->addItem(tr("Kjellberg"));
-  vendor_->addItem(tr("Hyperthem"));
-  vendor_->addItem(tr("Liuhe"));
 
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  std::vector<std::string> vendor_name = db_handler->GetVendorNames();
+  for (size_t i = 0; i < vendor_name.size(); i++) {
+    vendor_->addItem(vendor_name[i].c_str());
+  }
   vendor_layout_->addWidget(vendor_);
   vendor_layout_->addStretch();
 
@@ -40,12 +44,18 @@ void SystemConfigFilterView::initialVendor() {
 
 void SystemConfigFilterView::arrangeKeywordFilter() {
   keyword_filter_.clear();
-  keyword_filter_.push_back(new QComboBox(this));
-  keyword_filter_.push_back(new QComboBox(this));
-  keyword_filter_.push_back(new QComboBox(this));
 
-  keyword_filter_[0]->addItem("Smart Focus 120");
-  keyword_filter_[0]->addItem("Smart Focus 130");
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  std::map<std::string, std::string> field = db_handler->GetSystemConfigKeywordField();
+  std::map<std::string, std::string>::const_iterator iter = field.begin();
+  for (; iter != field.end(); iter++) {
+    keyword_filter_.push_back(new QComboBox(this));
+
+    std::vector<std::string> filed_items = db_handler->GetFieldValues(iter->first);
+    for (size_t j = 0; j < filed_items.size(); j++) {
+      keyword_filter_.back()->addItem(filed_items[j].c_str());
+    }
+  }
 
   for (size_t i = 0; i < keyword_filter_.size(); i++) {
     keyword_layout_->addWidget(keyword_filter_[i]);

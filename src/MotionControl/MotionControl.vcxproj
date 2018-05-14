@@ -41,6 +41,7 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_SystemConfigWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp" />
     <ClCompile Include="Database\SQLiteAccess.cpp" />
     <ClCompile Include="Database\SQLiteCommand.cpp" />
     <ClCompile Include="Database\SQLiteQuery.cpp" />
@@ -59,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\SystemConfigDefine.h" />
     <ClInclude Include="Database\SQLiteAccess.h" />
     <ClInclude Include="Database\SQLiteCommand.h" />

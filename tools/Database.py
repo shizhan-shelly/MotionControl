@@ -43,7 +43,7 @@ cursor.execute('''
         RECORD_NUMBER         INT    NOT NULL,  --没有具体的数据含义，只是excel中切割数据编号
         MATERIAL              TEXT,             --切割材料
         THICKNESS             REAL,             --钢板厚度，单位为mm
-        CUTTING_CURRENT       REAL,             --切Attribute割电流，单位为A
+        CUTTING_CURRENT       REAL,             --切割电流，单位为A
         TECHNOLOGY            TEXT,             --切割技术
         CATHODE               TEXT,             --电极
         GAS_GUIDE             TEXT,             --涡流环

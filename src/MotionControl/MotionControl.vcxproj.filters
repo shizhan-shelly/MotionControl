@@ -99,6 +99,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_SystemConfigTableView.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp">
+      <Filter>Database\PlasmaCutTechnology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Database\SQLiteCommand.h">
       <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.h">
+      <Filter>Database\PlasmaCutTechnology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
