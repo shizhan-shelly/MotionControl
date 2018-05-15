@@ -36,6 +36,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h</Extensions>
     </Filter>
+    <Filter Include="Widget\CustomWidget">
+      <UniqueIdentifier>{7de3280a-2e7d-4f0a-b26b-256d306d06d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -47,10 +50,22 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BaseWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="customwidget\ComboEditor.cpp">
+      <Filter>Widget\CustomWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ComboEditor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ComboEditor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
       <Filter>Widget\BaseWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="customwidget\ComboEditor.h">
+      <Filter>Widget\CustomWidget</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

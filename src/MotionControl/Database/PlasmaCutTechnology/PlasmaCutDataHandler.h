@@ -27,11 +27,10 @@ class PlasmaCutDataHandler : public Singleton {
   int GetVendorID(const std::string &vendor_name);
 
   std::map<std::string, std::string> GetSystemConfigKeywordField();
-  std::vector<std::string> GetFieldValues(const std::string &field_name);
 
-  //std::vector<std::string> GetPlasmaPowerModels(int vendor_id);
-
-  //int GetPlasmaID(const std::string &plasma_model, int vendor_id) const;
+  std::vector<std::string> GetSystemConfigFieldValues(
+      int vendor_id,
+      const std::string &field_name);
 
  private:
   PlasmaCutDataHandler();

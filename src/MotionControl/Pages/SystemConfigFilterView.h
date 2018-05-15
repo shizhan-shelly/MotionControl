@@ -4,12 +4,13 @@
 #ifndef SYSTEMCONFIGFILTERVIEW_H
 #define SYSTEMCONFIGFILTERVIEW_H
 
+#include <QtGui/QGridLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
-#include <QtGui/QComboBox>
 
 #include "../Database/PlasmaCutTechnology/SystemConfigDefine.h"
+#include "../../Widget/customwidget/ComboEditor.h"
 
 class SystemConfigFilterView : public QWidget {
   Q_OBJECT
@@ -17,9 +18,6 @@ class SystemConfigFilterView : public QWidget {
  public:
   explicit SystemConfigFilterView(QWidget *parent = NULL);
   ~SystemConfigFilterView();
-
- signals:
-  void filter(std::map<SystemConfigFilter, std::string> keyword);
 
  private slots:
   void onSelectVendor(int vendor_id);
@@ -29,11 +27,11 @@ class SystemConfigFilterView : public QWidget {
 
   void arrangeKeywordFilter();
 
+  QGridLayout *keyword_layout_;
   QHBoxLayout *vendor_layout_;
-  QHBoxLayout *keyword_layout_;
   QVBoxLayout *view_layout_;
-  QComboBox *vendor_;
-  std::vector<QComboBox *> keyword_filter_;
+  std::vector<widget::ComboEditor *> keyword_filter_;
+  widget::ComboEditor *vendor_;
 
 }; // class SystemConfigFilterView
 

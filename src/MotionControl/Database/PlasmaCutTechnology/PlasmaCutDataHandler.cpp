@@ -77,9 +77,14 @@ std::map<std::string, std::string> PlasmaCutDataHandler::GetSystemConfigKeywordF
   return field_name;
 }
 
-std::vector<std::string> PlasmaCutDataHandler::GetFieldValues(const std::string &field_name) {
+std::vector<std::string> PlasmaCutDataHandler::GetSystemConfigFieldValues(
+    int vendor_id,
+    const std::string &field_name) {
+
   char sql[500];
-  sprintf(sql, "SELECT DISTINCT %s FROM SystemConfig WHERE VENDOR_ID = %d", field_name.c_str(), 1);
+  sprintf(sql, "SELECT DISTINCT %s FROM SystemConfig WHERE VENDOR_ID = %d",
+      field_name.c_str(), vendor_id);
+
   sql_query_.Prepare(sql);
 
   std::vector<std::string> field_values;
