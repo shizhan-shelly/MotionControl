@@ -1,7 +1,9 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#include "SystemConfigModel.h"
+#include "../Pages/SystemConfigModel.h"
+
+#include "../Pages/SystemConfigItem.h"
 
 SystemConfigModel::SystemConfigModel(QObject *parent)
     : QAbstractTableModel(parent) {}
@@ -10,7 +12,7 @@ SystemConfigModel::~SystemConfigModel() {}
 
 int SystemConfigModel::rowCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
-  return 1;
+  return system_config_items_.count();
 }
 
 int SystemConfigModel::columnCount(const QModelIndex &parent) const {

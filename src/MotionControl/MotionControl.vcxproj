@@ -46,6 +46,7 @@
     <ClCompile Include="Database\SQLiteCommand.cpp" />
     <ClCompile Include="Database\SQLiteQuery.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pages\SystemConfigItem.cpp" />
     <ClCompile Include="Pages\ModbusSetWidget.cpp" />
     <ClCompile Include="Pages\SystemConfigFilterView.cpp" />
     <ClCompile Include="Pages\SystemConfigModel.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="Database\SQLiteAccess.h" />
     <ClInclude Include="Database\SQLiteCommand.h" />
     <ClInclude Include="Database\SQLiteQuery.h" />
+    <ClInclude Include="Pages\SystemConfigItem.h" />
     <CustomBuild Include="Pages\SystemConfigFilterView.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing SystemConfigFilterView.h...</Message>

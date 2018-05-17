@@ -1,10 +1,12 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef SYSTEMCONFIGMODEL_H
-#define SYSTEMCONFIGMODEL_H
+#ifndef SYSTEMCONFIGMODEL_H__
+#define SYSTEMCONFIGMODEL_H__
 
 #include <QtCore/QAbstractTableModel>
+
+class SystemConfigItem;
 
 class SystemConfigModel : public QAbstractTableModel {
   Q_OBJECT
@@ -24,6 +26,9 @@ class SystemConfigModel : public QAbstractTableModel {
   // The dataChanged() signal should be emitted if the data was successfully set.
   bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
+ private:
+  QList<SystemConfigItem *> system_config_items_;
+
 }; // class SystemConfigModel
 
-#endif // SYSTEMCONFIGMODEL_H
+#endif // SYSTEMCONFIGMODEL_H__

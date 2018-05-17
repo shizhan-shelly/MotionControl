@@ -42,6 +42,9 @@
     <Filter Include="Pages\DatabaseView\SystemConfig">
       <UniqueIdentifier>{99cff3ce-e947-4ff5-992f-00254f38db8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DatabaseItem">
+      <UniqueIdentifier>{659ba1ee-5a87-43f0-93e1-c393863ae449}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -102,6 +105,9 @@
     <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp">
       <Filter>Database\PlasmaCutTechnology</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\SystemConfigItem.cpp">
+      <Filter>Pages\DatabaseItem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.h">
       <Filter>Database\PlasmaCutTechnology</Filter>
+    </ClInclude>
+    <ClInclude Include="Pages\SystemConfigItem.h">
+      <Filter>Pages\DatabaseItem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
