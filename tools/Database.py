@@ -246,7 +246,7 @@ def Attribute():
                     attribute_sheet.cell_value(row, titles['Scale']),
                     attribute_sheet.cell_value(row, titles['Offset'])))
 
-def KjellbergCuttingChart(cutting_chart_id):
+def KjellbergCutChart(cutting_chart_id):
   "Insert cutting data into CuttingData table. This Cutting chart id will be defined with cutting_chart_id"
   titles = {}
   title_row = int(attribute_sheet.cell_value(0, 0))
@@ -359,7 +359,7 @@ def KjellbergCuttingChart(cutting_chart_id):
                    marking_record,
                    technology_range))
 
-def HyperthermCuttingChart(cutting_chart_id):
+def HyperthermCutChart(cutting_chart_id):
   titles = {}
   title_row = int(attribute_sheet.cell_value(0, 0))
   for col in range(0, attribute_sheet.ncols):
@@ -449,7 +449,7 @@ def HyperthermCuttingChart(cutting_chart_id):
 id = GetLastCuttingChartID() + 1
 SystemConfig(id)
 Attribute()
-KjellbergCuttingChart(id)
+KjellbergCutChart(id)
 
 connect.commit()
 connect.close()
