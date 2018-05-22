@@ -20,13 +20,14 @@ class SystemConfigFilterView : public QWidget {
   ~SystemConfigFilterView();
 
  private slots:
-  void onSelectVendor(int vendor_id);
+  void onSelectVendor(const QString &vendor_name);
 
  private:
   void initialVendor();
 
   void arrangeKeywordFilter();
 
+  int vendor_id_;
   QGridLayout *keyword_layout_;
   QHBoxLayout *vendor_layout_;
   QVBoxLayout *view_layout_;

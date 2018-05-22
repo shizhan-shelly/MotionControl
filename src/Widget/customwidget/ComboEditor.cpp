@@ -26,6 +26,9 @@ void ComboEditor::setupWidget(const QPair<QString, QList<QString> > &infor) {
   combobox_ = new QComboBox(this);
   combobox_->addItems(infor.second);
   arrangeItems();
+  connect(combobox_, SIGNAL(currentIndexChanged(QString)),
+      this, SIGNAL(currentSelect(QString)));
+
 }
 
 void ComboEditor::clearItems() {

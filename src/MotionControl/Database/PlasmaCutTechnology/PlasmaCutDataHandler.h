@@ -26,11 +26,20 @@ class PlasmaCutDataHandler : public Singleton {
 
   int GetVendorID(const std::string &vendor_name);
 
-  std::map<std::string, std::string> GetSystemConfigKeywordField();
+  // Get all system config table's filed name, its translation
+  std::vector<std::pair<std::string, std::string> > GetSystemConfigField();
 
+  // Get system config table's keyword filed name, its translation
+  std::vector<std::pair<std::string, std::string> > GetSystemConfigKeywordField();
+
+  // according to the field_name, get the values from system config table.
   std::vector<std::string> GetSystemConfigFieldValues(
       int vendor_id,
       const std::string &field_name);
+
+  std::vector<std::vector<std::pair<std::string, std::string> > > GetSystemConfigRecord(
+      int vendor_id,
+      const std::vector<std::pair<std::string, std::string> > &keyword_field);
 
  private:
   PlasmaCutDataHandler();

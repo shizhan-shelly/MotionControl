@@ -21,6 +21,9 @@ class ComboEditor : public BaseWidget {
 
   void setupWidget(const QPair<QString, QList<QString> > &infor);
 
+ signals:
+  void currentSelect(const QString &text);
+
  private:
   QComboBox *combobox_;
   QHBoxLayout *layout_;

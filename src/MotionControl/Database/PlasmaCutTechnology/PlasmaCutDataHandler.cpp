@@ -65,14 +65,26 @@ int PlasmaCutDataHandler::GetVendorID(const std::string &vendor_name) {
   return -1;
 }
 
-std::map<std::string, std::string> PlasmaCutDataHandler::GetSystemConfigKeywordField() {
+std::vector<std::pair<std::string, std::string> > PlasmaCutDataHandler::GetSystemConfigField() {
+  char sql[500];
+  sprintf(sql, "SELECT DISTINCT FIELD_NAME FROM SystemConfigAttribute");
+  sql_query_.Prepare(sql);
+
+  std::vector<std::pair<std::string, std::string> > field_name;
+  while (sql_query_.Read()) {
+    field_name.push_back(std::make_pair(sql_query_.GetStringValue(0), ""));
+  }
+  return field_name;
+}
+
+std::vector<std::pair<std::string, std::string> > PlasmaCutDataHandler::GetSystemConfigKeywordField() {
   char sql[500];
   sprintf(sql, "SELECT FIELD_NAME FROM SystemConfigAttribute WHERE KEYWORD_FLAG = 1");
   sql_query_.Prepare(sql);
 
-  std::map<std::string, std::string> field_name;
+  std::vector<std::pair<std::string, std::string> > field_name;
   while (sql_query_.Read()) {
-    field_name.insert(std::pair<std::string, std::string>(sql_query_.GetStringValue(0), ""));
+    field_name.push_back(std::make_pair(sql_query_.GetStringValue(0), ""));
   }
   return field_name;
 }
@@ -92,4 +104,31 @@ std::vector<std::string> PlasmaCutDataHandler::GetSystemConfigFieldValues(
     field_values.push_back(sql_query_.GetStringValue(0));
   }
   return field_values;
+}
+
+std::vector<std::vector<std::pair<std::string, std::string> > > PlasmaCutDataHandler::GetSystemConfigRecord(
+    int vendor_id,
+    const std::vector<std::pair<std::string, std::string> > &keyword_field) {
+
+  char pre_sql[500];
+  sprintf(pre_sql, "SELECT * FROM SystemConfig WHERE VENDOR_ID = %d ", vendor_id);
+  std::string sql = pre_sql;
+  for (size_t i = 0; i < keyword_field.size(); i++) {
+    char child_sql[500];
+    sprintf(child_sql, "AND %s = '%s'", keyword_field[i].first.c_str(), keyword_field[i].second.c_str());
+    sql.append(child_sql);
+  }
+  sql_query_.Prepare(sql);
+
+  std::vector<std::pair<std::string, std::string> > field_values;
+  std::vector<std::vector<std::pair<std::string, std::string> > > record_values;
+  while (sql_query_.Read()) {
+    for (int i = 0; i < sql_query_.ColumnCount(); i++) {
+      field_values.push_back(std::make_pair(sql_query_.GetColumnName(i),
+          sql_query_.GetStringValue(i)));
+
+    }
+    record_values.push_back(field_values);
+  }
+  return record_values;
 }

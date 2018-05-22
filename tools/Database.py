@@ -38,7 +38,7 @@ cursor.execute('''
     ''')
 
 cursor.execute('''
-    CREATE TABLE IF NOT EXISTS KjellbergCuttingData(
+    CREATE TABLE IF NOT EXISTS KjellbergCutChart(
         ID                    INT    NOT NULL,  --切割数据的ID号，可重复
         RECORD_NUMBER         INT    NOT NULL,  --没有具体的数据含义，只是excel中切割数据编号
         MATERIAL              TEXT,             --切割材料
@@ -107,6 +107,47 @@ cursor.execute('''
         DISPLAY_GROUP        INT,
         SCALE                REAL,
         OFFSET               REAL
+
+    )
+    ''')
+
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS HyperthermCutChart(
+        ID                     INT  NOT NULL, --切割表ID号，可重复
+        TORCH_TYPE             TEXT,          --割枪类型
+        MATERIAL_TYPE          TEXT,          --材料类型
+        SPECIFIC_MATERIAL      TEXT,          --专用材料
+        PROCESS_CURRENT        REAL,          --工艺电流
+        PLASMA_SHIELD_GAS      TEXT,          --等离子/保护气体
+        CUTTING_SURFACE        INT,           --切割表面
+        THICKNESS              REAL,          --板厚
+        CUTTING_SPEED          REAL,          --切割速度
+        KERF                   REAL,          --割缝
+        CREEP_TIME             REAL,          --爬行时间
+        CUTTING_VOLTAGE        REAL,          --设置弧压
+        PIERCE_TIME            REAL,          --穿孔时间
+        PIERCE_HEIGHT          REAL,          --穿孔高度
+        CUTTING_HEIGHT         REAL,          --切割高度
+        IGNITION_HEIGHT        REAL,          --引弧高度
+        CUT_HEIGHT_DELAY       REAL,          --切割高度延时
+        PLASMA_MANUAL_PREFLOW  REAL,          --等离子气体手动预流
+        SHIELD_MANUAL_PREFLOW  REAL,          --保护气体手动预流
+        PLASMA_MANUAL_CUTFLOW  REAL,          --等离子气体手动切割流
+        SHIELD_MANUAL_CUTFLOW  REAL,          --保护气体手动切割流
+        PLASMA_AUTO_PREFLOW    REAL,          --等离子气体自动预流
+        SHIELD_AUTO_PREFLOW    REAL,          --保护气体自动预流
+        PLASMA_AUTO_CUTFLOW    REAL,          --等离子气体自动切割流
+        SHIELD_AUTO_CUTFLOW    REAL,          --保护气体自动切割流
+        MIXED_GAS1             REAL,          --混合气体1
+        MIXED_GAS2             REAL,          --混合气体2
+        SHIELD_CAP             TEXT,          --外固定帽
+        SHIELD                 TEXT,          --保护帽
+        NOZZLE_RETAINING_CAP   TEXT,          --内固定帽
+        NOZZLE                 TEXT,          --喷嘴
+        SWIRL_RING             TEXT,          --涡流环
+        ELECTRODE              TEXT,          --电机
+        WATER_TUBE             TEXT           --水管
 
     )
     ''')
@@ -269,7 +310,7 @@ def KjellbergCuttingChart(cutting_chart_id):
     technology_range = cut_chart_sheet.cell_value(row, collumn_dis['technology range'])
     marking_record = cut_chart_sheet.cell_value(row, collumn_dis['marking record'])
 
-    query = "INSERT INTO KjellbergCuttingData VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    query = "INSERT INTO KjellbergCutChart VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     cursor.execute(query, (cutting_chart_id,
                    record_number,
                    material,
@@ -317,6 +358,93 @@ def KjellbergCuttingChart(cutting_chart_id):
                    special_code,
                    marking_record,
                    technology_range))
+
+def HyperthermCuttingChart(cutting_chart_id):
+  titles = {}
+  title_row = int(attribute_sheet.cell_value(0, 0))
+  for col in range(0, attribute_sheet.ncols):
+    titles[attribute_sheet.cell_value(title_row - 1, col)] = col
+
+  collumn_dis = {}
+  scale_dis = {}
+  offset_dis = {}
+  for row in range(title_row, attribute_sheet.nrows):
+    collumn_dis[attribute_sheet.cell_value(row, titles['Name'])] = int(attribute_sheet.cell_value(row, titles['Column'])) -1
+    scale_dis[attribute_sheet.cell_value(row, titles['Name'])] = attribute_sheet.cell_value(row, titles['Scale'])
+    offset_dis[attribute_sheet.cell_value(row, titles['Name'])] = attribute_sheet.cell_value(row, titles['Offset'])
+
+  start_row = int(attribute_sheet.cell_value(0, 1))
+  for row in range(start_row - 1, cut_chart_sheet.nrows):
+    torch_type = cut_chart_sheet.cell_value(row, collumn_dis['torch type'])
+    material = cut_chart_sheet.cell_value(row, collumn_dis['material'])
+    specific_material = cut_chart_sheet.cell_value(row, collumn_dis['specific material'])
+    current = cut_chart_sheet.cell_value(row, collumn_dis['current']) * scale_dis['current'] + offset_dis['current']
+    plasma_shield_gas = cut_chart_sheet.cell_value(row, collumn_dis['plasma/shield gas'])
+    cutting_surface = cut_chart_sheet.cell_value(row, collumn_dis['cutting surface'])
+    thickness = cut_chart_sheet.cell_value(row, collumn_dis['thickness']) * scale_dis['thickness'] + offset_dis['thickness']
+    cutting_speed = cut_chart_sheet.cell_value(row, collumn_dis['cutting speed']) * scale_dis['cutting speed'] + offset_dis['cutting speed']
+    kerf = cut_chart_sheet.cell_value(row, collumn_dis['kerf']) * scale_dis['kerf'] + offset_dis['kerf']
+    creep_time = cut_chart_sheet.cell_value(row, collumn_dis['creep time']) * scale_dis['creep time'] + offset_dis['creep time']
+    cutting_voltage = cut_chart_sheet.cell_value(row, collumn_dis['cutting voltage']) * scale_dis['cutting voltage'] + offset_dis['cutting voltage']
+    pierce_time = cut_chart_sheet.cell_value(row, collumn_dis['pierce time']) * scale_dis['pierce time'] + offset_dis['pierce time']
+    pierce_height = cut_chart_sheet.cell_value(row, collumn_dis['pierce height']) * scale_dis['pierce height'] + offset_dis['pierce height']
+    cutting_height = cut_chart_sheet.cell_value(row, collumn_dis['cutting height']) * scale_dis['cutting height'] + offset_dis['cutting height']
+    ignition_height = cut_chart_sheet.cell_value(row, collumn_dis['ignition height']) * scale_dis['ignition height'] + offset_dis['ignition height']
+    cut_height_delay = cut_chart_sheet.cell_value(row, collumn_dis['cut height delay']) * scale_dis['cut height delay'] + offset_dis['cut height delay']
+    plasma_manual_preflow = cut_chart_sheet.cell_value(row, collumn_dis['plasma manual preflow']) * scale_dis['plasma manual preflow'] + offset_dis['plasma manual preflow']
+    shield_manual_preflow = cut_chart_sheet.cell_value(row, collumn_dis['shield manual preflow']) * scale_dis['shield manual preflow'] + offset_dis['shield manual preflow']
+    plasma_manual_cutflow = cut_chart_sheet.cell_value(row, collumn_dis['plasma manual cutflow']) * scale_dis['plasma manual cutflow'] + offset_dis['plasma manual cutflow']
+    shield_manual_cutflow = cut_chart_sheet.cell_value(row, collumn_dis['shield manual cutflow']) * scale_dis['shield manual cutflow'] + offset_dis['shield manual cutflow']
+    plasma_auto_preflow = cut_chart_sheet.cell_value(row, collumn_dis['plasma auto preflow']) * scale_dis['plasma auto preflow'] + offset_dis['plasma auto preflow']
+    shield_auto_preflow = cut_chart_sheet.cell_value(row, collumn_dis['shield auto preflow']) * scale_dis['shield auto preflow'] + offset_dis['shield auto preflow']
+    plasma_auto_cutflow = cut_chart_sheet.cell_value(row, collumn_dis['plasma auto cutflow']) * scale_dis['plasma auto cutflow'] + offset_dis['plasma auto cutflow']
+    shield_auto_cutflow = cut_chart_sheet.cell_value(row, collumn_dis['shield auto cutflow']) * scale_dis['shield auto cutflow'] + offset_dis['shield auto cutflow']
+    mixed_gas1 = cut_chart_sheet.cell_value(row, collumn_dis['mixed gas1']) * scale_dis['mixed gas1'] + offset_dis['mixed gas1']
+    mixed_gas2 = cut_chart_sheet.cell_value(row, collumn_dis['mixed gas2']) * scale_dis['mixed gas2'] + offset_dis['mixed gas2']
+    shield_cap = cut_chart_sheet.cell_value(row, collumn_dis['shield cap'])
+    shield = cut_chart_sheet.cell_value(row, collumn_dis['shield'])
+    nozzle_retaining_cap = cut_chart_sheet.cell_value(row, collumn_dis['nozzle retaining cap'])
+    nozzle = cut_chart_sheet.cell_value(row, collumn_dis['nozzle'])
+    swirl_ring = cut_chart_sheet.cell_value(row, collumn_dis['swirl ring'])
+    electrode = cut_chart_sheet.cell_value(row, collumn_dis['electrode'])
+    water_tube = cut_chart_sheet.cell_value(row, collumn_dis['water tube'])
+
+    query = "INSERT INTO HyperthermCutChart VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    cursor.execute(query, (cutting_chart_id,
+                   torch_type,
+                   material,
+                   specific_material,
+                   current,
+                   plasma_shield_gas,
+                   cutting_surface,
+                   thickness,
+                   cutting_speed,
+                   kerf,
+                   creep_time,
+                   cutting_voltage,
+                   pierce_time,
+                   pierce_height,
+                   cutting_height,
+                   ignition_height,
+                   cut_height_delay,
+                   plasma_manual_preflow,
+                   shield_manual_preflow,
+                   plasma_manual_cutflow,
+                   shield_manual_cutflow,
+                   plasma_auto_preflow,
+                   shield_auto_preflow,
+                   plasma_auto_cutflow,
+                   shield_auto_cutflow,
+                   mixed_gas1,
+                   mixed_gas2,
+                   shield_cap,
+                   shield,
+                   nozzle_retaining_cap,
+                   nozzle,
+                   swirl_ring,
+                   electrode,
+                   water_tube))
+
 
 id = GetLastCuttingChartID() + 1
 SystemConfig(id)

@@ -23,7 +23,10 @@ SystemConfigFilterView::SystemConfigFilterView(QWidget *parent)
 
 SystemConfigFilterView::~SystemConfigFilterView() {}
 
-void SystemConfigFilterView::onSelectVendor(int vendor_id) {
+void SystemConfigFilterView::onSelectVendor(const QString &vendor_name) {
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  vendor_id_ = db_handler->GetVendorID(vendor_name.toStdString());
+  arrangeKeywordFilter();
 }
 
 void SystemConfigFilterView::initialVendor() {
@@ -40,6 +43,8 @@ void SystemConfigFilterView::initialVendor() {
   vendor_layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum,
       QSizePolicy::Expanding));
 
+  connect(vendor_, SIGNAL(currentSelect(QString)), this, SLOT(onSelectVendor(QString)));
+  vendor_id_ = 1;
 }
 
 void SystemConfigFilterView::arrangeKeywordFilter() {
@@ -58,15 +63,15 @@ void SystemConfigFilterView::arrangeKeywordFilter() {
   }
 
   PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
-  std::map<std::string, std::string> keyword_field =
+  std::vector<std::pair<std::string, std::string> > keyword_field =
       db_handler->GetSystemConfigKeywordField();
 
-  std::map<std::string, std::string>::const_iterator iter = keyword_field.begin();
+  std::vector<std::pair<std::string, std::string> >::const_iterator iter = keyword_field.begin();
   for (; iter != keyword_field.end(); iter++) {
     keyword_filter_.push_back(new widget::ComboEditor(this));
 
     std::vector<std::string> filed_item =
-        db_handler->GetSystemConfigFieldValues(1, iter->first);
+        db_handler->GetSystemConfigFieldValues(vendor_id_, iter->first);
 
     QStringList filed_item_list;
     for (size_t i = 0; i < filed_item.size(); i++) {
