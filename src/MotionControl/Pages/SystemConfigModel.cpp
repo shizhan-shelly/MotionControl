@@ -3,6 +3,8 @@
 
 #include "../Pages/SystemConfigModel.h"
 
+#include <assert.h>
+
 #include "../Pages/SystemConfigItem.h"
 
 SystemConfigModel::SystemConfigModel(QObject *parent)
@@ -17,7 +19,7 @@ int SystemConfigModel::rowCount(const QModelIndex &parent) const {
 
 int SystemConfigModel::columnCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
-  return 2;
+  return 7;
 }
 
 Qt::ItemFlags SystemConfigModel::flags(const QModelIndex &index) const {
@@ -33,13 +35,13 @@ QVariant SystemConfigModel::data(const QModelIndex &index, int role) const {
   }
   int row = index.row();
   int column = index.column();
-  if (row < 0 || row >= 1 || column < 0 || column >= 2) {
+  if (row < 0 || row >= rowCount() || column < 0 || column >= columnCount()) {
     return QVariant();
   }
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    return 100;
+    return QString(system_config_items_[row]->GetItemElement(column).c_str());
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:
@@ -57,7 +59,22 @@ QVariant SystemConfigModel::headerData(int section,
     return QVariant();
   }
   if (orientation == Qt::Horizontal) {
-    return QString("database");
+    switch (section) {
+     case 0:
+      return QString("Plasma Power Vendor");
+     case 1:
+      return QString("Plasma Power Model");
+     case 2:
+      return QString("Gas Box Model");
+     case 3:
+      return QString("Torch Model");
+     case 4:
+      return QString("Version");
+     case 5:
+      return QString("Selected Record");
+     default:
+      return QVariant();
+    }
   } else {
     return QString("%1").arg(section + 1);
   }
@@ -72,4 +89,27 @@ bool SystemConfigModel::setData(const QModelIndex &index,
     return true;
   }
   return false;
+}
+
+void SystemConfigModel::insertRecord(int row, SystemConfigItem *record) {
+  assert(row >= 0 && row <= system_config_items_.size());
+  beginInsertRows(QModelIndex(), row, row);
+  system_config_items_.insert(row, record);
+  endInsertRows();
+}
+
+void SystemConfigModel::clear() {
+  if (!system_config_items_.empty()) {
+    int count = rowCount();
+    beginRemoveRows(QModelIndex(), 0, count - 1);
+    for (int i = 0; i < count; i++) {
+      SystemConfigItem *remove_item = system_config_items_[i];
+      if (remove_item) {
+        delete remove_item;
+        remove_item = NULL;
+      }
+    }
+    system_config_items_.clear();
+    endRemoveRows();
+  }
 }

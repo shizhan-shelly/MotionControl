@@ -29,6 +29,20 @@ void SystemConfigFilterView::onSelectVendor(const QString &vendor_name) {
   arrangeKeywordFilter();
 }
 
+void SystemConfigFilterView::onSelectKeywordFilter(const QString &keyword_value) {
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  std::vector<std::pair<std::string, std::string> > keyword_field =
+      db_handler->GetSystemConfigKeywordField();
+
+  std::vector<std::pair<std::string, std::string> > keyword_filter;
+  for (size_t i = 0; i < keyword_field.size(); i++) {
+    keyword_filter.push_back(std::make_pair(keyword_field[i].first,
+        keyword_filter_[i]->currentEditorValue().toStdString()));
+
+  }
+  emit systemConfigRecord(db_handler->GetSystemConfigRecord(vendor_id_, keyword_filter));
+}
+
 void SystemConfigFilterView::initialVendor() {
   vendor_ = new widget::ComboEditor(this);
 
@@ -79,6 +93,9 @@ void SystemConfigFilterView::arrangeKeywordFilter() {
     }
     keyword_filter_.back()->setupWidget(
         QPair<QString, QList<QString> >(iter->first.c_str(), filed_item_list));
+
+    connect(keyword_filter_.back(), SIGNAL(currentSelect(QString)), this,
+        SLOT(onSelectKeywordFilter(QString)));
 
   }
   static const int MAX_COUNT_IN_ROW = 5;

@@ -21,6 +21,10 @@ class SystemConfigWidget : public ::widget::BaseWidget {
 
   void setModel(SystemConfigModel *model);
 
+ private slots:
+  void UpdateSystemConfigModel(
+      const std::vector<std::vector<std::pair<std::string, std::string> > > &records);
+
  private:
   SystemConfigModel *system_config_model_;
   Ui::SystemConfigWidgetForm *ui_;

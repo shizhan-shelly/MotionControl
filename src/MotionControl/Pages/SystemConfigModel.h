@@ -26,6 +26,10 @@ class SystemConfigModel : public QAbstractTableModel {
   // The dataChanged() signal should be emitted if the data was successfully set.
   bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
+  void insertRecord(int row, SystemConfigItem *record);
+
+  void clear();
+
  private:
   QList<SystemConfigItem *> system_config_items_;
 

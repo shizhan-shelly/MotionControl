@@ -19,6 +19,12 @@ class PlasmaCutDataHandler : public Singleton {
   bool InitialDatabaseAccess(const std::string &db_file,
                              const std::string &db_key);
 
+  bool RevertDatabase();
+
+  bool ImportDatabase(const std::string &db_file);
+
+  bool ExportDatabase(const std::string &db_file);
+
   std::vector<std::map<SystemConfigFilter, std::string> > GetSystemConfigItems(
       int vendor_id);
 

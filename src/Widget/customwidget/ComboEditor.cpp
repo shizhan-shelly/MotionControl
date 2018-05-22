@@ -19,6 +19,10 @@ ComboEditor::ComboEditor(QWidget *parent) : BaseWidget(parent) {
 
 ComboEditor::~ComboEditor() {}
 
+QString ComboEditor::currentEditorValue() const {
+  return combobox_->currentText();
+}
+
 void ComboEditor::setupWidget(const QPair<QString, QList<QString> > &infor) {
   assert(!infor.first.isEmpty());
   clearItems();

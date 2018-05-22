@@ -21,6 +21,8 @@ class ComboEditor : public BaseWidget {
 
   void setupWidget(const QPair<QString, QList<QString> > &infor);
 
+  QString currentEditorValue() const;
+
  signals:
   void currentSelect(const QString &text);
 

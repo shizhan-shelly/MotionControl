@@ -19,8 +19,13 @@ class SystemConfigFilterView : public QWidget {
   explicit SystemConfigFilterView(QWidget *parent = NULL);
   ~SystemConfigFilterView();
 
+ signals:
+  void systemConfigRecord(const std::vector<std::vector<std::pair<std::string, std::string> > > &records);
+
  private slots:
   void onSelectVendor(const QString &vendor_name);
+
+  void onSelectKeywordFilter(const QString &keyword_value);
 
  private:
   void initialVendor();

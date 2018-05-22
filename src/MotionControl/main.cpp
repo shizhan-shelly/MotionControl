@@ -21,13 +21,7 @@ int main(int argc, char *argv[]) {
 
   PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
   if (db_handler->InitialDatabaseAccess("E:\\MyJob\\MotionControl\\tools\\test.db", "123456")) {
-    std::vector<std::map<SystemConfigFilter, std::string> > items = db_handler->GetSystemConfigItems(1);
-    for (size_t i = 0; i < items.size(); i++) {
-      printf("%s\n", items[i][PlasmaPowerModel].c_str());
-      printf("%s\n", items[i][GasBoxModel].c_str());
-      printf("%s\n", items[i][TorchModel].c_str());
-      printf("%s\n", items[i][Version].c_str());
-    }
+    printf("Initial dabase successfully!");
   }
   SystemConfigWidget widget;
   SystemConfigModel model;
