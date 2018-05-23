@@ -57,7 +57,7 @@ std::vector<std::string> PlasmaCutDataHandler::GetVendorNames() {
 
 int PlasmaCutDataHandler::GetVendorID(const std::string &vendor_name) {
   char sql[500];
-  sprintf(sql, "SELECT ID FROM Vendor WHERE Vendor.NAME = '%s'", vendor_name);
+  sprintf(sql, "SELECT ID FROM Vendor WHERE Vendor.NAME = '%s'", vendor_name.c_str());
   sql_query_.Prepare(sql);
   if (sql_query_.Read()) {
     return sql_query_.GetIntValue(0);

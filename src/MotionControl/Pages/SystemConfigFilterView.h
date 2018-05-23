@@ -32,6 +32,8 @@ class SystemConfigFilterView : public QWidget {
 
   void arrangeKeywordFilter();
 
+  void executeKeywordFilter();
+
   int vendor_id_;
   QGridLayout *keyword_layout_;
   QHBoxLayout *vendor_layout_;

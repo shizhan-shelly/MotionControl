@@ -19,6 +19,7 @@ SystemConfigFilterView::SystemConfigFilterView(QWidget *parent)
 
   initialVendor();
   arrangeKeywordFilter();
+  executeKeywordFilter();
 }
 
 SystemConfigFilterView::~SystemConfigFilterView() {}
@@ -27,20 +28,11 @@ void SystemConfigFilterView::onSelectVendor(const QString &vendor_name) {
   PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
   vendor_id_ = db_handler->GetVendorID(vendor_name.toStdString());
   arrangeKeywordFilter();
+  executeKeywordFilter();
 }
 
 void SystemConfigFilterView::onSelectKeywordFilter(const QString &keyword_value) {
-  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
-  std::vector<std::pair<std::string, std::string> > keyword_field =
-      db_handler->GetSystemConfigKeywordField();
-
-  std::vector<std::pair<std::string, std::string> > keyword_filter;
-  for (size_t i = 0; i < keyword_field.size(); i++) {
-    keyword_filter.push_back(std::make_pair(keyword_field[i].first,
-        keyword_filter_[i]->currentEditorValue().toStdString()));
-
-  }
-  emit systemConfigRecord(db_handler->GetSystemConfigRecord(vendor_id_, keyword_filter));
+  executeKeywordFilter();
 }
 
 void SystemConfigFilterView::initialVendor() {
@@ -68,7 +60,9 @@ void SystemConfigFilterView::arrangeKeywordFilter() {
     for (int j = 0; j < keyword_layout_->columnCount(); j++) {
       item_widget = keyword_layout_->itemAtPosition(i, j);
       if (item_widget) {
-        item_widget->widget()->hide();
+        if (item_widget->widget()) {
+          item_widget->widget()->hide();
+        }
         keyword_layout_->removeItem(item_widget);
         delete item_widget;
         item_widget = NULL;
@@ -103,6 +97,20 @@ void SystemConfigFilterView::arrangeKeywordFilter() {
     keyword_layout_->addWidget(keyword_filter_[i], i / MAX_COUNT_IN_ROW, i % MAX_COUNT_IN_ROW);
   }
   keyword_layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding),
-      keyword_filter_.size(), 0);
+      keyword_layout_->rowCount(), 0);
 
+}
+
+void SystemConfigFilterView::executeKeywordFilter() {
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  std::vector<std::pair<std::string, std::string> > keyword_field =
+      db_handler->GetSystemConfigKeywordField();
+
+  std::vector<std::pair<std::string, std::string> > keyword_filter;
+  for (size_t i = 0; i < keyword_field.size(); i++) {
+    keyword_filter.push_back(std::make_pair(keyword_field[i].first,
+        keyword_filter_[i]->currentEditorValue().toStdString()));
+
+  }
+  emit systemConfigRecord(db_handler->GetSystemConfigRecord(vendor_id_, keyword_filter));
 }
