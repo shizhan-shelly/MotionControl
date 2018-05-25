@@ -104,9 +104,7 @@ cursor.execute('''
         WR                   INT,
         ALIAS_INDEX          INT,
         PICTURE              BLOB,
-        DISPLAY_GROUP        INT,
-        SCALE                REAL,
-        OFFSET               REAL
+        DISPLAY_GROUP        INT
 
     )
     ''')
@@ -229,7 +227,7 @@ def Attribute():
     titles[attribute_sheet.cell_value(title_row - 1, col)] = col
 
   for row in range(title_row, attribute_sheet.nrows):
-    cursor.execute("INSERT INTO KjellbergAttribute VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    cursor.execute("INSERT INTO KjellbergAttribute VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                    (attribute_sheet.cell_value(row, titles['Name']),
                     attribute_sheet.cell_value(row, titles['Keyword']),
                     attribute_sheet.cell_value(row, titles['Data Type']),
@@ -242,9 +240,7 @@ def Attribute():
                     attribute_sheet.cell_value(row, titles['WR']),
                     attribute_sheet.cell_value(row, titles['Alias Table']),
                     attribute_sheet.cell_value(row, titles['Picture']),
-                    attribute_sheet.cell_value(row, titles['Group']),
-                    attribute_sheet.cell_value(row, titles['Scale']),
-                    attribute_sheet.cell_value(row, titles['Offset'])))
+                    attribute_sheet.cell_value(row, titles['Group'])))
 
 def KjellbergCutChart(cutting_chart_id):
   "Insert cutting data into CuttingData table. This Cutting chart id will be defined with cutting_chart_id"
