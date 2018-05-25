@@ -61,16 +61,18 @@ QVariant SystemConfigModel::headerData(int section,
   if (orientation == Qt::Horizontal) {
     switch (section) {
      case 0:
-      return QString("Plasma Power Vendor");
+      return QString("Cut Chart ID");
      case 1:
-      return QString("Plasma Power Model");
+      return QString("Plasma Power Vendor");
      case 2:
-      return QString("Gas Box Model");
+      return QString("Plasma Power Model");
      case 3:
-      return QString("Torch Model");
+      return QString("Gas Box Model");
      case 4:
-      return QString("Version");
+      return QString("Torch Model");
      case 5:
+      return QString("Version");
+     case 6:
       return QString("Selected Record");
      default:
       return QVariant();
