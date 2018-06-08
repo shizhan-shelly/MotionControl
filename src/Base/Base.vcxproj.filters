@@ -18,6 +18,18 @@
     <ClInclude Include="thread\MutexLocker.h">
       <Filter>thread</Filter>
     </ClInclude>
+    <ClInclude Include="log\Logger.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="log\LogHandler.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="log\Log.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="log\LogEntry.h">
+      <Filter>Log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Singleton">
@@ -25,6 +37,9 @@
     </Filter>
     <Filter Include="thread">
       <UniqueIdentifier>{a3478c7e-be35-4fd3-a43a-6d22847e42a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{f7e9e729-b359-465f-bdd8-45a33a3123df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +57,9 @@
     </ClCompile>
     <ClCompile Include="thread\Mutex_Win32.cpp">
       <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="log\Logger.cpp">
+      <Filter>Log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

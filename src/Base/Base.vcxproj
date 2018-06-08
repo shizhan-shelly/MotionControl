@@ -73,6 +73,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Factory.h" />
+    <ClInclude Include="log\Log.h" />
+    <ClInclude Include="log\LogEntry.h" />
+    <ClInclude Include="log\Logger.h" />
+    <ClInclude Include="log\LogHandler.h" />
     <ClInclude Include="Runnable.h" />
     <ClInclude Include="singleton\Singleton.h" />
     <ClInclude Include="singleton\SingletonMaster.h" />
@@ -81,6 +85,7 @@
     <ClInclude Include="thread\MutexLocker.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="log\Logger.cpp" />
     <ClCompile Include="singleton\Singleton.cpp" />
     <ClCompile Include="singleton\SingletonMaster.cpp" />
     <ClCompile Include="singleton\SingletonSlave.cpp" />
