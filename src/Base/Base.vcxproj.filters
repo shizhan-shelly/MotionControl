@@ -30,6 +30,12 @@
     <ClInclude Include="log\LogEntry.h">
       <Filter>Log</Filter>
     </ClInclude>
+    <ClInclude Include="log\FileBasedLogHandler.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="log\LogHandlerAdaptor.h">
+      <Filter>Log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Singleton">
@@ -59,6 +65,9 @@
       <Filter>thread</Filter>
     </ClCompile>
     <ClCompile Include="log\Logger.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="log\LogHandlerAdaptor.cpp">
       <Filter>Log</Filter>
     </ClCompile>
   </ItemGroup>
