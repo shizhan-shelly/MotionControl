@@ -230,15 +230,15 @@ def Attribute():
     cursor.execute("INSERT INTO KjellbergAttribute VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                    (attribute_sheet.cell_value(row, titles['Name']),
                     attribute_sheet.cell_value(row, titles['Keyword']),
-                    attribute_sheet.cell_value(row, titles['Data Type']),
-                    attribute_sheet.cell_value(row, titles['Name Number']),
-                    attribute_sheet.cell_value(row, titles['Unit Number']),
+                    attribute_sheet.cell_value(row, titles['DataType']),
+                    attribute_sheet.cell_value(row, titles['NameText']),
+                    attribute_sheet.cell_value(row, titles['UnitText']),
                     attribute_sheet.cell_value(row, titles['Min']),
                     attribute_sheet.cell_value(row, titles['Max']),
                     attribute_sheet.cell_value(row, titles['Default']),
-                    attribute_sheet.cell_value(row, titles['Display Format']),
+                    attribute_sheet.cell_value(row, titles['DisplayFormat']),
                     attribute_sheet.cell_value(row, titles['WR']),
-                    attribute_sheet.cell_value(row, titles['Alias Table']),
+                    attribute_sheet.cell_value(row, titles['AliasIndex']),
                     attribute_sheet.cell_value(row, titles['Picture']),
                     attribute_sheet.cell_value(row, titles['Group'])))
 
@@ -259,52 +259,52 @@ def KjellbergCutChart(cutting_chart_id):
 
   start_row = int(attribute_sheet.cell_value(0, 1))
   for row in range(start_row - 1, cut_chart_sheet.nrows):
-    material = cut_chart_sheet.cell_value(row, column_dis['material'])
-    thickness = cut_chart_sheet.cell_value(row, column_dis['thickness']) * scale_dis['thickness'] + offset_dis['thickness']
-    current = cut_chart_sheet.cell_value(row, column_dis['current']) * scale_dis['current'] + offset_dis['current']
-    technology = cut_chart_sheet.cell_value(row, column_dis['technology'])
-    ignition_height = cut_chart_sheet.cell_value(row, column_dis['ignition height']) * scale_dis['ignition height'] + offset_dis['ignition height']
-    cutting_height = cut_chart_sheet.cell_value(row, column_dis['cutting height']) * scale_dis['cutting height'] + offset_dis['cutting height']
-    pierce_height = cut_chart_sheet.cell_value(row, column_dis['pierce height']) * scale_dis['pierce height'] + offset_dis['pierce height']
-    pierce_time = cut_chart_sheet.cell_value(row, column_dis['pierce time']) * scale_dis['pierce time'] + offset_dis['pierce time']
-    cutting_voltage = cut_chart_sheet.cell_value(row, column_dis['cutting voltage']) * scale_dis['cutting voltage'] + offset_dis['cutting voltage']
-    plasma_off_time = cut_chart_sheet.cell_value(row, column_dis['plasma off time']) * scale_dis['plasma off time'] + offset_dis['plasma off time']
-    cooling_tube = cut_chart_sheet.cell_value(row, column_dis['cooling tube'])
-    cathode = cut_chart_sheet.cell_value(row, column_dis['cathode'])
-    gas_guide = cut_chart_sheet.cell_value(row, column_dis['gas guide'])
-    nozzle = cut_chart_sheet.cell_value(row, column_dis['nozzle'])
-    nozzle_cap = cut_chart_sheet.cell_value(row, column_dis['nozzle cap'])
-    swirl_gas_cap = cut_chart_sheet.cell_value(row, column_dis['swirl gas cap'])
-    protection_cap = cut_chart_sheet.cell_value(row, column_dis['protection cap'])
-    swirl_gas_nozzle = cut_chart_sheet.cell_value(row, column_dis['swirl gas nozzle'])
+    material = cut_chart_sheet.cell_value(row, column_dis['Material'])
+    thickness = cut_chart_sheet.cell_value(row, column_dis['Thickness']) * scale_dis['Thickness'] + offset_dis['Thickness']
+    current = cut_chart_sheet.cell_value(row, column_dis['Current']) * scale_dis['Current'] + offset_dis['Current']
+    technology = cut_chart_sheet.cell_value(row, column_dis['Technology'])
+    ignition_height = cut_chart_sheet.cell_value(row, column_dis['IgnitionHeight']) * scale_dis['IgnitionHeight'] + offset_dis['IgnitionHeight']
+    cutting_height = cut_chart_sheet.cell_value(row, column_dis['CuttingHeight']) * scale_dis['CuttingHeight'] + offset_dis['CuttingHeight']
+    pierce_height = cut_chart_sheet.cell_value(row, column_dis['PierceHeight']) * scale_dis['PierceHeight'] + offset_dis['PierceHeight']
+    pierce_time = cut_chart_sheet.cell_value(row, column_dis['PierceTime']) * scale_dis['PierceTime'] + offset_dis['PierceTime']
+    cutting_voltage = cut_chart_sheet.cell_value(row, column_dis['CuttingVoltage']) * scale_dis['CuttingVoltage'] + offset_dis['CuttingVoltage']
+    plasma_off_time = cut_chart_sheet.cell_value(row, column_dis['PlasmaOffTime']) * scale_dis['PlasmaOffTime'] + offset_dis['PlasmaOffTime']
+    cooling_tube = cut_chart_sheet.cell_value(row, column_dis['CoolingTube'])
+    cathode = cut_chart_sheet.cell_value(row, column_dis['Cathode'])
+    gas_guide = cut_chart_sheet.cell_value(row, column_dis['GasGuide'])
+    nozzle = cut_chart_sheet.cell_value(row, column_dis['Nozzle'])
+    nozzle_cap = cut_chart_sheet.cell_value(row, column_dis['NozzleCap'])
+    swirl_gas_cap = cut_chart_sheet.cell_value(row, column_dis['SwirlGasCap'])
+    protection_cap = cut_chart_sheet.cell_value(row, column_dis['ProtectionCap'])
+    swirl_gas_nozzle = cut_chart_sheet.cell_value(row, column_dis['SwirlGasNozzle'])
     special_part = ''
-    plasma_gas_1 = cut_chart_sheet.cell_value(row, column_dis['plasma gas 1'])
-    plasma_gas_2 = cut_chart_sheet.cell_value(row, column_dis['plasma gas 2'])
-    plasma_gas_3 = cut_chart_sheet.cell_value(row, column_dis['plasma gas 3'])
-    swirl_gas_1 = cut_chart_sheet.cell_value(row, column_dis['swirl gas 1'])
-    swirl_gas_2 = cut_chart_sheet.cell_value(row, column_dis['swirl gas 2'])
-    ignition_gas = cut_chart_sheet.cell_value(row, column_dis['ignition gas'])
-    gas_code = cut_chart_sheet.cell_value(row, column_dis['gas code'])
-    special_code = cut_chart_sheet.cell_value(row, column_dis['special code'])
-    plasma_gas_1_pressure = cut_chart_sheet.cell_value(row, column_dis['plasma gas 1 pressure']) * scale_dis['plasma gas 1 pressure'] + offset_dis['plasma gas 1 pressure']
-    plasma_gas_2_pressure = cut_chart_sheet.cell_value(row, column_dis['plasma gas 2 pressure']) * scale_dis['plasma gas 2 pressure'] + offset_dis['plasma gas 2 pressure']
-    plasma_gas_3_pressure = cut_chart_sheet.cell_value(row, column_dis['plasma gas 3 pressure']) * scale_dis['plasma gas 3 pressure'] + offset_dis['plasma gas 3 pressure']
-    swirl_gas_1_pressure = cut_chart_sheet.cell_value(row, column_dis['swirl gas 1 pressure']) * scale_dis['swirl gas 1 pressure'] + offset_dis['swirl gas 1 pressure']
-    swirl_gas_2_pressure = cut_chart_sheet.cell_value(row, column_dis['swirl gas 2 pressure']) * scale_dis['swirl gas 2 pressure'] + offset_dis['swirl gas 2 pressure']
-    ignition_gas_pressure = cut_chart_sheet.cell_value(row, column_dis['ignition gas pressure']) * scale_dis['ignition gas pressure'] + offset_dis['ignition gas pressure']
-    cutting_pressure = cut_chart_sheet.cell_value(row, column_dis['cutting pressure']) * scale_dis['cutting pressure'] + offset_dis['cutting pressure']
-    additional_height = cut_chart_sheet.cell_value(row, column_dis['additional height']) * scale_dis['additional height'] + offset_dis['additional height']
-    up_slope =cut_chart_sheet.cell_value(row, column_dis['up slope']) * scale_dis['up slope'] + offset_dis['up slope']
-    down_slope = cut_chart_sheet.cell_value(row, column_dis['down slope']) * scale_dis['down slope'] + offset_dis['down slope']
+    plasma_gas_1 = cut_chart_sheet.cell_value(row, column_dis['PlasmaGas1'])
+    plasma_gas_2 = cut_chart_sheet.cell_value(row, column_dis['PlasmaGas2'])
+    plasma_gas_3 = cut_chart_sheet.cell_value(row, column_dis['PlasmaGas3'])
+    swirl_gas_1 = cut_chart_sheet.cell_value(row, column_dis['Swirlgas1'])
+    swirl_gas_2 = cut_chart_sheet.cell_value(row, column_dis['SwirlGas 2'])
+    ignition_gas = cut_chart_sheet.cell_value(row, column_dis['IgnitionGas'])
+    gas_code = cut_chart_sheet.cell_value(row, column_dis['GasCode'])
+    special_code = cut_chart_sheet.cell_value(row, column_dis['SpecialCode'])
+    plasma_gas_1_pressure = cut_chart_sheet.cell_value(row, column_dis['PlasmaGas1Pressure']) * scale_dis['PlasmaGas1Pressure'] + offset_dis['PlasmaGas1Pressure']
+    plasma_gas_2_pressure = cut_chart_sheet.cell_value(row, column_dis['PlasmaGas2Pressure']) * scale_dis['PlasmaGas2Pressure'] + offset_dis['PlasmaGas2Pressure']
+    plasma_gas_3_pressure = cut_chart_sheet.cell_value(row, column_dis['PlasmaGas3Pressure']) * scale_dis['PlasmaGas3Pressure'] + offset_dis['PlasmaGas3Pressure']
+    swirl_gas_1_pressure = cut_chart_sheet.cell_value(row, column_dis['SwirlGas1Pressure']) * scale_dis['SwirlGas1pressure'] + offset_dis['SwirlGas1pressure']
+    swirl_gas_2_pressure = cut_chart_sheet.cell_value(row, column_dis['SwirlGas2pressure']) * scale_dis['SwirlGas2pressure'] + offset_dis['SwirlGas2pressure']
+    ignition_gas_pressure = cut_chart_sheet.cell_value(row, column_dis['IgnitionGasPressure']) * scale_dis['IgnitionGasPressure'] + offset_dis['IgnitionGasPressure']
+    cutting_pressure = cut_chart_sheet.cell_value(row, column_dis['CuttingPressure']) * scale_dis['CuttingPressure'] + offset_dis['CuttingPressure']
+    additional_height = cut_chart_sheet.cell_value(row, column_dis['AdditionalHeight']) * scale_dis['AdditionalHeight'] + offset_dis['AdditionalHeight']
+    up_slope =cut_chart_sheet.cell_value(row, column_dis['UpSlope']) * scale_dis['UpSlope'] + offset_dis['UpSlope']
+    down_slope = cut_chart_sheet.cell_value(row, column_dis['DownSlope']) * scale_dis['DownSlope'] + offset_dis['DownSlope']
     cutting_speed_speed = 0.0
     cutting_speed_max = 0.0
-    cutting_speed_hole = cut_chart_sheet.cell_value(row, column_dis['cutting speed hole']) * scale_dis['cutting speed hole'] + offset_dis['cutting speed hole']
-    cutting_speed_quality = cut_chart_sheet.cell_value(row, column_dis['cutting speed']) * scale_dis['cutting speed'] + offset_dis['cutting speed']
-    kerf_hole = cut_chart_sheet.cell_value(row, column_dis['kerf hole']) * scale_dis['kerf hole'] + offset_dis['kerf hole']
-    kerf_quality = cut_chart_sheet.cell_value(row, column_dis['kerf']) * scale_dis['kerf'] + offset_dis['kerf']
-    record_number = cut_chart_sheet.cell_value(row, column_dis['record number'])
-    technology_range = cut_chart_sheet.cell_value(row, column_dis['technology range'])
-    marking_record = cut_chart_sheet.cell_value(row, column_dis['marking record'])
+    cutting_speed_hole = cut_chart_sheet.cell_value(row, column_dis['CuttingSpeedHole']) * scale_dis['CuttingSpeedHole'] + offset_dis['CuttingSpeedHole']
+    cutting_speed_quality = cut_chart_sheet.cell_value(row, column_dis['CuttingSpeed']) * scale_dis['CuttingSpeed'] + offset_dis['CuttingSpeed']
+    kerf_hole = cut_chart_sheet.cell_value(row, column_dis['KerfHole']) * scale_dis['KerfHole'] + offset_dis['KerfHole']
+    Kerf_quality = cut_chart_sheet.cell_value(row, column_dis['Kerf']) * scale_dis['Kerf'] + offset_dis['Kerf']
+    record_number = cut_chart_sheet.cell_value(row, column_dis['RecordNumber'])
+    technology_range = cut_chart_sheet.cell_value(row, column_dis['TechnologyRange'])
+    marking_record = cut_chart_sheet.cell_value(row, column_dis['MarkingRecord'])
 
     query = "INSERT INTO KjellbergCutChart VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     cursor.execute(query, (cutting_chart_id,
@@ -371,39 +371,39 @@ def HyperthermCutChart(cutting_chart_id):
 
   start_row = int(attribute_sheet.cell_value(0, 1))
   for row in range(start_row - 1, cut_chart_sheet.nrows):
-    torch_type = cut_chart_sheet.cell_value(row, column_dis['torch type'])
-    material = cut_chart_sheet.cell_value(row, column_dis['material'])
-    specific_material = cut_chart_sheet.cell_value(row, column_dis['specific material'])
-    current = cut_chart_sheet.cell_value(row, column_dis['current']) * scale_dis['current'] + offset_dis['current']
-    plasma_shield_gas = cut_chart_sheet.cell_value(row, column_dis['plasma/shield gas'])
-    cutting_surface = cut_chart_sheet.cell_value(row, column_dis['cutting surface'])
-    thickness = cut_chart_sheet.cell_value(row, column_dis['thickness']) * scale_dis['thickness'] + offset_dis['thickness']
-    cutting_speed = cut_chart_sheet.cell_value(row, column_dis['cutting speed']) * scale_dis['cutting speed'] + offset_dis['cutting speed']
-    kerf = cut_chart_sheet.cell_value(row, column_dis['kerf']) * scale_dis['kerf'] + offset_dis['kerf']
-    creep_time = cut_chart_sheet.cell_value(row, column_dis['creep time']) * scale_dis['creep time'] + offset_dis['creep time']
-    cutting_voltage = cut_chart_sheet.cell_value(row, column_dis['cutting voltage']) * scale_dis['cutting voltage'] + offset_dis['cutting voltage']
-    pierce_time = cut_chart_sheet.cell_value(row, column_dis['pierce time']) * scale_dis['pierce time'] + offset_dis['pierce time']
-    pierce_height = cut_chart_sheet.cell_value(row, column_dis['pierce height']) * scale_dis['pierce height'] + offset_dis['pierce height']
-    cutting_height = cut_chart_sheet.cell_value(row, column_dis['cutting height']) * scale_dis['cutting height'] + offset_dis['cutting height']
-    ignition_height = cut_chart_sheet.cell_value(row, column_dis['ignition height']) * scale_dis['ignition height'] + offset_dis['ignition height']
-    cut_height_delay = cut_chart_sheet.cell_value(row, column_dis['cut height delay']) * scale_dis['cut height delay'] + offset_dis['cut height delay']
-    plasma_manual_preflow = cut_chart_sheet.cell_value(row, column_dis['plasma manual preflow']) * scale_dis['plasma manual preflow'] + offset_dis['plasma manual preflow']
-    shield_manual_preflow = cut_chart_sheet.cell_value(row, column_dis['shield manual preflow']) * scale_dis['shield manual preflow'] + offset_dis['shield manual preflow']
-    plasma_manual_cutflow = cut_chart_sheet.cell_value(row, column_dis['plasma manual cutflow']) * scale_dis['plasma manual cutflow'] + offset_dis['plasma manual cutflow']
-    shield_manual_cutflow = cut_chart_sheet.cell_value(row, column_dis['shield manual cutflow']) * scale_dis['shield manual cutflow'] + offset_dis['shield manual cutflow']
-    plasma_auto_preflow = cut_chart_sheet.cell_value(row, column_dis['plasma auto preflow']) * scale_dis['plasma auto preflow'] + offset_dis['plasma auto preflow']
-    shield_auto_preflow = cut_chart_sheet.cell_value(row, column_dis['shield auto preflow']) * scale_dis['shield auto preflow'] + offset_dis['shield auto preflow']
-    plasma_auto_cutflow = cut_chart_sheet.cell_value(row, column_dis['plasma auto cutflow']) * scale_dis['plasma auto cutflow'] + offset_dis['plasma auto cutflow']
-    shield_auto_cutflow = cut_chart_sheet.cell_value(row, column_dis['shield auto cutflow']) * scale_dis['shield auto cutflow'] + offset_dis['shield auto cutflow']
-    mixed_gas1 = cut_chart_sheet.cell_value(row, column_dis['mixed gas1']) * scale_dis['mixed gas1'] + offset_dis['mixed gas1']
-    mixed_gas2 = cut_chart_sheet.cell_value(row, column_dis['mixed gas2']) * scale_dis['mixed gas2'] + offset_dis['mixed gas2']
-    shield_cap = cut_chart_sheet.cell_value(row, column_dis['shield cap'])
-    shield = cut_chart_sheet.cell_value(row, column_dis['shield'])
-    nozzle_retaining_cap = cut_chart_sheet.cell_value(row, column_dis['nozzle retaining cap'])
-    nozzle = cut_chart_sheet.cell_value(row, column_dis['nozzle'])
-    swirl_ring = cut_chart_sheet.cell_value(row, column_dis['swirl ring'])
-    electrode = cut_chart_sheet.cell_value(row, column_dis['electrode'])
-    water_tube = cut_chart_sheet.cell_value(row, column_dis['water tube'])
+    torch_type = cut_chart_sheet.cell_value(row, column_dis['TorchType'])
+    material = cut_chart_sheet.cell_value(row, column_dis['Material'])
+    specific_material = cut_chart_sheet.cell_value(row, column_dis['SpecificMaterial'])
+    current = cut_chart_sheet.cell_value(row, column_dis['Current']) * scale_dis['Current'] + offset_dis['Current']
+    plasma_shield_gas = cut_chart_sheet.cell_value(row, column_dis['GasType'])
+    cutting_surface = cut_chart_sheet.cell_value(row, column_dis['CuttingSurface'])
+    thickness = cut_chart_sheet.cell_value(row, column_dis['Thickness']) * scale_dis['Thickness'] + offset_dis['Thickness']
+    cutting_speed = cut_chart_sheet.cell_value(row, column_dis['CuttingSpeed']) * scale_dis['CuttingSpeed'] + offset_dis['CuttingSpeed']
+    kerf = cut_chart_sheet.cell_value(row, column_dis['Kerf']) * scale_dis['Kerf'] + offset_dis['Kerf']
+    creep_time = cut_chart_sheet.cell_value(row, column_dis['CreepTime']) * scale_dis['CreepTime'] + offset_dis['CreepTime']
+    cutting_voltage = cut_chart_sheet.cell_value(row, column_dis['CuttingVoltage']) * scale_dis['CuttingVoltage'] + offset_dis['CuttingVoltage']
+    pierce_time = cut_chart_sheet.cell_value(row, column_dis['PierceTime']) * scale_dis['PierceTime'] + offset_dis['PierceTime']
+    pierce_height = cut_chart_sheet.cell_value(row, column_dis['PierceHeight']) * scale_dis['PierceHeight'] + offset_dis['PierceHeight']
+    cutting_height = cut_chart_sheet.cell_value(row, column_dis['CuttingHeight']) * scale_dis['CuttingHeight'] + offset_dis['CuttingHeight']
+    ignition_height = cut_chart_sheet.cell_value(row, column_dis['IgnitionHeight']) * scale_dis['IgnitionHeight'] + offset_dis['IgnitionHeight']
+    cut_height_delay = cut_chart_sheet.cell_value(row, column_dis['CutHeightDelay']) * scale_dis['CutHeightDelay'] + offset_dis['CutHeightDelay']
+    plasma_manual_preflow = cut_chart_sheet.cell_value(row, column_dis['PlasmaManualPreflow']) * scale_dis['PlasmaManualPreflow'] + offset_dis['PlasmaManualPreflow']
+    shield_manual_preflow = cut_chart_sheet.cell_value(row, column_dis['ShieldManualPreflow']) * scale_dis['ShieldManualPreflow'] + offset_dis['ShieldManualPreflow']
+    plasma_manual_cutflow = cut_chart_sheet.cell_value(row, column_dis['PlasmaManualCutflow']) * scale_dis['PlasmaManualCutflow'] + offset_dis['PlasmaManualCutflow']
+    shield_manual_cutflow = cut_chart_sheet.cell_value(row, column_dis['ShieldManualCutflow']) * scale_dis['ShieldManualCutflow'] + offset_dis['ShieldManualCutflow']
+    plasma_auto_preflow = cut_chart_sheet.cell_value(row, column_dis['PlasmaAutoPreflow']) * scale_dis['PlasmaAutoPreflow'] + offset_dis['PlasmaAutoPreflow']
+    shield_auto_preflow = cut_chart_sheet.cell_value(row, column_dis['ShieldAutoPreflow']) * scale_dis['ShieldAutoPreflow'] + offset_dis['ShieldAutoPreflow']
+    plasma_auto_cutflow = cut_chart_sheet.cell_value(row, column_dis['PlasmaAutoCutflow']) * scale_dis['PlasmaAutoCutflow'] + offset_dis['PlasmaAutoCutflow']
+    shield_auto_cutflow = cut_chart_sheet.cell_value(row, column_dis['ShieldAutoCutflow']) * scale_dis['ShieldAutoCutflow'] + offset_dis['ShieldAutoCutflow']
+    mixed_gas1 = cut_chart_sheet.cell_value(row, column_dis['MixedGas1']) * scale_dis['MixedGas1'] + offset_dis['MixedGas1']
+    mixed_gas2 = cut_chart_sheet.cell_value(row, column_dis['MixedGas2']) * scale_dis['MixedGas2'] + offset_dis['MixedGas2']
+    shield_cap = cut_chart_sheet.cell_value(row, column_dis['ShieldCap'])
+    shield = cut_chart_sheet.cell_value(row, column_dis['Shield'])
+    nozzle_retaining_cap = cut_chart_sheet.cell_value(row, column_dis['NozzleRetainingCap'])
+    nozzle = cut_chart_sheet.cell_value(row, column_dis['Nozzle'])
+    swirl_ring = cut_chart_sheet.cell_value(row, column_dis['SwirlRing'])
+    electrode = cut_chart_sheet.cell_value(row, column_dis['Electrode'])
+    water_tube = cut_chart_sheet.cell_value(row, column_dis['WaterTube'])
 
     query = "INSERT INTO HyperthermCutChart VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     cursor.execute(query, (cutting_chart_id,

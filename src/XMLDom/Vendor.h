@@ -22,4 +22,4 @@ class Vendor {
   QDomDocument doc_;
   std::string vendor_file_;
 
-};
+}; // class Vendor

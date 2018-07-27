@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CutChart.cpp" />
     <ClCompile Include="CutChartSelector.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -100,6 +101,7 @@
     <ClCompile Include="Vendor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CutChart.h" />
     <ClInclude Include="CutChartSelector.h" />
     <ClInclude Include="Vendor.h" />
   </ItemGroup>

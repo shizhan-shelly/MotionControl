@@ -6,11 +6,6 @@
 #include <vector>
 #include <QtXml/QDomDocument>
 
-struct CutChartSelectorAttr  {
-	std::string field_name;
-	bool is_keyword_;
-};
-
 class CutChartSelector {
  public:
   explicit CutChartSelector(const std::string &cut_chart_selector_file);
@@ -27,8 +22,6 @@ class CutChartSelector {
   bool SetCurrentSelectedCutChart(const std::vector<std::string> &keywords);
 
  private:
-  std::list<CutChartSelectorAttr> attr_;
-  std::list<std::vector<std::string> > records_;
   QDomDocument doc_;
   std::string cut_chart_selector_file_;
 

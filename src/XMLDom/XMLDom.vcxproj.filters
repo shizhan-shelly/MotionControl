@@ -16,12 +16,18 @@
     <ClCompile Include="CutChartSelector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CutChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CutChartSelector.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CutChart.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

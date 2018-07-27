@@ -5,6 +5,7 @@
 
 #include "Vendor.h"
 #include "CutChartSelector.h"
+#include "CutChart.h"
 
 int main(int argc, char *argv[]) {
   QCoreApplication a(argc, argv);
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
     printf("%s\n", vendor_list[i].c_str());
   }
 
-  CutChartSelector cut_chart_selector("E:\\MyJob\\MotionControl\\tools\\CutChartSelector.xml");
+  CutChartSelector cut_chart_selector("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\CutChartSelector.xml");
   std::vector<std::string> cut_chart_selector_keyword_name = cut_chart_selector.GetKeywordName();
   for (size_t i = 0; i < cut_chart_selector_keyword_name.size(); i++) {
     printf("%s\n", cut_chart_selector_keyword_name[i].c_str());
@@ -45,5 +46,14 @@ int main(int argc, char *argv[]) {
   keywords.push_back("PerCut2500");
   cut_chart_selector.SetCurrentSelectedCutChart(keywords);
 
+  CutChart cut_chart;
+  cut_chart.ParseCutChart("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\SF130-PGE300-PerCut2000.xml");
+  std::vector<std::pair<std::string, std::vector<std::string> > > name_unit;
+  cut_chart.GetKeywordFieldNameAndUnit(name_unit);
+  for (size_t i = 0; i < name_unit.size(); i++) {
+    printf("%s\t%s\n", name_unit[i].second[0].c_str(), name_unit[i].second[1].c_str());
+  }
+  printf("%s\n", cut_chart.GetItemValueByFieldName("CuttingSpeed").c_str());
+  CutChartAttr attr = cut_chart.GetOneFieldAttr("Thickness");
   return a.exec();
 }
