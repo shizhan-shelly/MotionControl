@@ -20,6 +20,7 @@ typedef struct _CutChartAttr {
 class CutChart {
  public:
   CutChart();
+  ~CutChart();
 
   bool ParseCutChart(const std::string &cut_chart_file);
 

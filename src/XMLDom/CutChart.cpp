@@ -9,12 +9,20 @@
 
 CutChart::CutChart() {}
 
+CutChart::~CutChart() {}
+
 bool CutChart::ParseCutChart(const std::string &cut_chart_file) {
   cut_chart_file_ = cut_chart_file;
   QFile file(cut_chart_file.c_str());
-  file.open(QIODevice::ReadOnly | QIODevice::Text);
-  if (!doc_usr_.setContent(&file)) {
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    return false;
+  }
+  QString error_msg = "";
+  int line = 0;
+  int column = 0;
+  if (!doc_usr_.setContent(&file, &error_msg, &line, &column)) {
     // TODO(Zhan Shi): write error log.
+    file.close();
     return false;
   }
   file.close();

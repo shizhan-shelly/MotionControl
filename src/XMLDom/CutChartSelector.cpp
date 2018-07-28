@@ -11,7 +11,10 @@ CutChartSelector::CutChartSelector(const std::string &cut_chart_selector_file) {
   cut_chart_selector_file_ = cut_chart_selector_file;
   QFile file(cut_chart_selector_file.c_str());
   file.open(QIODevice::ReadOnly | QIODevice::Text);
-  if (!doc_.setContent(&file)) {
+  QString error_msg = "";
+  int line = 0;
+  int column = 0;
+  if (!doc_.setContent(&file, &error_msg, &line, &column)) {
     // TODO(Zhan Shi): write error log.
   }
   file.close();

@@ -11,8 +11,11 @@ Vendor::Vendor(const std::string &vendor_file) {
   vendor_file_ = vendor_file;
   QFile file(vendor_file.c_str());
   file.open(QIODevice::ReadOnly | QIODevice::Text);
-  if (!doc_.setContent(&file)) {
-    // TODO(zhanshi): write error log.
+  QString error_msg = "";
+  int line = 0;
+  int column = 0;
+  if (!doc_.setContent(&file, &error_msg, &line, &column)) {
+    // TODO(Zhan Shi): write error log.
   }
   file.close();
 }
