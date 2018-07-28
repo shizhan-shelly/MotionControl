@@ -6,12 +6,21 @@
 #include <vector>
 #include <QtXml/QDomDocument>
 
+typedef enum _DataType {
+  Int = 0,
+  Float,
+  String,
+  Bool,
+  Enum,
+
+} DataType;
+
 typedef struct _CutChartAttr {
-  int data_type;
   std::string min_;
   std::string max_;
   std::string default_value_;
   std::string display_format_;
+  DataType data_type;
   int wr_;
   int is_keyword_;
 

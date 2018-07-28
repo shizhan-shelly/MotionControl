@@ -7,6 +7,28 @@
 #include <QtCore/QIODevice>
 #include <QtCore/QTextStream>
 
+static const std::pair<QString, DataType> data_type[] = {
+  std::pair<QString, DataType>("INT", Int),
+  std::pair<QString, DataType>("FLOAT", Float),
+  std::pair<QString, DataType>("TEXT", String),
+  std::pair<QString, DataType>("BOOL", Bool),
+  std::pair<QString, DataType>("ENUM", Enum),
+
+};
+
+static const std::map<QString, DataType> DATA_TYPE(data_type,
+    data_type + sizeof(data_type) / sizeof(data_type[0]));
+
+inline DataType CutChartDataType(const QString &data_type) {
+  std::map<QString, DataType>::const_iterator iter = DATA_TYPE.find(
+      data_type);
+
+  if (iter != DATA_TYPE.end()) {
+    return iter->second;
+  }
+  return String;
+}
+
 CutChart::CutChart() {}
 
 CutChart::~CutChart() {}
@@ -163,7 +185,7 @@ CutChartAttr CutChart::GetOneFieldAttr(const std::string &field_name) const {
   QDomElement	attr_element = doc_usr_.documentElement().firstChildElement("CutChartAttr");
   QDomElement cut_chart_attr = attr_element.firstChildElement(field_name.c_str());
   CutChartAttr attr;
-  attr.data_type = cut_chart_attr.attribute("DataType").toInt();
+  attr.data_type = CutChartDataType(cut_chart_attr.attribute("DataType"));
   attr.min_ = cut_chart_attr.attribute("Min").toStdString();
   attr.max_ = cut_chart_attr.attribute("Max").toStdString();
   attr.default_value_ = cut_chart_attr.attribute("Default").toStdString();
