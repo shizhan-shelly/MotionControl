@@ -9,9 +9,9 @@ config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
 cut_chart_sheet = work_book.sheet_by_name('Cut Chart')
 
-vendor_name = "Hypertherm"
-cut_chart_version = "1.0"
-
+config_start_row = int(attribute_sheet.cell_value(0, 0))
+vendor_name = "%s" % config_sheet.cell_value(config_start_row, 0)
+cut_chart_version = "%s" % config_sheet.cell_value(config_start_row, 4)
 
 attr_title = {}
 attr_start_row = int(attribute_sheet.cell_value(0, 0))
@@ -32,17 +32,17 @@ for row in range(attr_start_row, attribute_sheet.nrows):
   offset[attribute_sheet.cell_value(row, attr_title['Name'])] = attribute_sheet.cell_value(row, attr_title['Offset'])
   data_type[attribute_sheet.cell_value(row, attr_title['Name'])] = attribute_sheet.cell_value(row, attr_title['DataType'])
 
-# 创建DOM文档对象
+# create document
 doc = Document()
-# 创建根节点
+# create root element
 CutChart = doc.createElement('CutChart')
 CutChart.setAttribute('Vendor', vendor_name)
 CutChart.setAttribute('Version', cut_chart_version)
 doc.appendChild(CutChart)
 
-#创建属性子节点
+# create current select element and attr element
+CurrentSelect = doc.createElement('CurrentSelectCutChartRecord')
 CutChartAttr = doc.createElement('CutChartAttr')
-CutChart.appendChild(CutChartAttr)
 for row in range (attr_start_row, attribute_sheet.nrows):
   field_attr = doc.createElement(attribute_sheet.cell_value(row, attr_title['Name']))
   field_attr.setAttribute('IsKeyword', "%d" % attribute_sheet.cell_value(row, attr_title['Keyword']))
@@ -58,8 +58,12 @@ for row in range (attr_start_row, attribute_sheet.nrows):
   field_attr.setAttribute('Picture', "%d" % attribute_sheet.cell_value(row, attr_title['Picture']))
   field_attr.setAttribute('Group', "%d" % attribute_sheet.cell_value(row, attr_title['Group']))
   CutChartAttr.appendChild(field_attr)
+  if field_attr.getAttribute("IsKeyword") == "1":
+    CurrentSelect.setAttribute(field_attr.tagName, "")
+CutChart.appendChild(CurrentSelect)
+CutChart.appendChild(CutChartAttr)
 
-#创建数据子节点
+# create data element
 CutChartData = doc.createElement('CutChartData')
 CutChart.appendChild(CutChartData)
 for row in range (data_start_row - 1, cut_chart_sheet.nrows):
