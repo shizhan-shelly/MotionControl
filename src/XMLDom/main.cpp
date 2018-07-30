@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
   for (size_t i = 0; i < current_cut_chart_selects.size(); i++) {
     printf("%s\t", current_cut_chart_selects[i].c_str());
   }
-  printf("\n\n");
+  printf("\n%s\n", cut_chart_selector.GetCutChartName().c_str());
 
   std::vector<std::string> selected_keywords;
   selected_keywords.push_back("SF-120");

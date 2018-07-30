@@ -20,10 +20,6 @@ CutChartSelector::CutChartSelector(const std::string &cut_chart_selector_file) {
   file.close();
 }
 
-std::size_t CutChartSelector::GetKeywordCount() const {
-  return GetKeywordName().size();
-}
-
 std::vector<std::string> CutChartSelector::GetKeywordName() const {
   std::vector<std::string> result;
   QDomElement	ele = doc_.documentElement().firstChildElement("CutChartListAttr");
@@ -84,7 +80,16 @@ bool CutChartSelector::SetCurrentSelectedCutChart(const std::vector<std::string>
   for (int i = 0; i < node_map.size() - 1; i++) {
     node_map.item(i).setNodeValue(keywords[i].c_str());
   }
+  return WriteToXML();
+}
 
+std::string CutChartSelector::GetCutChartName() const {
+  QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
+  QDomNamedNodeMap node_map = selected_item.attributes();
+  return node_map.namedItem("CutChartName").nodeValue().toStdString();
+}
+
+bool CutChartSelector::WriteToXML() {
   QFile file(cut_chart_selector_file_.c_str());
   if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
     return false;

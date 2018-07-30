@@ -9,6 +9,7 @@ config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
 cut_chart_sheet = work_book.sheet_by_name('Cut Chart')
 
+config_define = {"Hypertherm" : ("PlasmaPower",), "Kjellberg" : ("PlasmaPower", "GasBox", "Torch")}
 config_start_row = int(config_sheet.cell_value(0, 0))
 vendor_name = "%s" % config_sheet.cell_value(config_start_row, 0)
 cut_chart_version = "%s" % config_sheet.cell_value(config_start_row, 4)
@@ -40,9 +41,18 @@ CutChart.setAttribute('Vendor', vendor_name)
 CutChart.setAttribute('Version', cut_chart_version)
 doc.appendChild(CutChart)
 
+# create system config information
+for row in range(config_start_row, config_sheet.nrows):
+  CutChartConfig = doc.createElement('CutChartConfig')
+  CutChart.appendChild(CutChartConfig)
+  for col in range(0, len(config_define[vendor_name])):
+    CutChartConfig.setAttribute(config_define[vendor_name][col], "%s" % config_sheet.cell_value(row, col + 1))
+
 # create current select element and attr element
 CurrentSelect = doc.createElement('CurrentSelectCutChartRecord')
 CutChartAttr = doc.createElement('CutChartAttr')
+CutChart.appendChild(CurrentSelect)
+CutChart.appendChild(CutChartAttr)
 for row in range (attr_start_row, attribute_sheet.nrows):
   field_attr = doc.createElement(attribute_sheet.cell_value(row, attr_title['Name']))
   field_attr.setAttribute('IsKeyword', "%d" % attribute_sheet.cell_value(row, attr_title['Keyword']))
@@ -60,8 +70,6 @@ for row in range (attr_start_row, attribute_sheet.nrows):
   CutChartAttr.appendChild(field_attr)
   if field_attr.getAttribute("IsKeyword") == "1":
     CurrentSelect.setAttribute(field_attr.tagName, "")
-CutChart.appendChild(CurrentSelect)
-CutChart.appendChild(CutChartAttr)
 
 # create data element
 CutChartData = doc.createElement('CutChartData')
@@ -69,13 +77,13 @@ CutChart.appendChild(CutChartData)
 for row in range (data_start_row - 1, cut_chart_sheet.nrows):
   record = doc.createElement("Record")
   CutChartData.appendChild(record)
-  for xx in field_name:
-    if data_type[xx] == "TEXT":
-      record.setAttribute(xx, "%s" % cut_chart_sheet.cell_value(row, column[xx]))
-    elif data_type[xx] == "FLOAT":
-      record.setAttribute(xx, "%.2f" % (cut_chart_sheet.cell_value(row, column[xx]) * scale[xx] + offset[xx]))
-    elif data_type[xx] == "INT":
-      record.setAttribute(xx, "%d" % (cut_chart_sheet.cell_value(row, column[xx]) * scale[xx] + offset[xx]))
+  for name in field_name:
+    if data_type[name] == "TEXT":
+      record.setAttribute(name, "%s" % cut_chart_sheet.cell_value(row, column[name]))
+    elif data_type[name] == "FLOAT":
+      record.setAttribute(name, "%.2f" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
+    elif data_type[name] == "INT":
+      record.setAttribute(name, "%d" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
 
 
 xml_file = open('HPR.xml','w')

@@ -10,8 +10,6 @@ class CutChartSelector {
  public:
   explicit CutChartSelector(const std::string &cut_chart_selector_file);
 
-  std::size_t GetKeywordCount() const;
-
   std::vector<std::string> GetKeywordName() const;
 
   std::vector<std::string> GetKeywordList(const std::string &keyword_name,
@@ -21,8 +19,12 @@ class CutChartSelector {
 
   bool SetCurrentSelectedCutChart(const std::vector<std::string> &keywords);
 
+  std::string GetCutChartName() const;
+
  private:
   QDomDocument doc_;
   std::string cut_chart_selector_file_;
+
+  bool WriteToXML();
 
 }; // class CutChartSelector
