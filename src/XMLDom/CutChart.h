@@ -1,6 +1,9 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
+#ifndef CUTCHART_H__
+#define CUTCHART_H__
+
 #include <map>
 #include <string>
 #include <vector>
@@ -77,3 +80,5 @@ class CutChart {
   QDomNode GetCurSelRecord() const;
 
 }; // class CutChart
+
+#endif // CUTCHART_H__

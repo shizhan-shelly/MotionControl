@@ -1,6 +1,9 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
+#ifndef VENDOR_H__
+#define VENDOR_H__
+
 #include <string>
 #include <vector>
 #include <QtXml/QDomDocument>
@@ -23,3 +26,5 @@ class Vendor {
   std::string vendor_file_;
 
 }; // class Vendor
+
+#endif // VENDOR_H__

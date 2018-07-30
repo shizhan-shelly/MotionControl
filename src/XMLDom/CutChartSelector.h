@@ -1,6 +1,9 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
+#ifndef CUTCHARTSELECTOR_H__
+#define CUTCHARTSELECTOR_H__
+
 #include <list>
 #include <string>
 #include <vector>
@@ -9,8 +12,6 @@
 class CutChartSelector {
  public:
   explicit CutChartSelector(const std::string &cut_chart_selector_file);
-
-  std::size_t GetKeywordCount() const;
 
   std::vector<std::string> GetKeywordName() const;
 
@@ -21,8 +22,14 @@ class CutChartSelector {
 
   bool SetCurrentSelectedCutChart(const std::vector<std::string> &keywords);
 
+  std::string GetCutChartName() const;
+
  private:
   QDomDocument doc_;
   std::string cut_chart_selector_file_;
 
+  bool WriteToXML();
+
 }; // class CutChartSelector
+
+#endif // CUTCHARTSELECTOR_H__
