@@ -23,10 +23,7 @@ inline DataType CutChartDataType(const QString &data_type) {
   std::map<QString, DataType>::const_iterator iter = DATA_TYPE.find(
       data_type);
 
-  if (iter != DATA_TYPE.end()) {
-    return iter->second;
-  }
-  return String;
+  return iter != DATA_TYPE.end() ? iter->second : String;
 }
 
 CutChart::CutChart() {}

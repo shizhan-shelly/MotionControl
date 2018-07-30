@@ -9,7 +9,7 @@ config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
 cut_chart_sheet = work_book.sheet_by_name('Cut Chart')
 
-config_start_row = int(attribute_sheet.cell_value(0, 0))
+config_start_row = int(config_sheet.cell_value(0, 0))
 vendor_name = "%s" % config_sheet.cell_value(config_start_row, 0)
 cut_chart_version = "%s" % config_sheet.cell_value(config_start_row, 4)
 

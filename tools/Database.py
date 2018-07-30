@@ -92,7 +92,7 @@ cursor.execute('''
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS KjellbergAttribute(
-        NAME                 TEXT    NOT NULL,
+        FIELD_NAME           TEXT    NOT NULL,
         KEYWORD_FLAG         INT     NOT NULL,
         DATA_TYPE            TEXT    NOT NULL,
         NAME_NUMBER          INT,
