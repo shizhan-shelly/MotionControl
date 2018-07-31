@@ -41,9 +41,9 @@ int main(int argc, char *argv[]) {
   }
 
   std::vector<std::string> keywords;
-  keywords.push_back("SF-120");
+  keywords.push_back("SF-130");
   keywords.push_back("PGV-300");
-  keywords.push_back("PerCut2500");
+  keywords.push_back("PerCut2000");
   cut_chart_selector.SetCurrentSelectedCutChart(keywords);
 
   CutChart cut_chart;

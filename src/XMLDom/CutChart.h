@@ -42,7 +42,6 @@ class CutChart {
       const std::map<std::string, std::string> &selected_keywords);
 
   bool SetCurrentSelectedRecord(const std::map<std::string, std::string> &alias_value);
-  // 第一个string是字段名，第二个string是关键字的值。
   bool SetCurrentSelectedRecord(const std::vector<std::string> &keyword_value);
   bool GetCurrentSelectedRecord(std::vector<std::string> &keyword_value) const;
 

@@ -68,7 +68,7 @@ std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
   std::vector<std::string> result;
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
   QDomNamedNodeMap node_map = selected_item.attributes();
-  for (int i = 0; i < node_map.size() - 1; i++) {
+  for (int i = 0; i < node_map.size(); i++) {
     result.push_back(node_map.item(i).nodeValue().toStdString());
   }
   return result;
@@ -77,16 +77,41 @@ std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
 bool CutChartSelector::SetCurrentSelectedCutChart(const std::vector<std::string> &keywords) {
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
   QDomNamedNodeMap node_map = selected_item.attributes();
-  for (int i = 0; i < node_map.size() - 1; i++) {
+  for (int i = 0; i < node_map.size(); i++) {
     node_map.item(i).setNodeValue(keywords[i].c_str());
   }
   return WriteToXML();
 }
 
 std::string CutChartSelector::GetCutChartName() const {
+  std::map<std::string, std::string> keyword_map;
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
   QDomNamedNodeMap node_map = selected_item.attributes();
-  return node_map.namedItem("CutChartName").nodeValue().toStdString();
+  for (int i = 0; i < node_map.size(); i++) {
+    keyword_map.insert(std::make_pair(node_map.item(i).nodeName().toStdString(),
+        node_map.item(i).nodeValue().toStdString()));
+
+  }
+
+  QDomElement	ele = doc_.documentElement().firstChildElement("CutChartList");
+  QDomNodeList cut_chart_list = ele.childNodes();
+  for (int i = 0; i < cut_chart_list.size(); i++) {
+    QDomNode node = cut_chart_list.item(i);
+    QDomNamedNodeMap record_map = node.attributes();
+    std::map<std::string, std::string>::iterator iter = keyword_map.begin();
+    while (iter != keyword_map.end()) {
+      if (record_map.namedItem(iter->first.c_str()).nodeValue().compare(
+          iter->second.c_str()) != 0) {
+
+        break;
+      }
+      iter++;
+    }
+    if (iter == keyword_map.end()) {
+      return record_map.namedItem("CutChartName").nodeValue().toStdString();
+    }
+  }
+  return "";
 }
 
 bool CutChartSelector::WriteToXML() {

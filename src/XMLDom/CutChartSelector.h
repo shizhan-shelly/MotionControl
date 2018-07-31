@@ -4,7 +4,7 @@
 #ifndef CUTCHARTSELECTOR_H__
 #define CUTCHARTSELECTOR_H__
 
-#include <list>
+#include <map>
 #include <string>
 #include <vector>
 #include <QtXml/QDomDocument>
