@@ -61,7 +61,7 @@ class CutChart {
   // 第一个string是字段名，第二个string是字段值
   bool InsertRecord(const std::map<std::string, std::string> &record);
   // 删除当前选择的关键字对应的行记录
-  void DeleteRecord();
+  bool DeleteRecord();
   // 根据字段名，保存其对应的字段值。第一个string是字段名，第二个string是字段值。
   bool UpdateRecord(const std::map<std::string, std::string> &record);
   // 从备份文件中恢复界面中的值，恢复选中的一行的数据,

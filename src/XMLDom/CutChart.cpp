@@ -193,20 +193,16 @@ CutChartAttr CutChart::GetOneFieldAttr(const std::string &field_name) const {
 }
 
 bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
-  //1, 一一比对关键字的值，看看是否有重复的记录，重复报错
-  //2，找到插入的位置插入一条记录
-  //for (size_t i = 0; i < keyword_field_.size(); i++) {
-  //  if () {
-  //  }
-  //}
   return true;
 }
 
-void CutChart::DeleteRecord() {
+bool CutChart::DeleteRecord() {
   QDomNode cur_node = GetCurSelRecord();
   if (!cur_node.isNull()) {
     doc_usr_.documentElement().firstChildElement("CutChartData").removeChild(cur_node);
+    return true;
   }
+  return false;
 }
 
 bool CutChart::UpdateRecord(const std::map<std::string, std::string> &record) {

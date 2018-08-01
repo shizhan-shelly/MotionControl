@@ -67,18 +67,34 @@ std::vector<std::string> CutChartSelector::GetKeywordList(
 std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
   std::vector<std::string> result;
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
-  QDomNamedNodeMap node_map = selected_item.attributes();
-  for (int i = 0; i < node_map.size(); i++) {
-    result.push_back(node_map.item(i).nodeValue().toStdString());
+  QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
+  QDomNodeList cut_chart_list_attr = attr_element.childNodes();
+  for (int i = 0; i < cut_chart_list_attr.size(); i++) {
+    QDomNode node = cut_chart_list_attr.item(i);
+    if (node.isElement()) {
+      QDomElement element = node.toElement();
+      if (element.attribute("IsKeyword").toInt() == 1) {
+        result.push_back(selected_item.attributes().namedItem(element.tagName()).nodeValue().toStdString());
+      }
+    }
   }
   return result;
 }
 
 bool CutChartSelector::SetCurrentSelectedCutChart(const std::vector<std::string> &keywords) {
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
-  QDomNamedNodeMap node_map = selected_item.attributes();
-  for (int i = 0; i < node_map.size(); i++) {
-    node_map.item(i).setNodeValue(keywords[i].c_str());
+  QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
+  QDomNodeList cut_chart_list_attr = attr_element.childNodes();
+  std::vector<std::string>::const_iterator iter = keywords.begin();
+  for (int i = 0; i < cut_chart_list_attr.size(); i++) {
+    QDomNode node = cut_chart_list_attr.item(i);
+    if (node.isElement()) {
+      QDomElement element = node.toElement();
+      if (element.attribute("IsKeyword").toInt() == 1 && iter != keywords.end()) {
+        selected_item.attributes().namedItem(element.tagName()).setNodeValue(iter->c_str());
+        iter++;
+      }
+    }
   }
   return WriteToXML();
 }
@@ -92,8 +108,7 @@ std::string CutChartSelector::GetCutChartName() const {
         node_map.item(i).nodeValue().toStdString()));
 
   }
-
-  QDomElement	ele = doc_.documentElement().firstChildElement("CutChartList");
+  QDomElement ele = doc_.documentElement().firstChildElement("CutChartList");
   QDomNodeList cut_chart_list = ele.childNodes();
   for (int i = 0; i < cut_chart_list.size(); i++) {
     QDomNode node = cut_chart_list.item(i);
@@ -112,6 +127,46 @@ std::string CutChartSelector::GetCutChartName() const {
     }
   }
   return "";
+}
+
+bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
+  QFile file(cut_chart_file.c_str());
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    return false;
+  }
+  QString error_msg = "";
+  int line = 0;
+  int column = 0;
+  QDomDocument doc;
+  if (!doc.setContent(&file, &error_msg, &line, &column)) {
+    // TODO(Zhan Shi): write error log.
+    file.close();
+    return false;
+  }
+  file.close();
+  QDomElement cut_chart_list = doc_.documentElement().firstChildElement("CutChartList");
+  QDomNodeList list_nodes = cut_chart_list.childNodes();
+  for (int i = 0; i < list_nodes.size(); i++) {
+    QDomNode node = list_nodes.item(i);
+    if (node.toElement().attribute("CutChartName").compare(
+        QString(cut_chart_file.c_str()).section('\\', -1)) == 0) {
+      return false;
+    }
+  }
+  QDomElement	cut_chart_config = doc.documentElement().firstChildElement("CutChartConfig");
+  QDomNamedNodeMap config_map = cut_chart_config.attributes();
+  QDomElement new_element = doc_.createElement("Record");
+  cut_chart_list.appendChild(new_element);
+  QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
+  QDomNodeList cut_chart_list_attr = attr_element.childNodes();
+  for (int i = 0; i < cut_chart_list_attr.size(); i++) {
+    QDomNode node = cut_chart_list_attr.item(i);
+    if (node.isElement()) {
+      QDomElement element = node.toElement();
+      new_element.setAttribute(element.tagName(), config_map.namedItem(element.tagName()).nodeValue());
+    }
+  }
+  return WriteToXML();
 }
 
 bool CutChartSelector::WriteToXML() {
