@@ -4,6 +4,7 @@
 #ifndef CUTCHART_H__
 #define CUTCHART_H__
 
+#include <algorithm>
 #include <map>
 #include <string>
 #include <vector>
@@ -77,6 +78,8 @@ class CutChart {
 
   void InitialKeywordField();
   QDomNode GetCurSelRecord() const;
+  // Judge the check string whether in the string list.
+  bool hasRecord(const std::string &check, const std::vector<std::string> &list, DataType type);
 
 }; // class CutChart
 

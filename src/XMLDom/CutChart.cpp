@@ -193,6 +193,29 @@ CutChartAttr CutChart::GetOneFieldAttr(const std::string &field_name) const {
 }
 
 bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
+  std::map<std::string, std::string> selected_keywords;
+  size_t i = 0;
+  for (; i < keyword_field_.size(); i++) {
+    std::vector<std::string> check_list = GetKeywordList(
+        keyword_field_[i].first, selected_keywords);
+
+    std::map<std::string, std::string>::const_iterator iter =
+        record.find(keyword_field_[i].first);
+
+    if (!hasRecord(iter->second, check_list, GetOneFieldAttr(iter->first).data_type)) {
+      break;
+    }
+  }
+  if (i == keyword_field_.size()) {
+    return false;
+  }
+  QDomElement new_element = doc_usr_.createElement("Record");
+  doc_usr_.documentElement().firstChildElement("CutChartData").appendChild(new_element);
+  std::map<std::string, std::string>::const_iterator iter = record.begin();
+  while (iter != record.end()) {
+    new_element.setAttribute(iter->first.c_str(), iter->second.c_str());
+    iter++;
+  }
   return true;
 }
 
@@ -272,4 +295,18 @@ QDomNode CutChart::GetCurSelRecord() const {
     }
   }
   return QDomNode();
+}
+
+bool CutChart::hasRecord(const std::string &check,
+    const std::vector<std::string> &list, DataType type) {
+
+  if (type == Float) {
+    std::vector<double> trans_list(list.size());
+    std::transform(std::begin(list), std::end(list), std::begin(trans_list),
+        [](std::string const &str){ return std::stod(str); });
+
+    return std::find(trans_list.begin(), trans_list.end(), std::stod(check)) != trans_list.end();
+  } else {
+    return std::find(list.begin(), list.end(), check) != list.end();
+  }
 }

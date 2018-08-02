@@ -57,5 +57,11 @@ int main(int argc, char *argv[]) {
   }
   printf("%s\n", cut_chart.GetItemValueByFieldName("CuttingSpeed").c_str());
   CutChartAttr attr = cut_chart.GetOneFieldAttr("Thickness");
+  std::map<std::string, std::string> insert_record;
+  insert_record.insert(std::make_pair("Material", "1.0037 S235"));
+  insert_record.insert(std::make_pair("Thickness", "6.00"));
+  insert_record.insert(std::make_pair("Current", "180.00"));
+  insert_record.insert(std::make_pair("Technology", "Contour Cut Speed"));
+  cut_chart.InsertRecord(insert_record);
   return a.exec();
 }
