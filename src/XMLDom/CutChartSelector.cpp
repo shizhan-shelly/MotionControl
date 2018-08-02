@@ -4,6 +4,7 @@
 #include "CutChartSelector.h"
 
 #include <QtCore/QFile>
+#include <QtCore/QFileInfo>
 #include <QtCore/QIODevice>
 #include <QtCore/QTextStream>
 
@@ -144,12 +145,12 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
     return false;
   }
   file.close();
+  QFileInfo file_info(cut_chart_file.c_str());
   QDomElement cut_chart_list = doc_.documentElement().firstChildElement("CutChartList");
   QDomNodeList list_nodes = cut_chart_list.childNodes();
   for (int i = 0; i < list_nodes.size(); i++) {
     QDomNode node = list_nodes.item(i);
-    if (node.toElement().attribute("CutChartName").compare(
-        QString(cut_chart_file.c_str()).section('\\', -1)) == 0) {
+    if (node.toElement().attribute("CutChartName").compare(file_info.fileName()) == 0) {
       return false;
     }
   }
@@ -163,9 +164,12 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
     QDomNode node = cut_chart_list_attr.item(i);
     if (node.isElement()) {
       QDomElement element = node.toElement();
-      new_element.setAttribute(element.tagName(), config_map.namedItem(element.tagName()).nodeValue());
+      if (element.attribute("IsKeyword").toInt() == 1) {
+        new_element.setAttribute(element.tagName(), config_map.namedItem(element.tagName()).nodeValue());
+      }
     }
   }
+  new_element.setAttribute("CutChartName", file_info.fileName());
   return WriteToXML();
 }
 
