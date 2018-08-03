@@ -192,6 +192,18 @@ CutChartAttr CutChart::GetOneFieldAttr(const std::string &field_name) const {
   return attr;
 }
 
+std::map<std::string, std::string> CutChart::GetSystemConfig() const {
+  std::map<std::string, std::string> config_info;
+  QDomElement	cut_chart_config = doc_usr_.documentElement().firstChildElement("CutChartConfig");
+  QDomNamedNodeMap config_map = cut_chart_config.attributes();
+  for (int i = 0; i < config_map.size(); i++) {
+    config_info.insert(std::make_pair(config_map.item(i).nodeName().toStdString(),
+        config_map.item(i).nodeValue().toStdString()));
+
+  }
+  return config_info;
+}
+
 bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
   std::map<std::string, std::string> selected_keywords;
   size_t i = 0;

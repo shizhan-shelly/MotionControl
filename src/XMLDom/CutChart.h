@@ -57,6 +57,14 @@ class CutChart {
 
   CutChartAttr GetOneFieldAttr(const std::string &field_name) const;
 
+  /**
+   * Get current system config information.
+   * @return config info as a map. The first string is keyword field name of CutChartSelector,
+   * the second is keyword field value of CutChartSelector.
+   * The config map infor can be found in CutChartList of CutChartSelector.xml
+   */
+  std::map<std::string, std::string> GetSystemConfig() const;
+
   // If the record existed, give a prompt that insert fialed.
   // 根据关键字检查是否已经有这条记录了，如果有就报错，没有则插入。除关键字外的item按上一条记录复制其值。
   // 第一个string是字段名，第二个string是字段值

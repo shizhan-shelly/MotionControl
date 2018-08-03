@@ -8,6 +8,8 @@
 #include <QtCore/QIODevice>
 #include <QtCore/QTextStream>
 
+#include "CutChart.h"
+
 CutChartSelector::CutChartSelector(const std::string &cut_chart_selector_file) {
   cut_chart_selector_file_ = cut_chart_selector_file;
   QFile file(cut_chart_selector_file.c_str());
@@ -131,20 +133,6 @@ std::string CutChartSelector::GetCutChartName() const {
 }
 
 bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
-  QFile file(cut_chart_file.c_str());
-  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    return false;
-  }
-  QString error_msg = "";
-  int line = 0;
-  int column = 0;
-  QDomDocument doc;
-  if (!doc.setContent(&file, &error_msg, &line, &column)) {
-    // TODO(Zhan Shi): write error log.
-    file.close();
-    return false;
-  }
-  file.close();
   QFileInfo file_info(cut_chart_file.c_str());
   QDomElement cut_chart_list = doc_.documentElement().firstChildElement("CutChartList");
   QDomNodeList list_nodes = cut_chart_list.childNodes();
@@ -154,10 +142,12 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
       return false;
     }
   }
-  QDomElement	cut_chart_config = doc.documentElement().firstChildElement("CutChartConfig");
-  QDomNamedNodeMap config_map = cut_chart_config.attributes();
+  CutChart import_cut_chart;
+  if (!import_cut_chart.ParseCutChart(cut_chart_file)) {
+    return false;
+  }
+  std::map<std::string, std::string> config_map = import_cut_chart.GetSystemConfig();
   QDomElement new_element = doc_.createElement("Record");
-  cut_chart_list.appendChild(new_element);
   QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
   QDomNodeList cut_chart_list_attr = attr_element.childNodes();
   for (int i = 0; i < cut_chart_list_attr.size(); i++) {
@@ -165,11 +155,18 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
     if (node.isElement()) {
       QDomElement element = node.toElement();
       if (element.attribute("IsKeyword").toInt() == 1) {
-        new_element.setAttribute(element.tagName(), config_map.namedItem(element.tagName()).nodeValue());
+        std::map<std::string, std::string>::iterator iter = config_map.find(
+            element.tagName().toStdString());
+
+        if (iter == config_map.end()) {
+          return false;
+        }
+        new_element.setAttribute(element.tagName(), iter->second.c_str());
       }
     }
   }
   new_element.setAttribute("CutChartName", file_info.fileName());
+  cut_chart_list.appendChild(new_element);
   return WriteToXML();
 }
 
