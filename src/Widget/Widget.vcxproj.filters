@@ -39,6 +39,9 @@
     <Filter Include="Widget\CustomWidget">
       <UniqueIdentifier>{7de3280a-2e7d-4f0a-b26b-256d306d06d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Widget\ListWidget">
+      <UniqueIdentifier>{116921db-0d69-434b-89eb-affed5aa2384}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -59,6 +62,27 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ComboEditor.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="listwidget\BaseListWidgetItem.cpp">
+      <Filter>Widget\ListWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="listwidget\BaseListWidget.cpp">
+      <Filter>Widget\ListWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BaseListWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BaseListWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="listwidget\IconListWidget.cpp">
+      <Filter>Widget\ListWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IconListWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IconListWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -66,6 +90,15 @@
     </CustomBuild>
     <CustomBuild Include="customwidget\ComboEditor.h">
       <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="listwidget\BaseListWidgetItem.h">
+      <Filter>Widget\ListWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="listwidget\BaseListWidget.h">
+      <Filter>Widget\ListWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="listwidget\IconListWidget.h">
+      <Filter>Widget\ListWidget</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
