@@ -35,7 +35,7 @@ class CutChart {
   CutChart();
   ~CutChart();
 
-  bool ParseCutChart(const std::string &cut_chart_file);
+  bool ParseCutChart(const std::string &cut_chart_file, const std::string &bak_cut_chart_file);
 
   bool GetKeywordFieldNameAndUnit(std::vector<std::pair<std::string, std::vector<std::string> > > &name_unit) const;
 
@@ -90,6 +90,7 @@ class CutChart {
   QDomNode GetCurSelRecord(const QDomDocument &doc) const;
   // Judge the check string whether in the string list.
   bool hasRecord(const std::string &check, const std::vector<std::string> &list, DataType type);
+  bool ParseToDoc(const std::string &xml_file, QDomDocument &doc);
 
 }; // class CutChart
 

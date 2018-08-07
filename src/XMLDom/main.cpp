@@ -46,10 +46,12 @@ int main(int argc, char *argv[]) {
   keywords.push_back("PerCut2000");
   cut_chart_selector.SetCurrentSelectedCutChart(keywords);
 
-  cut_chart_selector.ImportCutChart("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.xml");
+  cut_chart_selector.ImportCutChart("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.xml",
+                                    "E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.bml");
 
   CutChart cut_chart;
-  cut_chart.ParseCutChart("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.xml");
+  cut_chart.ParseCutChart("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.xml",
+                          "E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.bml");
   std::vector<std::pair<std::string, std::vector<std::string> > > name_unit;
   cut_chart.GetKeywordFieldNameAndUnit(name_unit);
   for (size_t i = 0; i < name_unit.size(); i++) {

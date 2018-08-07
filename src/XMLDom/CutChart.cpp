@@ -4,6 +4,7 @@
 #include "CutChart.h"
 
 #include <QtCore/QFile>
+#include <QtCore/QFileInfo>
 #include <QtCore/QIODevice>
 #include <QtCore/QTextStream>
 
@@ -30,21 +31,15 @@ CutChart::CutChart() {}
 
 CutChart::~CutChart() {}
 
-bool CutChart::ParseCutChart(const std::string &cut_chart_file) {
+bool CutChart::ParseCutChart(const std::string &cut_chart_file,
+                             const std::string &bak_cut_chart_file) {
+
   cut_chart_file_ = cut_chart_file;
-  QFile file(cut_chart_file.c_str());
-  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+  if (!ParseToDoc(cut_chart_file_, doc_usr_) ||
+      !ParseToDoc(bak_cut_chart_file, doc_fac_)) {
+
     return false;
   }
-  QString error_msg = "";
-  int line = 0;
-  int column = 0;
-  if (!doc_usr_.setContent(&file, &error_msg, &line, &column)) {
-    // TODO(Zhan Shi): write error log.
-    file.close();
-    return false;
-  }
-  file.close();
   InitialKeywordField();
   return true;
 }
@@ -333,4 +328,21 @@ bool CutChart::hasRecord(const std::string &check,
   } else {
     return std::find(list.begin(), list.end(), check) != list.end();
   }
+}
+
+bool CutChart::ParseToDoc(const std::string &xml_file, QDomDocument &doc) {
+  QFile file(xml_file.c_str());
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    return false;
+  }
+  QString error_msg = "";
+  int line = 0;
+  int column = 0;
+  if (!doc.setContent(&file, &error_msg, &line, &column)) {
+    // TODO(Zhan Shi): write error log.
+    file.close();
+    return false;
+  }
+  file.close();
+  return true;
 }

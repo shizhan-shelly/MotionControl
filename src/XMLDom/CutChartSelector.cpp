@@ -132,7 +132,9 @@ std::string CutChartSelector::GetCutChartName() const {
   return "";
 }
 
-bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
+bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file,
+                                      const std::string &bak_cut_chart_file) {
+
   QFileInfo file_info(cut_chart_file.c_str());
   QDomElement cut_chart_list = doc_.documentElement().firstChildElement("CutChartList");
   QDomNodeList list_nodes = cut_chart_list.childNodes();
@@ -143,7 +145,7 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
     }
   }
   CutChart import_cut_chart;
-  if (!import_cut_chart.ParseCutChart(cut_chart_file)) {
+  if (!import_cut_chart.ParseCutChart(cut_chart_file, bak_cut_chart_file)) {
     return false;
   }
   QString vendor_name = doc_.documentElement().attribute("Vendor");

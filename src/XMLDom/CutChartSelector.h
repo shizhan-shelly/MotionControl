@@ -24,7 +24,8 @@ class CutChartSelector {
 
   std::string GetCutChartName() const;
 
-  bool ImportCutChart(const std::string &cut_chart_file);
+  bool ImportCutChart(const std::string &cut_chart_file,
+                      const std::string &bak_cut_chart_file);
 
  private:
   QDomDocument doc_;
