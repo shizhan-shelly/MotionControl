@@ -148,7 +148,7 @@ bool CutChart::GetAllFieldNameAndUnit(std::vector<std::pair<std::string, std::ve
 }
 
 std::string CutChart::GetItemValueByFieldName(const std::string &field_name) const {
-  QDomNode data_node = GetCurSelRecord();
+  QDomNode data_node = GetCurSelRecord(doc_usr_);
   if (!data_node.isNull()) {
     QDomNamedNodeMap node_map = data_node.attributes();
     QDomNode target_node = node_map.namedItem(field_name.c_str());
@@ -161,7 +161,7 @@ std::string CutChart::GetItemValueByFieldName(const std::string &field_name) con
 
 std::vector<std::string> CutChart::GetConsumables() const {
   std::vector<std::string> result;
-  QDomNode data_node = GetCurSelRecord();
+  QDomNode data_node = GetCurSelRecord(doc_usr_);
   QDomElement	attr_element = doc_usr_.documentElement().firstChildElement("CutChartAttr");
   QDomNodeList cut_chart_attr = attr_element.childNodes();
   for (int i = 0; i < cut_chart_attr.size(); i++) {
@@ -216,6 +216,8 @@ bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
 
     if (!hasRecord(iter->second, check_list, GetOneFieldAttr(iter->first).data_type)) {
       break;
+    } else {
+      selected_keywords.insert(std::make_pair(keyword_field_[i].first, iter->second));
     }
   }
   if (i == keyword_field_.size()) {
@@ -232,7 +234,7 @@ bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
 }
 
 bool CutChart::DeleteRecord() {
-  QDomNode cur_node = GetCurSelRecord();
+  QDomNode cur_node = GetCurSelRecord(doc_usr_);
   if (!cur_node.isNull()) {
     doc_usr_.documentElement().firstChildElement("CutChartData").removeChild(cur_node);
     return true;
@@ -241,7 +243,7 @@ bool CutChart::DeleteRecord() {
 }
 
 bool CutChart::UpdateRecord(const std::map<std::string, std::string> &record) {
-  QDomNode cur_node = GetCurSelRecord();
+  QDomNode cur_node = GetCurSelRecord(doc_usr_);
   if (!cur_node.isNull()) {
     std::map<std::string, std::string>::const_iterator iter = record.begin();
     while (iter != record.end()) {
@@ -254,6 +256,12 @@ bool CutChart::UpdateRecord(const std::map<std::string, std::string> &record) {
 }
 
 bool CutChart::RevertRecord() {
+  QDomNode backup_node = GetCurSelRecord(doc_fac_);
+  if (backup_node.isNull()) {
+    return false;
+  }
+  QDomNode cur_node = GetCurSelRecord(doc_usr_);
+  doc_usr_.documentElement().firstChildElement("CutChartData").replaceChild(backup_node, cur_node);
   return true;
 }
 
@@ -287,8 +295,8 @@ void CutChart::InitialKeywordField() {
   }
 }
 
-QDomNode CutChart::GetCurSelRecord() const {
-  QDomElement	data_element = doc_usr_.documentElement().firstChildElement("CutChartData");
+QDomNode CutChart::GetCurSelRecord(const QDomDocument &doc) const {
+  QDomElement	data_element = doc.documentElement().firstChildElement("CutChartData");
   QDomNodeList records = data_element.childNodes();
   for (int i = 0; i < records.size(); i++) {
     QDomNamedNodeMap node_map = records.item(i).attributes();

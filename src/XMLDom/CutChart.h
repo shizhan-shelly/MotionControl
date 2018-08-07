@@ -85,7 +85,7 @@ class CutChart {
   std::string cut_chart_file_;
 
   void InitialKeywordField();
-  QDomNode GetCurSelRecord() const;
+  QDomNode GetCurSelRecord(const QDomDocument &doc) const;
   // Judge the check string whether in the string list.
   bool hasRecord(const std::string &check, const std::vector<std::string> &list, DataType type);
 
