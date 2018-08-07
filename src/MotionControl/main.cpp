@@ -8,6 +8,7 @@
 #include "Pages\SystemConfigModel.h"
 #include "Pages\SystemConfigWidget.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
+#include "../Widget/WidgetQrc.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
@@ -18,6 +19,8 @@ int main(int argc, char *argv[]) {
     return -1;
   }
   SingletonMaster::Activate();
+
+  WidgetQrc widget_qrc;
 
   PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
   if (db_handler->InitialDatabaseAccess("E:\\MyJob\\MotionControl\\tools\\test.db", "123456")) {

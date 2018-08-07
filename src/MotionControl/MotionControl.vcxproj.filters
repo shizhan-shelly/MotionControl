@@ -45,6 +45,9 @@
     <Filter Include="Pages\DatabaseItem">
       <UniqueIdentifier>{659ba1ee-5a87-43f0-93e1-c393863ae449}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DatabaseView\Consumables">
+      <UniqueIdentifier>{6e97c464-cfbf-4240-86ae-803ac988dce1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -108,6 +111,15 @@
     <ClCompile Include="Pages\SystemConfigItem.cpp">
       <Filter>Pages\DatabaseItem</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\ConsumablesWidget.cpp">
+      <Filter>Pages\DatabaseView\Consumables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ConsumablesWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ConsumablesWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -150,6 +162,12 @@
     </CustomBuild>
     <CustomBuild Include="Pages\SystemConfigTableView.h">
       <Filter>Pages\DatabaseView\SystemConfig</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\ConsumablesWidget.ui">
+      <Filter>Pages\DatabaseView\Consumables</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\ConsumablesWidget.h">
+      <Filter>Pages\DatabaseView\Consumables</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
