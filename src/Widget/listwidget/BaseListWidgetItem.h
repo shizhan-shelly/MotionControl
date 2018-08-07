@@ -15,7 +15,15 @@ class BaseListWidgetItem : public QListWidgetItem {
   explicit BaseListWidgetItem(QListWidget *parent = NULL);
   virtual ~BaseListWidgetItem();
 
-  //void SetCurrentItem(const QImage &icon);
+  /// Set item's icon with special scale of (width, height).
+  void setIconScaled(const QString &res_path, int width, int height);
+
+  // If this item is selected, draw a special flag on the icon of it;
+  // otherwise, revert to the origin icon.
+  void SetSelectedFlag(bool selected);
+
+ private:
+  QString origin_path_;
 
 }; // class BaseListWidgetItem
 

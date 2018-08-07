@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
-      <Extensions>qrc;*</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
     <Filter Include="Widget">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
@@ -41,6 +36,11 @@
     </Filter>
     <Filter Include="Widget\ListWidget">
       <UniqueIdentifier>{116921db-0d69-434b-89eb-affed5aa2384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +83,7 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IconListWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="WidgetQrc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -100,5 +101,14 @@
     <CustomBuild Include="listwidget\IconListWidget.h">
       <Filter>Widget\ListWidget</Filter>
     </CustomBuild>
+    <CustomBuild Include="Widget.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WidgetQrc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\edit.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
