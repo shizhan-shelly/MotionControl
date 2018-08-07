@@ -146,6 +146,10 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file) {
   if (!import_cut_chart.ParseCutChart(cut_chart_file)) {
     return false;
   }
+  QString vendor_name = doc_.documentElement().attribute("Vendor");
+  if (vendor_name.compare(import_cut_chart.GetVendor().c_str()) != 0) {
+    return false;
+  }
   std::map<std::string, std::string> config_map = import_cut_chart.GetSystemConfig();
   QDomElement new_element = doc_.createElement("Record");
   QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");

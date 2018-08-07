@@ -204,6 +204,10 @@ std::map<std::string, std::string> CutChart::GetSystemConfig() const {
   return config_info;
 }
 
+std::string CutChart::GetVendor() const {
+  return doc_usr_.documentElement().attribute("Vendor").toStdString();
+}
+
 bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
   std::map<std::string, std::string> selected_keywords;
   size_t i = 0;

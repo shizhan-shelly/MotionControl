@@ -65,6 +65,8 @@ class CutChart {
    */
   std::map<std::string, std::string> GetSystemConfig() const;
 
+  std::string GetVendor() const;
+
   // If the record existed, give a prompt that insert fialed.
   // 根据关键字检查是否已经有这条记录了，如果有就报错，没有则插入。除关键字外的item按上一条记录复制其值。
   // 第一个string是字段名，第二个string是字段值
