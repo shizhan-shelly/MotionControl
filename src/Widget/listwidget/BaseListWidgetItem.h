@@ -24,6 +24,8 @@ class BaseListWidgetItem : public QListWidgetItem {
 
  private:
   QString origin_path_;
+  int width_;
+  int height_;
 
 }; // class BaseListWidgetItem
 

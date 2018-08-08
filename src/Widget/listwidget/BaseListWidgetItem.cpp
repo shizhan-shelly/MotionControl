@@ -19,17 +19,22 @@ void BaseListWidgetItem::setIconScaled(const QString &res_path,
                                        int width, int height) {
 
   origin_path_ = res_path;
+  width_ = width;
+  height_ = height;
   QPixmap pixmap(origin_path_);
-  setIcon(QIcon(pixmap.scaled(width, height, Qt::KeepAspectRatio)));
+  setIcon(QIcon(pixmap.scaled(width_, height_, Qt::KeepAspectRatio)));
 }
 
 void BaseListWidgetItem::SetSelectedFlag(bool selected) {
   QImage source_image = QImage(origin_path_);
-  source_image = source_image.scaled(400, 300, Qt::KeepAspectRatio);
-  QPainter painter(&source_image);
-  painter.drawImage(0, 0,
-      QImage(SELECT_FLAG).scaled(source_image.width(),
-      source_image.height(), Qt::KeepAspectRatio));
+  source_image = source_image.scaled(width_, height_, Qt::KeepAspectRatio);
+  if (selected) {
+    QPainter painter(&source_image);
+    painter.drawImage(0, 0,
+        QImage(SELECT_FLAG).scaled(source_image.width(),
+        source_image.height(), Qt::KeepAspectRatio));
+
+  }
 
   setIcon(QIcon(QPixmap::fromImage(source_image)));
 }

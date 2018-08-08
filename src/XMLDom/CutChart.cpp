@@ -260,7 +260,9 @@ bool CutChart::RevertRecord() {
     return false;
   }
   QDomNode cur_node = GetCurSelRecord(doc_usr_);
-  doc_usr_.documentElement().firstChildElement("CutChartData").replaceChild(backup_node, cur_node);
+  doc_usr_.documentElement().firstChildElement("CutChartData").replaceChild(
+      backup_node.cloneNode(false), cur_node);
+
   return true;
 }
 
