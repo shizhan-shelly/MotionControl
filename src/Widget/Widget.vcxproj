@@ -23,6 +23,12 @@
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IconListWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\qrc_Widget.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BaseListWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -35,6 +41,7 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IconListWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_Widget.cpp" />
     <ClCompile Include="basewidget\BaseWidget.cpp" />
     <ClCompile Include="customwidget\ComboEditor.cpp" />
     <ClCompile Include="listwidget\BaseListWidget.cpp" />

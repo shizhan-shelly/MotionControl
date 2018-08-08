@@ -120,6 +120,13 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ConsumablesWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="MotionControlQrc.cpp" />
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\qrc_MotionControl.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_MotionControl.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -140,6 +147,7 @@
     <ClInclude Include="Pages\SystemConfigItem.h">
       <Filter>Pages\DatabaseItem</Filter>
     </ClInclude>
+    <ClInclude Include="MotionControlQrc.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\ModbusSetWidget.h">
@@ -169,5 +177,6 @@
     <CustomBuild Include="Pages\ConsumablesWidget.h">
       <Filter>Pages\DatabaseView\Consumables</Filter>
     </CustomBuild>
+    <CustomBuild Include="MotionControl.qrc" />
   </ItemGroup>
 </Project>

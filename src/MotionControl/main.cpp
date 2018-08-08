@@ -7,8 +7,10 @@
 #include "base/singleton/SingletonMaster.h"
 #include "Pages\SystemConfigModel.h"
 #include "Pages\SystemConfigWidget.h"
+#include "Pages\ConsumablesWidget.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
 #include "../Widget/WidgetQrc.h"
+#include "MotionControlQrc.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
@@ -21,6 +23,7 @@ int main(int argc, char *argv[]) {
   SingletonMaster::Activate();
 
   WidgetQrc widget_qrc;
+  MotionControlQrc motion_control_qrc;
 
   PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
   if (db_handler->InitialDatabaseAccess("E:\\MyJob\\MotionControl\\tools\\test.db", "123456")) {
@@ -30,6 +33,21 @@ int main(int argc, char *argv[]) {
   SystemConfigModel model;
   widget.setModel(&model);
   widget.show();
+
+  ConsumablesWidget cononsumables_widget;
+  QVector<QPair<QString, QString> > info;
+  info
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Left top A"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Left top B"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Left top C"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Left top D"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Right top A"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Right top B"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Right top C"))
+      << QPair<QString, QString>(":/Widget/resource/edit.png", QObject::tr("Right top D"));
+
+  cononsumables_widget.showConsumables(info);
+  cononsumables_widget.show();
 
   return app.exec();
 }

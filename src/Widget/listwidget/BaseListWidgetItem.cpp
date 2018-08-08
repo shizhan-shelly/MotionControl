@@ -8,7 +8,7 @@
 
 namespace widget {
 
-static const QString SELECT_FLAG = ":/imagewidget/resource/edit.png";
+static const QString SELECT_FLAG = ":/Widget/resource/edit.png";
 
 BaseListWidgetItem::BaseListWidgetItem(QListWidget *parent)
     : QListWidgetItem(parent) {}

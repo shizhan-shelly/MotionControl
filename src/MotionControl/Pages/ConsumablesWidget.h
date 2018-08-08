@@ -24,8 +24,8 @@ class ConsumablesWidget : public ::widget::BaseWidget {
   void showConsumables(const QVector<QPair<QString, QString> > &onsumables);
 
  private:
-  Ui::ConsumablesWidgetForm *ui_;
   QList<widget::BaseListWidgetItem *> icon_items_;
+  Ui::ConsumablesWidgetForm *ui_;
 
   void clearAll();
 
