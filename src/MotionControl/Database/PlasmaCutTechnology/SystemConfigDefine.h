@@ -17,7 +17,7 @@ typedef enum _SystemConfigFilter {
   GasBoxModel,
   TorchModel,
   Version,
-  CuttingChartID,
+  CutChartID,
   SelectedRecord,
 
 } SystemConfigFilter;

@@ -36,7 +36,7 @@ std::vector<std::map<SystemConfigFilter, std::string> >
     item[GasBoxModel] = sql_query_.GetStringValue(3);
     item[TorchModel] = sql_query_.GetStringValue(4);
     item[Version] = sql_query_.GetStringValue(5);
-    item[CuttingChartID] = sql_query_.GetStringValue(0);
+    item[CutChartID] = sql_query_.GetStringValue(0);
     item[SelectedRecord] = sql_query_.GetStringValue(6);
     items.push_back(item);
   }

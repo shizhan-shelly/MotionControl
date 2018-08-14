@@ -148,6 +148,12 @@
       <Filter>Pages\DatabaseItem</Filter>
     </ClInclude>
     <ClInclude Include="MotionControlQrc.h" />
+    <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h">
+      <Filter>Database\PlasmaCutTechnology</Filter>
+    </ClInclude>
+    <ClInclude Include="Pages\ConsumablesMap.h">
+      <Filter>Pages\DatabaseView\Consumables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\ModbusSetWidget.h">
