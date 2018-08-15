@@ -48,6 +48,9 @@
     <Filter Include="Pages\DatabaseView\Consumables">
       <UniqueIdentifier>{6e97c464-cfbf-4240-86ae-803ac988dce1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Database\PlasmaCutTechnology\Sync">
+      <UniqueIdentifier>{678494b7-de60-4133-a85f-1f9f5048a198}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -127,6 +130,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_MotionControl.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -153,6 +159,21 @@
     </ClInclude>
     <ClInclude Include="Pages\ConsumablesMap.h">
       <Filter>Pages\DatabaseView\Consumables</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\SyncHandler.h">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\DatabaseSync.h">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\THCSyncHandler.h">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\CNCSyncHandler.h">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\PowerSyncHandler.h">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

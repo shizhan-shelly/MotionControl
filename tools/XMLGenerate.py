@@ -3,7 +3,7 @@
 import sys, xlrd
 from xml.dom.minidom import Document
 
-xls_file_name = "Hypertherm-HPR.xlsx"
+xls_file_name = sys.argv[1]
 work_book = xlrd.open_workbook(xls_file_name)
 config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
@@ -86,6 +86,6 @@ for row in range (data_start_row - 1, cut_chart_sheet.nrows):
       record.setAttribute(name, "%d" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
 
 
-xml_file = open('HPR.xml','w')
+xml_file = open(sys.argv[2],'w')
 doc.writexml(xml_file, indent = '',newl = '\n', addindent = '  ',encoding='utf-8')
 xml_file.close()
