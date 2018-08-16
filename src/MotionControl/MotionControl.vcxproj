@@ -56,6 +56,7 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_MotionControl.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp" />
+    <ClCompile Include="Database\PlasmaCutTechnology\SyncHandler.cpp" />
     <ClCompile Include="Database\SQLiteAccess.cpp" />
     <ClCompile Include="Database\SQLiteCommand.cpp" />
     <ClCompile Include="Database\SQLiteQuery.cpp" />
@@ -77,14 +78,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Database\PlasmaCutTechnology\CNCSyncHandler.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\DatabaseSync.h" />
-    <ClInclude Include="Database\PlasmaCutTechnology\PowerSyncHandler.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\SyncHandler.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\SystemConfigDefine.h" />
-    <ClInclude Include="Database\PlasmaCutTechnology\THCSyncHandler.h" />
     <ClInclude Include="Database\SQLiteAccess.h" />
     <ClInclude Include="Database\SQLiteCommand.h" />
     <ClInclude Include="Database\SQLiteQuery.h" />

@@ -133,6 +133,9 @@
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp">
       <Filter>Database\PlasmaCutTechnology\Sync</Filter>
     </ClCompile>
+    <ClCompile Include="Database\PlasmaCutTechnology\SyncHandler.cpp">
+      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -164,15 +167,6 @@
       <Filter>Database\PlasmaCutTechnology\Sync</Filter>
     </ClInclude>
     <ClInclude Include="Database\PlasmaCutTechnology\DatabaseSync.h">
-      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
-    </ClInclude>
-    <ClInclude Include="Database\PlasmaCutTechnology\THCSyncHandler.h">
-      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
-    </ClInclude>
-    <ClInclude Include="Database\PlasmaCutTechnology\CNCSyncHandler.h">
-      <Filter>Database\PlasmaCutTechnology\Sync</Filter>
-    </ClInclude>
-    <ClInclude Include="Database\PlasmaCutTechnology\PowerSyncHandler.h">
       <Filter>Database\PlasmaCutTechnology\Sync</Filter>
     </ClInclude>
   </ItemGroup>
