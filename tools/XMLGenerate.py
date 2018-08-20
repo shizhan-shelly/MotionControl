@@ -81,7 +81,7 @@ for row in range (data_start_row - 1, cut_chart_sheet.nrows):
     if data_type[name] == "TEXT":
       record.setAttribute(name, "%s" % cut_chart_sheet.cell_value(row, column[name]))
     elif data_type[name] == "FLOAT":
-      record.setAttribute(name, "%.2f" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
+      record.setAttribute(name, "%.3f" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
     elif data_type[name] == "INT":
       record.setAttribute(name, "%d" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
 

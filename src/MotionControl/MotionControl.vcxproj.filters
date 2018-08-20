@@ -4,11 +4,6 @@
     <Filter Include="Database">
       <UniqueIdentifier>{287aad6d-18e6-4df7-ab73-ed06f7ab03e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Controller">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h</Extensions>
-      <ParseFiles>true</ParseFiles>
-    </Filter>
     <Filter Include="Pages">
       <UniqueIdentifier>{aceb13bb-4552-4262-8b4b-67417500ea51}</UniqueIdentifier>
     </Filter>
@@ -50,6 +45,18 @@
     </Filter>
     <Filter Include="Database\PlasmaCutTechnology\Sync">
       <UniqueIdentifier>{678494b7-de60-4133-a85f-1f9f5048a198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communication">
+      <UniqueIdentifier>{6a86e06d-5aaf-48d3-b50e-156a10bd9559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communication\Modbus">
+      <UniqueIdentifier>{85a89271-78c6-4db9-977e-abaa8cf0c6b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communication\Modbus\Server">
+      <UniqueIdentifier>{e1306303-bf1e-4bb4-afb8-8ccf3a67acab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communication\Modbus\Client">
+      <UniqueIdentifier>{8c1ef258-2d42-424f-b677-2047c6288abd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +143,9 @@
     <ClCompile Include="Database\PlasmaCutTechnology\SyncHandler.cpp">
       <Filter>Database\PlasmaCutTechnology\Sync</Filter>
     </ClCompile>
+    <ClCompile Include="Communication\Modbus\SlaveServer.cpp">
+      <Filter>Communication\Modbus\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -168,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="Database\PlasmaCutTechnology\DatabaseSync.h">
       <Filter>Database\PlasmaCutTechnology\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\SlaveServer.h">
+      <Filter>Communication\Modbus\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\ServerHandler.h">
+      <Filter>Communication\Modbus\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
