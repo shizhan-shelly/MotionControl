@@ -36,6 +36,9 @@
     <ClInclude Include="log\LogHandlerAdaptor.h">
       <Filter>Log</Filter>
     </ClInclude>
+    <ClInclude Include="utility\ftr.h">
+      <Filter>utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Singleton">
@@ -46,6 +49,9 @@
     </Filter>
     <Filter Include="Log">
       <UniqueIdentifier>{f7e9e729-b359-465f-bdd8-45a33a3123df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{9dda642a-79e7-482b-8d4d-da5c978f04ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
