@@ -5,8 +5,8 @@ import os
 import re
 import sys
 
-def ParseDisplayName(str):
-  pattern = re.compile(r'__DisplayName\s*=\s*"(.*?)"')
+def ParseDisplayText(str, context):
+  pattern = re.compile(r'{0}="(.*?)"'.format(context))
   splits = pattern.findall(str)
   raw_strings = []
   for s in splits:
@@ -16,7 +16,7 @@ def ParseDisplayName(str):
   return raw_strings
 
 def ParseTR(str, context):
-  pattern = re.compile(r'QT_TRANSLATE_NOOP\("%s"\s*,\s*"(.*?)"\)' % context)
+  pattern = re.compile(r'QT_TRANSLATE_NOOP\({0}\s*,\s*"(.*?)"\)'.format(context))
   splits = pattern.findall(str)
   raw_strings = []
   for s in splits:
@@ -36,37 +36,65 @@ def ProcessOrigin(origin_file, context):
   except Exception as e:
     print(e)
     print('Origin file something wrong!')
-    sys.exit(1);
+    sys.exit(1)
 
-  print(raw_strings)
   return raw_strings
 
+def ParseFile(file):
+  raw_strings = []
+  with open(file, 'r') as xml:
+    for line in xml:
+      name_text = ParseDisplayText(line, 'NameText')
+      display_name = ParseDisplayText(line, 'DisplayName')
+      raw_strings += name_text
+      raw_strings += display_name
+
+  return raw_strings
+
+def Process(path):
+  '''
+     This function will enum all the files under path and use ParseFile to process it.
+  '''
+  raw_strings = []
+  try:
+    files = glob.glob(os.path.join(path, '*{0}'.format(".xml")))
+    for file in files:
+      rs = ParseFile(file)
+      raw_strings += rs
+
+  except Exception as e:
+    print(e)
+    print('Something wrong!')
+    sys.exit(1)
+
+  return raw_strings
 
 '''
    Usage:
-   argv[0]: xml-string
-   argv[1]: scan path
-   argv[2]: output file
+   argv[0]: xml-trans
+   argv[1]: vendor's name
+   argv[2]: destination translation file
+   argv[3]: scan path
 '''
 if __name__ == '__main__':
   if len(sys.argv) != 4:
-    print('Usage example: xml-string.py Hypertherm translate.cpp HPR.xml')
+    print('Usage example: xml-trans.py Hypertherm translate.cpp ./')
     sys.exit(1)
 
   vendor = sys.argv[1]
   trans_file = sys.argv[2]
-  xml_file = sys.argv[3]
+  scan_path = sys.argv[3]
 
   ''' Read from translate file. '''
-  if (os.path.exists(trans_file) == False):
-    print('Origin file cannot found!')
+  if (not os.path.exists(trans_file)):
+    print('Origin file is not exist!')
     sys.exit(1)
 
   origin = ProcessOrigin(trans_file, vendor)
 
   ''' Process xml file. '''
-  #strings = Process()
-  #non_duped = set(string)
+  strings = Process(scan_path)
+  non_duped = set(strings)
 
   with open(trans_file, 'w', encoding="utf-8") as out:
     out.write('''// Copyright 2017 Fangling Software Co., Ltd. All Rights Reserved.
@@ -88,13 +116,11 @@ static const char *QT_TRANSLATION_STRINGS[] = {
       out.write(r'  QT_TRANSLATE_NOOP("{0}", "{1}"),'.format(vendor, str))
       out.write('\n')
 
-    #for str in non_duped:
-     # if str not in origin:
-      #  out.write('    <message>\n')
-      #  out.write('        <source>{0}</source>\n'.format(str))
-      #  out.write('        <translation type="unfinished"></translation>\n')
-      #  out.write('    </message>\n')
-    #  else:
-      #  print("Exist: {0}".format(str))
+    for str in non_duped:
+      if str not in origin:
+        out.write(r'  QT_TRANSLATE_NOOP("{0}", "{1}"),'.format(vendor, str))
+        out.write('\n')
+      else:
+        print("Exist: {0}".format(str))
 
     out.write('\n};\n')
