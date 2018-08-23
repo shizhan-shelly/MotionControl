@@ -26,7 +26,7 @@ SlaveServer::~SlaveServer() {
 
 void SlaveServer::SetServerHandler(ServerHandler *handler) {
   assert(handler);
-  if (handler) {
+  if (handler->Initialize()) {
     handler_ = handler;
   }
 }

@@ -54,6 +54,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_MotionControl.cpp" />
+    <ClCompile Include="Communication\Modbus\ServerHandler.cpp" />
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp" />
@@ -79,6 +80,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Communication\Modbus\DeviceModel.h" />
+    <ClInclude Include="Communication\Modbus\ModbusMappingDef.h" />
     <ClInclude Include="Communication\Modbus\ServerHandler.h" />
     <ClInclude Include="Communication\Modbus\SlaveServer.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />

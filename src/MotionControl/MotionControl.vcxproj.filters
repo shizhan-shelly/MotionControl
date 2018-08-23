@@ -146,6 +146,9 @@
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp">
       <Filter>Communication\Modbus\Server</Filter>
     </ClCompile>
+    <ClCompile Include="Communication\Modbus\ServerHandler.cpp">
+      <Filter>Communication\Modbus\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -184,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="Communication\Modbus\ServerHandler.h">
       <Filter>Communication\Modbus\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\ModbusMappingDef.h">
+      <Filter>Communication\Modbus</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\DeviceModel.h">
+      <Filter>Communication\Modbus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
