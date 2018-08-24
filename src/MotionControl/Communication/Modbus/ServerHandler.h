@@ -6,6 +6,7 @@
 
 typedef struct _modbus modbus_t;
 
+struct _modbus_mapping_t;
 typedef struct _modbus_mapping_t modbus_mapping_t;
 
 /**
@@ -39,7 +40,7 @@ class ServerHandler {
   modbus_mapping_t *GetModbusMapping() const;
 
  private:
-  // ServerHandler  will maintain this pointer.
+  // ServerHandler will maintain this pointer.
   modbus_mapping_t *mb_mapping_;
 
   bool AllocateMapping();

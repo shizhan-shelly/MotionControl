@@ -5,9 +5,8 @@
 
 #include <assert.h>
 
-#include "ServerHandler.h"
-
 #include "../../../Modbus/modbus.h"
+#include "ServerHandler.h"
 
 SlaveServer::SlaveServer() : Runnable()
                            , ctx_(NULL)

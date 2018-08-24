@@ -30,10 +30,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\qrc_MotionControl.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeader>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ConsumablesWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -53,7 +50,13 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_SystemConfigWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_MotionControl.cpp" />
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_MotionControl.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Communication\Modbus\ClientHandler.cpp" />
+    <ClCompile Include="Communication\Modbus\MasterClient.cpp" />
+    <ClCompile Include="Communication\Modbus\ModbusRTUClient.cpp" />
+    <ClCompile Include="Communication\Modbus\ModbusTCPClient.cpp" />
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp" />
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp" />
@@ -80,8 +83,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Communication\Modbus\ClientHandler.h" />
     <ClInclude Include="Communication\Modbus\DeviceModel.h" />
+    <ClInclude Include="Communication\Modbus\MasterClient.h" />
     <ClInclude Include="Communication\Modbus\ModbusMappingDef.h" />
+    <ClInclude Include="Communication\Modbus\ModbusRTUClient.h" />
+    <ClInclude Include="Communication\Modbus\ModbusTCPClient.h" />
     <ClInclude Include="Communication\Modbus\ServerHandler.h" />
     <ClInclude Include="Communication\Modbus\SlaveServer.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />
@@ -257,7 +264,7 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;$(OPENSSLDIR)\lib;$(SolutionDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;QtCored4.lib;QtGuid4.lib;QtNetworkd4.lib;libeay32.lib;Sqlcipherd.lib;Widgetd.lib;Based.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;QtCored4.lib;QtGuid4.lib;QtNetworkd4.lib;libeay32.lib;Sqlcipherd.lib;Modbusd.lib;Widgetd.lib;Based.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -274,7 +281,7 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;$(OPENSSLDIR)\lib;$(SolutionDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;QtCore4.lib;QtGui4.lib;QtNetwork4.lib;libeay32.lib;Sqlcipher.lib;Widget.lib;Base.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmain.lib;QtCore4.lib;QtGui4.lib;QtNetwork4.lib;libeay32.lib;Sqlcipher.lib;Modbus.lib;Widget.lib;Base.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,9 +6,10 @@
 
 class Runnable {
  public:
-  virtual ~Runnable();
+   virtual ~Runnable() {}
 
   virtual void Run() = 0;
+
 };
 
 #endif // BASE_RUNNABLE_H__

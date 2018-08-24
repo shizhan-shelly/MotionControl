@@ -149,6 +149,18 @@
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp">
       <Filter>Communication\Modbus\Server</Filter>
     </ClCompile>
+    <ClCompile Include="Communication\Modbus\MasterClient.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Communication\Modbus\ClientHandler.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Communication\Modbus\ModbusRTUClient.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Communication\Modbus\ModbusTCPClient.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -193,6 +205,18 @@
     </ClInclude>
     <ClInclude Include="Communication\Modbus\DeviceModel.h">
       <Filter>Communication\Modbus</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\MasterClient.h">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\ClientHandler.h">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\ModbusRTUClient.h">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\ModbusTCPClient.h">
+      <Filter>Communication\Modbus\Client</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

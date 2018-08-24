@@ -82,3 +82,34 @@ int ServerHandler::ParseQuery(modbus_t *ctx, unsigned char *query) {
   return 0;
 }
 
+int ServerHandler::ReadCoil(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::WriteSingleCoil(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::WriteMultipleCoil(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::ReadInputBit(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::ReadInputRegister(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::ReadRegister(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::WriteSingleRegister(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
+
+int ServerHandler::WriteMultipleRegister(modbus_t *ctx, unsigned char *query) {
+  return 1;
+}
