@@ -35,7 +35,7 @@ typedef enum _SlaveDeviceModel {
   Slave_F2600T = 0x00702073,
   Slave_F1628 = 0x01005028,
   Slave_F1650 = 0x01005030,
-  Slave_LH270 = 0x01012001,
+  Slave_LH270A = 0x01012001,
 
 } SlaveDeviceModel;
 

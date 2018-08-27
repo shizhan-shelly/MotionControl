@@ -17,6 +17,8 @@ class MasterClient : public Runnable {
 
   void SetMasterClientHandler(ClientHandler *handler);
 
+  void SetupConnect();
+
   virtual void Run();
 
  protected:
