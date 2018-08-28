@@ -45,6 +45,7 @@ const unsigned short STEEL_PLATE_HEIGHT      = INPUT_REGISTERS_ADDRESS + 30;
 const unsigned short REGISTERS_ADDRESS = 0x0;
 const unsigned short REGISTERS_NB = 0x1F72;
 
+const unsigned short CONNECT_TEST                      = REGISTERS_ADDRESS + 0;
 const unsigned short SERVO_POS_CHECK_DELAY             = REGISTERS_ADDRESS + 50;
 const unsigned short SERVO_POS_HS_DWN_DIS              = REGISTERS_ADDRESS + 52;
 const unsigned short SERVO_IGNITION_HEIGHT             = REGISTERS_ADDRESS + 54;
