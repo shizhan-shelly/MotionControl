@@ -6,14 +6,12 @@
 
 #include "../../../Base/Runnable.h"
 
-typedef struct _modbus modbus_t;
-
 class ClientHandler;
 
 class MasterClient : public Runnable {
  public:
   MasterClient();
-  virtual ~MasterClient();
+  ~MasterClient();
 
   void SetMasterClientHandler(ClientHandler *handler);
 
@@ -183,11 +181,6 @@ class MasterClient : public Runnable {
   bool GetCurPosition(double &cur_position);
   bool GetCurSpeed(double &cur_speed);
   bool GetSteelPlateHeight(double &steel_plate_height);
-
- protected:
-  virtual bool Connect() = 0;
-
-  modbus_t *ctx_;
 
  private:
   bool connected_;

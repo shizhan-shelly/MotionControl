@@ -6,9 +6,12 @@
 #include "ModbusMappingDef.h"
 #include "../../../Modbus/modbus.h"
 
-ClientHandler::ClientHandler() : mb_mapping_(NULL) {}
+ClientHandler::ClientHandler() : ctx_(NULL)
+                               , mb_mapping_(NULL) {}
 
 ClientHandler::~ClientHandler() {
+  modbus_close(ctx_);
+  modbus_free(ctx_);
   modbus_mapping_free(mb_mapping_);
 }
 
@@ -48,13 +51,13 @@ void ClientHandler::InitialMapping() {
   }
 }
 
-bool ClientHandler::ReadInputBit(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadInputBit(unsigned short address,
                                  bool &status, bool sync,
                                  int (*callback)(modbus_t *)) {
 
   // function code: 02H.
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_input_bits(ctx, address, 1,
+  int rc = modbus_read_input_bits(ctx_, address, 1,
       mb_mapping_->tab_input_bits + address);
 
   if (rc == 1) {
@@ -63,13 +66,13 @@ bool ClientHandler::ReadInputBit(modbus_t *ctx, unsigned short address,
   return rc == 1;
 }
 
-bool ClientHandler::ReadUint32InputRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadUint32InputRegister(unsigned short address,
                                             unsigned int &value, bool sync,
                                             int (*callback)(modbus_t *)) {
 
   // Function code: 0x04
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_input_registers(ctx, address, 2,
+  int rc = modbus_read_input_registers(ctx_, address, 2,
       mb_mapping_->tab_input_registers + address);
 
   if (rc == 2) {
@@ -80,13 +83,13 @@ bool ClientHandler::ReadUint32InputRegister(modbus_t *ctx, unsigned short addres
   return rc == 2;
 }
 
-bool ClientHandler::ReadFloatInputRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadFloatInputRegister(unsigned short address,
                                            float &value, bool sync,
                                            int (*callback)(modbus_t *)) {
 
   // Function code: 0x04
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_input_registers(ctx, address, 2,
+  int rc = modbus_read_input_registers(ctx_, address, 2,
       mb_mapping_->tab_input_registers + address);
 
   if (rc == 2) {
@@ -95,13 +98,13 @@ bool ClientHandler::ReadFloatInputRegister(modbus_t *ctx, unsigned short address
   return rc == 2;
 }
 
-bool ClientHandler::ReadDoubleInputRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadDoubleInputRegister(unsigned short address,
                                             double &value, bool sync,
                                             int (*callback)(modbus_t *)) {
 
   // Function code: 0x04H
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_input_registers(ctx, address, 4,
+  int rc = modbus_read_input_registers(ctx_, address, 4,
       mb_mapping_->tab_input_registers + address);
 
   if (rc == 4) {
@@ -110,16 +113,16 @@ bool ClientHandler::ReadDoubleInputRegister(modbus_t *ctx, unsigned short addres
   return rc == 4;
 }
 
-bool ClientHandler::WriteSingleCoil(modbus_t *ctx, unsigned short address,
+bool ClientHandler::WriteSingleCoil(unsigned short address,
                                     bool status, bool sync,
                                     int (*callback)(modbus_t *)) {
 
   // One coil has been set ON or OFF. function code: 05H.
   //MutexLocker locker(&mutex_);
-  return modbus_write_bit(ctx, address, status ? 1 : 0) == 1;
+  return modbus_write_bit(ctx_, address, status ? 1 : 0) == 1;
 }
 
-bool ClientHandler::WriteUint32Register(modbus_t *ctx, unsigned short address,
+bool ClientHandler::WriteUint32Register(unsigned short address,
                                         unsigned int value, bool sync,
                                         int (*callback)(modbus_t *)) {
 
@@ -127,42 +130,42 @@ bool ClientHandler::WriteUint32Register(modbus_t *ctx, unsigned short address,
   //MutexLocker locker(&mutex_);
   mb_mapping_->tab_registers[address] = value & 0xFFFF;
   mb_mapping_->tab_registers[address + 1] = value >> 16;
-  return modbus_write_registers(ctx, address, 2,
+  return modbus_write_registers(ctx_, address, 2,
       mb_mapping_->tab_registers + address) == 2;
 
 }
 
-bool ClientHandler::WriteFloatRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::WriteFloatRegister(unsigned short address,
                                        float value, bool sync,
                                        int (*callback)(modbus_t *)) {
 
   // Several registers should be set preset data. function code: 10H.
   //MutexLocker locker(&mutex_);
   modbus_set_float(value, mb_mapping_->tab_registers + address);
-  return modbus_write_registers(ctx, address, 2,
+  return modbus_write_registers(ctx_, address, 2,
       mb_mapping_->tab_registers + address) == 2;
 
 }
 
-bool ClientHandler::WriteDoubleRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::WriteDoubleRegister(unsigned short address,
                                         double value, bool sync,
                                         int (*callback)(modbus_t *)) {
 
   // Several registers should be set preset data. function code: 10H.
   //MutexLocker locker(&mutex_);
   memcpy(mb_mapping_->tab_registers + address, &value, 4 * sizeof(unsigned short));
-  return modbus_write_registers(ctx, address, 4,
+  return modbus_write_registers(ctx_, address, 4,
       mb_mapping_->tab_registers + address) == 4;
 
 }
 
-bool ClientHandler::ReadCoil(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadCoil(unsigned short address,
                              bool &status, bool sync,
                              int (*callback)(modbus_t *)) {
 
   // function code: 01H.
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_bits(ctx, address, 1,
+  int rc = modbus_read_bits(ctx_, address, 1,
       mb_mapping_->tab_bits + address);
 
   if (rc == 1) {
@@ -171,13 +174,13 @@ bool ClientHandler::ReadCoil(modbus_t *ctx, unsigned short address,
   return rc == 1;
 }
 
-bool ClientHandler::ReadUint32Register(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadUint32Register(unsigned short address,
                                        unsigned int &value, bool sync,
                                        int (*callback)(modbus_t *)) {
 
   // Read several registers. function code: 03H.
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_registers(ctx, address, 2,
+  int rc = modbus_read_registers(ctx_, address, 2,
       mb_mapping_->tab_registers + address);
 
   if (rc == 2) {
@@ -188,13 +191,13 @@ bool ClientHandler::ReadUint32Register(modbus_t *ctx, unsigned short address,
   return rc == 2;
 }
 
-bool ClientHandler::ReadFloatRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadFloatRegister(unsigned short address,
                                       float &value, bool sync,
                                       int (*callback)(modbus_t *)) {
 
   // Read several registers. function code: 03H.
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_registers(ctx, address, 2,
+  int rc = modbus_read_registers(ctx_, address, 2,
       mb_mapping_->tab_registers + address);
 
   if (rc == 2) {
@@ -203,13 +206,13 @@ bool ClientHandler::ReadFloatRegister(modbus_t *ctx, unsigned short address,
   return rc == 2;
 }
 
-bool ClientHandler::ReadDoubleRegister(modbus_t *ctx, unsigned short address,
+bool ClientHandler::ReadDoubleRegister(unsigned short address,
                                        double &value, bool sync,
                                        int (*callback)(modbus_t *)) {
 
   // Read several registers. function code: 03H.
   //MutexLocker locker(&mutex_);
-  int rc = modbus_read_registers(ctx, address, 4,
+  int rc = modbus_read_registers(ctx_, address, 4,
       mb_mapping_->tab_registers + address);
 
   if (rc == 4) {

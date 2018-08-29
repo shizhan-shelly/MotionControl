@@ -26,22 +26,27 @@ typedef struct _modbus_mapping_t modbus_mapping_t;
 class ClientHandler {
  public:
   ClientHandler();
-  ~ClientHandler();
+  virtual ~ClientHandler();
+
+  virtual bool Connect() = 0;
 
   bool Initialize();
 
-  bool ReadInputBit(modbus_t *ctx, unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadUint32InputRegister(modbus_t *ctx, unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadFloatInputRegister(modbus_t *ctx, unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadDoubleInputRegister(modbus_t *ctx, unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool WriteSingleCoil(modbus_t *ctx, unsigned short address, bool status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool WriteUint32Register(modbus_t *ctx, unsigned short address, unsigned int value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool WriteFloatRegister(modbus_t *ctx, unsigned short address, float value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool WriteDoubleRegister(modbus_t *ctx, unsigned short address, double value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadCoil(modbus_t *ctx, unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadUint32Register(modbus_t *ctx, unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadFloatRegister(modbus_t *ctx, unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
-  bool ReadDoubleRegister(modbus_t *ctx, unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadInputBit(unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadUint32InputRegister(unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadFloatInputRegister(unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadDoubleInputRegister(unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool WriteSingleCoil(unsigned short address, bool status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool WriteUint32Register(unsigned short address, unsigned int value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool WriteFloatRegister(unsigned short address, float value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool WriteDoubleRegister(unsigned short address, double value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadCoil(unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadUint32Register(unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadFloatRegister(unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadDoubleRegister(unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+
+ protected:
+  modbus_t *ctx_;
 
  private:
   // ClientHandler will maintain this pointer.

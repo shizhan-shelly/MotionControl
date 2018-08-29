@@ -55,8 +55,8 @@
     </ClCompile>
     <ClCompile Include="Communication\Modbus\ClientHandler.cpp" />
     <ClCompile Include="Communication\Modbus\MasterClient.cpp" />
-    <ClCompile Include="Communication\Modbus\ModbusRTUClient.cpp" />
-    <ClCompile Include="Communication\Modbus\ModbusTCPClient.cpp" />
+    <ClCompile Include="Communication\Modbus\RTUClientHandler.cpp" />
+    <ClCompile Include="Communication\Modbus\TCPClientHandler.cpp" />
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp" />
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp" />
     <ClCompile Include="Cutter.cpp" />
@@ -88,8 +88,8 @@
     <ClInclude Include="Communication\Modbus\DeviceModel.h" />
     <ClInclude Include="Communication\Modbus\MasterClient.h" />
     <ClInclude Include="Communication\Modbus\ModbusMappingDef.h" />
-    <ClInclude Include="Communication\Modbus\ModbusRTUClient.h" />
-    <ClInclude Include="Communication\Modbus\ModbusTCPClient.h" />
+    <ClInclude Include="Communication\Modbus\RTUClientHandler.h" />
+    <ClInclude Include="Communication\Modbus\TCPClientHandler.h" />
     <ClInclude Include="Communication\Modbus\ServerHandler.h" />
     <ClInclude Include="Communication\Modbus\SlaveServer.h" />
     <ClInclude Include="Cutter.h" />

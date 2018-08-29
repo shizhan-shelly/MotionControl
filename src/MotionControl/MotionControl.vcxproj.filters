@@ -155,13 +155,13 @@
     <ClCompile Include="Communication\Modbus\ClientHandler.cpp">
       <Filter>Communication\Modbus\Client</Filter>
     </ClCompile>
-    <ClCompile Include="Communication\Modbus\ModbusRTUClient.cpp">
-      <Filter>Communication\Modbus\Client</Filter>
-    </ClCompile>
-    <ClCompile Include="Communication\Modbus\ModbusTCPClient.cpp">
-      <Filter>Communication\Modbus\Client</Filter>
-    </ClCompile>
     <ClCompile Include="Cutter.cpp" />
+    <ClCompile Include="Communication\Modbus\RTUClientHandler.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Communication\Modbus\TCPClientHandler.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -213,13 +213,13 @@
     <ClInclude Include="Communication\Modbus\ClientHandler.h">
       <Filter>Communication\Modbus\Client</Filter>
     </ClInclude>
-    <ClInclude Include="Communication\Modbus\ModbusRTUClient.h">
-      <Filter>Communication\Modbus\Client</Filter>
-    </ClInclude>
-    <ClInclude Include="Communication\Modbus\ModbusTCPClient.h">
-      <Filter>Communication\Modbus\Client</Filter>
-    </ClInclude>
     <ClInclude Include="Cutter.h" />
+    <ClInclude Include="Communication\Modbus\RTUClientHandler.h">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\TCPClientHandler.h">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\ModbusSetWidget.h">
