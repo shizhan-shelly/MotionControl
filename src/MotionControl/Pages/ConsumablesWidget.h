@@ -4,7 +4,7 @@
 #ifndef PAGES_CONSUMABLESWIDGET_H__
 #define PAGES_CONSUMABLESWIDGET_H__
 
-#include "../../Widget/basewidget/BaseWidget.h"
+#include "Widget/basewidget/BaseWidget.h"
 
 namespace Ui {
   class ConsumablesWidgetForm;
