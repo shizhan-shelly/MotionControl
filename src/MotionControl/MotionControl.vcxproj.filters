@@ -161,6 +161,7 @@
     <ClCompile Include="Communication\Modbus\ModbusTCPClient.cpp">
       <Filter>Communication\Modbus\Client</Filter>
     </ClCompile>
+    <ClCompile Include="Cutter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -218,6 +219,7 @@
     <ClInclude Include="Communication\Modbus\ModbusTCPClient.h">
       <Filter>Communication\Modbus\Client</Filter>
     </ClInclude>
+    <ClInclude Include="Cutter.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\ModbusSetWidget.h">
