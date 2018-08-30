@@ -26,10 +26,10 @@ void ModbusSetWidget::InitialWidget() {
   ui_->com_port_->addItems(com_port_list);
 
   QStringList baud_rate_list;
-  baud_rate_list << "9600" << "19200" << "15200";
+  baud_rate_list << "9600" << "19200" << "115200";
   ui_->baud_rate_->addItems(baud_rate_list);
 
   QStringList parity_list;
-  parity_list << "9600" << "19200" << "15200";
+  parity_list << "None" << "Odd" << "Even";
   ui_->parity_->addItems(parity_list);
 }
