@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ModbusSetWidgetForm</class>
- <widget class="QWidget" name="ModbusSetWidgetForm">
+ <class>ModbusRTUSetForm</class>
+ <widget class="QWidget" name="ModbusRTUSetForm">
   <property name="geometry">
    <rect>
     <x>0</x>

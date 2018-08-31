@@ -8,7 +8,7 @@
 #include "Pages\SystemConfigModel.h"
 #include "Pages\SystemConfigWidget.h"
 #include "Pages\ConsumablesWidget.h"
-#include "Pages/ModbusSetWidget.h"
+#include "Pages/ModbusRTUSet.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
 #include "../Widget/WidgetQrc.h"
 #include "MotionControlQrc.h"
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
   cononsumables_widget.showConsumables(info);
   cononsumables_widget.show();
 
-  ModbusSetWidget thc_set_widget;
+  ModbusRTUSet thc_set_widget;
   thc_set_widget.InitialWidget();
   thc_set_widget.show();
 

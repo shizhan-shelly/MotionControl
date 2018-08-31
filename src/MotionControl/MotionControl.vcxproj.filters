@@ -64,9 +64,6 @@
     <ClCompile Include="Database\SQLiteAccess.cpp">
       <Filter>Database</Filter>
     </ClCompile>
-    <ClCompile Include="Pages\ModbusSetWidget.cpp">
-      <Filter>Pages\ModbusSet</Filter>
-    </ClCompile>
     <ClCompile Include="Pages\SystemConfigModel.cpp">
       <Filter>Pages\DatabaseModel</Filter>
     </ClCompile>
@@ -74,12 +71,6 @@
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_SystemConfigModel.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ModbusSetWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ModbusSetWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_SystemConfigWidget.cpp">
@@ -162,6 +153,15 @@
     <ClCompile Include="Communication\Modbus\TCPClientHandler.cpp">
       <Filter>Communication\Modbus\Client</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ModbusRTUSet.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ModbusRTUSet.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\ModbusRTUSet.cpp">
+      <Filter>Pages\ModbusSet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -222,12 +222,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Pages\ModbusSetWidget.h">
-      <Filter>Pages\ModbusSet</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Pages\ModbusSetWidget.ui">
-      <Filter>Pages\ModbusSet</Filter>
-    </CustomBuild>
     <CustomBuild Include="Pages\SystemConfigModel.h">
       <Filter>Pages\DatabaseModel</Filter>
     </CustomBuild>
@@ -250,5 +244,11 @@
       <Filter>Pages\DatabaseView\Consumables</Filter>
     </CustomBuild>
     <CustomBuild Include="MotionControl.qrc" />
+    <CustomBuild Include="Pages\ModbusRTUSet.ui">
+      <Filter>Pages\ModbusSet</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\ModbusRTUSet.h">
+      <Filter>Pages\ModbusSet</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

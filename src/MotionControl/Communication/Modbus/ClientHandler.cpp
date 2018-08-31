@@ -10,9 +10,9 @@ ClientHandler::ClientHandler() : ctx_(NULL)
                                , mb_mapping_(NULL) {}
 
 ClientHandler::~ClientHandler() {
+  modbus_mapping_free(mb_mapping_);
   modbus_close(ctx_);
   modbus_free(ctx_);
-  modbus_mapping_free(mb_mapping_);
 }
 
 bool ClientHandler::Initialize() {
