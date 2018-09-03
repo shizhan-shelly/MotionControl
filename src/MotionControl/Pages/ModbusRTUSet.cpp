@@ -18,7 +18,7 @@ ModbusRTUSet::~ModbusRTUSet() {
 
 void ModbusRTUSet::InitialWidget() {
   QStringList device_model_list;
-  device_model_list << "F1650";
+  device_model_list << "F1650" << "LH270A";
   ui_->device_model_->addItems(device_model_list);
 
   QStringList com_port_list;

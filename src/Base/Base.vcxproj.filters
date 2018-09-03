@@ -39,6 +39,9 @@
     <ClInclude Include="utility\ftr.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="thread\Delay.h">
+      <Filter>thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Singleton">
@@ -53,6 +56,9 @@
     <Filter Include="utility">
       <UniqueIdentifier>{9dda642a-79e7-482b-8d4d-da5c978f04ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="thread\Internal">
+      <UniqueIdentifier>{e550d004-6a3f-4177-9598-cf7c9ef82f4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="singleton\Singleton.cpp">
@@ -64,17 +70,23 @@
     <ClCompile Include="singleton\SingletonSlave.cpp">
       <Filter>Singleton</Filter>
     </ClCompile>
-    <ClCompile Include="thread\Mutex_pthread.cpp">
-      <Filter>thread</Filter>
-    </ClCompile>
-    <ClCompile Include="thread\Mutex_Win32.cpp">
-      <Filter>thread</Filter>
-    </ClCompile>
     <ClCompile Include="log\Logger.cpp">
       <Filter>Log</Filter>
     </ClCompile>
     <ClCompile Include="log\LogHandlerAdaptor.cpp">
       <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Mutex_pthread.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Mutex_Win32.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Delay_Linux.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Delay_Win32.cpp">
+      <Filter>thread\Internal</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
