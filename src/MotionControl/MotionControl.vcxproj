@@ -66,6 +66,7 @@
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp" />
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp" />
     <ClCompile Include="Cutter.cpp" />
+    <ClCompile Include="Database\PlasmaCutTechnology\AliasTranslation.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\SyncHandler.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Communication\Modbus\ServerHandler.h" />
     <ClInclude Include="Communication\Modbus\SlaveServer.h" />
     <ClInclude Include="Cutter.h" />
+    <ClInclude Include="Database\PlasmaCutTechnology\AliasTranslation.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\DatabaseSync.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.h" />

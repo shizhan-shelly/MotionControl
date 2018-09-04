@@ -42,6 +42,9 @@
     <ClInclude Include="thread\Delay.h">
       <Filter>thread</Filter>
     </ClInclude>
+    <ClInclude Include="thread\Condition.h">
+      <Filter>thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Singleton">
@@ -86,6 +89,12 @@
       <Filter>thread\Internal</Filter>
     </ClCompile>
     <ClCompile Include="thread\Delay_Win32.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Condition_pthread.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Condition_Win32.cpp">
       <Filter>thread\Internal</Filter>
     </ClCompile>
   </ItemGroup>

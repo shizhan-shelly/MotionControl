@@ -171,6 +171,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ModbusTCPSet.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Database\PlasmaCutTechnology\AliasTranslation.cpp">
+      <Filter>Database\PlasmaCutTechnology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -228,6 +231,9 @@
     </ClInclude>
     <ClInclude Include="Communication\Modbus\TCPClientHandler.h">
       <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\PlasmaCutTechnology\AliasTranslation.h">
+      <Filter>Database\PlasmaCutTechnology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
