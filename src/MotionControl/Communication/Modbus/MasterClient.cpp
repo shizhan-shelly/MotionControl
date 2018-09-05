@@ -10,7 +10,7 @@
 
 MasterClient::MasterClient() : Runnable()
                              , connected_(false)
-                             , handler_(NULL) {}
+                             , handler_(nullptr) {}
 
 MasterClient::~MasterClient() {}
 

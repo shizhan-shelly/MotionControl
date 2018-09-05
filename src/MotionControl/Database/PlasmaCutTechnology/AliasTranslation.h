@@ -6,6 +6,8 @@
 
 #include "base/singleton/Singleton.h"
 
+#include <QtCore/QString.h>
+
 class AliasTranslation : public Singleton {
   DECLARE_SINGLETON(AliasTranslation)
 

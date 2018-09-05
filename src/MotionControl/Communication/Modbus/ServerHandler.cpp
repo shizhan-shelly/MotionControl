@@ -1,4 +1,4 @@
-// Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
+﻿// Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
 #include "ServerHandler.h"
@@ -82,34 +82,74 @@ int ServerHandler::ParseQuery(modbus_t *ctx, unsigned char *query) {
   return 0;
 }
 
-int ServerHandler::ReadCoil(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::ReadCoil(modbus_t *ctx, unsigned char *query) { // 0x
+  //  Read coil status. function code: 01H.
   return 1;
 }
 
-int ServerHandler::WriteSingleCoil(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::WriteSingleCoil(modbus_t *ctx, unsigned char *query) { // 0X
+  // One coil has been set ON or OFF. function code: 05H.
+  int modbus_header_length = modbus_get_header_length(ctx);
+  unsigned short coil_addr = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 1);
+  unsigned short coil_status = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 3);
+
+  bool old_status = mb_mapping_->tab_bits[coil_addr];
+  bool new_status = coil_status != 0;
+  ExecuteControllerCommand(coil_addr, old_status, new_status);
   return 1;
 }
 
-int ServerHandler::WriteMultipleCoil(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::WriteMultipleCoil(modbus_t *ctx, unsigned char *query) { // 0X
+  // Several coils have been set ON or OFF. function code: 0FH.
+  // TODO(zhan shi): Implement to write multiple coils.
   return 1;
 }
 
-int ServerHandler::ReadInputBit(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::ReadInputBit(modbus_t *ctx, unsigned char *query) { // 1X
+  // function code: 02H.
+  int modbus_header_length = modbus_get_header_length(ctx);
+  unsigned short start_addr = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 1);
+  unsigned short bit_no = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 3);
+  // TODO(zhan shi): set the value of mb_mapping_->tab_input_bits[start_addr]
   return 1;
 }
 
-int ServerHandler::ReadInputRegister(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::ReadInputRegister(modbus_t *ctx, unsigned char *query) { // 3X
+  // function code: 04H.
+  int modbus_header_length = modbus_get_header_length(ctx);
+  unsigned short start_addr = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 1);
+  unsigned short register_no = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 3);
+  // TODO(zhan shi): set the value of mb_mapping_->tab_input_registers[]
   return 1;
 }
 
-int ServerHandler::ReadRegister(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::ReadRegister(modbus_t *ctx, unsigned char *query) { // 4X
+  // function code: 03H.
+  int modbus_header_length = modbus_get_header_length(ctx);
+  unsigned short start_addr = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 1);
+  unsigned short register_no = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 3);
+  // TODO(zhan shi): set the value of mb_mapping_->tab_registers[]
   return 1;
 }
 
-int ServerHandler::WriteSingleRegister(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::WriteSingleRegister(modbus_t *ctx, unsigned char *query) { // 4X
+  // One register should be set a preset data. function code: 06H.
+  // TODO(zhan shi):
+  // Each value will be a data with 16 bits, which needs 2 bytes buffer space.
   return 1;
 }
 
-int ServerHandler::WriteMultipleRegister(modbus_t *ctx, unsigned char *query) {
+int ServerHandler::WriteMultipleRegister(modbus_t *ctx, unsigned char *query) { // 4X
+  // Several registers should be set preset data. function code: 10H.
+  // TODO(zhan shi):
+  // Each value will be a data with 32 bits, which needs 4 bytes buffer space.
+  int modbus_header_length = modbus_get_header_length(ctx);
+  unsigned short start_addr = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 1);
+  unsigned short register_no = MODBUS_GET_INT16_FROM_INT8(query, modbus_header_length + 3);
+  unsigned char byte_count = query[modbus_header_length + 5];
   return 1;
+}
+
+void ServerHandler::ExecuteControllerCommand(unsigned short device_address,
+    bool old_status, bool new_status) {
 }
