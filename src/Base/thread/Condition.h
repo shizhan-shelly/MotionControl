@@ -20,7 +20,7 @@ class Condition {
   ~Condition();
 
   void Wake();
-  bool Wait(Mutex *mutex);
+  void Wait(Mutex *mutex);
   bool Wait(Mutex *mutex, size_t timeout); // Milliseconds, 0 for infinite.
 
  private:
