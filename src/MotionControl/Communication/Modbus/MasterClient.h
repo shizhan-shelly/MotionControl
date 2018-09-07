@@ -4,7 +4,10 @@
 #ifndef MODBUS_MASTERCLIENT_H__
 #define MODBUS_MASTERCLIENT_H__
 
-#include "../../../Base/Runnable.h"
+#include <map>
+
+#include "Base/Runnable.h"
+#include "MotionControl/Communication/modbus/DeviceModel.h"
 
 class ClientHandler;
 
@@ -13,11 +16,12 @@ class MasterClient : public Runnable {
   MasterClient();
   ~MasterClient();
 
-  void SetMasterClientHandler(ClientHandler *handler);
+  void RegisterClientHandler(DeviceModel device_model,
+      ClientHandler *handler);
 
   virtual void Run();
 
-  bool SetupConnect();
+  bool SetupConnect(DeviceModel device_model);
 
   // Coil.(0X)
   bool DirectlyArc(bool status);
@@ -183,8 +187,7 @@ class MasterClient : public Runnable {
   bool GetSteelPlateHeight(double &steel_plate_height);
 
  private:
-  bool connected_;
-  ClientHandler *handler_;
+  std::map<DeviceModel, ClientHandler *> handlers_;
 
   bool ConnectTest();
 

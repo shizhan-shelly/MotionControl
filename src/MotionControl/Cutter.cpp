@@ -5,7 +5,7 @@
 
 #include "MotionControl/Communication/Modbus/RTUClientHandler.h"
 
-Cutter::Cutter() : client_handler_(NULL) {}
+Cutter::Cutter() {}
 
 Cutter::~Cutter() {}
 
@@ -14,11 +14,7 @@ MasterClient *Cutter::modbus_client() {
 }
 
 bool Cutter::StartupModbusClient() {
-  if (client_handler_) {
-    delete client_handler_;
-    client_handler_ = NULL;
-  }
-  client_handler_ = new RTUClientHandler("COM1", 19200, 'E', 8, 1, 1);
-  modbus_client_.SetMasterClientHandler(client_handler_);
-  return modbus_client_.SetupConnect();
+  ClientHandler *client_handler_ = new RTUClientHandler("COM1", 19200, 'E', 8, 1, 1);
+  modbus_client_.RegisterClientHandler(Slave_F1650, client_handler_);
+  return modbus_client_.SetupConnect(Slave_F1650);
 }

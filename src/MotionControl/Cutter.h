@@ -7,8 +7,6 @@
 #include "base/singleton/Singleton.h"
 #include "MotionControl/Communication/Modbus/MasterClient.h"
 
-class ClientHandler;
-
 class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)
 
@@ -21,7 +19,6 @@ class Cutter : public Singleton {
   Cutter();
   ~Cutter();
 
-  ClientHandler *client_handler_;
   MasterClient modbus_client_;
 
 }; //class Cutter
