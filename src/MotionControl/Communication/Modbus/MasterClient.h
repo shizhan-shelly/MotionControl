@@ -34,6 +34,11 @@ class MasterClient : public Runnable {
   bool ArcOnCheck(bool status);
   bool OutputCheck(bool status, unsigned short port_num);
 
+  // Input Bit.(1X)
+  bool GetArcVoltageFeedback(bool &status);
+  bool GetCollisionAlarm(bool &status);
+  bool GetPierceFinish(bool &status);
+
   // Register.(4X)
   bool GetServoTHCMode(unsigned int &thc_mode);
   bool SetServoTHCMode(unsigned int thc_mode);

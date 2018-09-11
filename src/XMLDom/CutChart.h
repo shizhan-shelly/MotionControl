@@ -67,17 +67,19 @@ class CutChart {
 
   std::string GetVendor() const;
 
-  // If the record existed, give a prompt that insert fialed.
-  // 根据关键字检查是否已经有这条记录了，如果有就报错，没有则插入。除关键字外的item按上一条记录复制其值。
-  // 第一个string是字段名，第二个string是字段值
+  // If this record existed, give a prompt that insert fialed,
+  // if not existed, insert the record.
+  // The first string is field name, the second is the value.
+  // After insert, current keyword field's value is the just inserted object's.
   bool InsertRecord(const std::map<std::string, std::string> &record);
-  // 删除当前选择的关键字对应的行记录
+  // Delete the record of current selected keyword
   bool DeleteRecord();
-  // 根据字段名，保存其对应的字段值。第一个string是字段名，第二个string是字段值。
+  // Update current record value.
+  // The first string is field name, the second is the value.
   bool UpdateRecord(const std::map<std::string, std::string> &record);
-  // 从备份文件中恢复界面中的值，恢复选中的一行的数据,
+  // Restore one selected record in user doc from backup xml file.
   bool RevertRecord();
-  // 保存切割表文件
+
   bool SaveCutChart();
 
  private:

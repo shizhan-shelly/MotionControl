@@ -98,6 +98,18 @@ bool MasterClient::OutputCheck(bool status, unsigned short port_num) {
 
 }
 
+bool MasterClient::GetArcVoltageFeedback(bool &status) {
+  return handler_->ReadInputBit(ARC_VOLTAGE_FEEDBACK, status);
+}
+
+bool MasterClient::GetCollisionAlarm(bool &status) {
+  return handler_->ReadInputBit(COLLISION_ALARM, status);
+}
+
+bool MasterClient::GetPierceFinish(bool &status) {
+  return handler_->ReadInputBit(PIERCE_FINISH, status);
+}
+
 bool MasterClient::GetServoTHCMode(unsigned int &thc_mode) {
   return handler->ReadUint32Register(SERVO_THC_MODE, thc_mode);
 }

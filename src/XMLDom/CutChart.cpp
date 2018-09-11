@@ -229,6 +229,11 @@ bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {
     new_element.setAttribute(iter->first.c_str(), iter->second.c_str());
     iter++;
   }
+  for (size_t i = 0; i < keyword_field_.size(); i++) {
+    keyword_field_[i].second = new_element.attributes().namedItem(
+        keyword_field_[i].first.c_str()).nodeValue().toStdString();
+
+  }
   return true;
 }
 
