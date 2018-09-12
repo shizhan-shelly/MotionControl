@@ -13,7 +13,9 @@ class Cutter : public Singleton {
  public:
   MasterClient *modbus_client();
 
-  bool StartupModbusClient();
+  void InitModbusClient();
+
+  bool StartupModbusConnect();
 
  private:
   Cutter();
