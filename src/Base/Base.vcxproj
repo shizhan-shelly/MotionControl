@@ -87,6 +87,7 @@
     <ClInclude Include="thread\Delay.h" />
     <ClInclude Include="thread\Mutex.h" />
     <ClInclude Include="thread\MutexLocker.h" />
+    <ClInclude Include="thread\ReadWriteLock.h" />
     <ClInclude Include="utility\ftr.h" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +102,8 @@
     <ClCompile Include="thread\Delay_Win32.cpp" />
     <ClCompile Include="thread\Mutex_pthread.cpp" />
     <ClCompile Include="thread\Mutex_Win32.cpp" />
+    <ClCompile Include="thread\ReadWriteLock_pthread.cpp" />
+    <ClCompile Include="thread\ReadWriteLock_Win32.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -45,6 +45,9 @@
     <ClInclude Include="thread\Condition.h">
       <Filter>thread</Filter>
     </ClInclude>
+    <ClInclude Include="thread\ReadWriteLock.h">
+      <Filter>thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Singleton">
@@ -95,6 +98,12 @@
       <Filter>thread\Internal</Filter>
     </ClCompile>
     <ClCompile Include="thread\Condition_Win32.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\ReadWriteLock_Win32.cpp">
+      <Filter>thread\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\ReadWriteLock_pthread.cpp">
       <Filter>thread\Internal</Filter>
     </ClCompile>
   </ItemGroup>
