@@ -11,6 +11,7 @@ RTUClientHandler::RTUClientHandler(const std::string &device_name, int baud,
 
   ctx_ = modbus_new_rtu(device_name.c_str(), baud, parity, data_bit, stop_bit);
   modbus_set_slave(ctx_, slave_id);
+  slave_id_ = slave_id;
 }
 
 RTUClientHandler::~RTUClientHandler() {}

@@ -7,21 +7,32 @@
 #include <map>
 
 #include "Base/Runnable.h"
-#include "MotionControl/Communication/modbus/DeviceModel.h"
 
 class ClientHandler;
+
+class ClientHandlerManager {
+ public:
+  ~ClientHandlerManager();
+
+  void RegisterClientHandler(ClientHandler *handler);
+
+  ClientHandler *GetClientHandler(int slave_id) const;
+
+ private:
+  std::map<int, ClientHandler *> handlers_;
+
+}; // class ClientHandlerManager
 
 class MasterClient : public Runnable {
  public:
   MasterClient();
   ~MasterClient();
 
-  void RegisterClientHandler(DeviceModel device_model,
-      ClientHandler *handler);
+  void SetClientHandlerManager(ClientHandlerManager *handler_manager);
 
   virtual void Run();
 
-  bool SetupConnect(DeviceModel device_model);
+  bool SetupConnect();
 
   // Coil.(0X)
   bool DirectlyArc(bool status);
@@ -192,7 +203,7 @@ class MasterClient : public Runnable {
   bool GetSteelPlateHeight(double &steel_plate_height);
 
  private:
-  std::map<DeviceModel, ClientHandler *> handlers_;
+  ClientHandlerManager *handler_manager_;
 
   bool ConnectTest();
 

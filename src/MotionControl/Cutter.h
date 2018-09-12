@@ -20,6 +20,7 @@ class Cutter : public Singleton {
   ~Cutter();
 
   MasterClient modbus_client_;
+  ClientHandlerManager client_manager_;
 
 }; //class Cutter
 

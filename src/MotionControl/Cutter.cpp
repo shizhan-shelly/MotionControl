@@ -15,6 +15,7 @@ MasterClient *Cutter::modbus_client() {
 
 bool Cutter::StartupModbusClient() {
   ClientHandler *client_handler_ = new RTUClientHandler("COM1", 19200, 'E', 8, 1, 1);
-  modbus_client_.RegisterClientHandler(Slave_F1650, client_handler_);
-  return modbus_client_.SetupConnect(Slave_F1650);
+  client_manager_.RegisterClientHandler(client_handler_);
+  modbus_client_.SetClientHandlerManager(&client_manager_);
+  return modbus_client_.SetupConnect();
 }

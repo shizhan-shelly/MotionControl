@@ -32,6 +32,8 @@ class ClientHandler {
 
   bool Initialize();
 
+  int SlaveID() const;
+
   bool ReadInputBit(unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadUint32InputRegister(unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadFloatInputRegister(unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
@@ -46,6 +48,7 @@ class ClientHandler {
   bool ReadDoubleRegister(unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
 
  protected:
+  int slave_id_;
   modbus_t *ctx_;
 
  private:

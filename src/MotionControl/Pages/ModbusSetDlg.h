@@ -4,6 +4,8 @@
 #ifndef PAGES_MODBUSSETDLG_H__
 #define PAGES_MODBUSSETDLG_H__
 
+#include <QtGui/QDialog>
+
 class ModbusSetDlg : QDialog {
 }; // class ModbusSetDlg
 
