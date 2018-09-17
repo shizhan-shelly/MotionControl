@@ -6,6 +6,7 @@
 #include "Vendor.h"
 #include "CutChartSelector.h"
 #include "CutChart.h"
+#include "Alias.h"
 
 int main(int argc, char *argv[]) {
   QCoreApplication a(argc, argv);
@@ -65,5 +66,10 @@ int main(int argc, char *argv[]) {
   insert_record.insert(std::make_pair("Current", "180.00"));
   insert_record.insert(std::make_pair("Technology", "Contour Cut Speed"));
   cut_chart.InsertRecord(insert_record);
+
+  Alias alias;
+  alias.ParseAlias("E:\\MyJob\\MotionControl\\tools\\Liuhe\\Alias.xml");
+  alias.GetAliasName("V507");
+
   return a.exec();
 }
