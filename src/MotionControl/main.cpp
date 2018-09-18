@@ -5,6 +5,7 @@
 #include <QtGui/QApplication>
 
 #include "base/singleton/SingletonMaster.h"
+#include "Cutter.h"
 #include "Pages\SystemConfigModel.h"
 #include "Pages\SystemConfigWidget.h"
 #include "Pages\ConsumablesWidget.h"
@@ -53,6 +54,10 @@ int main(int argc, char *argv[]) {
   ModbusRTUSet thc_set_widget;
   thc_set_widget.InitialWidget();
   thc_set_widget.show();
+
+  Cutter *cutter = Cutter::GetInstance();
+  cutter->InitModbusClient();
+  cutter->StartupModbusConnect();
 
   return app.exec();
 }

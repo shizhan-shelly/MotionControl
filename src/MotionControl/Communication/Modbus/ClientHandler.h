@@ -25,10 +25,12 @@ typedef struct _modbus_mapping_t modbus_mapping_t;
  */
 class ClientHandler {
  public:
-  ClientHandler();
+  explicit ClientHandler(int slave_id);
   virtual ~ClientHandler();
 
   virtual bool Connect() = 0;
+
+  void ReleaseConnect();
 
   bool Initialize();
 

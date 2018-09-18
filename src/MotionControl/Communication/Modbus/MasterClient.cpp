@@ -11,8 +11,10 @@
 ClientHandlerManager::~ClientHandlerManager() {
   std::map<int, ClientHandler *>::iterator iter;
   for (iter = handlers_.begin(); iter != handlers_.end(); ++iter) {
-    if (iter->second) {
-      delete iter->second;
+    ClientHandler *handler = iter->second;
+    if (handler) {
+      handler->ReleaseConnect();
+      delete handler;
     }
   }
   handlers_.clear();
@@ -26,10 +28,11 @@ void ClientHandlerManager::RegisterClientHandler(ClientHandler *handler) {
   std::map<int, ClientHandler *>::iterator iter;
   iter = handlers_.find(handler->SlaveID());
   if (iter != handlers_.end()) {
-    assert(false);
+    assert(iter->second);
     delete iter->second;
+    handlers_.erase(iter);
   }
-  handlers_[handler->SlaveID()] = handler;
+  handlers_.insert(std::make_pair(handler->SlaveID(), handler));
 }
 
 ClientHandler *ClientHandlerManager::GetClientHandler(int slave_id) const {

@@ -6,11 +6,10 @@
 #include "../../../Modbus/modbus.h"
 
 TCPClientHandler::TCPClientHandler(const std::string &ip_address, int port,
-                                   int slave_id) : ClientHandler() {
+                                   int slave_id) : ClientHandler(slave_id) {
 
   ctx_ = modbus_new_tcp(ip_address.c_str(), port);
-  modbus_set_slave(ctx_, slave_id);
-  slave_id_ = slave_id;
+  modbus_set_slave(ctx_, slave_id_);
 }
 
 TCPClientHandler::~TCPClientHandler() {}

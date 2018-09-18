@@ -6,12 +6,15 @@
 #include "ModbusMappingDef.h"
 #include "../../../Modbus/modbus.h"
 
-ClientHandler::ClientHandler() : slave_id_(0)
-                               , ctx_(NULL)
-                               , mb_mapping_(NULL) {}
+ClientHandler::ClientHandler(int slave_id) : slave_id_(slave_id)
+                                           , ctx_(NULL)
+                                           , mb_mapping_(NULL) {}
 
 ClientHandler::~ClientHandler() {
   modbus_mapping_free(mb_mapping_);
+}
+
+void ClientHandler::ReleaseConnect() {
   modbus_close(ctx_);
   modbus_free(ctx_);
 }
