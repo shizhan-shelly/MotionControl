@@ -69,7 +69,9 @@ int main(int argc, char *argv[]) {
 
   Alias alias;
   alias.ParseAlias("E:\\MyJob\\MotionControl\\tools\\Liuhe\\Alias.xml");
-  alias.GetAliasName("V507");
+  alias.GetAliasMap("V507");
+  alias.GetAliasName("Thickness");
+  alias.GetBaseName("Current");
 
   return a.exec();
 }

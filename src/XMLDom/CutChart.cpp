@@ -91,6 +91,17 @@ std::vector<std::string> CutChart::GetKeywordList(const std::string &keyword_nam
   return result;
 }
 
+bool CutChart::SetCurrentSelectedRecord(const std::map<std::string, std::string> &alias_value) {
+  QDomElement	selected_item = doc_usr_.documentElement().firstChildElement("CurrentSelectCutChartRecord");
+  QDomNamedNodeMap node_map = selected_item.attributes();
+  std::map<std::string, std::string>::const_iterator iter = alias_value.begin();
+  for (; iter != alias_value.end(); iter++) {
+    node_map.namedItem(iter->first.c_str()).setNodeValue(iter->second.c_str());
+  }
+  InitialKeywordField();
+  return true;
+}
+
 bool CutChart::SetCurrentSelectedRecord(const std::vector<std::string> &keyword_value) {
   QDomElement	selected_item = doc_usr_.documentElement().firstChildElement("CurrentSelectCutChartRecord");
   QDomNamedNodeMap node_map = selected_item.attributes();
