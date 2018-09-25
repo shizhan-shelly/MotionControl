@@ -90,6 +90,15 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\qrc_Widget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="dialog\BaseDialog.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BaseDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BaseDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -108,6 +117,12 @@
       <Filter>Widget\ListWidget</Filter>
     </CustomBuild>
     <CustomBuild Include="Widget.qrc" />
+    <CustomBuild Include="dialog\BaseDialog.ui">
+      <Filter>Dialog</Filter>
+    </CustomBuild>
+    <CustomBuild Include="dialog\BaseDialog.h">
+      <Filter>Dialog</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WidgetQrc.h" />
