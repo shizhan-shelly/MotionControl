@@ -97,6 +97,7 @@
     <ClInclude Include="Communication\Modbus\DeviceModel.h" />
     <ClInclude Include="Communication\Modbus\MasterClient.h" />
     <ClInclude Include="Communication\Modbus\ModbusMappingDef.h" />
+    <ClInclude Include="Communication\Modbus\ModbusProtocol.h" />
     <ClInclude Include="Communication\Modbus\RTUClientHandler.h" />
     <ClInclude Include="Communication\Modbus\TCPClientHandler.h" />
     <ClInclude Include="Communication\Modbus\ServerHandler.h" />

@@ -9,7 +9,7 @@
 #include "Pages\SystemConfigModel.h"
 #include "Pages\SystemConfigWidget.h"
 #include "Pages\ConsumablesWidget.h"
-#include "Pages/ModbusRTUSet.h"
+#include "Pages/ModbusSetDlg.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
 #include "../Widget/WidgetQrc.h"
 #include "MotionControlQrc.h"
@@ -51,9 +51,9 @@ int main(int argc, char *argv[]) {
   cononsumables_widget.showConsumables(info);
   cononsumables_widget.show();
 
-  ModbusRTUSet thc_set_widget;
-  thc_set_widget.InitialWidget();
-  thc_set_widget.show();
+  ModbusSetDlg thc_set_dlg;
+  thc_set_dlg.SetModbusProtocol(RTU);
+  thc_set_dlg.exec();
 
   Cutter *cutter = Cutter::GetInstance();
   cutter->InitModbusClient();

@@ -3,8 +3,6 @@
 
 #include "../dialog/BaseDialog.h"
 
-#include "ui_BaseDialog.h"
-
 namespace widget {
 
 BaseDialog::BaseDialog(QWidget *parent) : QDialog(parent) {

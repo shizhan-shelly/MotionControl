@@ -241,6 +241,9 @@
     <ClInclude Include="Pages\ModbusSetDlg.h">
       <Filter>Pages\ModbusSet</Filter>
     </ClInclude>
+    <ClInclude Include="Communication\Modbus\ModbusProtocol.h">
+      <Filter>Communication\Modbus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">

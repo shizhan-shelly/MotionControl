@@ -6,9 +6,7 @@
 
 #include <QtGui/QDialog.h>
 
-namespace Ui {
-class BaseDialog;
-}
+#include "ui_BaseDialog.h"
 
 namespace widget {
 
@@ -19,7 +17,7 @@ class BaseDialog : public QDialog {
   explicit BaseDialog(QWidget *parent = NULL);
   virtual ~BaseDialog();
 
- private:
+ protected:
   Ui::BaseDialog *ui_;
 
 }; // class BaseDialog
