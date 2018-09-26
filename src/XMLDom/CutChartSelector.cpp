@@ -135,15 +135,6 @@ std::string CutChartSelector::GetCutChartName() const {
 bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file,
                                       const std::string &bak_cut_chart_file) {
 
-  QFileInfo file_info(cut_chart_file.c_str());
-  QDomElement cut_chart_list = doc_.documentElement().firstChildElement("CutChartList");
-  QDomNodeList list_nodes = cut_chart_list.childNodes();
-  for (int i = 0; i < list_nodes.size(); i++) {
-    QDomNode node = list_nodes.item(i);
-    if (node.toElement().attribute("CutChartName").compare(file_info.fileName()) == 0) {
-      return false;
-    }
-  }
   CutChart import_cut_chart;
   if (!import_cut_chart.ParseCutChart(cut_chart_file, bak_cut_chart_file)) {
     return false;
@@ -152,27 +143,40 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file,
   if (vendor_name.compare(import_cut_chart.GetVendor().c_str()) != 0) {
     return false;
   }
-  std::map<std::string, std::string> config_map = import_cut_chart.GetSystemConfig();
-  QDomElement new_element = doc_.createElement("Record");
-  QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
-  QDomNodeList cut_chart_list_attr = attr_element.childNodes();
-  for (int i = 0; i < cut_chart_list_attr.size(); i++) {
-    QDomNode node = cut_chart_list_attr.item(i);
-    if (node.isElement()) {
-      QDomElement element = node.toElement();
-      if (element.attribute("IsKeyword").toInt() == 1) {
-        std::map<std::string, std::string>::iterator iter = config_map.find(
-            element.tagName().toStdString());
-
-        if (iter == config_map.end()) {
-          return false;
-        }
-        new_element.setAttribute(element.tagName(), iter->second.c_str());
-      }
+  QFileInfo file_info(cut_chart_file.c_str());
+  QDomElement cut_chart_list = doc_.documentElement().firstChildElement("CutChartList");
+  QDomNodeList list_nodes = cut_chart_list.childNodes();
+  for (int i = 0; i < list_nodes.size(); i++) {
+    QDomNode node = list_nodes.item(i);
+    if (node.toElement().attribute("CutChartName").compare(file_info.fileName()) == 0) {
+      return true;
     }
   }
-  new_element.setAttribute("CutChartName", file_info.fileName());
-  cut_chart_list.appendChild(new_element);
+  std::string cut_chart_version = import_cut_chart.GetVersion();
+  std::vector<std::map<std::string, std::string> > config_vector = import_cut_chart.GetSystemConfig();
+  for (size_t i = 0; i < config_vector.size(); i++) {
+    QDomElement new_element = doc_.createElement("Record");
+    QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
+    QDomNodeList cut_chart_list_attr = attr_element.childNodes();
+    for (int j = 0; j < cut_chart_list_attr.size(); j++) {
+      QDomNode node = cut_chart_list_attr.item(j);
+      if (node.isElement()) {
+        QDomElement element = node.toElement();
+        if (element.attribute("IsKeyword").toInt() == 1) {
+          std::map<std::string, std::string>::iterator iter = config_vector[i].find(
+              element.tagName().toStdString());
+
+          if (iter == config_vector[i].end()) {
+            return false;
+          }
+          new_element.setAttribute(element.tagName(), iter->second.c_str());
+        }
+      }
+    }
+    new_element.setAttribute("Version", cut_chart_version.c_str());
+    new_element.setAttribute("CutChartName", file_info.fileName());
+    cut_chart_list.appendChild(new_element);
+  }
   return WriteToXML();
 }
 

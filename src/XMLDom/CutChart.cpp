@@ -198,20 +198,29 @@ CutChartAttr CutChart::GetOneFieldAttr(const std::string &field_name) const {
   return attr;
 }
 
-std::map<std::string, std::string> CutChart::GetSystemConfig() const {
-  std::map<std::string, std::string> config_info;
-  QDomElement	cut_chart_config = doc_usr_.documentElement().firstChildElement("CutChartConfig");
-  QDomNamedNodeMap config_map = cut_chart_config.attributes();
-  for (int i = 0; i < config_map.size(); i++) {
-    config_info.insert(std::make_pair(config_map.item(i).nodeName().toStdString(),
-        config_map.item(i).nodeValue().toStdString()));
+std::vector<std::map<std::string, std::string> > CutChart::GetSystemConfig() const {
+  std::vector<std::map<std::string, std::string> > system_config;
+  QDomNodeList cut_chart_config_list = doc_usr_.documentElement().elementsByTagName("CutChartConfig");
+  for (int i = 0; i < cut_chart_config_list.count(); i++) {
+    std::map<std::string, std::string> config_info;
+    QDomNode cur_node = cut_chart_config_list.item(i);
+    QDomNamedNodeMap config_map = cur_node.attributes();
+    for (int i = 0; i < config_map.size(); i++) {
+      config_info.insert(std::make_pair(config_map.item(i).nodeName().toStdString(),
+          config_map.item(i).nodeValue().toStdString()));
 
+    }
+    system_config.push_back(config_info);
   }
-  return config_info;
+  return system_config;
 }
 
 std::string CutChart::GetVendor() const {
   return doc_usr_.documentElement().attribute("Vendor").toStdString();
+}
+
+std::string CutChart::GetVersion() const {
+  return doc_usr_.documentElement().attribute("Version").toStdString();
 }
 
 bool CutChart::InsertRecord(const std::map<std::string, std::string> &record) {

@@ -58,14 +58,17 @@ class CutChart {
   CutChartAttr GetOneFieldAttr(const std::string &field_name) const;
 
   /**
-   * Get current system config information.
-   * @return config info as a map. The first string is keyword field name of CutChartSelector,
-   * the second is keyword field value of CutChartSelector.
+   * Get system config information in CutChart.xml.
+   * @return config infor as a vector of map.
+   * The first string of the map is keyword field name of CutChartSelector,
+   * the second of the map is keyword field value of CutChartSelector.
    * The config map infor can be found in CutChartList of CutChartSelector.xml
    */
-  std::map<std::string, std::string> GetSystemConfig() const;
+  std::vector<std::map<std::string, std::string> > GetSystemConfig() const;
 
   std::string GetVendor() const;
+
+  std::string GetVersion() const;
 
   // If this record existed, give a prompt that insert fialed,
   // if not existed, insert the record.
