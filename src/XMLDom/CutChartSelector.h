@@ -31,6 +31,11 @@ class CutChartSelector {
   QDomDocument doc_;
   std::string cut_chart_selector_file_;
 
+  // If duplicate, remain the item with last version in cut chart list.
+  // If duplicate, return true; if not return false.
+  bool CheckDuplicate(const std::string &version, const std::string &file_name,
+      const std::map<std::string, std::string> &system_config);
+
   bool WriteToXML();
 
 }; // class CutChartSelector

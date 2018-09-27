@@ -155,6 +155,9 @@ bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file,
   std::string cut_chart_version = import_cut_chart.GetVersion();
   std::vector<std::map<std::string, std::string> > config_vector = import_cut_chart.GetSystemConfig();
   for (size_t i = 0; i < config_vector.size(); i++) {
+    if (CheckDuplicate(cut_chart_version, file_info.fileName().toStdString(), config_vector[i])) {
+      continue;
+    }
     QDomElement new_element = doc_.createElement("Record");
     QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
     QDomNodeList cut_chart_list_attr = attr_element.childNodes();
@@ -189,4 +192,33 @@ bool CutChartSelector::WriteToXML() {
   doc_.save(out, 2);
   file.close();
   return true;
+}
+
+bool CutChartSelector::CheckDuplicate(const std::string &version,
+    const std::string &file_name,
+    const std::map<std::string, std::string> &system_config) {
+
+  QDomElement	list = doc_.documentElement().firstChildElement("CutChartList");
+  QDomNodeList list_child = list.childNodes();
+  for (int i = 0; i < list_child.count(); i++) {
+    QDomNode cur_node = list_child.item(i);
+    if (cur_node.isElement()) {
+      QDomElement cur_element = cur_node.toElement();
+      std::map<std::string, std::string>::const_iterator iter;
+      for (iter = system_config.begin(); iter != system_config.end(); iter++) {
+        if (cur_element.attribute(iter->first.c_str()).compare(iter->second.c_str()) != 0) {
+          break;
+        }
+      }
+      if (iter == system_config.end()) {
+        QString origin_version = cur_element.attribute("Version");
+        if (origin_version.compare(version.c_str()) < 0) {
+          cur_element.setAttribute("Version", version.c_str());
+          cur_element.setAttribute("CutChartName", file_name.c_str());
+        }
+        return true;
+      }
+    }
+  }
+  return false;
 }
