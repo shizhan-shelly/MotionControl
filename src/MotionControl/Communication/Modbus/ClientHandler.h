@@ -37,14 +37,17 @@ class ClientHandler {
   int SlaveID() const;
 
   bool ReadInputBit(unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadShort16InputRegister(unsigned short address, unsigned short &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadUint32InputRegister(unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadFloatInputRegister(unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadDoubleInputRegister(unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool WriteSingleCoil(unsigned short address, bool status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool WriteShort16Register(unsigned short address, unsigned short value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool WriteUint32Register(unsigned short address, unsigned int value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool WriteFloatRegister(unsigned short address, float value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool WriteDoubleRegister(unsigned short address, double value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadCoil(unsigned short address, bool &status, bool sync = false, int (*callback)(modbus_t *) = nullptr);
+  bool ReadShort16Register(unsigned short address, unsigned short &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadUint32Register(unsigned short address, unsigned int &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadFloatRegister(unsigned short address, float &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);
   bool ReadDoubleRegister(unsigned short address, double &value, bool sync = false, int (*callback)(modbus_t *) = nullptr);

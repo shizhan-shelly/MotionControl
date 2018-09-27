@@ -74,6 +74,21 @@ bool ClientHandler::ReadInputBit(unsigned short address,
   return rc == 1;
 }
 
+bool ClientHandler::ReadShort16InputRegister(unsigned short address,
+                                             unsigned short &value, bool sync,
+                                             int (*callback)(modbus_t *)) {
+
+  // Function code: 0x04
+  //MutexLocker locker(&mutex_);
+  int rc = modbus_read_input_registers(ctx_, address, 1,
+      mb_mapping_->tab_input_registers + address);
+
+  if (rc == 1) {
+    value = mb_mapping_->tab_input_registers[address];
+  }
+  return rc == 1;
+}
+
 bool ClientHandler::ReadUint32InputRegister(unsigned short address,
                                             unsigned int &value, bool sync,
                                             int (*callback)(modbus_t *)) {
@@ -130,6 +145,18 @@ bool ClientHandler::WriteSingleCoil(unsigned short address,
   return modbus_write_bit(ctx_, address, status ? 1 : 0) == 1;
 }
 
+bool ClientHandler::WriteShort16Register(unsigned short address,
+                                         unsigned short value, bool sync,
+                                         int (*callback)(modbus_t *)) {
+
+  // Several registers should be set preset data. function code: 10H.
+  //MutexLocker locker(&mutex_);
+  mb_mapping_->tab_registers[address] = value;
+  return modbus_write_registers(ctx_, address, 1,
+      mb_mapping_->tab_registers + address) == 1;
+
+}
+
 bool ClientHandler::WriteUint32Register(unsigned short address,
                                         unsigned int value, bool sync,
                                         int (*callback)(modbus_t *)) {
@@ -178,6 +205,21 @@ bool ClientHandler::ReadCoil(unsigned short address,
 
   if (rc == 1) {
     status = mb_mapping_->tab_bits[address] == 1;
+  }
+  return rc == 1;
+}
+
+bool ClientHandler::ReadShort16Register(unsigned short address,
+                                        unsigned short &value, bool sync,
+                                        int (*callback)(modbus_t *)) {
+
+  // Read several registers. function code: 03H.
+  //MutexLocker locker(&mutex_);
+  int rc = modbus_read_registers(ctx_, address, 1,
+      mb_mapping_->tab_registers + address);
+
+  if (rc == 1) {
+    value = mb_mapping_->tab_registers[address];
   }
   return rc == 1;
 }
