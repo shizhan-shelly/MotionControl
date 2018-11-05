@@ -1,51 +1,42 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef CUTTER_WIDGET_PLASMA_LOGIC_CODEPROCESS_H__
-#define CUTTER_WIDGET_PLASMA_LOGIC_CODEPROCESS_H__
+#ifndef CUTTER_WIDGET_PLASMA_SYNC_CODEPROCESS_H__
+#define CUTTER_WIDGET_PLASMA_SYNC_CODEPROCESS_H__
 
 #include <map>
-#include <vector>
-
-#include "../../../baseclass/gcodeparse/GCommand.h"
 
 namespace cutter {
 
-typedef enum _HyperthermTHCItem {
-  SetArcVoltage = 600,
-  PierceTime = 601,
-  PierceHeightFactor = 602,
-  CutHeight = 603,
-  TransferHeightFactor = 604,
-  CutHeightDelay = 605,
-  KerfDetectReacquireTime = 606,
-  ModeSelect = 607,
-  ArcCurrent = 608,
-  AVCDelay =613,
-
-} HyperthermTHCItem;
-
-
-class HyperthermCodeProcess {
+class CodeProcess {
  public:
-  HyperthermCodeProcess();
-  virtual ~HyperthermCodeProcess();
+  CodeProcess() {}
+  virtual ~CodeProcess() {}
 
-  // From current cut chart database.
-  void InitialDefaultProcess();
+  std::map<std::string, std::string> GetTHCParameter() const {
+    return thc_parameter_;
+  }
 
   /**
    * @brief ParseGCode
    * @param g59_code, a process map:(V507, F33)
    */
-  void ParseGCode(const std::map<std::string, std::string> &g59_code);
+  virtual void ParseGCode(const std::map<std::string, std::string> &g59_code) = 0;
 
- private:
-  std::map<std::string, std::string> keyword_infor_;
-  std::map<HyperthermTHCItem, std::string> thc_item_;
+ protected:
+  // first string: field name; second string, field value.
+  std::map<std::string, std::string> thc_parameter_;
+
+  std::string GetCodeValue(const std::string &code_line, char match);
+
+}; // class CodeProcess
+
+class HyperthermCodeProcess : public CodeProcess {
+ public:
+  virtual void ParseGCode(const std::map<std::string, std::string> &g59_code);
 
 }; // class HyperthermCodeProcess
 
 } // namespace cutter
 
-#endif // CUTTER_WIDGET_PLASMA_LOGIC_CODEPROCESS_H__
+#endif // CUTTER_WIDGET_PLASMA_SYNC_CODEPROCESS_H__
