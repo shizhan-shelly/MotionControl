@@ -7,7 +7,12 @@
 
 DatabaseSync::DatabaseSync() : sync_handler_(NULL) {}
 
-DatabaseSync::~DatabaseSync() {}
+DatabaseSync::~DatabaseSync() {
+  if (sync_handler_) {
+    delete sync_handler_;
+    sync_handler_ = NULL;
+  }
+}
 
 void DatabaseSync::RegisterSyncHandler(SyncHandler *sync_handler) {
   if (sync_handler) {
