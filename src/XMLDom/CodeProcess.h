@@ -13,9 +13,7 @@ class CodeProcess {
   CodeProcess() {}
   virtual ~CodeProcess() {}
 
-  std::map<std::string, std::string> GetTHCParameter() const {
-    return thc_parameter_;
-  }
+  void GenerateNMLMessage(int job_id);
 
   /**
    * @brief ParseGCode

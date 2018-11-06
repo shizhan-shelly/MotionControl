@@ -31,7 +31,7 @@ void HyperthermCodeProcess::ParseGCode(
   std::map<std::string, std::string> v500_code;
   std::map<std::string, std::string> v600_code;
   for (std::map<std::string, std::string>::const_iterator iter =
-    g59_code.begin(); iter != g59_code.end(); iter++) {
+      g59_code.begin(); iter != g59_code.end(); iter++) {
 
     std::string process_type_str = GetCodeValue(iter->first, 'V');
     int process_type = atoi(process_type_str.c_str());
@@ -46,7 +46,7 @@ void HyperthermCodeProcess::ParseGCode(
   std::map<std::string, std::string> keyword_infor;
   OCutter *cutter = OCutter::GetInstance();
   for (std::map<std::string, std::string>::iterator iter =
-    v500_code.begin(); iter != v500_code.end(); iter++) {
+      v500_code.begin(); iter != v500_code.end(); iter++) {
 
     std::string variable_type = cutter->GetAlias()->GetAliasMap(iter->first);
     std::map<std::string, std::string> alias_base = cutter->GetAlias()->GetAliasName(variable_type);
@@ -58,7 +58,7 @@ void HyperthermCodeProcess::ParseGCode(
   // get thc parameters from cut chart
   thc_parameter_.clear();
   for (std::map<int, std::string>::const_iterator iter =
-    HYPERTHERM_THC.begin(); iter != HYPERTHERM_THC.end(); iter++) {
+      HYPERTHERM_THC.begin(); iter != HYPERTHERM_THC.end(); iter++) {
 
     thc_parameter_.insert(std::make_pair(iter->second,
         cutter->GetCutChart()->GetItemValueByFieldName(iter->second)));
@@ -67,7 +67,7 @@ void HyperthermCodeProcess::ParseGCode(
 
   // modify thc parameters from G59 code
   for (std::map<std::string, std::string>::iterator iter =
-    v600_code.begin(); iter != v600_code.end(); iter++) {
+      v600_code.begin(); iter != v600_code.end(); iter++) {
 
     std::map<int, std::string>::const_iterator iter1 = HYPERTHERM_THC.find(
         atoi(iter->first.c_str()));
@@ -91,6 +91,18 @@ std::string CodeProcess::GetCodeValue(const std::string &code_line, char match) 
       code_line.substr(pos + 1, end_pos - pos -1) : code_line.substr(pos + 1);
 
   return value_string;
+}
+
+void CodeProcess::GenerateNMLMessage(int job_id) {
+  cutter::OCutter *cutter = cutter::OCutter::GetInstance();
+  for (size_t i = 0; i < cutter->thc_clients_.size(); i++) {
+    std::map<std::string, std::string>::iterator iter = thc_parameter_.begin();
+    for (int command_id = 0; iter != thc_parameter_.end(); iter++, command_id++) {
+      cutter->thc_clients_[i]->GenerateNMLMessage(job_id, command_id,
+          iter->first, iter->second);
+
+    }
+  }
 }
 
 }
