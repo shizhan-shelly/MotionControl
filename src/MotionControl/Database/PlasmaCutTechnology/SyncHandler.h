@@ -11,11 +11,12 @@ class SyncHandler {
  public:
   virtual ~SyncHandler() {}
 
-  virtual std::map<std::string, std::string> UpdateCNCParameterFromCutChart() = 0;
-  virtual std::map<std::string, std::string> UpdateTHCParameterFromCutChart() = 0;
-  virtual std::map<std::string, std::string> UpdatePPSParameterFromCutChart() = 0;
+  virtual void UpdateCNCParameterFromCutChart() = 0;
+  virtual void UpdateTHCParameterFromCutChart() = 0;
+  virtual void UpdatePPSParameterFromCutChart() = 0;
 
- protected:
+  virtual void ModifyParameterFromGCode(const std::map<int, std::string> &code_map) = 0;
+
   std::map<std::string, std::string> cnc_data_;
   std::map<std::string, std::string> thc_data_;
   std::map<std::string, std::string> pps_data_;
@@ -25,9 +26,10 @@ class SyncHandler {
 #define DECLARE_SYNCHANDLER_CLASS(VENDOR) \
   class VENDOR##SyncHandler: public SyncHandler { \
    public: \
-    virtual std::map<std::string, std::string> UpdateCNCParameterFromCutChart(); \
-    virtual std::map<std::string, std::string> UpdateTHCParameterFromCutChart(); \
-    virtual std::map<std::string, std::string> UpdatePPSParameterFromCutChart(); \
+    virtual void UpdateCNCParameterFromCutChart(); \
+    virtual void UpdateTHCParameterFromCutChart(); \
+    virtual void UpdatePPSParameterFromCutChart(); \
+    virtual void ModifyParameterFromGCode(const std::map<int, std::string> &code_map); \
   }; \
 
 DECLARE_SYNCHANDLER_CLASS(Kjellberg)

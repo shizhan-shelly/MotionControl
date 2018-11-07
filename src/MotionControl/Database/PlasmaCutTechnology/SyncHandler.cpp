@@ -3,25 +3,22 @@
 
 #include "SyncHandler.h"
 
-std::map<std::string, std::string> KjellbergSyncHandler::UpdateCNCParameterFromCutChart() {
+void KjellbergSyncHandler::UpdateCNCParameterFromCutChart() {
   cnc_data_.clear();
   cnc_data_.insert(std::make_pair("CuttingSpeed", ""));
   cnc_data_.insert(std::make_pair("Kerf", ""));
-  return cnc_data_;
 }
 
-std::map<std::string, std::string> KjellbergSyncHandler::UpdateTHCParameterFromCutChart() {
+void KjellbergSyncHandler::UpdateTHCParameterFromCutChart() {
   thc_data_.clear();
   thc_data_.insert(std::make_pair("IgnitionHeight", ""));
   thc_data_.insert(std::make_pair("CuttingHeight", ""));
   thc_data_.insert(std::make_pair("PierceHeight", ""));
   thc_data_.insert(std::make_pair("PierceTime", ""));
   thc_data_.insert(std::make_pair("CuttingVoltage", ""));
-  return thc_data_;
 }
 
-
-std::map<std::string, std::string> KjellbergSyncHandler::UpdatePPSParameterFromCutChart() {
+void KjellbergSyncHandler::UpdatePPSParameterFromCutChart() {
   pps_data_.clear();
   pps_data_.insert(std::make_pair("PlasmaGas1", ""));
   pps_data_.insert(std::make_pair("PlasmaGas2", ""));
@@ -37,18 +34,19 @@ std::map<std::string, std::string> KjellbergSyncHandler::UpdatePPSParameterFromC
   pps_data_.insert(std::make_pair("IgnitionGasPressure", ""));
   pps_data_.insert(std::make_pair("GasCode", ""));
   pps_data_.insert(std::make_pair("SpecialCode", ""));
-  return pps_data_;
 }
 
-std::map<std::string, std::string> HyperthermSyncHandler::UpdateCNCParameterFromCutChart() {
+void KjellbergSyncHandler::ModifyParameterFromGCode(const std::map<int, std::string> &code_map) {
+}
+
+void HyperthermSyncHandler::UpdateCNCParameterFromCutChart() {
   cnc_data_.clear();
   cnc_data_.insert(std::make_pair("CuttingSpeed", ""));
   cnc_data_.insert(std::make_pair("Kerf", ""));
   cnc_data_.insert(std::make_pair("CreepTime", ""));
-  return cnc_data_;
 }
 
-std::map<std::string, std::string> HyperthermSyncHandler::UpdateTHCParameterFromCutChart() {
+void HyperthermSyncHandler::UpdateTHCParameterFromCutChart() {
   thc_data_.clear();
   thc_data_.insert(std::make_pair("IgnitionHeight", ""));
   thc_data_.insert(std::make_pair("CuttingHeight", ""));
@@ -56,11 +54,9 @@ std::map<std::string, std::string> HyperthermSyncHandler::UpdateTHCParameterFrom
   thc_data_.insert(std::make_pair("PierceTime", ""));
   thc_data_.insert(std::make_pair("CuttingVoltage", ""));
   thc_data_.insert(std::make_pair("CutHeightDelay", ""));
-  return thc_data_;
 }
 
-
-std::map<std::string, std::string> HyperthermSyncHandler::UpdatePPSParameterFromCutChart() {
+void HyperthermSyncHandler::UpdatePPSParameterFromCutChart() {
   pps_data_.clear();
   pps_data_.insert(std::make_pair("PlasmaManualPreflow", ""));
   pps_data_.insert(std::make_pair("ShieldManualPreflow", ""));
@@ -72,30 +68,31 @@ std::map<std::string, std::string> HyperthermSyncHandler::UpdatePPSParameterFrom
   pps_data_.insert(std::make_pair("ShieldAutoCutflow", ""));
   pps_data_.insert(std::make_pair("MixedGas1", ""));
   pps_data_.insert(std::make_pair("MixedGas2", ""));
-  return pps_data_;
 }
 
-std::map<std::string, std::string> LiuheSyncHandler::UpdateCNCParameterFromCutChart() {
+void HyperthermSyncHandler::ModifyParameterFromGCode(const std::map<int, std::string> &code_map) {
+}
+
+void LiuheSyncHandler::UpdateCNCParameterFromCutChart() {
   cnc_data_.clear();
   cnc_data_.insert(std::make_pair("CuttingSpeed", ""));
   cnc_data_.insert(std::make_pair("Kerf", ""));
-  return cnc_data_;
 }
 
-std::map<std::string, std::string> LiuheSyncHandler::UpdateTHCParameterFromCutChart() {
+void LiuheSyncHandler::UpdateTHCParameterFromCutChart() {
   thc_data_.clear();
   thc_data_.insert(std::make_pair("IgnitionHeight", ""));
   thc_data_.insert(std::make_pair("CuttingHeight", ""));
   thc_data_.insert(std::make_pair("PierceHeight", ""));
   thc_data_.insert(std::make_pair("PierceTime", ""));
   thc_data_.insert(std::make_pair("CuttingVoltage", ""));
-  return thc_data_;
 }
 
-
-std::map<std::string, std::string> LiuheSyncHandler::UpdatePPSParameterFromCutChart() {
+void LiuheSyncHandler::UpdatePPSParameterFromCutChart() {
   pps_data_.clear();
   pps_data_.insert(std::make_pair("", ""));
   pps_data_.insert(std::make_pair("", ""));
-  return pps_data_;
+}
+
+void LiuheSyncHandler::ModifyParameterFromGCode(const std::map<int, std::string> &code_map) {
 }
