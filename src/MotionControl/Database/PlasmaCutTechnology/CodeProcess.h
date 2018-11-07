@@ -19,7 +19,7 @@ class CodeProcess {
    * @brief ParseGCode
    * @param g59_code, a process map:(V507, F33)
    */
-  virtual void ParseGCode(const std::map<std::string, std::string> &g59_code) = 0;
+  virtual bool ParseGCode(const std::map<std::string, std::string> &g59_code) = 0;
 
  protected:
   // first string: field name; second string, field value.
@@ -31,7 +31,7 @@ class CodeProcess {
 
 class HyperthermCodeProcess : public CodeProcess {
  public:
-  virtual void ParseGCode(const std::map<std::string, std::string> &g59_code);
+  virtual bool ParseGCode(const std::map<std::string, std::string> &g59_code);
 
 }; // class HyperthermCodeProcess
 
