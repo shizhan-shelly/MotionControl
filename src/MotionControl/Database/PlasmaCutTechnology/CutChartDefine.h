@@ -4,6 +4,8 @@
 #ifndef DATABASE_PLASMACUTTECHNOLOGY_CUTCHARTDEFINE_H__
 #define DATABASE_PLASMACUTTECHNOLOGY_CUTCHARTDEFINE_H__
 
+#include <map>
+
 typedef enum _KjellbergCutData {
   Material = 0,
   Thickness,
@@ -94,5 +96,26 @@ typedef enum _HyperthermCutData {
   WaterTube,
 
 } HyperthermCutData;
+
+//////////////////////////////////////////////////////////////////////
+typedef std::pair<int, std::string> pair_t;
+
+static const pair_t hypertherm_thc[] = {
+  pair_t(600, "CuttingVoltage"),
+  pair_t(601, "PierceTime"),
+  pair_t(602, "PierceHeightFactor"),
+  pair_t(603, "CuttingHeight"),
+  pair_t(604, "IgnitionHeightFactor"),
+  pair_t(605, "CutHeightDelay"),
+  pair_t(606, "KerfRedetectTime"),
+  pair_t(607, "ModeSelect"),
+  pair_t(608, "ArcCurrent"),
+  pair_t(609, "IgnitionHeight"),
+  pair_t(610, "PierceHeight"),
+  pair_t(613, "AVCDelay"),
+};
+
+static const std::map<int, std::string> HYPERTHERM_THC(hypertherm_thc,
+    hypertherm_thc + sizeof(hypertherm_thc) / sizeof(hypertherm_thc[0]));
 
 #endif // DATABASE_PLASMACUTTECHNOLOGY_CUTCHARTDEFINE_H__

@@ -4,13 +4,14 @@
 #ifndef DATABASE_PLASMACUTTECHNOLOGY_DATABASESYNC_H__
 #define DATABASE_PLASMACUTTECHNOLOGY_DATABASESYNC_H__
 
+#include "base/singleton/Singleton.h"
+
 class SyncHandler;
 
-class DatabaseSync {
- public:
-  DatabaseSync();
-  ~DatabaseSync();
+class DatabaseSync : public Singleton {
+  DECLARE_SINGLETON(DatabaseSync)
 
+ public:
   void RegisterSyncHandler(SyncHandler *sync_handler);
 
   bool CNCSync();
@@ -21,6 +22,9 @@ class DatabaseSync {
 
  private:
   SyncHandler *sync_handler_;
+
+  DatabaseSync();
+  ~DatabaseSync();
 
 }; // class DatabaseSync
 
