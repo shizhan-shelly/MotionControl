@@ -8,6 +8,14 @@ KerfTableModel::KerfTableModel(QObject *parent)
 
 KerfTableModel::~KerfTableModel() {}
 
+void KerfTableModel::initialKerfTableValue(const QVector<double> &initial) {
+  kerf_variable_value_ = initial;
+}
+
+QVector<double> KerfTableModel::GetKerfTableValue() const {
+  return kerf_variable_value_;
+}
+
 int KerfTableModel::rowCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
   return kerf_variable_value_.count();
@@ -15,7 +23,7 @@ int KerfTableModel::rowCount(const QModelIndex &parent) const {
 
 int KerfTableModel::columnCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
-  return 2;
+  return 1;
 }
 
 Qt::ItemFlags KerfTableModel::flags(const QModelIndex &index) const {
@@ -37,7 +45,7 @@ QVariant KerfTableModel::data(const QModelIndex &index, int role) const {
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    return column == 0 ? row + 1 : kerf_variable_value_[row + 1];
+    return kerf_variable_value_[row];
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:
@@ -56,8 +64,6 @@ QVariant KerfTableModel::headerData(int section, Qt::Orientation orientation,
   if (orientation == Qt::Horizontal) {
     switch (section) {
      case 0:
-      return QString("Kerf Variable");
-     case 1:
       return QString("Kerf Value");
      default:
       return QVariant();
@@ -71,8 +77,14 @@ bool KerfTableModel::setData(const QModelIndex &index, const QVariant &value,
                              int role) {
 
   if (index.isValid() && role == Qt::EditRole) {
-    emit dataChanged(index, index);
-    return true;
+    int row = index.row();
+    bool ok = true;
+    double get = value.toDouble(&ok);
+    if (ok) {
+      kerf_variable_value_[row] = get;
+      emit dataChanged(index, index);
+    }
+    return ok;
   }
   return false;
 }

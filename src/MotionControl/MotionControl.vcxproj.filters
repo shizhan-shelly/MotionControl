@@ -189,6 +189,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\KerfTableDlg.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -255,6 +258,9 @@
     </ClInclude>
     <ClInclude Include="Communication\Modbus\ModbusProtocol.h">
       <Filter>Communication\Modbus</Filter>
+    </ClInclude>
+    <ClInclude Include="Pages\KerfTableDlg.h">
+      <Filter>Pages\KerfTable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

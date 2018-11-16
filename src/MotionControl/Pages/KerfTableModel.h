@@ -5,6 +5,7 @@
 #define KERFTABLEMODEL_H__
 
 #include <QtCore/QAbstractTableModel>
+#include <QtCore/QVector>
 
 class KerfTableModel : public QAbstractTableModel {
   Q_OBJECT
@@ -12,6 +13,10 @@ class KerfTableModel : public QAbstractTableModel {
  public:
   explicit KerfTableModel(QObject *parent = NULL);
   ~KerfTableModel();
+
+  void initialKerfTableValue(const QVector<double> &initial);
+
+  QVector<double> GetKerfTableValue() const;
 
   int rowCount(const QModelIndex &parent = QModelIndex()) const;
   int columnCount(const QModelIndex &parent = QModelIndex()) const;
@@ -25,7 +30,7 @@ class KerfTableModel : public QAbstractTableModel {
   bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
  private:
-  QMap<int, double> kerf_variable_value_;
+  QVector<double> kerf_variable_value_;
 
 }; // class KerfTableModel
 
