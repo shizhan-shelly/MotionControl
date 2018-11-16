@@ -5,6 +5,8 @@
 
 #include <assert.h>
 
+#include <QtGui/QHeaderView>
+#include <QtGui/QScrollBar>
 #include <QtGui/QTableView>
 
 #include "KerfTableModel.h"
@@ -13,6 +15,11 @@ KerfTableDlg::KerfTableDlg(QWidget *parent) : widget::BaseDialog(parent)
                                             , table_model_(NULL) {
 
   table_view_ = new QTableView(this);
+  table_view_->setMinimumSize(250, 300);
+  table_view_->verticalScrollBar()->setStyleSheet("QScrollBar:vertical {"
+                                                  "width: 30px;"
+                                                  "}");
+
   ui_->stack_widget_->addWidget(table_view_);
   ui_->stack_widget_->setCurrentWidget(table_view_);
 
@@ -27,14 +34,8 @@ void KerfTableDlg::setModel(KerfTableModel *table_model) {
   assert(table_model);
   table_model_ = table_model;
   table_view_->setModel(table_model_);
-  origin_kerf_value_ = table_model_->GetKerfTableValue();
-}
 
-void KerfTableDlg::OnConfirm() {
-  QVector<double> kerf_value = table_model_->GetKerfTableValue();
-  // save the table value.
-}
-
-void KerfTableDlg::OnCancel() {
-  table_model_->initialKerfTableValue(origin_kerf_value_);
+  table_view_->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+  table_view_->horizontalHeader()->setResizeMode(0, QHeaderView::ResizeToContents);
+  table_view_->horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
 }

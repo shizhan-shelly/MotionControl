@@ -23,7 +23,7 @@ int KerfTableModel::rowCount(const QModelIndex &parent) const {
 
 int KerfTableModel::columnCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
-  return 1;
+  return 2;
 }
 
 Qt::ItemFlags KerfTableModel::flags(const QModelIndex &index) const {
@@ -45,7 +45,7 @@ QVariant KerfTableModel::data(const QModelIndex &index, int role) const {
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    return kerf_variable_value_[row];
+    return column == 0 ? row + 1 : kerf_variable_value_[row];
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:
@@ -64,7 +64,9 @@ QVariant KerfTableModel::headerData(int section, Qt::Orientation orientation,
   if (orientation == Qt::Horizontal) {
     switch (section) {
      case 0:
-      return QString("Kerf Value");
+      return tr("Kerf Variable");
+     case 1:
+      return tr("Kerf Value");
      default:
       return QVariant();
     }

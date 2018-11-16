@@ -16,14 +16,9 @@ class KerfTableDlg : public ::widget::BaseDialog {
 
   void setModel(KerfTableModel *table_model);
 
- public slots:
-  void OnConfirm();
-  void OnCancel();
-
  private:
   KerfTableModel *table_model_;
   QTableView *table_view_;
-  QVector<double> origin_kerf_value_;
 
 }; // class KerfTableDlg
 
