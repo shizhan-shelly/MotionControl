@@ -23,34 +23,44 @@ bool Alias::ParseAlias(const std::string &alias_file) {
   return true;
 }
 
-std::map<std::string, std::string> Alias::GetAliasName(
-    const std::string &alias_map) const {
+std::map<std::string, std::string> Alias::GetBaseName(
+    const std::string &process_type,
+    const std::string &process_variable) const {
 
-  std::map<std::string, std::string> alias_base_name;
-  QDomElement	list = doc_.documentElement().firstChildElement("AliasList");
-  QDomNodeList node_list = list.firstChildElement(alias_map.c_str()).childNodes();
-  for (int i = 0; i < node_list.size(); i++) {
-    QDomNamedNodeMap map = node_list.item(i).attributes();
-    QString alias_name = map.namedItem("alias_name").nodeValue();
-    QString base_name = map.namedItem("base_name").nodeValue();
-    alias_base_name.insert(std::make_pair<std::string, std::string>(
-        alias_name.toStdString(), base_name.toStdString()));
-
-  }
-  return alias_base_name;
-}
-
-std::string Alias::GetAliasMap(const std::string &process_type) const {
+  std::map<std::string, std::string> result;
   QDomElement	config = doc_.documentElement().firstChildElement("AliasCfg");
-  return config.attribute(process_type.c_str()).toStdString();
+  QString config_map = config.attribute(process_type.c_str());
+
+  QDomElement	list = doc_.documentElement().firstChildElement("AliasList");
+  QDomElement target_node = list.firstChildElement(config_map);
+  QDomNodeList node_list = target_node.childNodes();
+  for (int i = 0; i < node_list.size(); i++) {
+    if (node_list.item(i).attributes().namedItem("alias_name").nodeValue().compare(
+        process_variable.c_str()) == 0) {
+
+      if (target_node.hasAttribute("second_level")) {
+        result.insert(std::make_pair(config_map.toStdString(),
+            node_list.item(i).attributes().namedItem("type1").nodeValue().toStdString()));
+
+        result.insert(std::make_pair(target_node.attribute("second_level").toStdString(),
+            node_list.item(i).attributes().namedItem("type2").nodeValue().toStdString()));
+
+      } else {
+        result.insert(std::make_pair(config_map.toStdString(),
+            node_list.item(i).attributes().namedItem("base_name").nodeValue().toStdString()));
+
+      }
+      break;
+    }
+  }
+  return result;
 }
 
 std::vector<std::string> Alias::GetBaseName(
-      const std::string &alias_map) const {
+    const std::string &alias_map) const {
 
   std::vector<std::string> base_names;
-  std::map<std::string, std::string> alias_base_name;
-  QDomElement	list = doc_.documentElement().firstChildElement("AliasList");
+  QDomElement list = doc_.documentElement().firstChildElement("AliasList");
   QDomNodeList node_list = list.firstChildElement(alias_map.c_str()).childNodes();
   for (int i = 0; i < node_list.size(); i++) {
     QDomNamedNodeMap map = node_list.item(i).attributes();

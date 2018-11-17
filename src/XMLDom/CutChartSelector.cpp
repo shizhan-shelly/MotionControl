@@ -23,7 +23,7 @@ CutChartSelector::CutChartSelector(const std::string &cut_chart_selector_file) {
   file.close();
 }
 
-std::vector<std::string> CutChartSelector::GetKeywordName() const {
+std::vector<std::string> CutChartSelector::GetKeywordFieldName() const {
   std::vector<std::string> result;
   QDomElement	ele = doc_.documentElement().firstChildElement("CutChartListAttr");
   QDomNodeList cut_chart_list_attr = ele.childNodes();
@@ -67,7 +67,9 @@ std::vector<std::string> CutChartSelector::GetKeywordList(
   return result;
 }
 
-std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
+std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart(
+    std::string &cut_chart_name) const {
+
   std::vector<std::string> result;
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
   QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
@@ -81,10 +83,13 @@ std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
       }
     }
   }
+  cut_chart_name = selected_item.attributes().namedItem("CutChartName").nodeValue().toStdString();
   return result;
 }
 
-bool CutChartSelector::SetCurrentSelectedCutChart(const std::vector<std::string> &keywords) {
+bool CutChartSelector::SetCurrentSelectedCutChart(const std::vector<std::string> &keywords,
+                                                  const std::string &cut_chart_name) {
+
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
   QDomElement	attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
   QDomNodeList cut_chart_list_attr = attr_element.childNodes();
@@ -99,10 +104,12 @@ bool CutChartSelector::SetCurrentSelectedCutChart(const std::vector<std::string>
       }
     }
   }
+  selected_item.attributes().namedItem("CutChartName").setNodeValue(cut_chart_name.c_str());
   return WriteToXML();
 }
 
-std::string CutChartSelector::GetCutChartName() const {
+std::vector<std::string> CutChartSelector::GetCutChartNameList() const {
+  std::vector<std::string> cut_chart_name;
   std::map<std::string, std::string> keyword_map;
   QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
   QDomNamedNodeMap node_map = selected_item.attributes();
@@ -126,10 +133,10 @@ std::string CutChartSelector::GetCutChartName() const {
       iter++;
     }
     if (iter == keyword_map.end()) {
-      return record_map.namedItem("CutChartName").nodeValue().toStdString();
+      cut_chart_name.push_back(record_map.namedItem("CutChartName").nodeValue().toStdString());
     }
   }
-  return "";
+  return cut_chart_name;
 }
 
 bool CutChartSelector::ImportCutChart(const std::string &cut_chart_file,

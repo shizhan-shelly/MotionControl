@@ -58,6 +58,9 @@
     <Filter Include="Communication\Modbus\Client">
       <UniqueIdentifier>{8c1ef258-2d42-424f-b677-2047c6288abd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\KerfTable">
+      <UniqueIdentifier>{5886d0dd-3963-4773-9d73-376113869b6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -177,6 +180,18 @@
     <ClCompile Include="Pages\ModbusSetDlg.cpp">
       <Filter>Pages\ModbusSet</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\KerfTableModel.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KerfTableModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\KerfTableDlg.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -244,6 +259,9 @@
     <ClInclude Include="Communication\Modbus\ModbusProtocol.h">
       <Filter>Communication\Modbus</Filter>
     </ClInclude>
+    <ClInclude Include="Pages\KerfTableDlg.h">
+      <Filter>Pages\KerfTable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -279,6 +297,9 @@
     </CustomBuild>
     <CustomBuild Include="Pages\ModbusTCPSet.h">
       <Filter>Pages\ModbusSet</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\KerfTableModel.h">
+      <Filter>Pages\KerfTable</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

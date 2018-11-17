@@ -13,30 +13,18 @@ class Alias {
  public:
   bool ParseAlias(const std::string &alias_file);
 
-  std::string GetAliasMap(const std::string &process_type) const;
-
   /**
    * Description:
-   * This function will get a map of alias name and base name.
-   * For exmaple: The Alias.xml is shown as follows.
-   * <Alias Version="1.0" Vendor="Liuhe">
-       <AliasCfg V502="TorchType" V501="PowerSupply"/>
-       <AliasList>
-         <PowerSupply>
-           <Record base_name="LH270A" alias_name="1"/>
-         </PowerSupply>
-         <TorchType>
-           <Record base_name="THERMACUT XD" alias_name="1"/>
-           <Record base_name="THERMACUT XD Bevel" alias_name="2"/>
-          </TorchType>
-       </AliasList>
-     </Alias>
-   * @param [in]: alias_map, name of alias table. Like as "TorchType".
-   * @return: Generate a map of <alias_name, base_name> for cut chart data
-   * operation with specified alias table name.
+   * Get field name and field value in cut chart.
+   * It is used for select a cut chart data record.
+   * @param [in]: process_type, alias table map in AliasCfg, like as "V507".
+   * @param [in]: process_variable, variable after 'F' of G59 code.
+   * @example, G59 V507 F10.000
+   * process_type is "V507", process_variable is "10.000".
    */
-  std::map<std::string, std::string> GetAliasName(
-      const std::string &alias_map) const;
+  std::map<std::string, std::string> GetBaseName(
+      const std::string &process_type,
+      const std::string &process_variable) const;
 
   /**
    * Get all base name in one of alias list. It is used for selection of

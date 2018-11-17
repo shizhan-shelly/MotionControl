@@ -22,15 +22,19 @@ int main(int argc, char *argv[]) {
   }
 
   CutChartSelector cut_chart_selector("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\CutChartSelector.xml");
-  std::vector<std::string> cut_chart_selector_keyword_name = cut_chart_selector.GetKeywordName();
+  std::vector<std::string> cut_chart_selector_keyword_name = cut_chart_selector.GetKeywordFieldName();
   for (size_t i = 0; i < cut_chart_selector_keyword_name.size(); i++) {
     printf("%s\n", cut_chart_selector_keyword_name[i].c_str());
   }
-  std::vector<std::string> current_cut_chart_selects = cut_chart_selector.GetCurrentSelectedCutChart();
+  std::string cur_cut_chart_name;
+  std::vector<std::string> current_cut_chart_selects = cut_chart_selector.GetCurrentSelectedCutChart(cur_cut_chart_name);
   for (size_t i = 0; i < current_cut_chart_selects.size(); i++) {
     printf("%s\t", current_cut_chart_selects[i].c_str());
   }
-  printf("\n%s\n", cut_chart_selector.GetCutChartName().c_str());
+  std::vector<std::string> cut_chart_name = cut_chart_selector.GetCutChartNameList();
+  for (size_t i = 0; i < cut_chart_name.size(); i++) {
+    printf("\n%s\n", cut_chart_name[i].c_str());
+  }
 
   std::vector<std::string> selected_keywords;
   selected_keywords.push_back("SF-120");
@@ -45,7 +49,8 @@ int main(int argc, char *argv[]) {
   keywords.push_back("Smart Focus 130");
   keywords.push_back("PGV-300");
   keywords.push_back("PerCut2000");
-  cut_chart_selector.SetCurrentSelectedCutChart(keywords);
+  cur_cut_chart_name = "DB-PerCut_2000-Smart_Focus_130-PGV-300-Version3.xml";
+  cut_chart_selector.SetCurrentSelectedCutChart(keywords, cur_cut_chart_name);
 
   cut_chart_selector.ImportCutChart("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.xml",
                                     "E:\\MyJob\\MotionControl\\tools\\Kjellberg\\DB-PerCut_2000-Smart_Focus_130-PGE-300-Version3.bml");
@@ -69,8 +74,7 @@ int main(int argc, char *argv[]) {
 
   Alias alias;
   alias.ParseAlias("E:\\MyJob\\MotionControl\\tools\\Liuhe\\Alias.xml");
-  alias.GetAliasMap("V507");
-  alias.GetAliasName("Thickness");
+  alias.GetBaseName("V503", "1.99");
   alias.GetBaseName("Current");
 
   return a.exec();
