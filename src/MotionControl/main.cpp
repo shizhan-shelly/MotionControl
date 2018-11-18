@@ -10,6 +10,7 @@
 #include "Pages\SystemConfigWidget.h"
 #include "Pages\ConsumablesWidget.h"
 #include "Pages/ModbusSetDlg.h"
+#include "Pages/KerfTableDlg.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
 #include "../Widget/WidgetQrc.h"
 #include "MotionControlQrc.h"
@@ -58,6 +59,11 @@ int main(int argc, char *argv[]) {
   Cutter *cutter = Cutter::GetInstance();
   cutter->InitModbusClient();
   cutter->StartupModbusConnect();
+
+  cutter->InitKerfTableModel();
+  KerfTableDlg kerf_table_dialog;
+  kerf_table_dialog.setModel(cutter->GetKerfTableModel());
+  kerf_table_dialog.exec();
 
   return app.exec();
 }

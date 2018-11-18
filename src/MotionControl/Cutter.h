@@ -7,6 +7,8 @@
 #include "base/singleton/Singleton.h"
 #include "MotionControl/Communication/Modbus/MasterClient.h"
 
+class KerfTableModel;
+
 class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)
 
@@ -17,12 +19,19 @@ class Cutter : public Singleton {
 
   bool StartupModbusConnect();
 
+  KerfTableModel *GetKerfTableModel() const {
+    return kerf_table_model_;
+  }
+
+  void InitKerfTableModel();
+
  private:
   Cutter();
   ~Cutter();
 
   MasterClient modbus_client_;
   ClientHandlerManager client_manager_;
+  KerfTableModel *kerf_table_model_;
 
 }; //class Cutter
 
