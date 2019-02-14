@@ -99,12 +99,14 @@
       <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Async</ExceptionHandling>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Nesting.cpp" />
     <ClCompile Include="Vendor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alias.h" />
     <ClInclude Include="CutChart.h" />
     <ClInclude Include="CutChartSelector.h" />
+    <ClInclude Include="Nesting.h" />
     <ClInclude Include="Vendor.h" />
   </ItemGroup>
   <ItemGroup>
