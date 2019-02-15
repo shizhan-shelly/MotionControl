@@ -60,7 +60,7 @@ std::string Nesting::GetItemValueByFieldName(const std::string &field_name,
     const std::string &refer_diameter,
     const std::map<std::string, std::string> &keyword_field) const {
 
-  QDomNode data_node = QDomNode();
+  QList<QDomNode> data_nodes;
   QDomElement	data_element = doc_.documentElement().firstChildElement("CutChartData");
   QDomNodeList records = data_element.childNodes();
   for (int i = 0; i < records.size(); i++) {
@@ -76,14 +76,21 @@ std::string Nesting::GetItemValueByFieldName(const std::string &field_name,
       }
     }
     if (iter == keyword_field.end()) {
-      data_node = records.item(i);
+      data_nodes.append(records.item(i));
     }
   }
-  if (!data_node.isNull()) {
-    QDomNamedNodeMap node_map = data_node.attributes();
-    QDomNode target_node = node_map.namedItem(field_name.c_str());
-    if (!target_node.isNull()) {
-      return target_node.nodeValue().toStdString();
+  // Pick up target node from selected data nodes.
+  if (!data_nodes.empty()) {
+    foreach (QDomNode data_node, data_nodes) {
+      QDomNamedNodeMap node_attr = data_node.attributes();
+      if (node_attr.namedItem("ProfileType").nodeValue().compare("I") == 0 &&
+          node_attr.namedItem("Diameter").nodeValue().compare(refer_diameter.c_str()) == 0) {
+
+        QDomNode target = node_attr.namedItem(field_name.c_str());
+        if (!target.isNull()) {
+          return target.nodeValue().toStdString();
+        }
+      }
     }
   }
   return "";
