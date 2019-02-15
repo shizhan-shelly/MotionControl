@@ -45,6 +45,7 @@ class CutChart {
   bool SetCurrentSelectedRecord(const std::map<std::string, std::string> &alias_value);
   bool SetCurrentSelectedRecord(const std::vector<std::string> &keyword_value);
   bool GetCurrentSelectedRecord(std::vector<std::string> &keyword_value) const;
+  bool GetCurrentSelectedRecord(std::map<std::string, std::string> &keyword_map) const;
 
   bool GetGeneralFieldNameAndUnit(std::vector<std::pair<std::string, std::vector<std::string> > > &name_unit) const;
 

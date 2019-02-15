@@ -14,12 +14,12 @@ class Nesting {
   Nesting();
   ~Nesting();
 
-  bool Parse(const std::string &xml_file);
+  bool ParseNesting(const std::string &xml_file);
 
   std::vector<std::string> GetInteriorProfileDiameter(
       const std::map<std::string, std::string> &keyword_field) const;
 
-  std::string GetItemValueByFieldName(const std::string &field_name,
+  std::map<std::string, std::string> GetInteriorProfileItemValue(
       const std::string &refer_diameter,
       const std::map<std::string, std::string> &keyword_field) const;
 

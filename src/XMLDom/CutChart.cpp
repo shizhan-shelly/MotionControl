@@ -119,6 +119,13 @@ bool CutChart::GetCurrentSelectedRecord(std::vector<std::string> &keyword_value)
   return true;
 }
 
+bool CutChart::GetCurrentSelectedRecord(std::map<std::string, std::string> &keyword_map) const {
+  for (size_t i = 0; i < keyword_field_.size(); i++) {
+    keyword_map.insert(keyword_field_[i]);
+  }
+  return true;
+}
+
 bool CutChart::GetGeneralFieldNameAndUnit(std::vector<std::pair<std::string, std::vector<std::string> > > &name_unit) const {
   QDomElement	attr_element = doc_usr_.documentElement().firstChildElement("CutChartAttr");
   QDomNodeList cut_chart_attr = attr_element.childNodes();

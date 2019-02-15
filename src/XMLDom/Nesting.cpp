@@ -12,7 +12,7 @@ Nesting::Nesting() {}
 
 Nesting::~Nesting() {}
 
-bool Nesting::Parse(const std::string &xml_file) {
+bool Nesting::ParseNesting(const std::string &xml_file) {
   QFile file(xml_file.c_str());
   if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     return false;
@@ -38,8 +38,9 @@ std::vector<std::string> Nesting::GetInteriorProfileDiameter(
   for (int i = 0; i < data_record_list.size(); i++) {
     QDomNode data_record = data_record_list.item(i);
     QDomNamedNodeMap node_map = data_record.attributes();
+    QDomNode check_node = node_map.namedItem("ProfileType");
     QDomNode target_node = node_map.namedItem("Diameter");
-    if (!target_node.isNull()) {
+    if (check_node.nodeValue().compare("I") == 0 && !target_node.isNull()) {
       std::map<std::string, std::string>::const_iterator iter = keyword_field.begin();
       while (iter != keyword_field.end()) {
         QDomNode pre_node = node_map.namedItem(iter->first.c_str());
@@ -56,7 +57,7 @@ std::vector<std::string> Nesting::GetInteriorProfileDiameter(
   return diameters;
 }
 
-std::string Nesting::GetItemValueByFieldName(const std::string &field_name,
+std::map<std::string, std::string> Nesting::GetInteriorProfileItemValue(
     const std::string &refer_diameter,
     const std::map<std::string, std::string> &keyword_field) const {
 
@@ -80,18 +81,20 @@ std::string Nesting::GetItemValueByFieldName(const std::string &field_name,
     }
   }
   // Pick up target node from selected data nodes.
+  std::map<std::string, std::string> nesting_data;
   if (!data_nodes.empty()) {
     foreach (QDomNode data_node, data_nodes) {
       QDomNamedNodeMap node_attr = data_node.attributes();
       if (node_attr.namedItem("ProfileType").nodeValue().compare("I") == 0 &&
           node_attr.namedItem("Diameter").nodeValue().compare(refer_diameter.c_str()) == 0) {
 
-        QDomNode target = node_attr.namedItem(field_name.c_str());
-        if (!target.isNull()) {
-          return target.nodeValue().toStdString();
-        }
+        nesting_data.insert(std::make_pair("CuttingSpeed", node_attr.namedItem("CuttingSpeed").nodeValue().toStdString()));
+        nesting_data.insert(std::make_pair("LeadInSpeed", node_attr.namedItem("LeadInSpeed").nodeValue().toStdString()));
+        nesting_data.insert(std::make_pair("Kerf", node_attr.namedItem("Kerf").nodeValue().toStdString()));
+        nesting_data.insert(std::make_pair("DisableAHC", node_attr.namedItem("DisableAHC").nodeValue().toStdString()));
+        nesting_data.insert(std::make_pair("AsynchronousStop", node_attr.namedItem("AsynchronousStop").nodeValue().toStdString()));
       }
     }
   }
-  return "";
+  return nesting_data;
 }
