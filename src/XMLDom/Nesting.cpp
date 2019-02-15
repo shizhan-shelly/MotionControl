@@ -3,6 +3,7 @@
 
 #include "Nesting.h"
 
+#include <algorithm>
 #include <QtCore/QFile>
 #include <QtCore/QFileInfo>
 #include <QtCore/QIODevice>
@@ -29,10 +30,10 @@ bool Nesting::ParseNesting(const std::string &xml_file) {
   return true;
 }
 
-std::vector<std::string> Nesting::GetInteriorProfileDiameter(
+std::vector<double> Nesting::GetInteriorProfileDiameter(
     const std::map<std::string, std::string> &keyword_field) const {
 
-  std::vector<std::string> diameters;
+  std::vector<double> diameters;
   QDomElement data_element_ = doc_.documentElement().firstChildElement("CutChartData");
   QDomNodeList data_record_list = data_element_.childNodes();
   for (int i = 0; i < data_record_list.size(); i++) {
@@ -40,7 +41,7 @@ std::vector<std::string> Nesting::GetInteriorProfileDiameter(
     QDomNamedNodeMap node_map = data_record.attributes();
     QDomNode check_node = node_map.namedItem("ProfileType");
     QDomNode target_node = node_map.namedItem("Diameter");
-    if (check_node.nodeValue().compare("I") == 0 && !target_node.isNull()) {
+    if (check_node.nodeValue().compare("I") == 0 && target_node.nodeValue().compare("*") != 0) {
       std::map<std::string, std::string>::const_iterator iter = keyword_field.begin();
       while (iter != keyword_field.end()) {
         QDomNode pre_node = node_map.namedItem(iter->first.c_str());
@@ -50,10 +51,11 @@ std::vector<std::string> Nesting::GetInteriorProfileDiameter(
         iter++;
       }
       if (iter == keyword_field.end()) {
-        diameters.push_back(target_node.nodeValue().toStdString());
+        diameters.push_back(target_node.nodeValue().toDouble());
       }
     }
   }
+  SortNum(diameters);
   return diameters;
 }
 
@@ -97,4 +99,10 @@ std::map<std::string, std::string> Nesting::GetInteriorProfileItemValue(
     }
   }
   return nesting_data;
+}
+
+void Nesting::SortNum(std::vector<double> &num) const {
+  std::sort(num.begin(), num.end());
+  std::vector<double>::iterator it = std::unique(num.begin(), num.end());
+  num.resize(it - num.begin());
 }

@@ -300,7 +300,7 @@ bool CutChart::RevertRecord() {
 
 bool CutChart::SaveCutChart() {
   QFile file(cut_chart_file_.c_str());
-  if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
     return false;
   }
   QTextStream out(&file);

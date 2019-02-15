@@ -16,7 +16,7 @@ class Nesting {
 
   bool ParseNesting(const std::string &xml_file);
 
-  std::vector<std::string> GetInteriorProfileDiameter(
+  std::vector<double> GetInteriorProfileDiameter(
       const std::map<std::string, std::string> &keyword_field) const;
 
   std::map<std::string, std::string> GetInteriorProfileItemValue(
@@ -25,6 +25,8 @@ class Nesting {
 
  private:
   QDomDocument doc_;
+
+  void SortNum(std::vector<double> &num) const;
 
 }; // class Nesting
 
