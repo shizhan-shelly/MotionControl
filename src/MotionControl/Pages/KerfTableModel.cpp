@@ -3,6 +3,8 @@
 
 #include "KerfTableModel.h"
 
+#include <math.h>
+
 KerfTableModel::KerfTableModel(QObject *parent)
     : QAbstractTableModel(parent) {}
 

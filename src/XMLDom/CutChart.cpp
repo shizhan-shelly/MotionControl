@@ -65,7 +65,7 @@ bool CutChart::GetKeywordFieldNameAndUnit(
 }
 
 std::vector<std::string> CutChart::GetKeywordList(const std::string &keyword_name,
-    const std::map<std::string, std::string> &selected_keywords) {
+    const std::map<std::string, std::string> &selected_keywords) const {
 
   std::vector<std::string> result;
   QDomElement data_element_ = doc_usr_.documentElement().firstChildElement("CutChartData");
