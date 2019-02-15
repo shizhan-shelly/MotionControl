@@ -40,7 +40,7 @@ class CutChart {
   bool GetKeywordFieldNameAndUnit(std::vector<std::pair<std::string, std::vector<std::string> > > &name_unit) const;
 
   std::vector<std::string> GetKeywordList(const std::string &keyword_name,
-      const std::map<std::string, std::string> &selected_keywords);
+      const std::map<std::string, std::string> &selected_keywords) const;
 
   bool SetCurrentSelectedRecord(const std::map<std::string, std::string> &alias_value);
   bool SetCurrentSelectedRecord(const std::vector<std::string> &keyword_value);
