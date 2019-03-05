@@ -23,6 +23,9 @@
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ModbusTCPSet.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_NestingModel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_SystemConfigFilterView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -48,6 +51,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ModbusTCPSet.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_NestingModel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_SystemConfigFilterView.cpp">
@@ -86,6 +92,7 @@
     <ClCompile Include="Pages\KerfTableModel.cpp" />
     <ClCompile Include="Pages\ModbusSetDlg.cpp" />
     <ClCompile Include="Pages\ModbusTCPSet.cpp" />
+    <ClCompile Include="Pages\NestingModel.cpp" />
     <ClCompile Include="Pages\SystemConfigItem.cpp" />
     <ClCompile Include="Pages\ModbusRTUSet.cpp" />
     <ClCompile Include="Pages\SystemConfigFilterView.cpp" />
@@ -154,6 +161,16 @@
     </CustomBuild>
     <ClInclude Include="Pages\KerfTableDlg.h" />
     <ClInclude Include="Pages\ModbusSetDlg.h" />
+    <CustomBuild Include="Pages\NestingModel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing NestingModel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing NestingModel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles"</Command>
+    </CustomBuild>
     <ClInclude Include="Pages\SystemConfigItem.h" />
     <CustomBuild Include="Pages\SystemConfigFilterView.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>

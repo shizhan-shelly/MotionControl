@@ -61,6 +61,9 @@
     <Filter Include="Pages\KerfTable">
       <UniqueIdentifier>{5886d0dd-3963-4773-9d73-376113869b6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DatabaseView\Nesting">
+      <UniqueIdentifier>{7eb159c8-1679-45c5-84fd-940875ba4e47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -192,6 +195,15 @@
     <ClCompile Include="Pages\KerfTableDlg.cpp">
       <Filter>Pages\KerfTable</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\NestingModel.cpp">
+      <Filter>Pages\DatabaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_NestingModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_NestingModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -300,6 +312,9 @@
     </CustomBuild>
     <CustomBuild Include="Pages\KerfTableModel.h">
       <Filter>Pages\KerfTable</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\NestingModel.h">
+      <Filter>Pages\DatabaseModel</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
