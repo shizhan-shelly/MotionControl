@@ -32,6 +32,8 @@ class KerfTableModel : public QAbstractTableModel {
  private:
   QVector<double> kerf_variable_value_;
 
+  double correctKerfValue(int index) const;
+
 }; // class KerfTableModel
 
 #endif // KERFTABLEMODEL_H__

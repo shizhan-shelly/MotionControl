@@ -15,7 +15,7 @@ KerfTableDlg::KerfTableDlg(QWidget *parent) : widget::BaseDialog(parent)
                                             , table_model_(NULL) {
 
   table_view_ = new QTableView(this);
-  table_view_->setMinimumSize(400, 400);
+  table_view_->setMinimumSize(400, 300);
   table_view_->setSelectionMode(QAbstractItemView::SingleSelection);
   table_view_->verticalScrollBar()->setStyleSheet("QScrollBar:vertical {"
                                                   "width: 30px;"

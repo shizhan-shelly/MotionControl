@@ -32,6 +32,9 @@ Qt::ItemFlags KerfTableModel::flags(const QModelIndex &index) const {
   if (!index.isValid()) {
     return Qt::ItemIsEnabled;
   }
+  if (index.column() == 0) {
+    return QAbstractItemModel::flags(index);
+  }
   return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
 }
 
@@ -47,7 +50,7 @@ QVariant KerfTableModel::data(const QModelIndex &index, int role) const {
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    return column == 0 ? row + 1 : fabs(kerf_variable_value_[row]);
+    return column == 0 ? row + 1 : correctKerfValue(row);
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:
@@ -68,7 +71,7 @@ QVariant KerfTableModel::headerData(int section, Qt::Orientation orientation,
      case 0:
       return tr("Kerf Variable");
      case 1:
-      return tr("Kerf Value");
+      return tr("Kerf Value(mm)");
      default:
       return QVariant();
     }
@@ -85,10 +88,21 @@ bool KerfTableModel::setData(const QModelIndex &index, const QVariant &value,
     bool ok = true;
     double get = value.toDouble(&ok);
     if (ok) {
-      kerf_variable_value_[row] = get;
+      kerf_variable_value_[row] = fabs(get);
       emit dataChanged(index, index);
     }
     return ok;
   }
   return false;
+}
+
+double KerfTableModel::correctKerfValue(int index) const {
+  if (index >= rowCount()) {
+    return 0.0;
+  }
+  static double MAX_KERF_VALUE = 20;
+  if (kerf_variable_value_[index] > MAX_KERF_VALUE) {
+    return MAX_KERF_VALUE;
+  }
+  return fabs(kerf_variable_value_[index]);
 }
