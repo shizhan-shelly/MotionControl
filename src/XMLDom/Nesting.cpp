@@ -101,6 +101,13 @@ std::map<std::string, std::string> Nesting::GetInteriorProfileItemValue(
   return nesting_data;
 }
 
+bool Nesting::SetInteriorProfileItemValue(
+    const std::map<std::string, std::string> &modify_item,
+    const std::string &refer_diameter,
+    const std::map<std::string, std::string> &keyword_field) {
+
+}
+
 void Nesting::SortNum(std::vector<double> &num) const {
   std::sort(num.begin(), num.end());
   std::vector<double>::iterator it = std::unique(num.begin(), num.end());

@@ -23,6 +23,11 @@ class Nesting {
       const std::string &refer_diameter,
       const std::map<std::string, std::string> &keyword_field) const;
 
+  bool SetInteriorProfileItemValue(
+      const std::map<std::string, std::string> &modify_item,
+      const std::string &refer_diameter,
+      const std::map<std::string, std::string> &keyword_field);
+
  private:
   QDomDocument doc_;
 

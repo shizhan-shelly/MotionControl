@@ -21,11 +21,11 @@ NestingModel::NestingModel(QObject *parent) : QAbstractTableModel(parent) {}
 NestingModel::~NestingModel() {}
 
 bool NestingModel::initialNesting() {
-  //OCutter *cutter = OCutter::GetInstance();
-  //keyword_filed_.clear();
-  //cutter->GetCutChart()->GetCurrentSelectedRecord(keyword_filed_);
-  //diameters_ = QVector::fromStdVector(
-  //    cutter->GetNesting()->GetInteriorProfileDiameter(keyword_filed_));
+  OCutter *cutter = OCutter::GetInstance();
+  keyword_filed_.clear();
+  cutter->GetCutChart()->GetCurrentSelectedRecord(keyword_filed_);
+  diameters_ = QVector<double>::fromStdVector(
+      cutter->GetNesting()->GetInteriorProfileDiameter(keyword_filed_));
 
   return !diameters_.isEmpty();
 }
@@ -44,6 +44,9 @@ Qt::ItemFlags NestingModel::flags(const QModelIndex &index) const {
   if (!index.isValid()) {
     return Qt::ItemIsEnabled;
   }
+  if (index.column() == 0) {
+    return QAbstractItemModel::flags(index);
+  }
   return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
 }
 
@@ -56,15 +59,10 @@ QVariant NestingModel::data(const QModelIndex &index, int role) const {
   if (row < 0 || row >= rowCount() || column < 0 || column >= columnCount()) {
     return QVariant();
   }
-  //QString refer_diameter = QString("%1").arg(diameters_[row], 0, 'f', 1);
-  //std::map<std::string, std::string> interior_profile_items =
-  //    cutter->GetNesting()->GetInteriorProfileItemValue(refer_diameter, keyword_filed_);
-
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-
-    return QVariant();
+    return atof(GetItemValue(index).c_str());
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:
@@ -88,7 +86,7 @@ QVariant NestingModel::headerData(int section,
      case 2:
      case 3:
      case 4:
-      return tr(LIST_ITEMS[section].c_str());
+      return LIST_ITEMS[section].c_str();
      default:
       return QVariant();
     }
@@ -104,4 +102,20 @@ bool NestingModel::setData(const QModelIndex &index, const QVariant &value,
     return true;
   }
   return false;
+}
+
+std::string NestingModel::GetItemValue(const QModelIndex &index) const {
+  int row = index.row();
+  int column = index.column();
+  char diameter[] = "*";
+  sprintf(diameter, "%.1f", diameters_[row]);
+  OCutter *cutter = OCutter::GetInstance();
+  std::map<std::string, std::string> interior_profile_items =
+      cutter->GetNesting()->GetInteriorProfileItemValue(diameter,
+      keyword_filed_);
+
+  if (column == 0) {
+    return diameter;
+  }
+  return interior_profile_items[LIST_ITEMS[column].c_str()];
 }

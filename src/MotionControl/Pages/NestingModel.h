@@ -31,6 +31,8 @@ class NestingModel : public QAbstractTableModel {
   QVector<double> diameters_;
   std::map<std::string, std::string> keyword_filed_;
 
+  std::string GetItemValue(const QModelIndex &index) const;
+
 }; // class NestingModel
 
 #endif // CUTTTER_WIDGET_PLASMA_NESTINGMODEL_H__
