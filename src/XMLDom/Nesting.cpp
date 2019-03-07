@@ -14,6 +14,7 @@ Nesting::Nesting() {}
 Nesting::~Nesting() {}
 
 bool Nesting::ParseNesting(const std::string &xml_file) {
+  nesting_file_ = xml_file;
   QFile file(xml_file.c_str());
   if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     return false;
@@ -27,6 +28,16 @@ bool Nesting::ParseNesting(const std::string &xml_file) {
     return false;
   }
   file.close();
+  return true;
+}
+
+bool Nesting::SetCurrentSelectedRecord(const std::map<std::string, std::string> &keyword_field) {
+  QDomElement	selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChartRecord");
+  QDomNamedNodeMap node_map = selected_item.attributes();
+  std::map<std::string, std::string>::const_iterator iter = keyword_field.begin();
+  for (; iter != keyword_field.end(); iter++) {
+    node_map.namedItem(iter->first.c_str()).setNodeValue(iter->second.c_str());
+  }
   return true;
 }
 
@@ -102,10 +113,57 @@ std::map<std::string, std::string> Nesting::GetInteriorProfileItemValue(
 }
 
 bool Nesting::SetInteriorProfileItemValue(
-    const std::map<std::string, std::string> &modify_item,
     const std::string &refer_diameter,
+    const std::map<std::string, std::string> &modify_item,
     const std::map<std::string, std::string> &keyword_field) {
 
+  QList<QDomNode> data_nodes;
+  QDomElement data_element = doc_.documentElement().firstChildElement("CutChartData");
+  QDomNodeList records = data_element.childNodes();
+  for (int i = 0; i < records.size(); i++) {
+    QDomNamedNodeMap node_map = records.item(i).attributes();
+    std::map<std::string, std::string>::const_iterator iter =
+        keyword_field.begin();
+
+    bool check = true;
+    for (; iter != keyword_field.end(); iter++) {
+      if (node_map.namedItem(iter->first.c_str()).nodeValue().compare(
+          iter->second.c_str()) != 0) {
+
+        check = false;
+        break;
+      }
+    }
+    if (check) {
+      data_nodes.append(records.item(i));
+    }
+  }
+  // Pick up target node from selected data nodes.
+  if (!data_nodes.empty()) {
+    foreach (QDomNode data_node, data_nodes) {
+      QDomNamedNodeMap node_attr = data_node.attributes();
+      if (node_attr.namedItem("ProfileType").nodeValue().compare("I") == 0 &&
+          node_attr.namedItem("Diameter").nodeValue().compare(refer_diameter.c_str()) == 0) {
+
+        std::map<std::string, std::string>::const_iterator iter = modify_item.begin();
+        for (; iter != modify_item.end(); iter++) {
+          node_attr.namedItem(iter->first.c_str()).setNodeValue(iter->second.c_str());
+        }
+      }
+    }
+  }
+  return true;
+}
+
+bool Nesting::SaveNesting() {
+  QFile file(nesting_file_.c_str());
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+    return false;
+  }
+  QTextStream out(&file);
+  doc_.save(out, 2);
+  file.close();
+  return true;
 }
 
 void Nesting::SortNum(std::vector<double> &num) const {

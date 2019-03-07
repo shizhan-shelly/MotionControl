@@ -16,6 +16,9 @@ class Nesting {
 
   bool ParseNesting(const std::string &xml_file);
 
+  bool SetCurrentSelectedRecord(
+      const std::map<std::string, std::string> &keyword_field);
+
   std::vector<double> GetInteriorProfileDiameter(
       const std::map<std::string, std::string> &keyword_field) const;
 
@@ -24,12 +27,15 @@ class Nesting {
       const std::map<std::string, std::string> &keyword_field) const;
 
   bool SetInteriorProfileItemValue(
-      const std::map<std::string, std::string> &modify_item,
       const std::string &refer_diameter,
+      const std::map<std::string, std::string> &modify_item,
       const std::map<std::string, std::string> &keyword_field);
+
+  bool SaveNesting();
 
  private:
   QDomDocument doc_;
+  std::string nesting_file_;
 
   void SortNum(std::vector<double> &num) const;
 
