@@ -8,8 +8,6 @@
 
 class QTableView;
 
-namespace cutter {
-
 class NestingModel;
 
 class NestingDlg : public ::widget::BaseDialog {
@@ -24,7 +22,5 @@ class NestingDlg : public ::widget::BaseDialog {
   QTableView *table_view_;
 
 }; // class NestingDlg
-
-} // namespace cutter
 
 #endif // CUTTTER_WIDGET_PLASMA_NESTINGDLG_H__

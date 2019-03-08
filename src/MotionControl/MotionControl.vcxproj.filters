@@ -204,6 +204,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_NestingModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\NestingDlg.cpp">
+      <Filter>Pages\DatabaseView\Nesting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -273,6 +276,9 @@
     </ClInclude>
     <ClInclude Include="Pages\KerfTableDlg.h">
       <Filter>Pages\KerfTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Pages\NestingDlg.h">
+      <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

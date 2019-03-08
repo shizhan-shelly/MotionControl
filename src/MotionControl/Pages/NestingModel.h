@@ -16,6 +16,8 @@ class NestingModel : public QAbstractTableModel {
 
   bool initialNesting();
 
+  bool saveNesting();
+
   int rowCount(const QModelIndex &parent = QModelIndex()) const;
   int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
@@ -29,9 +31,12 @@ class NestingModel : public QAbstractTableModel {
 
  private:
   QVector<double> diameters_;
+  QVector<std::map<std::string, std::string> > interior_profile_items_;
   std::map<std::string, std::string> keyword_filed_;
 
   std::string GetItemValue(const QModelIndex &index) const;
+
+  void SetItemValue(const QModelIndex &index, const QString &value);
 
 }; // class NestingModel
 
