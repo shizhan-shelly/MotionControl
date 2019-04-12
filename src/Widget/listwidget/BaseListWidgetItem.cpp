@@ -22,6 +22,7 @@ void BaseListWidgetItem::setIconScaled(const QString &res_path,
   width_ = width;
   height_ = height;
   QPixmap pixmap(origin_path_);
+  //use pixmap.load(origin_path_) to judge picture is loadable.
   setIcon(QIcon(pixmap.scaled(width_, height_, Qt::KeepAspectRatio)));
 }
 

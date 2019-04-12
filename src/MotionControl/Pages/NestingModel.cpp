@@ -29,7 +29,7 @@ bool NestingModel::initialNesting() {
 
   //interior_profile_items_.clear();
   //foreach (double diameter, diameters_) {
-  //  char buf[] = "*";
+  //  char buf[256];
   //  sprintf(buf, "%.1f", diameter);
   //  interior_profile_items_.push_back(
   //      cutter->GetNesting()->GetInteriorProfileItemValue(buf,
@@ -41,7 +41,7 @@ bool NestingModel::initialNesting() {
 
 bool NestingModel::saveNesting() {
   for (int i = 0; i < diameters_.size(); i++) {
-    char buf[] = "*";
+    char buf[256];
     sprintf(buf, "%.1f", diameters_[i]);
   //  OCutter *cutter = OCutter::GetInstance();
   //  cutter->GetNesting()->SetInteriorProfileItemValue(buf,

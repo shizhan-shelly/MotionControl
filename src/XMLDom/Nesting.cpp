@@ -75,7 +75,7 @@ std::map<std::string, std::string> Nesting::GetInteriorProfileItemValue(
     const std::map<std::string, std::string> &keyword_field) const {
 
   QList<QDomNode> data_nodes;
-  QDomElement	data_element = doc_.documentElement().firstChildElement("CutChartData");
+  QDomElement data_element = doc_.documentElement().firstChildElement("CutChartData");
   QDomNodeList records = data_element.childNodes();
   for (int i = 0; i < records.size(); i++) {
     QDomNamedNodeMap node_map = records.item(i).attributes();
