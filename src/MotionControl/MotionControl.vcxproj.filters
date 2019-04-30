@@ -64,6 +64,9 @@
     <Filter Include="Pages\DatabaseView\Nesting">
       <UniqueIdentifier>{7eb159c8-1679-45c5-84fd-940875ba4e47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\ProgressCtrl">
+      <UniqueIdentifier>{ec67e567-1283-4e67-bbad-2f8f418e98ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -207,6 +210,24 @@
     <ClCompile Include="Pages\NestingDlg.cpp">
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\progressctrl\JobProgressDlg.cpp">
+      <Filter>Pages\ProgressCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_JobProgressDlg.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_JobProgressDlg.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\progressctrl\ProgressCtrl.cpp">
+      <Filter>Pages\ProgressCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ProgressCtrl.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ProgressCtrl.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -280,6 +301,9 @@
     <ClInclude Include="Pages\NestingDlg.h">
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ProgressCtrl.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -321,6 +345,15 @@
     </CustomBuild>
     <CustomBuild Include="Pages\NestingModel.h">
       <Filter>Pages\DatabaseModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\progressctrl\JobProgressDlg.h">
+      <Filter>Pages\ProgressCtrl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\progressctrl\ProgressCtrl.h">
+      <Filter>Pages\ProgressCtrl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\progressctrl\ProgressCtrl.ui">
+      <Filter>Pages\ProgressCtrl</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
