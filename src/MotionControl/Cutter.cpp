@@ -27,3 +27,13 @@ void Cutter::InitKerfTableModel() {
   QVector<double> kerf_table_value = QVector<double>(20, 0.0);
   kerf_table_model_.initialKerfTableValue(kerf_table_value);
 }
+
+void Cutter::InitExtendedBoardModel() {
+  QVector<BoardItem> board_items;
+  for (int i = 1; i < BOARD_SIZE; i++) {
+    BoardItem board_item;
+    board_item.group_ = i;
+    board_items.push_back(board_item);
+  }
+  extended_board_model_.initialExtendedBoard(board_items);
+}

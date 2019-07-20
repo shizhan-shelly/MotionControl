@@ -31,8 +31,6 @@ ExtendedIOConfigWidget::~ExtendedIOConfigWidget() {
 }
 
 void ExtendedIOConfigWidget::initialConfigWidget() {
-  extended_board_model_ = new ExtendedBoardModel();
-  resetExtendedBoardModel();
   connect(extended_board_model_, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
           this, SLOT(onDataChanged(QModelIndex, QModelIndex)));
 
@@ -51,22 +49,17 @@ void ExtendedIOConfigWidget::initialConfigWidget() {
                                                          border: 1px solid #6c6c6c;} \
                                   QScrollBar: vertical { width: 30px; }");
 
+}
+
+void ExtendedIOConfigWidget::setModel(ExtendedBoardModel *model) {
+  assert(model);
+  extended_board_model_ = model;
   ui_->edit_view_->setModel(extended_board_model_);
   ui_->edit_view_->setItemDelegateForColumn(1, model_delegate_);
   ui_->edit_view_->verticalHeader()->setResizeMode(QHeaderView::Fixed);
   ui_->edit_view_->horizontalHeader()->setResizeMode(0, QHeaderView::ResizeToContents);
   ui_->edit_view_->horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
   ui_->edit_view_->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
-}
-
-void ExtendedIOConfigWidget::resetExtendedBoardModel() {
-  QVector<BoardItem> board_items;
-  for (int i = 1; i < BOARD_SIZE; i++) {
-    BoardItem board_item;
-    board_item.group_ = i;
-    board_items.push_back(board_item);
-  }
-  extended_board_model_->initialExtendedBoard(board_items);
 }
 
 bool ExtendedIOConfigWidget::isDirty() {
@@ -79,11 +72,12 @@ bool ExtendedIOConfigWidget::isValid() {
 
 void ExtendedIOConfigWidget::commit() {
   QVector<BoardItem> board_items = extended_board_model_->GetExtendedBoard();
+  // TODO(ZhanShi): commit modification to parameter XML.
   dirty_ = false;
 }
 
 void ExtendedIOConfigWidget::revert() {
-  resetExtendedBoardModel();
+  // TODO(ZhanShi): reset model to original.
   dirty_ = false;
 }
 

@@ -14,9 +14,11 @@ AbstractBoard *BoardFactory::CreateBoard(int board_index) {
   if (board_index == 0) {
     board = new LocalBoard();
   } else {
-    BoardItem board_item;
-    board_item.group_ = board_index;
-    board = CreateBoard(board_item);
+    Cutter *cutter = Cutter::GetInstance();
+    QVector<BoardItem> board_items =
+        cutter->GetExtendedBoardModel()->GetExtendedBoard();
+
+    board = CreateBoard(board_items[board_index - 1]);
   }
   return board;
 }

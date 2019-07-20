@@ -6,6 +6,7 @@
 
 #include "base/singleton/Singleton.h"
 #include "MotionControl/Communication/Modbus/MasterClient.h"
+#include "MotionControl/Widgets/extendedio/ExtendedBoardModel.h"
 #include "MotionControl/Pages/KerfTableModel.h"
 
 class Cutter : public Singleton {
@@ -18,11 +19,17 @@ class Cutter : public Singleton {
 
   bool StartupModbusConnect();
 
+  ExtendedBoardModel *GetExtendedBoardModel() {
+    return &extended_board_model_;
+  }
+
   KerfTableModel *GetKerfTableModel() {
     return &kerf_table_model_;
   }
 
   void InitKerfTableModel();
+
+  void InitExtendedBoardModel();
 
  private:
   Cutter();
@@ -30,6 +37,7 @@ class Cutter : public Singleton {
 
   MasterClient modbus_client_;
   ClientHandlerManager client_manager_;
+  ExtendedBoardModel extended_board_model_;
   KerfTableModel kerf_table_model_;
 
 }; //class Cutter

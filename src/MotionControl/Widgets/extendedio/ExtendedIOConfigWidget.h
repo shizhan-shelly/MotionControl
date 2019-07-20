@@ -24,6 +24,8 @@ class ExtendedIOConfigWidget : public QWidget {
   explicit ExtendedIOConfigWidget(QWidget *parent = NULL);
   virtual ~ExtendedIOConfigWidget();
 
+  void setModel(ExtendedBoardModel *model);
+
   bool isDirty();
 
   bool isValid();
@@ -43,7 +45,6 @@ class ExtendedIOConfigWidget : public QWidget {
   widget::ComboBoxDelegate *model_delegate_;
 
   void initialConfigWidget();
-  void resetExtendedBoardModel();
 
 }; // class ExtendedIOConfigWidget
 

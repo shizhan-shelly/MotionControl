@@ -66,7 +66,9 @@ int main(int argc, char *argv[]) {
   kerf_table_dialog.setModel(cutter->GetKerfTableModel());
   kerf_table_dialog.exec();
 
+  cutter->InitExtendedBoardModel();
   ExtendedIOConfigWidget extended_io;
+  extended_io.setModel(cutter->GetExtendedBoardModel());
   extended_io.show();
 
   return app.exec();
