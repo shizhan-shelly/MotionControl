@@ -6,6 +6,8 @@
 
 #include <QString>
 
+#define BOARD_SIZE 4
+
 struct ConfigItem {
   QString name;
   QString group;

@@ -61,7 +61,7 @@ void ExtendedIOConfigWidget::initialConfigWidget() {
 
 void ExtendedIOConfigWidget::resetExtendedBoardModel() {
   QVector<BoardItem> board_items;
-  for (int i = 0; i < 4; i++) {
+  for (int i = 1; i < BOARD_SIZE; i++) {
     BoardItem board_item;
     board_item.group_ = i;
     board_items.push_back(board_item);

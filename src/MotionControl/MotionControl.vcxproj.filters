@@ -73,6 +73,9 @@
     <Filter Include="Controller">
       <UniqueIdentifier>{fa20db80-1238-4624-8e1c-8ea6977fe086}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controller\board">
+      <UniqueIdentifier>{5f0b4b17-0286-4111-8990-e8dd45067140}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -252,6 +255,15 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ExtendedIOConfigWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\IOBoardManager.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\board\BoardFactory.cpp">
+      <Filter>Controller\board</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\board\AbstractBoard.cpp">
+      <Filter>Controller\board</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -333,6 +345,27 @@
     </ClInclude>
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ExtendedIOConfigWidget.h">
       <Filter>Generated Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\IOBoardManager.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\BoardFactory.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\AbstractBoard.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\LocalBoard.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\FCB1200PCBoard.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\FCB1200PCExpBoard.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\FCB1200PCPanelBoard.h">
+      <Filter>Controller\board</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

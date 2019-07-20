@@ -1,0 +1,41 @@
+// Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
+// Author: shizhan-shelly@hotmail.com (Zhan Shi)
+
+#ifndef CONTROLLER_BOARD_ABSTRACTBOARD_H__
+#define CONTROLLER_BOARD_ABSTRACTBOARD_H__
+
+#include <map>
+
+#include "MotionControl/Controller/DeviceDefine.h"
+
+class AbstractBoard {
+ public:
+  AbstractBoard();
+  virtual ~AbstractBoard();
+
+  void initializeBoard(BoardItem board_infor);
+
+  virtual int GetBoardInputSize() const = 0;
+  virtual int GetBoardOutputSize() const = 0;
+  virtual int GetBoardADSize() const = 0;
+  virtual int GetBoardDASize() const = 0;
+
+  bool GetPhyInput(int phy_index, ConfigItem &item) const;
+  bool GetPhyOutput(int phy_index, ConfigItem &item) const;
+  bool GetPhyAD(int phy_index, ADItem &item) const;
+  bool GetPhyDA(int phy_index, DAItem &item) const;
+
+  bool SetPhyInput(int phy_index, const ConfigItem &item);
+  bool SetPhyOutput(int phy_index, const ConfigItem &item);
+  bool SetPhyAD(int phy_index, const ADItem &item);
+  bool SetPhyDA(int phy_index, const DAItem &item);
+
+ private:
+  std::map<int, ConfigItem> input_;
+  std::map<int, ConfigItem> output_;
+  std::map<int, ADItem> ad_;
+  std::map<int, DAItem> da_;
+
+}; // class AbstractBoard
+
+#endif // CONTROLLER_BOARD_ABSTRACTBOARD_H__
