@@ -67,6 +67,12 @@
     <Filter Include="Pages\ProgressCtrl">
       <UniqueIdentifier>{ec67e567-1283-4e67-bbad-2f8f418e98ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\ExtendedIO">
+      <UniqueIdentifier>{189c31bb-e6ce-4cf8-86c9-a946ed270902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{fa20db80-1238-4624-8e1c-8ea6977fe086}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -210,7 +216,7 @@
     <ClCompile Include="Pages\NestingDlg.cpp">
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClCompile>
-    <ClCompile Include="Pages\progressctrl\JobProgressDlg.cpp">
+    <ClCompile Include="Widgets\progressctrl\JobProgressDlg.cpp">
       <Filter>Pages\ProgressCtrl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_JobProgressDlg.cpp">
@@ -219,13 +225,31 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_JobProgressDlg.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Pages\progressctrl\ProgressCtrl.cpp">
+    <ClCompile Include="Widgets\progressctrl\ProgressCtrl.cpp">
       <Filter>Pages\ProgressCtrl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ProgressCtrl.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ProgressCtrl.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\extendedio\ExtendedBoardModel.cpp">
+      <Filter>Pages\ExtendedIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ExtendedBoardModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ExtendedBoardModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\extendedio\ExtendedIOConfigWidget.cpp">
+      <Filter>Pages\ExtendedIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ExtendedIOConfigWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ExtendedIOConfigWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
@@ -302,7 +326,13 @@
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClInclude>
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ProgressCtrl.h">
-      <Filter>Generated Files</Filter>
+      <Filter>Generated Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\DeviceDefine.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ExtendedIOConfigWidget.h">
+      <Filter>Generated Files\Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -346,14 +376,23 @@
     <CustomBuild Include="Pages\NestingModel.h">
       <Filter>Pages\DatabaseModel</Filter>
     </CustomBuild>
-    <CustomBuild Include="Pages\progressctrl\JobProgressDlg.h">
+    <CustomBuild Include="Widgets\progressctrl\ProgressCtrl.ui">
       <Filter>Pages\ProgressCtrl</Filter>
     </CustomBuild>
-    <CustomBuild Include="Pages\progressctrl\ProgressCtrl.h">
+    <CustomBuild Include="Widgets\progressctrl\JobProgressDlg.h">
       <Filter>Pages\ProgressCtrl</Filter>
     </CustomBuild>
-    <CustomBuild Include="Pages\progressctrl\ProgressCtrl.ui">
+    <CustomBuild Include="Widgets\progressctrl\ProgressCtrl.h">
       <Filter>Pages\ProgressCtrl</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\extendedio\ExtendedBoardModel.h">
+      <Filter>Pages\ExtendedIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\extendedio\ExtendedIOConfigWidget.ui">
+      <Filter>Pages\ExtendedIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\extendedio\ExtendedIOConfigWidget.h">
+      <Filter>Pages\ExtendedIO</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

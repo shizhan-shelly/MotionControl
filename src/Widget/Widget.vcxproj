@@ -49,6 +49,7 @@
     </ClCompile>
     <ClCompile Include="basewidget\BaseWidget.cpp" />
     <ClCompile Include="customwidget\ComboEditor.cpp" />
+    <ClCompile Include="delegate\ComboBoxDelegate.cpp" />
     <ClCompile Include="dialog\BaseDialog.cpp" />
     <ClCompile Include="listwidget\BaseListWidget.cpp" />
     <ClCompile Include="listwidget\BaseListWidgetItem.cpp" />
@@ -132,6 +133,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DWIDGET_LIB "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I.\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles"</Command>
     </CustomBuild>
+    <ClInclude Include="delegate\ComboBoxDelegate.h" />
     <ClInclude Include="WidgetQrc.h" />
   </ItemGroup>
   <ItemGroup>

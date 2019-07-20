@@ -1,8 +1,8 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef PAGES_PROGRESSCTRL_JOBPROGRESSDLG_H__
-#define PAGES_PROGRESSCTRL_JOBPROGRESSDLG_H__
+#ifndef WIDGETS_PROGRESSCTRL_JOBPROGRESSDLG_H__
+#define WIDGETS_PROGRESSCTRL_JOBPROGRESSDLG_H__
 
 #include <QtCore/QTimer>
 
@@ -29,4 +29,4 @@ class JobProgressDlg : public ::widget::BaseDialog {
 
 }; // class JobProgressDlg
 
-#endif // PAGES_PROGRESSCTRL_JOBPROGRESSDLG_H__
+#endif // WIDGETS_PROGRESSCTRL_JOBPROGRESSDLG_H__

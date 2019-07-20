@@ -1,8 +1,8 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef PAGES_PROGRESSCTRL_PROGRESSCTRL_H__
-#define PAGES_PROGRESSCTRL_PROGRESSCTRL_H__
+#ifndef WIDGETS_PROGRESSCTRL_PROGRESSCTRL_H__
+#define WIDGETS_PROGRESSCTRL_PROGRESSCTRL_H__
 
 #include <QtGui/QWidget>
 
@@ -29,4 +29,4 @@ class ProgressCtrl : public QWidget {
 
 }; // class ProgressCtrl
 
-#endif // PAGES_PROGRESSCTRL_PROGRESSCTRL_H__
+#endif // WIDGETS_PROGRESSCTRL_PROGRESSCTRL_H__

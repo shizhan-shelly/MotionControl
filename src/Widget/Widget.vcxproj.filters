@@ -42,6 +42,9 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Delegate">
+      <UniqueIdentifier>{507ae3ad-ae54-475f-997f-c0e93e2b36a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -99,6 +102,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BaseDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="delegate\ComboBoxDelegate.cpp">
+      <Filter>Delegate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -126,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WidgetQrc.h" />
+    <ClInclude Include="delegate\ComboBoxDelegate.h">
+      <Filter>Delegate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resource\edit.png">

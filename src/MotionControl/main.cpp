@@ -11,6 +11,7 @@
 #include "Pages\ConsumablesWidget.h"
 #include "Pages/ModbusSetDlg.h"
 #include "Pages/KerfTableDlg.h"
+#include "Widgets\extendedio\ExtendedIOConfigWidget.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
 #include "../Widget/WidgetQrc.h"
 #include "MotionControlQrc.h"
@@ -64,6 +65,9 @@ int main(int argc, char *argv[]) {
   KerfTableDlg kerf_table_dialog;
   kerf_table_dialog.setModel(cutter->GetKerfTableModel());
   kerf_table_dialog.exec();
+
+  ExtendedIOConfigWidget extended_io;
+  extended_io.show();
 
   return app.exec();
 }
