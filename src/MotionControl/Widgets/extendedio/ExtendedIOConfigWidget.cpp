@@ -31,9 +31,6 @@ ExtendedIOConfigWidget::~ExtendedIOConfigWidget() {
 }
 
 void ExtendedIOConfigWidget::initialConfigWidget() {
-  connect(extended_board_model_, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
-          this, SLOT(onDataChanged(QModelIndex, QModelIndex)));
-
   model_delegate_ = new widget::ComboBoxDelegate(this);
   QStringList board_model;
   board_model << "None" << "FCB1200PC" << "FCB1200PC_EXP" << "FCB1200PC_PANEL";
@@ -60,6 +57,9 @@ void ExtendedIOConfigWidget::setModel(ExtendedBoardModel *model) {
   ui_->edit_view_->horizontalHeader()->setResizeMode(0, QHeaderView::ResizeToContents);
   ui_->edit_view_->horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
   ui_->edit_view_->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
+  connect(extended_board_model_, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
+      this, SLOT(onDataChanged(QModelIndex, QModelIndex)));
+
 }
 
 bool ExtendedIOConfigWidget::isDirty() {
