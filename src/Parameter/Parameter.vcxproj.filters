@@ -12,13 +12,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="abstractparameter.h">
-      <Filter>src</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="abstractparameter.cpp">
+    <ClCompile Include="AbstractParameter.cpp">
       <Filter>src</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractParameter.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -10,6 +10,12 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AbstractParameter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractParameter.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{55FF3AB3-0244-4F58-95EE-033174509633}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
@@ -73,12 +79,6 @@
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="abstractparameter.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="abstractparameter.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
