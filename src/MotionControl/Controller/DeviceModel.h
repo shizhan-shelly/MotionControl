@@ -1,8 +1,8 @@
 // Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef MODBUS_DEVICEMODEL_H__
-#define MODBUS_DEVICEMODEL_H__
+#ifndef CONTROLLER_DEVICEMODEL_H__
+#define CONTROLLER_DEVICEMODEL_H__
 
 typedef enum _DeviceModel {
   Undefine = 0x00000000,
@@ -35,4 +35,4 @@ typedef enum _DeviceModel {
 
 } DeviceModel;
 
-#endif // MODBUS_DEVICEMODEL_H__
+#endif // CONTROLLER_DEVICEMODEL_H__

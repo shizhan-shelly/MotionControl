@@ -58,8 +58,8 @@ int main(int argc, char *argv[]) {
   thc_set_dlg.exec();
 
   Cutter *cutter = Cutter::GetInstance();
-  cutter->InitModbusClient();
-  cutter->StartupModbusConnect();
+  cutter->InitPPSClient();
+  cutter->StartupPPSConnect();
 
   cutter->InitKerfTableModel();
   KerfTableDlg kerf_table_dialog;

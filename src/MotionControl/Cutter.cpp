@@ -9,18 +9,18 @@ Cutter::Cutter() {}
 
 Cutter::~Cutter() {}
 
-MasterClient *Cutter::modbus_client() {
-  return &modbus_client_;
+PPSClient *Cutter::pps_client() {
+  return &pps_client_;
 }
 
-void Cutter::InitModbusClient() {
-  modbus_client_.SetClientHandlerManager(&client_manager_);
+void Cutter::InitPPSClient() {
+  pps_client_.SetClientHandlerManager(&client_manager_);
 }
 
-bool Cutter::StartupModbusConnect() {
+bool Cutter::StartupPPSConnect() {
   ClientHandler *client_handler_ = new RTUClientHandler("COM1", 19200, 'E', 8, 1, 1);
   client_manager_.RegisterClientHandler(client_handler_);
-  return modbus_client_.SetupConnect();
+  return pps_client_.SetupConnect();
 }
 
 void Cutter::InitKerfTableModel() {

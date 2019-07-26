@@ -1,32 +1,17 @@
-// Copyright 2018 Fangling Software Co., Ltd. All Rights Reserved.
+// Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef MODBUS_MASTERCLIENT_H__
-#define MODBUS_MASTERCLIENT_H__
-
-#include <map>
+#ifndef CONTROLLER_THC_THCCLIENT_H__
+#define CONTROLLER_THC_THCCLIENT_H__
 
 #include "Base/Runnable.h"
 
-class ClientHandler;
+class ClientHandlerManager;
 
-class ClientHandlerManager {
+class THCClient : public Runnable {
  public:
-  ~ClientHandlerManager();
-
-  void RegisterClientHandler(ClientHandler *handler);
-
-  ClientHandler *GetClientHandler(int slave_id) const;
-
- private:
-  std::map<int, ClientHandler *> handlers_;
-
-}; // class ClientHandlerManager
-
-class MasterClient : public Runnable {
- public:
-  MasterClient();
-  ~MasterClient();
+  THCClient();
+  virtual ~THCClient();
 
   void SetClientHandlerManager(ClientHandlerManager *handler_manager);
 
@@ -209,6 +194,6 @@ class MasterClient : public Runnable {
 
   bool SlaveVersionVerify();
 
-}; // class MasterClient
+}; // class THCClient
 
-#endif // MODBUS_MASTERCLIENT_H__
+#endif // CONTROLLER_THC_THCCLIENT_H__

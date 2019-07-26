@@ -76,6 +76,12 @@
     <Filter Include="Controller\board">
       <UniqueIdentifier>{5f0b4b17-0286-4111-8990-e8dd45067140}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controller\pps">
+      <UniqueIdentifier>{02d9a7b1-3f65-473a-a93f-d82bbc89df1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller\thc">
+      <UniqueIdentifier>{ba8110fa-0966-4e81-96ee-33f90508e5ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -157,9 +163,6 @@
     </ClCompile>
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp">
       <Filter>Communication\Modbus\Server</Filter>
-    </ClCompile>
-    <ClCompile Include="Communication\Modbus\MasterClient.cpp">
-      <Filter>Communication\Modbus\Client</Filter>
     </ClCompile>
     <ClCompile Include="Communication\Modbus\ClientHandler.cpp">
       <Filter>Communication\Modbus\Client</Filter>
@@ -264,6 +267,15 @@
     <ClCompile Include="Controller\board\AbstractBoard.cpp">
       <Filter>Controller\board</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\pps\PPSClient.cpp">
+      <Filter>Controller\pps</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\thc\THCClient.cpp">
+      <Filter>Controller\thc</Filter>
+    </ClCompile>
+    <ClCompile Include="Communication\Modbus\ClientHandlerManager.cpp">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -305,12 +317,6 @@
     </ClInclude>
     <ClInclude Include="Communication\Modbus\ModbusMappingDef.h">
       <Filter>Communication\Modbus</Filter>
-    </ClInclude>
-    <ClInclude Include="Communication\Modbus\DeviceModel.h">
-      <Filter>Communication\Modbus</Filter>
-    </ClInclude>
-    <ClInclude Include="Communication\Modbus\MasterClient.h">
-      <Filter>Communication\Modbus\Client</Filter>
     </ClInclude>
     <ClInclude Include="Communication\Modbus\ClientHandler.h">
       <Filter>Communication\Modbus\Client</Filter>
@@ -366,6 +372,18 @@
     </ClInclude>
     <ClInclude Include="Controller\board\FCB1200PCPanelBoard.h">
       <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\pps\PPSClient.h">
+      <Filter>Controller\pps</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\thc\THCClient.h">
+      <Filter>Controller\thc</Filter>
+    </ClInclude>
+    <ClInclude Include="Communication\Modbus\ClientHandlerManager.h">
+      <Filter>Communication\Modbus\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\DeviceModel.h">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -96,7 +96,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Communication\Modbus\ClientHandler.cpp" />
-    <ClCompile Include="Communication\Modbus\MasterClient.cpp" />
+    <ClCompile Include="Communication\Modbus\ClientHandlerManager.cpp" />
     <ClCompile Include="Communication\Modbus\RTUClientHandler.cpp" />
     <ClCompile Include="Communication\Modbus\TCPClientHandler.cpp" />
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp" />
@@ -104,6 +104,8 @@
     <ClCompile Include="Controller\board\AbstractBoard.cpp" />
     <ClCompile Include="Controller\board\BoardFactory.cpp" />
     <ClCompile Include="Controller\IOBoardManager.cpp" />
+    <ClCompile Include="Controller\pps\PPSClient.cpp" />
+    <ClCompile Include="Controller\thc\THCClient.cpp" />
     <ClCompile Include="Cutter.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\AliasTranslation.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp" />
@@ -143,8 +145,7 @@
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ExtendedIOConfigWidget.h" />
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ProgressCtrl.h" />
     <ClInclude Include="Communication\Modbus\ClientHandler.h" />
-    <ClInclude Include="Communication\Modbus\DeviceModel.h" />
-    <ClInclude Include="Communication\Modbus\MasterClient.h" />
+    <ClInclude Include="Communication\Modbus\ClientHandlerManager.h" />
     <ClInclude Include="Communication\Modbus\ModbusMappingDef.h" />
     <ClInclude Include="Communication\Modbus\ModbusProtocol.h" />
     <ClInclude Include="Communication\Modbus\RTUClientHandler.h" />
@@ -158,7 +159,10 @@
     <ClInclude Include="Controller\board\FCB1200PCPanelBoard.h" />
     <ClInclude Include="Controller\board\LocalBoard.h" />
     <ClInclude Include="Controller\DeviceDefine.h" />
+    <ClInclude Include="Controller\DeviceModel.h" />
     <ClInclude Include="Controller\IOBoardManager.h" />
+    <ClInclude Include="Controller\pps\PPSClient.h" />
+    <ClInclude Include="Controller\thc\THCClient.h" />
     <ClInclude Include="Cutter.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\AliasTranslation.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />

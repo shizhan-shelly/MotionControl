@@ -5,7 +5,8 @@
 #define CUTTER_H__
 
 #include "base/singleton/Singleton.h"
-#include "MotionControl/Communication/Modbus/MasterClient.h"
+#include "MotionControl/Communication/Modbus/ClientHandlerManager.h"
+#include "MotionControl/controller/pps/PPSClient.h"
 #include "MotionControl/Widgets/extendedio/ExtendedBoardModel.h"
 #include "MotionControl/Pages/KerfTableModel.h"
 
@@ -13,11 +14,11 @@ class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)
 
  public:
-  MasterClient *modbus_client();
+  PPSClient *pps_client();
 
-  void InitModbusClient();
+  void InitPPSClient();
 
-  bool StartupModbusConnect();
+  bool StartupPPSConnect();
 
   ExtendedBoardModel *GetExtendedBoardModel() {
     return &extended_board_model_;
@@ -35,7 +36,7 @@ class Cutter : public Singleton {
   Cutter();
   ~Cutter();
 
-  MasterClient modbus_client_;
+  PPSClient pps_client_;
   ClientHandlerManager client_manager_;
   ExtendedBoardModel extended_board_model_;
   KerfTableModel kerf_table_model_;
