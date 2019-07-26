@@ -7,6 +7,7 @@
 
 #include "MotionControl/Communication/Modbus/ClientHandler.h"
 #include "MotionControl/Communication/Modbus/ClientHandlerManager.h"
+#include "MotionControl/Controller/pps/PPSMapAddrDef.h"
 
 PPSClient::PPSClient() : Runnable()
                        , handler_manager_(NULL) {}

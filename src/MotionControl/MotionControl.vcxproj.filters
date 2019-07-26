@@ -385,6 +385,12 @@
     <ClInclude Include="Controller\DeviceModel.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="Controller\thc\THCMapAddrDef.h">
+      <Filter>Controller\thc</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\pps\PPSMapAddrDef.h">
+      <Filter>Controller\pps</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">

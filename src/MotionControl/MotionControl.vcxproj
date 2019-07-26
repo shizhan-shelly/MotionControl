@@ -162,7 +162,9 @@
     <ClInclude Include="Controller\DeviceModel.h" />
     <ClInclude Include="Controller\IOBoardManager.h" />
     <ClInclude Include="Controller\pps\PPSClient.h" />
+    <ClInclude Include="Controller\pps\PPSMapAddrDef.h" />
     <ClInclude Include="Controller\thc\THCClient.h" />
+    <ClInclude Include="Controller\thc\THCMapAddrDef.h" />
     <ClInclude Include="Cutter.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\AliasTranslation.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />

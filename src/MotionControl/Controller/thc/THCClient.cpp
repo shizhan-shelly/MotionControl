@@ -7,7 +7,7 @@
 
 #include "MotionControl/Communication/Modbus/ClientHandler.h"
 #include "MotionControl/Communication/Modbus/ClientHandlerManager.h"
-#include "MotionControl/Communication/Modbus/ModbusMappingDef.h"
+#include "MotionControl/Controller/thc/THCMapAddrDef.h"
 
 THCClient::THCClient() : Runnable()
                        , handler_manager_(NULL) {}
