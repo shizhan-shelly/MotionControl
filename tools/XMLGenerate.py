@@ -81,12 +81,15 @@ for row in range (data_start_row - 1, cut_chart_sheet.nrows):
   record = doc.createElement("Record")
   CutChartData.appendChild(record)
   for name in field_name:
+    cell_value = cut_chart_sheet.cell_value(row, column[name])
     if data_type[name] == "TEXT":
-      record.setAttribute(name, "%s" % cut_chart_sheet.cell_value(row, column[name]))
+      record.setAttribute(name, "%s" % cell_value)
     elif data_type[name] == "FLOAT":
-      record.setAttribute(name, "%.3f" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
+      record.setAttribute(name, "%.3f" % (float(cell_value) * scale[name] + offset[name]))
     elif data_type[name] == "INT":
-      record.setAttribute(name, "%d" % (cut_chart_sheet.cell_value(row, column[name]) * scale[name] + offset[name]))
+      record.setAttribute(name, "%d" % (int(cell_value) * scale[name] + offset[name]))
+    elif data_type[name] == "BOOL":
+      record.setAttribute(name, "%s" % cell_value)
 
 
 xml_file = open(sys.argv[2],'w')
