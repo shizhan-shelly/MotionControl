@@ -23,6 +23,7 @@
    <item>
     <widget class="QStackedWidget" name="stack_">
      <widget class="PowermaxMonitorWidget" name="powermax_"/>
+     <widget class="QWidget" name="hpr_"/>
      <widget class="QWidget" name="xpr_"/>
     </widget>
    </item>
