@@ -82,6 +82,15 @@
     <Filter Include="Controller\thc">
       <UniqueIdentifier>{ba8110fa-0966-4e81-96ee-33f90508e5ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\Monitor">
+      <UniqueIdentifier>{b247e7d7-5dd7-448e-a1ab-9b9fa2c0fbca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\Monitor\PPS">
+      <UniqueIdentifier>{8cf86aff-56b0-4413-ad4a-e6a82a17ab2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\Monitor\PPS\Hyper">
+      <UniqueIdentifier>{8338ac30-43d0-4cc5-ad9b-4e84121d66fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -276,6 +285,24 @@
     <ClCompile Include="Communication\Modbus\ClientHandlerManager.cpp">
       <Filter>Communication\Modbus\Client</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\monitor\pps\hyper\PowermaxMonitorWidget.cpp">
+      <Filter>Pages\Monitor\PPS\Hyper</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\monitor\pps\hyper\HyperMonitorWidget.cpp">
+      <Filter>Pages\Monitor\PPS\Hyper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_HyperMonitorWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_HyperMonitorWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_PowermaxMonitorWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PowermaxMonitorWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -391,6 +418,12 @@
     <ClInclude Include="Controller\pps\PPSMapAddrDef.h">
       <Filter>Controller\pps</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxMonitorWidget.h">
+      <Filter>Generated Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HyperMonitorWidget.h">
+      <Filter>Generated Files\Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -450,6 +483,18 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\extendedio\ExtendedIOConfigWidget.h">
       <Filter>Pages\ExtendedIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\monitor\pps\hyper\PowermaxMonitorWidget.ui">
+      <Filter>Pages\Monitor\PPS\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\monitor\pps\hyper\HyperMonitorWidget.h">
+      <Filter>Pages\Monitor\PPS\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\monitor\pps\hyper\PowermaxMonitorWidget.h">
+      <Filter>Pages\Monitor\PPS\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\monitor\pps\hyper\HyperMonitorWidget.ui">
+      <Filter>Pages\Monitor\PPS\Hyper</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
