@@ -26,8 +26,8 @@
       <widget class="QLabel" name="label">
        <property name="minimumSize">
         <size>
-         <width>100</width>
-         <height>0</height>
+         <width>110</width>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -36,15 +36,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="cut_current_">
+      <widget class="QLabel" name="cut_current_">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="readOnly">
-        <bool>true</bool>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -53,7 +59,7 @@
        <property name="minimumSize">
         <size>
          <width>50</width>
-         <height>0</height>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -72,8 +78,8 @@
       <widget class="QLabel" name="label_2">
        <property name="minimumSize">
         <size>
-         <width>100</width>
-         <height>0</height>
+         <width>110</width>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -82,15 +88,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="gas_pressure_">
+      <widget class="QLabel" name="gas_pressure_">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="readOnly">
-        <bool>true</bool>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -99,7 +111,7 @@
        <property name="minimumSize">
         <size>
          <width>50</width>
-         <height>0</height>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -115,8 +127,8 @@
       <widget class="QLabel" name="label_5">
        <property name="minimumSize">
         <size>
-         <width>100</width>
-         <height>0</height>
+         <width>110</width>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -125,15 +137,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="cut_mode_">
+      <widget class="QLabel" name="cut_mode_">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="readOnly">
-        <bool>true</bool>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -142,7 +160,7 @@
        <property name="minimumSize">
         <size>
          <width>50</width>
-         <height>0</height>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -158,8 +176,8 @@
       <widget class="QLabel" name="label_6">
        <property name="minimumSize">
         <size>
-         <width>100</width>
-         <height>0</height>
+         <width>110</width>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -168,15 +186,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="set_src_current_">
+      <widget class="QLabel" name="set_arc_current_">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="readOnly">
-        <bool>true</bool>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -185,7 +209,7 @@
        <property name="minimumSize">
         <size>
          <width>50</width>
-         <height>0</height>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -201,8 +225,8 @@
       <widget class="QLabel" name="label_8">
        <property name="minimumSize">
         <size>
-         <width>100</width>
-         <height>0</height>
+         <width>110</width>
+         <height>20</height>
         </size>
        </property>
        <property name="text">
@@ -211,15 +235,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="torch_length_">
+      <widget class="QLabel" name="torch_length_">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="readOnly">
-        <bool>true</bool>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -228,7 +258,7 @@
        <property name="minimumSize">
         <size>
          <width>50</width>
-         <height>0</height>
+         <height>20</height>
         </size>
        </property>
        <property name="text">

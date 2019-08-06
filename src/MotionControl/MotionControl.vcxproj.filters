@@ -91,6 +91,21 @@
     <Filter Include="Pages\Monitor\PPS\Hyper">
       <UniqueIdentifier>{8338ac30-43d0-4cc5-ad9b-4e84121d66fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DeviceDiagnose">
+      <UniqueIdentifier>{7a65d939-d3dd-4c03-9652-0045ad93c4ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DeviceDiagnose\pps">
+      <UniqueIdentifier>{7d8bcc3c-1a1e-4060-9500-7b697ddfd4eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DeviceDiagnose\pps\Hyper">
+      <UniqueIdentifier>{b1f1e1cc-cff6-43dd-94f3-d06753c3cafe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DeviceDiagnose\pps\Liuhe">
+      <UniqueIdentifier>{19bad771-43ef-465d-b301-61fd7c54ee7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\Monitor\PPS\Liuhe">
+      <UniqueIdentifier>{52d0182f-17c6-4e5a-a49a-8b29f236ec7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -303,6 +318,12 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PowermaxMonitorWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\hyper\PowermaxDiagnose.cpp">
+      <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.cpp">
+      <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -424,6 +445,18 @@
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HyperMonitorWidget.h">
       <Filter>Generated Files\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="Widgets\devicediagnose\pps\hyper\PowermaxDiagnose.h">
+      <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
+    </ClInclude>
+    <ClInclude Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.h">
+      <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270ADiagnose.h">
+      <Filter>Generated Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxDiagnose.h">
+      <Filter>Generated Files\Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -495,6 +528,12 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\monitor\pps\hyper\HyperMonitorWidget.ui">
       <Filter>Pages\Monitor\PPS\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.ui">
+      <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\hyper\PowermaxDiagnose.ui">
+      <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
