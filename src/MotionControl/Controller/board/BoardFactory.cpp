@@ -12,7 +12,11 @@
 AbstractBoard *BoardFactory::CreateBoard(int board_index) {
   AbstractBoard *board = NULL;
   if (board_index == 0) {
-    board = new LocalBoard();
+    BoardItem board_item;
+    board_item.group_ = 0;
+    board_item.model_ = "LocalBoard";
+    board_item.addr_ = "";
+    board = CreateBoard(board_item);
   } else {
     Cutter *cutter = Cutter::GetInstance();
     QVector<BoardItem> board_items =
@@ -33,6 +37,9 @@ AbstractBoard *BoardFactory::CreateBoard(const BoardItem &board_infor) {
     board->initializeBoard(board_infor);
   } else if (board_infor.model_.compare("FCB1200PC_PANEL") == 0) {
     board = new FCB1200PCPanelBoard();
+    board->initializeBoard(board_infor);
+  } else if (board_infor.model_.compare("LocalBoard") == 0) {
+    board = new LocalBoard();
     board->initializeBoard(board_infor);
   }
   return board;
