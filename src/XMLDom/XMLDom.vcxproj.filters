@@ -25,6 +25,9 @@
     <ClCompile Include="Nesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PPSInfor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor.h">
@@ -40,6 +43,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Nesting.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PPSInfor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

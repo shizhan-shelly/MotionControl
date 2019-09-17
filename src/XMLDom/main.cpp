@@ -7,6 +7,7 @@
 #include "CutChartSelector.h"
 #include "CutChart.h"
 #include "Alias.h"
+#include "PPSInfor.h"
 
 int main(int argc, char *argv[]) {
   QCoreApplication a(argc, argv);
@@ -76,6 +77,11 @@ int main(int argc, char *argv[]) {
   alias.ParseAlias("E:\\MyJob\\MotionControl\\tools\\Liuhe\\Alias.xml");
   alias.GetBaseName("V503", "1.99");
   alias.GetBaseName("Current");
+
+  PPSInfor pps_infor;
+  pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Hypertherm\\PPSInfor.xml");
+  std::map<std::string, std::string> fault_code_des = pps_infor.GetFaultCodeDescription();
+
 
   return a.exec();
 }
