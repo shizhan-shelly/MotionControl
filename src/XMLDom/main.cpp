@@ -80,8 +80,8 @@ int main(int argc, char *argv[]) {
 
   PPSInfor pps_infor;
   pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Hypertherm\\PPSInfor.xml");
-  std::map<std::string, std::string> fault_code_des = pps_infor.GetFaultCodeDescription();
-
+  std::string fault_resolve = pps_infor.GetPPSInfor("FaultCode", "110", "resolve");
+  printf("%s\n", fault_resolve.c_str());
 
   return a.exec();
 }

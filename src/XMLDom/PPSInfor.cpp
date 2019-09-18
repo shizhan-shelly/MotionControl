@@ -4,9 +4,7 @@
 #include "PPSInfor.h"
 
 #include <QtCore/QFile>
-#include <QtCore/QFileInfo>
 #include <QtCore/QIODevice>
-#include <QtCore/QTextStream>
 
 PPSInfor::PPSInfor() {}
 
@@ -26,48 +24,22 @@ bool PPSInfor::ParsePPSInfor(const std::string &xml_file) {
     file.close();
     return false;
   }
-  ParseFaultCode();
-  ParseStateCode();
   file.close();
   return true;
 }
 
+std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
+    const std::string &infor_code,
+    const std::string &infor_prefix_) const {
 
-void PPSInfor::ParseStateCode() {
-  state_code_.clear();
-  QDomElement data_element = doc_.documentElement().firstChildElement("StateCode");
+  QDomElement data_element = doc_.documentElement().firstChildElement(pps_item.c_str());
   QDomNodeList records = data_element.childNodes();
   for (int i = 0; i < records.size(); i++) {
     QDomNamedNodeMap node_map = records.item(i).attributes();
     std::string code = node_map.namedItem("code").nodeValue().toStdString();
-    std::string description = node_map.namedItem("description").nodeValue().toStdString();
-    state_code_.insert(std::make_pair<std::string, std::string>(code, description));
+    if (code.compare(infor_code) == 0) {
+      return node_map.namedItem(infor_prefix_.c_str()).nodeValue().toStdString();
+    }
   }
-}
-
-void PPSInfor::ParseFaultCode() {
-  fault_code_.clear();
-  fault_resolve_.clear();
-  QDomElement data_element = doc_.documentElement().firstChildElement("FaultCode");
-  QDomNodeList records = data_element.childNodes();
-  for (int i = 0; i < records.size(); i++) {
-    QDomNamedNodeMap node_map = records.item(i).attributes();
-    std::string code = node_map.namedItem("code").nodeValue().toStdString();
-    std::string description = node_map.namedItem("description").nodeValue().toStdString();
-    std::string resolve = node_map.namedItem("resolve").nodeValue().toStdString();
-    fault_code_.insert(std::make_pair<std::string, std::string>(code, description));
-    fault_resolve_.insert(std::make_pair<std::string, std::string>(code, resolve));
-  }
-}
-
-std::map<std::string, std::string> PPSInfor::GetFaultCodeDescription() const {
-  return fault_code_;
-}
-
-std::map<std::string, std::string> PPSInfor::GetFaultCodeResolve() const {
-  return fault_resolve_;
-}
-
-std::map<std::string, std::string> PPSInfor::GetStateCode() const {
-  return state_code_;
+  return "";
 }

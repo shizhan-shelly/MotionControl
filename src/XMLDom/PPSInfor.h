@@ -15,21 +15,18 @@ class PPSInfor {
 
   bool ParsePPSInfor(const std::string &xml_file);
 
-  std::map<std::string, std::string> GetFaultCodeDescription() const;
-
-  std::map<std::string, std::string> GetFaultCodeResolve() const;
-
-  std::map<std::string, std::string> GetStateCode() const;
+  /// This function can get pps infor from xml file.
+  /// @example: pps_item, -- "FaultCode" / "StateCode";
+  ///           infor_code, the value of "code"
+  ///           infor_prefix_, prefix of pps infor -- "description"
+  /// @return: pps infor value which user want.
+  std::string GetPPSInfor(const std::string &pps_item,
+                          const std::string &infor_code,
+                          const std::string &infor_prefix_) const;
 
  private:
   QDomDocument doc_;
   std::string pps_infor_file_;
-  std::map<std::string, std::string> fault_code_;
-  std::map<std::string, std::string> fault_resolve_;
-  std::map<std::string, std::string> state_code_;
-
-  void ParseStateCode();
-  void ParseFaultCode();
 
 }; // class PPSInfor
 
