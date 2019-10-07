@@ -324,6 +324,15 @@
     <ClCompile Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.cpp">
       <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\PPSDeviceDiagnoseWidget.cpp">
+      <Filter>Pages\DeviceDiagnose\pps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_PPSDeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PPSDeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -457,6 +466,9 @@
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxDiagnose.h">
       <Filter>Generated Files\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSDeviceDiagnoseWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -534,6 +546,12 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\devicediagnose\pps\hyper\PowermaxDiagnose.ui">
       <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\PPSDeviceDiagnoseWidget.h">
+      <Filter>Pages\DeviceDiagnose\pps</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\PPSDeviceDiagnoseWidget.ui">
+      <Filter>Pages\DeviceDiagnose\pps</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
