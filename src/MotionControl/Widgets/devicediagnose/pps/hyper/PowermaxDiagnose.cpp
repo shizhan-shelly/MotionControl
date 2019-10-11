@@ -59,6 +59,12 @@ void PowermaxDiagnose::Update() {
 }
 
 void PowermaxDiagnose::onGasTest() {
+  OCutter *cutter = cutter::OCutter::GetInstance();
+  std::map<int, PPSClient *> pps_dev = cutter->pps_factory_.GetPPSDev();
+  std::map<int, PPSClient *>::const_iterator it = pps_dev.find(station_id_);
+  if (it != pps_dev.end()) {
+    it->second->SendCommandToPPS(POWERMAX_GAS_TEST, true);
+  }
 }
 
 } // namespace cutter
