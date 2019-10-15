@@ -10,6 +10,8 @@ namespace Ui {
 class PowermaxMonitorWidget;
 }
 
+namespace cutter {
+
 class PowermaxMonitorWidget : public QWidget {
   Q_OBJECT
 
@@ -25,5 +27,7 @@ class PowermaxMonitorWidget : public QWidget {
   Ui::PowermaxMonitorWidget *ui_;
 
 }; // class PowermaxMonitorWidget
+
+} // namespace cutter
 
 #endif // MONITOR_PPS_HYPER_POWERMAXMONITORWIDGET_H__

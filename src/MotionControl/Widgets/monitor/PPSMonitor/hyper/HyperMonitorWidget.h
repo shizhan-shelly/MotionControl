@@ -10,6 +10,8 @@ namespace Ui {
 class HyperMonitorWidget;
 }
 
+namespace cutter {
+
 class HyperMonitorWidget : public QWidget {
   Q_OBJECT
 
@@ -26,5 +28,7 @@ class HyperMonitorWidget : public QWidget {
   Ui::HyperMonitorWidget *ui_;
 
 }; // class HyperMonitorWidget
+
+} // namespace cutter
 
 #endif // MONITOR_PPS_HYPER_HYPERMONITORWIDGET_H__

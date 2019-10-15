@@ -11,18 +11,27 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
     <widget class="QStackedWidget" name="stack_">
-     <widget class="PowermaxMonitorWidget" name="powermax_"/>
+     <widget class="cutter::PowermaxMonitorWidget" name="powermax_"/>
      <widget class="QWidget" name="hpr_"/>
      <widget class="QWidget" name="xpr_"/>
     </widget>
@@ -31,9 +40,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PowermaxMonitorWidget</class>
+   <class>cutter::PowermaxMonitorWidget</class>
    <extends>QWidget</extends>
-   <header>MotionControl/Widgets/monitor/pps/hyper/PowermaxMonitorWidget.h</header>
+   <header>cutter/widget/IOMonitorWidget/PPSMonitor/hyper/PowermaxMonitorWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
