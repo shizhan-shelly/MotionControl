@@ -11,7 +11,8 @@ cut_chart_sheet = work_book.sheet_by_name('Cut Chart')
 
 config_define = {"Hypertherm" : ("PlasmaPower",),
                  "Kjellberg" : ("PlasmaPower", "GasBox", "Torch"),
-                 "Liuhe" : ("PlasmaPower",)}
+                 "Liuhe" : ("PlasmaPower",),
+                 "Koike" : ("PlasmaPower",)}
 
 config_start_row = int(config_sheet.cell_value(0, 0))
 vendor_name = "%s" % config_sheet.cell_value(config_start_row, 0)
