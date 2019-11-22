@@ -10,17 +10,22 @@
 
 #include "CutChart.h"
 
-CutChartSelector::CutChartSelector(const std::string &cut_chart_selector_file) {
+bool CutChartSelector::ParseCutChartSelector(const std::string &cut_chart_selector_file) {
   cut_chart_selector_file_ = cut_chart_selector_file;
   QFile file(cut_chart_selector_file.c_str());
-  file.open(QIODevice::ReadOnly | QIODevice::Text);
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    return false;
+  }
   QString error_msg = "";
   int line = 0;
   int column = 0;
   if (!doc_.setContent(&file, &error_msg, &line, &column)) {
     // TODO(Zhan Shi): write error log.
+    file.close();
+    return false;
   }
   file.close();
+  return true;
 }
 
 std::vector<std::string> CutChartSelector::GetKeywordFieldName() const {
@@ -84,6 +89,25 @@ std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart(
     }
   }
   cut_chart_name = selected_item.attributes().namedItem("CutChartName").nodeValue().toStdString();
+  return result;
+}
+
+std::map<std::string, std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
+  std::map<std::string, std::string> result;
+  QDomElement selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
+  QDomElement attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
+  QDomNodeList cut_chart_list_attr = attr_element.childNodes();
+  for (int i = 0; i < cut_chart_list_attr.size(); i++) {
+    QDomNode node = cut_chart_list_attr.item(i);
+    if (node.isElement()) {
+      QDomElement element = node.toElement();
+      if (element.attribute("IsKeyword").toInt() == 1) {
+        result.insert(std::make_pair(element.tagName().toStdString(),
+            selected_item.attributes().namedItem(element.tagName()).nodeValue().toStdString()));
+
+      }
+    }
+  }
   return result;
 }
 
