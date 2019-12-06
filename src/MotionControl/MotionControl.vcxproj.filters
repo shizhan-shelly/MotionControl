@@ -109,6 +109,9 @@
     <Filter Include="Pages\Monitor\PPSMonitor\musk">
       <UniqueIdentifier>{b6bc9ae5-c492-48e1-a3bb-6f08baf3ae26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DatabaseView\CodeTransform">
+      <UniqueIdentifier>{a79c6293-c968-41fd-8f61-971d638fdac2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -372,6 +375,24 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PowermaxMonitorWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\CodeTransformModel.cpp">
+      <Filter>Pages\DatabaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CodeTransformModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CodeTransformModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\CodeTransformWidget.cpp">
+      <Filter>Pages\DatabaseView\CodeTransform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CodeTransformWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CodeTransformWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -520,6 +541,9 @@
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxMonitorWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_CodeTransformWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -627,6 +651,15 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\monitor\PPSMonitor\hyper\PowermaxMonitorWidget.ui">
       <Filter>Pages\Monitor\PPSMonitor\hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\CodeTransformModel.h">
+      <Filter>Pages\DatabaseModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\CodeTransformWidget.h">
+      <Filter>Pages\DatabaseView\CodeTransform</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\CodeTransformWidget.ui">
+      <Filter>Pages\DatabaseView\CodeTransform</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
