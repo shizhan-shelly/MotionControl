@@ -7,8 +7,6 @@
 
 #include "cutter/baseclass/codetransform/TransDBAccess.h"
 
-namespace cutter {
-
 static const std::string COLUMN_FIELD[] = {
   "ID",
   "TRANS_BEFORE",
@@ -158,5 +156,3 @@ void CodeTransformModel::SetItemValue(const QModelIndex &index, const QString &v
     it->second = value.toStdString();
   }
 }
-
-} // namespace cutter

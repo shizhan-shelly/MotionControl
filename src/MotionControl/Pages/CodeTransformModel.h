@@ -1,12 +1,10 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef CUTTER_WIDGET_CODETRANSFORM_CODETRANSFORMMODEL_H__
-#define CUTTER_WIDGET_CODETRANSFORM_CODETRANSFORMMODEL_H__
+#ifndef PAGES_DATABASEVIEW_CODETRANSFORM_CODETRANSFORMMODEL_H__
+#define PAGES_DATABASEVIEW_CODETRANSFORM_CODETRANSFORMMODEL_H__
 
 #include <QtCore/QAbstractTableModel>
-
-namespace cutter {
 
 class CodeTransformModel : public QAbstractTableModel {
   Q_OBJECT
@@ -43,6 +41,4 @@ class CodeTransformModel : public QAbstractTableModel {
 
 }; // class CodeTransformModel
 
-} // namespace cutter
-
-#endif // CUTTER_WIDGET_CODETRANSFORM_CODETRANSFORMMODEL_H__
+#endif // PAGES_DATABASEVIEW_CODETRANSFORM_CODETRANSFORMMODEL_H__

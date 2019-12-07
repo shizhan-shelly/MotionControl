@@ -12,8 +12,6 @@
 #include "cutter/ui_CodeTransformWidget.h"
 #include "../Pages/CodeTransformModel.h"
 
-namespace cutter {
-
 CodeTransformWidget::CodeTransformWidget(QWidget *parent)
     : QWidget(parent)
     , model_(NULL) {
@@ -70,5 +68,3 @@ void CodeTransformWidget::remove() {
     model_->removeRows(index.row(), indexes.count());
   }
 }
-
-} // namespace cutter
