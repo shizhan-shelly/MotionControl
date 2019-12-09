@@ -50,7 +50,7 @@ QVariant KerfTableModel::data(const QModelIndex &index, int role) const {
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    return column == 0 ? row + 1 : correctKerfValue(row);
+    return column == 0 ? row : correctKerfValue(row);
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:

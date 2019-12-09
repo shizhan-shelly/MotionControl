@@ -52,9 +52,10 @@ bool CodeTransformModel::removeRows(int row, int count,
 bool CodeTransformModel::insertRow(int row, const QModelIndex &parent) {
   assert(row >= 0 && row <= rowCount());
   beginInsertRows(parent, row, row);
-  std::map<std::string, std::string> insert_item = row == db_items_.count() ?
-      db_items_[row - 1] : db_items_[row];
-
+  std::map<std::string, std::string> insert_item;
+  for (int i = 0; i < ITEMS_NUM; i++) {
+    insert_item.insert(std::make_pair(COLUMN_FIELD[i], ""));
+  }
   db_items_.insert(db_items_.begin() + row, insert_item);
   endInsertRows();
   return true;

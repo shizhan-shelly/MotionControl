@@ -56,6 +56,8 @@ void CodeTransformWidget::insert() {
   if (!indexes.isEmpty()) {
     QModelIndex index = indexes.first();
     model_->insertRow(index.row());
+  } else {
+    model_->insertRow(model_->rowCount());
   }
 }
 
