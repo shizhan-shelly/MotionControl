@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/Widget">
         <file>resource/edit.png</file>
+        <file>resource/closed.png</file>
+        <file>resource/open.png</file>
     </qresource>
 </RCC>

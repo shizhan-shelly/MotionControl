@@ -9,7 +9,9 @@ ExtendedBoardModel::ExtendedBoardModel(QObject *parent)
 ExtendedBoardModel::~ExtendedBoardModel() {}
 
 void ExtendedBoardModel::initialExtendedBoard(const QVector<BoardItem> &initial) {
+  beginResetModel();
   board_items_ = initial;
+  endResetModel();
 }
 
 QVector<BoardItem> ExtendedBoardModel::GetExtendedBoard() const {

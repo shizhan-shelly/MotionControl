@@ -11,7 +11,9 @@ KerfTableModel::KerfTableModel(QObject *parent)
 KerfTableModel::~KerfTableModel() {}
 
 void KerfTableModel::initialKerfTableValue(const QVector<double> &initial) {
+  beginResetModel();
   kerf_variable_value_ = initial;
+  endResetModel();
 }
 
 QVector<double> KerfTableModel::GetKerfTableValue() const {

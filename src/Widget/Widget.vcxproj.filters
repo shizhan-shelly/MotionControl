@@ -45,6 +45,9 @@
     <Filter Include="Delegate">
       <UniqueIdentifier>{507ae3ad-ae54-475f-997f-c0e93e2b36a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Widget\Monitor">
+      <UniqueIdentifier>{35b6b81c-8af4-4907-8f65-822a3abf6d7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -105,6 +108,15 @@
     <ClCompile Include="delegate\ComboBoxDelegate.cpp">
       <Filter>Delegate</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_InputMonitorWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_InputMonitorWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\InputMonitorWidget.cpp">
+      <Filter>Widget\Monitor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -128,6 +140,12 @@
     </CustomBuild>
     <CustomBuild Include="dialog\BaseDialog.h">
       <Filter>Dialog</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\InputMonitorWidget.h">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\IOMonitorItem.ui">
+      <Filter>Widget\Monitor</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
