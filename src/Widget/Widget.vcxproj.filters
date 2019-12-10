@@ -108,14 +108,23 @@
     <ClCompile Include="delegate\ComboBoxDelegate.cpp">
       <Filter>Delegate</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_InputMonitorWidget.cpp">
+    <ClCompile Include="monitor\IOMonitorItem.cpp">
+      <Filter>Widget\Monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IOMonitorItem.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_InputMonitorWidget.cpp">
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IOMonitorItem.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="monitor\InputMonitorWidget.cpp">
+    <ClCompile Include="monitor\IOMonitorWidget.cpp">
       <Filter>Widget\Monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IOMonitorWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IOMonitorWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,10 +150,13 @@
     <CustomBuild Include="dialog\BaseDialog.h">
       <Filter>Dialog</Filter>
     </CustomBuild>
-    <CustomBuild Include="monitor\InputMonitorWidget.h">
+    <CustomBuild Include="monitor\IOMonitorItem.ui">
       <Filter>Widget\Monitor</Filter>
     </CustomBuild>
-    <CustomBuild Include="monitor\IOMonitorItem.ui">
+    <CustomBuild Include="monitor\IOMonitorItem.h">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\IOMonitorWidget.h">
       <Filter>Widget\Monitor</Filter>
     </CustomBuild>
   </ItemGroup>

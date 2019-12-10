@@ -43,7 +43,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="name_">
+    <widget class="QLabel" name="description_">
      <property name="minimumSize">
       <size>
        <width>100</width>
