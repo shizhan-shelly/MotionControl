@@ -30,7 +30,7 @@ class IOMonitorWidget : public QWidget {
   void clearItem();
 
   QGridLayout *layout_;
-  QVector<IOMonitorItem *> monitor_items_;
+  QVector<QVector<IOMonitorItem *> > monitor_items_;
 
 };
 

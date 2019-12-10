@@ -25,31 +25,41 @@ IOMonitorWidget::~IOMonitorWidget() {
 }
 
 void IOMonitorWidget::Update(const std::vector<unsigned char> &input) {
-  bool status[][8] = {false};
   for (size_t i = 0; i < input.size(); i++) {
     for (size_t j = 0; j < 8; j++) {
-      status[i][j] = input[i] & (0x01 << j);
+      bool status = input[i] & (0x01 << j);
+      monitor_items_[i][j]->Update(status);
     }
   }
-  //
 }
 
 void IOMonitorWidget::setupPanel(const QVector<QVector<QString> > &infor) {
-  assert(!info.empty());
+  assert(!infor.empty());
   clearItem();
-  QVector<QPair<QString, int> >::const_iterator io_info = info.begin();
-  while (io_info != info.end()) {
-    monitor_items_.push_back(new IOMonitorItem(this));
-    connect(monitor_items_.last(), SIGNAL(selected(int)),
-        this, SIGNAL(selected(int)));
+  for (int i = 0; i < infor.size(); ++i) {
+    QVector<IOMonitorItem *> column;
+    for (int j = 0; j < infor[i].size(); ++j) {
+      column.push_back(new IOMonitorItem(this));
+      connect(column.last(), SIGNAL(selected(int)),
+          this, SIGNAL(selected(int)));
 
-    monitor_items_.last()->setup(io_info->first, io_info->second);
-    ++io_info;
+      column.last()->setup(infor[i][j], i * 8 + j);
+    }
+    monitor_items_.push_back(column);
   }
   initialWidget();
 }
 
 void IOMonitorWidget::initialWidget() {
+  for (int i = 0; i < monitor_items_.size(); i++) {
+    for (int j = 0; j < monitor_items_[i].size(); j++) {
+      layout_->addWidget(monitor_items_[i][j], j, i);
+    }
+    layout_->setColumnStretch(i, 1);
+  }
+  layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding),
+      8, 0);
+
 }
 
 void IOMonitorWidget::clearItem() {
