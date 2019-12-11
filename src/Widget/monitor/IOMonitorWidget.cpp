@@ -58,7 +58,10 @@ void IOMonitorWidget::initialWidget() {
     layout_->setColumnStretch(i, 1);
   }
   layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding),
-      8, 0);
+      8, 0, 1, 1);
+
+  layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum),
+      0, monitor_items_.size(), 1, 1);
 
 }
 
