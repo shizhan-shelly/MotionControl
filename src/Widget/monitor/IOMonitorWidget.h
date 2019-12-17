@@ -4,7 +4,7 @@
 #ifndef WIDGET_MONITOR_IOMONITORWIDGET_H__
 #define WIDGET_MONITOR_IOMONITORWIDGET_H__
 
-#include <QWidget>
+#include <QtGui/QWidget>
 
 class QGridLayout;
 

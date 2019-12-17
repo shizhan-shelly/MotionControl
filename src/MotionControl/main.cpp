@@ -13,8 +13,8 @@
 #include "Pages/KerfTableDlg.h"
 #include "Widgets\extendedio\ExtendedIOConfigWidget.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
-#include "../Widget/WidgetQrc.h"
 #include "MotionControlQrc.h"
+#include "Widget/WidgetQrc.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);

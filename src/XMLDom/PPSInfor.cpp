@@ -64,3 +64,32 @@ std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
   }
   return "";
 }
+
+QVector<QString> PPSInfor::GetPPSInfor(const std::string &pps_item,
+    const std::map<std::string, std::string> &attr_map,
+    const std::string &infor_prefix) const {
+
+  QVector<QString> result;
+  QDomElement dom = doc_.documentElement().firstChildElement(pps_item.c_str());
+  if (dom.hasAttributes()) {
+    std::map<std::string, std::string>::const_iterator it = attr_map.begin();
+    while (!dom.isNull() && it != attr_map.end()) {
+      QDomNamedNodeMap node_map = dom.attributes();
+      QString attr_value = node_map.namedItem(it->first.c_str()).nodeValue();
+      if (attr_value.compare(it->second.c_str()) != 0) {
+        dom = dom.nextSiblingElement(pps_item.c_str());
+        it = attr_map.begin();
+        continue;
+      }
+      it++;
+    }
+  }
+  if (!dom.isNull()) {
+    QDomNodeList records = dom.childNodes();
+    for (int i = 0; i < records.size(); i++) {
+      QDomNamedNodeMap node_map = records.item(i).attributes();
+      result.push_back(node_map.namedItem(infor_prefix.c_str()).nodeValue());
+    }
+  }
+  return result;
+}
