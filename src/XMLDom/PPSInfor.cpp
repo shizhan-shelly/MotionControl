@@ -29,15 +29,15 @@ bool PPSInfor::ParsePPSInfor(const std::string &xml_file) {
 }
 
 std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
-    const std::string &infor_code,
+    const std::pair<std::string, std::string> &infor_key,
     const std::string &infor_prefix) const {
 
   QDomElement data_element = doc_.documentElement().firstChildElement(pps_item.c_str());
   QDomNodeList records = data_element.childNodes();
   for (int i = 0; i < records.size(); i++) {
     QDomNamedNodeMap node_map = records.item(i).attributes();
-    std::string code = node_map.namedItem("code").nodeValue().toStdString();
-    if (code.compare(infor_code) == 0) {
+    std::string code = node_map.namedItem(infor_key.first.c_str()).nodeValue().toStdString();
+    if (code.compare(infor_key.second.c_str()) == 0) {
       return node_map.namedItem(infor_prefix.c_str()).nodeValue().toStdString();
     }
   }
@@ -76,7 +76,7 @@ QVector<QString> PPSInfor::GetPPSInfor(const std::string &pps_item,
     while (!dom.isNull() && it != attr_map.end()) {
       QDomNamedNodeMap node_map = dom.attributes();
       QString attr_value = node_map.namedItem(it->first.c_str()).nodeValue();
-      if (attr_value.compare(it->second.c_str()) != 0) {
+      if (attr_value.indexOf(it->second.c_str()) == -1) {
         dom = dom.nextSiblingElement(pps_item.c_str());
         it = attr_map.begin();
         continue;

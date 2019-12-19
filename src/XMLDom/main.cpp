@@ -80,9 +80,11 @@ int main(int argc, char *argv[]) {
   alias.GetBaseName("Current");
 
   PPSInfor pps_infor;
-  pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Hypertherm\\PPSInfor.xml");
-  std::string fault_resolve = pps_infor.GetPPSInfor("FaultCode", "110", "resolve");
-  printf("%s\n", fault_resolve.c_str());
+  pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\PPSInfor.xml");
+  std::map<std::string, std::string> attr_map;
+  attr_map.insert(std::make_pair("model", "HiFocus 160i"));
+  QVector<QString> infor_array = pps_infor.GetPPSInfor("DigitalInput2",
+      attr_map, "Name");
 
   return a.exec();
 }

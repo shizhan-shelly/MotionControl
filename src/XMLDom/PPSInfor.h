@@ -18,11 +18,11 @@ class PPSInfor {
 
   /// This function can get pps infor from xml file.
   /// @example: pps_item, -- "FaultCode" / "StateCode";
-  ///           infor_code, the value of "code"
+  ///           infor_key, -- <code="200">
   ///           infor_prefix, prefix of pps infor -- "description"
   /// @return: pps infor value which user want.
   std::string GetPPSInfor(const std::string &pps_item,
-                          const std::string &infor_code,
+                          const std::pair<std::string, std::string> &infor_key,
                           const std::string &infor_prefix) const;
 
   std::string GetPPSInfor(const std::string &pps_item,
