@@ -20,9 +20,7 @@ IOMonitorWidget::IOMonitorWidget(QWidget *parent)
   setLayout(layout_);
 }
 
-IOMonitorWidget::~IOMonitorWidget() {
-  clearItem();
-}
+IOMonitorWidget::~IOMonitorWidget() {}
 
 void IOMonitorWidget::Update(const std::vector<unsigned char> &input) {
   for (size_t i = 0; i < input.size(); i++) {
