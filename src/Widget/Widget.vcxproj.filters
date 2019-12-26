@@ -48,6 +48,9 @@
     <Filter Include="Widget\Monitor">
       <UniqueIdentifier>{35b6b81c-8af4-4907-8f65-822a3abf6d7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Widget\Diagnose">
+      <UniqueIdentifier>{bd7a055d-e5d4-4cf3-9310-0bb8fa99f31c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -126,6 +129,24 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IOMonitorWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="customwidget\TabBar.cpp">
+      <Filter>Widget\CustomWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_TabBar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_TabBar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="diagnose\DeviceDiagnoseWidget.cpp">
+      <Filter>Widget\Diagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -158,6 +179,12 @@
     </CustomBuild>
     <CustomBuild Include="monitor\IOMonitorWidget.h">
       <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="customwidget\TabBar.h">
+      <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="diagnose\DeviceDiagnoseWidget.h">
+      <Filter>Widget\Diagnose</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

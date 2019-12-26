@@ -112,6 +112,9 @@
     <Filter Include="Pages\DatabaseView\CodeTransform">
       <UniqueIdentifier>{a79c6293-c968-41fd-8f61-971d638fdac2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DeviceDiagnose\board">
+      <UniqueIdentifier>{cfebc7b9-95b1-4db7-ac7c-ff8795fb7b91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -393,6 +396,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CodeTransformWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.cpp">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -544,6 +550,12 @@
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_CodeTransformWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_BoardDiagnoseWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
@@ -660,6 +672,9 @@
     </CustomBuild>
     <CustomBuild Include="Pages\CodeTransformWidget.ui">
       <Filter>Pages\DatabaseView\CodeTransform</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.ui">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
