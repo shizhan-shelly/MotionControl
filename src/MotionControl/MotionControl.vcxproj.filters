@@ -399,6 +399,12 @@
     <ClCompile Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.cpp">
       <Filter>Pages\DeviceDiagnose\board</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -466,14 +472,8 @@
     <ClInclude Include="Pages\NestingDlg.h">
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ProgressCtrl.h">
-      <Filter>Generated Files\Debug</Filter>
-    </ClInclude>
     <ClInclude Include="Controller\DeviceDefine.h">
       <Filter>Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ExtendedIOConfigWidget.h">
-      <Filter>Generated Files\Debug</Filter>
     </ClInclude>
     <ClInclude Include="Controller\IOBoardManager.h">
       <Filter>Controller</Filter>
@@ -519,42 +519,6 @@
     </ClInclude>
     <ClInclude Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.h">
       <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270ADiagnose.h">
-      <Filter>Generated Files\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxDiagnose.h">
-      <Filter>Generated Files\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSDeviceDiagnoseWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_MuskPPSMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270AMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LiuheMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HyperMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_CodeTransformWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h">
-      <Filter>Pages\DeviceDiagnose\board</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_BoardDiagnoseWidget.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -674,6 +638,9 @@
       <Filter>Pages\DatabaseView\CodeTransform</Filter>
     </CustomBuild>
     <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.ui">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h">
       <Filter>Pages\DeviceDiagnose\board</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -1,28 +1,31 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#include "IOMonitorWidget.h"
+#include "../diagnose/IODiagnoseWidget.h"
 
 #include <assert.h>
 
 #include <QtGui/QGridLayout>
 #include <QtGui/QSpacerItem>
 
-#include "IOMonitorItem.h"
+#include "../monitor/IOMonitorItem.h"
 
 namespace widget {
 
-IOMonitorWidget::IOMonitorWidget(QWidget *parent)
-    : QWidget(parent) {
+IODiagnoseWidget::IODiagnoseWidget(QWidget *parent)
+    : DeviceDiagnoseWidget(parent) {
 
   layout_ = new QGridLayout;
   layout_->setContentsMargins(0, 0, 0, 0);
   setLayout(layout_);
 }
 
-IOMonitorWidget::~IOMonitorWidget() {}
+IODiagnoseWidget::~IODiagnoseWidget() {}
 
-void IOMonitorWidget::Update(const std::vector<unsigned char> &input) {
+void IODiagnoseWidget::Update() {
+}
+
+void IODiagnoseWidget::Update(const std::vector<unsigned char> &input) {
   for (size_t i = 0; i < input.size(); i++) {
     for (size_t j = 0; j < 8; j++) {
       bool status = input[i] & (0x01 << j);
@@ -31,7 +34,7 @@ void IOMonitorWidget::Update(const std::vector<unsigned char> &input) {
   }
 }
 
-void IOMonitorWidget::setupPanel(const QVector<QVector<QString> > &infor) {
+void IODiagnoseWidget::setupPanel(const QVector<QVector<QString> > &infor) {
   assert(!infor.empty());
   clearItem();
   for (int i = 0; i < infor.size(); ++i) {
@@ -48,7 +51,7 @@ void IOMonitorWidget::setupPanel(const QVector<QVector<QString> > &infor) {
   initialWidget();
 }
 
-void IOMonitorWidget::initialWidget() {
+void IODiagnoseWidget::initialWidget() {
   for (int i = 0; i < monitor_items_.size(); i++) {
     for (int j = 0; j < monitor_items_[i].size(); j++) {
       layout_->addWidget(monitor_items_[i][j], j, i);
@@ -63,7 +66,7 @@ void IOMonitorWidget::initialWidget() {
 
 }
 
-void IOMonitorWidget::clearItem() {
+void IODiagnoseWidget::clearItem() {
   monitor_items_.clear();
   QLayoutItem *item_widget = NULL;
   for (int i = 0; i < layout_->rowCount(); i++) {

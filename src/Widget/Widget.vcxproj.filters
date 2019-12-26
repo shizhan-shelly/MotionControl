@@ -120,15 +120,6 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IOMonitorItem.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="monitor\IOMonitorWidget.cpp">
-      <Filter>Widget\Monitor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IOMonitorWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IOMonitorWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="customwidget\TabBar.cpp">
       <Filter>Widget\CustomWidget</Filter>
     </ClCompile>
@@ -145,6 +136,15 @@
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="diagnose\IODiagnoseWidget.cpp">
+      <Filter>Widget\Diagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IODiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IODiagnoseWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
@@ -177,13 +177,13 @@
     <CustomBuild Include="monitor\IOMonitorItem.h">
       <Filter>Widget\Monitor</Filter>
     </CustomBuild>
-    <CustomBuild Include="monitor\IOMonitorWidget.h">
-      <Filter>Widget\Monitor</Filter>
-    </CustomBuild>
     <CustomBuild Include="customwidget\TabBar.h">
       <Filter>Widget\CustomWidget</Filter>
     </CustomBuild>
     <CustomBuild Include="diagnose\DeviceDiagnoseWidget.h">
+      <Filter>Widget\Diagnose</Filter>
+    </CustomBuild>
+    <CustomBuild Include="diagnose\IODiagnoseWidget.h">
       <Filter>Widget\Diagnose</Filter>
     </CustomBuild>
   </ItemGroup>

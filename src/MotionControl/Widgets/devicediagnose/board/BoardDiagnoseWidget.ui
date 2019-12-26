@@ -14,20 +14,55 @@
    <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>5</number>
-   </property>
-   <property name="margin">
-    <number>0</number>
-   </property>
    <item>
-    <widget class="QWidget" name="tab_bar_" native="true"/>
+    <widget class="widget::TabBar" name="tab_bar_" native="true"/>
    </item>
    <item>
-    <widget class="QStackedWidget" name="stack_"/>
+    <widget class="QStackedWidget" name="stack_">
+     <widget class="QWidget" name="local_">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>InputPort</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>OutputPort</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>AD</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>DA</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>widget::TabBar</class>
+   <extends>QWidget</extends>
+   <header>Widget\customwidget\TabBar.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -11,6 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CodeTransformModel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\qrc_MotionControl.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CodeTransformModel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -208,19 +214,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_BoardDiagnoseWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_CodeTransformWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ExtendedIOConfigWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HyperMonitorWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270ADiagnose.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270AMonitorWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LiuheMonitorWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_MuskPPSMonitorWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxDiagnose.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxMonitorWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSDeviceDiagnoseWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSMonitorWidget.h" />
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ProgressCtrl.h" />
     <ClInclude Include="Communication\Modbus\ClientHandler.h" />
     <ClInclude Include="Communication\Modbus\ClientHandlerManager.h" />
     <ClInclude Include="Communication\Modbus\ModbusMappingDef.h" />
@@ -272,7 +265,16 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles"</Command>
     </CustomBuild>
-    <ClInclude Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h" />
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing BoardDiagnoseWidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing BoardDiagnoseWidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles"</Command>
+    </CustomBuild>
     <ClInclude Include="Widgets\devicediagnose\pps\hyper\PowermaxDiagnose.h" />
     <ClInclude Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.h" />
     <CustomBuild Include="Widgets\monitor\PPSMonitor\hyper\PowermaxMonitorWidget.h">
