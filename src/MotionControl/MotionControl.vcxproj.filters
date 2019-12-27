@@ -405,6 +405,15 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\board\BoardDiagnoseForm.cpp">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BoardDiagnoseForm.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseForm.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -641,6 +650,12 @@
       <Filter>Pages\DeviceDiagnose\board</Filter>
     </CustomBuild>
     <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseForm.ui">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseForm.h">
       <Filter>Pages\DeviceDiagnose\board</Filter>
     </CustomBuild>
   </ItemGroup>

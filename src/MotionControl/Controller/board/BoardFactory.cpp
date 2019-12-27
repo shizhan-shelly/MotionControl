@@ -13,7 +13,7 @@ AbstractBoard *BoardFactory::CreateBoard(int board_index) {
   AbstractBoard *board = NULL;
   if (board_index == 0) {
     BoardItem board_item;
-    board_item.group_ = 0;
+    board_item.group_ = board_index;
     board_item.model_ = "LocalBoard";
     board_item.addr_ = "";
     board = CreateBoard(board_item);

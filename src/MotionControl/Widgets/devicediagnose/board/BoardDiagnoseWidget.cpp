@@ -4,7 +4,6 @@
 #include "MotionControl/Widgets/devicediagnose/board/BoardDiagnoseWidget.h"
 
 #include "MotionControl/Cutter.h"
-#include "MotionControl/widgets/extendedio/ExtendedBoardModel.h"
 #include "ui_BoardDiagnoseWidget.h"
 
 BoardDiagnoseWidget::BoardDiagnoseWidget(QWidget *parent)
@@ -28,12 +27,27 @@ BoardDiagnoseWidget::~BoardDiagnoseWidget() {
 }
 
 void BoardDiagnoseWidget::Update() {
+  if (board_index_ == 0) {
+    ui_->local_->Update();
+  }
 }
 
 void BoardDiagnoseWidget::onSwitchBoard(int board_index) {
+  board_index_ = board_index;
+  if (board_index_ == 0) {
+    ui_->board_stack_->setCurrentWidget(ui_->local_);
+    ui_->local_->setCurrentBoard(0);
+  } else {
+    Cutter *cutter = Cutter::GetInstance();
+    QVector<BoardItem> ext_board =
+        cutter->GetExtendedBoardModel()->GetExtendedBoard();
+
+    BoardItem current_board = ext_board[board_index_ - 1];
+    QString board_model = current_board.model_;
+  }
 }
 
-void BoardDiagnoseWidget::initialDiagnoseWidget() {
+void BoardDiagnoseWidget::showEvent(QShowEvent *event) {
   QMap<int, QString> board_infor;
   board_infor.insert(0, "Local_Board");
   Cutter *cutter = Cutter::GetInstance();
@@ -43,4 +57,5 @@ void BoardDiagnoseWidget::initialDiagnoseWidget() {
   }
   ui_->tab_bar_->initBar(board_infor);
   ui_->tab_bar_->setCurrentIndex(0);
+  QWidget::showEvent(event);
 }

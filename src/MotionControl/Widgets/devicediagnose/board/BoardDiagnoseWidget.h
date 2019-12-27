@@ -17,15 +17,17 @@ class BoardDiagnoseWidget : public widget::DeviceDiagnoseWidget {
   explicit BoardDiagnoseWidget(QWidget *parent = NULL);
   virtual ~BoardDiagnoseWidget();
 
-  void initialDiagnoseWidget();
-
  public slots:
   virtual void Update();
+
+ protected:
+  virtual void showEvent(QShowEvent *event);
 
  private slots:
   void onSwitchBoard(int board_index);
 
  private:
+  int board_index_;
   Ui::BoardDiagnoseWidget *ui_;
 
 }; // class BoardDiagnoseWidget
