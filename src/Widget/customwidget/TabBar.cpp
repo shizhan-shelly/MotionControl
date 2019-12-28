@@ -21,8 +21,8 @@ void TabBar::initBar(const QMap<int, QString> &bar_infor) {
 }
 
 void TabBar::clearBar() {
-  for (int i = 0; i < count(); i++) {
-    removeTab(i);
+  for (int i = count(); i > 0; i--) {
+    removeTab(i - 1);
   }
 }
 

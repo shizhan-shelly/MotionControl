@@ -26,6 +26,10 @@
    <item>
     <widget class="QStackedWidget" name="board_stack_">
      <widget class="BoardDiagnoseForm" name="local_"/>
+     <widget class="BoardDiagnoseForm" name="fcb1200pc_"/>
+     <widget class="BoardDiagnoseForm" name="fcb1200pc_exp_"/>
+     <widget class="BoardDiagnoseForm" name="fcb1200pc_panel_"/>
+     <widget class="QWidget" name="none_"/>
     </widget>
    </item>
   </layout>

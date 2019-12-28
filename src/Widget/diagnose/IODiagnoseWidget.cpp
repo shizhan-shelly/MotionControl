@@ -17,10 +17,13 @@ IODiagnoseWidget::IODiagnoseWidget(QWidget *parent)
 
   layout_ = new QGridLayout;
   layout_->setContentsMargins(0, 0, 0, 0);
+  layout_->setSpacing(0);
   setLayout(layout_);
 }
 
-IODiagnoseWidget::~IODiagnoseWidget() {}
+IODiagnoseWidget::~IODiagnoseWidget() {
+  clearItem();
+}
 
 void IODiagnoseWidget::Update() {
 }
@@ -59,10 +62,10 @@ void IODiagnoseWidget::initialWidget() {
     layout_->setColumnStretch(i, 1);
   }
   layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding),
-      8, 0, 1, 1);
+      layout_->rowCount(), 0, 1, 1);
 
   layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum),
-      0, monitor_items_.size(), 1, 1);
+      0, layout_->columnCount(), 1, 1);
 
 }
 
@@ -73,7 +76,9 @@ void IODiagnoseWidget::clearItem() {
     for (int j = 0; j < layout_->columnCount(); j++) {
       item_widget = layout_->itemAtPosition(i, j);
       if (item_widget) {
-        item_widget->widget()->hide();
+        if (item_widget->widget()) {
+          item_widget->widget()->hide();
+        }
         layout_->removeItem(item_widget);
         delete item_widget;
         item_widget = NULL;

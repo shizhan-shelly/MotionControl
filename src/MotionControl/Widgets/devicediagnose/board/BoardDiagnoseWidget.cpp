@@ -37,7 +37,7 @@ void BoardDiagnoseWidget::onSwitchBoard(int board_index) {
   if (board_index_ == 0) {
     ui_->board_stack_->setCurrentWidget(ui_->local_);
     ui_->local_->setCurrentBoard(0);
-  } else {
+  } else if (board_index_ > 0) {
     Cutter *cutter = Cutter::GetInstance();
     QVector<BoardItem> ext_board =
         cutter->GetExtendedBoardModel()->GetExtendedBoard();

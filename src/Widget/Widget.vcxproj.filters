@@ -147,6 +147,18 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IODiagnoseWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="dialog\DeviceDiagnoseDlg.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="buttonbox\ButtonBar.cpp">
+      <Filter>ButtonBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ButtonBar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ButtonBar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -186,11 +198,17 @@
     <CustomBuild Include="diagnose\IODiagnoseWidget.h">
       <Filter>Widget\Diagnose</Filter>
     </CustomBuild>
+    <CustomBuild Include="buttonbox\ButtonBar.h">
+      <Filter>ButtonBox</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WidgetQrc.h" />
     <ClInclude Include="delegate\ComboBoxDelegate.h">
       <Filter>Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="dialog\DeviceDiagnoseDlg.h">
+      <Filter>Dialog</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

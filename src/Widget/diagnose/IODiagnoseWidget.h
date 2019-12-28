@@ -23,7 +23,7 @@ class IODiagnoseWidget : public DeviceDiagnoseWidget {
   void Update(const std::vector<unsigned char> &input);
 
  public slots:
-  void Update();
+  virtual void Update();
 
  signals:
   void selected(int current_index);
