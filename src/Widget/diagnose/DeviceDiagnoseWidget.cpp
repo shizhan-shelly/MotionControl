@@ -10,4 +10,7 @@ DeviceDiagnoseWidget::DeviceDiagnoseWidget(QWidget *parent)
 
 DeviceDiagnoseWidget::~DeviceDiagnoseWidget() {}
 
+void DeviceDiagnoseWidget::Update() {
+}
+
 } // namespace widget

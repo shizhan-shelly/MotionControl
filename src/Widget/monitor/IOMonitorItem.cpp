@@ -19,7 +19,9 @@ IOMonitorItem::IOMonitorItem(QWidget *parent) : QWidget(parent)
   ui_->setupUi(this);
 }
 
-IOMonitorItem::~IOMonitorItem() {}
+IOMonitorItem::~IOMonitorItem() {
+  delete ui_;
+}
 
 void IOMonitorItem::setup(const QString &description, int index) {
   assert(!description.isEmpty());

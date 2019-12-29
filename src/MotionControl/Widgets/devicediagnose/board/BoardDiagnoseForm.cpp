@@ -14,6 +14,9 @@ BoardDiagnoseForm::BoardDiagnoseForm(QWidget *parent)
   setStyleSheet("QPushButton, QLabel, QLineEdit { font-size: 11pt; \
                  font-family: SimSun }");
 
+  connect(ui_->da_port_, SIGNAL(control(int, int)),
+          this, SLOT(onDAControl(int, int)));
+
 }
 
 BoardDiagnoseForm::~BoardDiagnoseForm() {
@@ -25,4 +28,10 @@ void BoardDiagnoseForm::setCurrentBoard(int board_index) {
 }
 
 void BoardDiagnoseForm::Update() {
+}
+
+void BoardDiagnoseForm::onOutputControl(int current_id, bool on) {
+}
+
+void BoardDiagnoseForm::onDAControl(int current_id, int value) {
 }

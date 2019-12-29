@@ -16,7 +16,7 @@ class DeviceDiagnoseWidget : public BaseWidget {
   virtual ~DeviceDiagnoseWidget();
 
  public slots:
-  virtual void Update() = 0;
+  virtual void Update();
 
 };
 

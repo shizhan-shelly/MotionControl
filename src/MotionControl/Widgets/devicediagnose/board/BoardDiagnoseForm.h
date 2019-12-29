@@ -22,6 +22,10 @@ class BoardDiagnoseForm : public widget::DeviceDiagnoseWidget {
  public slots:
   virtual void Update();
 
+ private slots:
+  void onOutputControl(int current_id, bool on);
+  void onDAControl(int current_id, int value);
+
  private:
   int board_index_;
   Ui::BoardDiagnoseForm *ui_;

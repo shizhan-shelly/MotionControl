@@ -20,10 +20,7 @@ class IODiagnoseWidget : public DeviceDiagnoseWidget {
   virtual ~IODiagnoseWidget();
 
   void setupPanel(const QVector<QVector<QString> > &infor);
-  void Update(const std::vector<unsigned char> &input);
-
- public slots:
-  virtual void Update();
+  void Update(const std::vector<unsigned char> &io);
 
  signals:
   void selected(int current_index);
