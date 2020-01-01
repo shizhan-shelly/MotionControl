@@ -1,15 +1,15 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef CONTROLLER_BOARD_LOCALBOARD_H__
-#define CONTROLLER_BOARD_LOCALBOARD_H__
+#ifndef CONTROLLER_BOARD_ONECUTV21BOARD_H__
+#define CONTROLLER_BOARD_ONECUTV21BOARD_H__
 
 #include "MotionControl/controller/board/AbstractBoard.h"
 
-class LocalBoard : public AbstractBoard {
+class OneCutV21Board : public AbstractBoard {
  public:
-  LocalBoard() {}
-  ~LocalBoard() {}
+  OneCutV21Board() {}
+  ~OneCutV21Board() {}
 
   virtual int GetBoardInputSize() const {
     return 64;
@@ -27,6 +27,6 @@ class LocalBoard : public AbstractBoard {
     return 8;
   }
 
-}; // class LocalBoard
+}; // class OneCutV21Board
 
-#endif // CONTROLLER_BOARD_LOCALBOARD_H__
+#endif // CONTROLLER_BOARD_ONECUTV21BOARD_H__

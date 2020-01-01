@@ -231,18 +231,6 @@
     <ClCompile Include="Pages\ModbusSetDlg.cpp">
       <Filter>Pages\ModbusSet</Filter>
     </ClCompile>
-    <ClCompile Include="Pages\KerfTableModel.cpp">
-      <Filter>Pages\KerfTable</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KerfTableModel.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Pages\KerfTableDlg.cpp">
-      <Filter>Pages\KerfTable</Filter>
-    </ClCompile>
     <ClCompile Include="Pages\NestingModel.cpp">
       <Filter>Pages\DatabaseModel</Filter>
     </ClCompile>
@@ -414,6 +402,18 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseForm.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\kerftable\KerfTableDlg.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\kerftable\KerfTableModel.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KerfTableModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -475,9 +475,6 @@
     <ClInclude Include="Communication\Modbus\ModbusProtocol.h">
       <Filter>Communication\Modbus</Filter>
     </ClInclude>
-    <ClInclude Include="Pages\KerfTableDlg.h">
-      <Filter>Pages\KerfTable</Filter>
-    </ClInclude>
     <ClInclude Include="Pages\NestingDlg.h">
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClInclude>
@@ -491,9 +488,6 @@
       <Filter>Controller\board</Filter>
     </ClInclude>
     <ClInclude Include="Controller\board\AbstractBoard.h">
-      <Filter>Controller\board</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller\board\LocalBoard.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
     <ClInclude Include="Controller\board\FCB1200PCBoard.h">
@@ -528,6 +522,12 @@
     </ClInclude>
     <ClInclude Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.h">
       <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\OneCutV21Board.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Widgets\kerftable\KerfTableDlg.h">
+      <Filter>Pages\KerfTable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -564,9 +564,6 @@
     </CustomBuild>
     <CustomBuild Include="Pages\ModbusTCPSet.h">
       <Filter>Pages\ModbusSet</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Pages\KerfTableModel.h">
-      <Filter>Pages\KerfTable</Filter>
     </CustomBuild>
     <CustomBuild Include="Pages\NestingModel.h">
       <Filter>Pages\DatabaseModel</Filter>
@@ -657,6 +654,9 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseForm.h">
       <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\kerftable\KerfTableModel.h">
+      <Filter>Pages\KerfTable</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

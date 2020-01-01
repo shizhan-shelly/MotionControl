@@ -30,15 +30,6 @@ int main(int argc, char *argv[]) {
   WidgetQrc widget_qrc;
   MotionControlQrc motion_control_qrc;
 
-  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
-  if (db_handler->InitialDatabaseAccess("E:\\MyJob\\MotionControl\\tools\\test.db", "123456")) {
-    printf("Initial dabase successfully!");
-  }
-  SystemConfigWidget widget;
-  SystemConfigModel model;
-  widget.setModel(&model);
-  widget.show();
-
   ConsumablesWidget cononsumables_widget;
   QVector<QPair<QString, QString> > info;
   info
@@ -74,6 +65,16 @@ int main(int argc, char *argv[]) {
 
   BoardDiagnoseWidget board_diagnose;
   board_diagnose.show();
+
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  QString db_file = cutter->ConfigDirPath() + "//test.db";
+  if (db_handler->InitialDatabaseAccess(db_file.toStdString(), "123456")) {
+    printf("Initial dabase successfully!");
+  }
+  SystemConfigWidget widget;
+  SystemConfigModel model;
+  widget.setModel(&model);
+  widget.show();
 
   return app.exec();
 }

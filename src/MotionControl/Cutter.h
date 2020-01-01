@@ -4,6 +4,8 @@
 #ifndef CUTTER_H__
 #define CUTTER_H__
 
+#include <QtGui/QApplication>
+
 #include "base/singleton/Singleton.h"
 #include "MotionControl/Communication/Modbus/ClientHandlerManager.h"
 #include "MotionControl/controller/pps/PPSClient.h"
@@ -14,6 +16,10 @@ class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)
 
  public:
+  QString ConfigDirPath() {
+    return QApplication::applicationDirPath() + "//config";
+  }
+
   PPSClient *pps_client();
 
   void InitPPSClient();
