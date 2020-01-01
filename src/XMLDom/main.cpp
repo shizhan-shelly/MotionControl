@@ -22,7 +22,8 @@ int main(int argc, char *argv[]) {
     printf("%s\n", vendor_list[i].c_str());
   }
 
-  CutChartSelector cut_chart_selector("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\CutChartSelector.xml");
+  CutChartSelector cut_chart_selector;
+  cut_chart_selector.ParseCutChartSelector("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\CutChartSelector.xml");
   std::vector<std::string> cut_chart_selector_keyword_name = cut_chart_selector.GetKeywordFieldName();
   for (size_t i = 0; i < cut_chart_selector_keyword_name.size(); i++) {
     printf("%s\n", cut_chart_selector_keyword_name[i].c_str());
@@ -79,9 +80,11 @@ int main(int argc, char *argv[]) {
   alias.GetBaseName("Current");
 
   PPSInfor pps_infor;
-  pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Hypertherm\\PPSInfor.xml");
-  std::string fault_resolve = pps_infor.GetPPSInfor("FaultCode", "110", "resolve");
-  printf("%s\n", fault_resolve.c_str());
+  pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\PPSInfor.xml");
+  std::map<std::string, std::string> attr_map;
+  attr_map.insert(std::make_pair("model", "HiFocus 160i"));
+  QVector<QString> infor_array = pps_infor.GetPPSInfor("DigitalInput2",
+      attr_map, "Name");
 
   return a.exec();
 }

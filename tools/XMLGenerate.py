@@ -1,6 +1,6 @@
 #By zhanshi
 
-import sys, xlrd
+import codecs, sys, xlrd
 from xml.dom.minidom import Document
 
 xls_file_name = sys.argv[1]
@@ -9,20 +9,26 @@ config_sheet = work_book.sheet_by_name('Configuration')
 attribute_sheet = work_book.sheet_by_name('Attribute')
 cut_chart_sheet = work_book.sheet_by_name('Cut Chart')
 
-config_define = {"Hypertherm" : ("PlasmaPower",),
+# process configuration information
+config_define = {"Hypertherm" : ("PlasmaPower"),
                  "Kjellberg" : ("PlasmaPower", "GasBox", "Torch"),
-                 "Liuhe" : ("PlasmaPower",)}
+                 "Liuhe" : ("PlasmaPower"),
+                 "Koike" : ("Tool", "Material", "CuttingSurface", "Factor")}
 
+config_title = {}
 config_start_row = int(config_sheet.cell_value(0, 0))
-vendor_name = "%s" % config_sheet.cell_value(config_start_row, 0)
-cut_chart_version = "%s" % config_sheet.cell_value(config_start_row, 4)
+for col in range(0, config_sheet.ncols):
+  config_title[config_sheet.cell_value(config_start_row - 1, col)] = col
 
+vendor_name = "%s" % config_sheet.cell_value(config_start_row, config_title['Manufacturer'])
+cut_chart_version = "%s" % config_sheet.cell_value(config_start_row, config_title['Version'])
+
+# process attribute information
 attr_title = {}
 attr_start_row = int(attribute_sheet.cell_value(0, 0))
+data_start_row = int(attribute_sheet.cell_value(0, 1))
 for col in range(0, attribute_sheet.ncols):
   attr_title[attribute_sheet.cell_value(attr_start_row - 1, col)] = col
-
-data_start_row = int(attribute_sheet.cell_value(0, 1))
 
 field_name = []
 column = {}
@@ -48,8 +54,8 @@ doc.appendChild(CutChart)
 for row in range(config_start_row, config_sheet.nrows):
   CutChartConfig = doc.createElement('CutChartConfig')
   CutChart.appendChild(CutChartConfig)
-  for col in range(0, len(config_define[vendor_name])):
-    CutChartConfig.setAttribute(config_define[vendor_name][col], "%s" % config_sheet.cell_value(row, col + 1))
+  for config_item in config_define[vendor_name]:
+    CutChartConfig.setAttribute(config_item, "%s" % config_sheet.cell_value(row, config_title[config_item]))
 
 # create current select element and attr element
 CurrentSelect = doc.createElement('CurrentSelectCutChartRecord')
@@ -91,7 +97,6 @@ for row in range (data_start_row - 1, cut_chart_sheet.nrows):
     elif data_type[name] == "BOOL":
       record.setAttribute(name, "%s" % cell_value)
 
-
-xml_file = open(sys.argv[2],'w')
-doc.writexml(xml_file, indent = '',newl = '\n', addindent = '  ',encoding='utf-8')
+xml_file = codecs.open(sys.argv[2], 'w','utf-8')
+doc.writexml(xml_file, indent = '', newl = '\n', addindent = '  ',encoding='utf-8')
 xml_file.close()

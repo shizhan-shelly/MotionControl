@@ -10,17 +10,22 @@
 
 #include "CutChart.h"
 
-CutChartSelector::CutChartSelector(const std::string &cut_chart_selector_file) {
+bool CutChartSelector::ParseCutChartSelector(const std::string &cut_chart_selector_file) {
   cut_chart_selector_file_ = cut_chart_selector_file;
   QFile file(cut_chart_selector_file.c_str());
-  file.open(QIODevice::ReadOnly | QIODevice::Text);
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    return false;
+  }
   QString error_msg = "";
   int line = 0;
   int column = 0;
   if (!doc_.setContent(&file, &error_msg, &line, &column)) {
     // TODO(Zhan Shi): write error log.
+    file.close();
+    return false;
   }
   file.close();
+  return true;
 }
 
 std::vector<std::string> CutChartSelector::GetKeywordFieldName() const {
@@ -43,23 +48,22 @@ std::vector<std::string> CutChartSelector::GetKeywordList(
     const std::vector<std::string> &selected_keywords) const {
 
   std::vector<std::string> result;
-  QDomElement	ele = doc_.documentElement().firstChildElement("CutChartList");
+  QDomElement ele = doc_.documentElement().firstChildElement("CutChartList");
   QDomNodeList cut_chart_list = ele.childNodes();
   for (int i = 0; i < cut_chart_list.size(); i++) {
     QDomNode node = cut_chart_list.item(i);
     QDomNamedNodeMap node_map = node.attributes();
     QDomNode target_node = node_map.namedItem(keyword_name.c_str());
     if (!target_node.isNull()) {
-      size_t i = selected_keywords.size() - 1;
-      QDomNode pre_node = node_map.item(i);
-      while (!pre_node.isNull() && i >= 0) {
-        if (pre_node.nodeValue().compare(selected_keywords[i].c_str()) != 0) {
+      std::vector<std::string> keyword_field = GetKeywordFieldName();
+      size_t j = 0;
+      for (; j < selected_keywords.size(); j++) {
+        QDomNode selected_node = node_map.namedItem(keyword_field[j].c_str());
+        if (selected_node.nodeValue().compare(selected_keywords[j].c_str()) != 0) {
           break;
         }
-        i--;
-        pre_node = node_map.item(i);
       }
-      if (i == -1) {
+      if (j == selected_keywords.size()) {
         result.push_back(target_node.nodeValue().toStdString());
       }
     }
@@ -84,6 +88,25 @@ std::vector<std::string> CutChartSelector::GetCurrentSelectedCutChart(
     }
   }
   cut_chart_name = selected_item.attributes().namedItem("CutChartName").nodeValue().toStdString();
+  return result;
+}
+
+std::map<std::string, std::string> CutChartSelector::GetCurrentSelectedCutChart() const {
+  std::map<std::string, std::string> result;
+  QDomElement selected_item = doc_.documentElement().firstChildElement("CurrentSelectCutChart");
+  QDomElement attr_element = doc_.documentElement().firstChildElement("CutChartListAttr");
+  QDomNodeList cut_chart_list_attr = attr_element.childNodes();
+  for (int i = 0; i < cut_chart_list_attr.size(); i++) {
+    QDomNode node = cut_chart_list_attr.item(i);
+    if (node.isElement()) {
+      QDomElement element = node.toElement();
+      if (element.attribute("IsKeyword").toInt() == 1) {
+        result.insert(std::make_pair(element.tagName().toStdString(),
+            selected_item.attributes().namedItem(element.tagName()).nodeValue().toStdString()));
+
+      }
+    }
+  }
   return result;
 }
 

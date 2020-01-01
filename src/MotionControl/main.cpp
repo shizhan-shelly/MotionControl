@@ -12,9 +12,10 @@
 #include "Pages/ModbusSetDlg.h"
 #include "Pages/KerfTableDlg.h"
 #include "Widgets\extendedio\ExtendedIOConfigWidget.h"
+#include "Widgets\devicediagnose\board\BoardDiagnoseWidget.h"
 #include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
-#include "../Widget/WidgetQrc.h"
 #include "MotionControlQrc.h"
+#include "Widget/WidgetQrc.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
@@ -28,15 +29,6 @@ int main(int argc, char *argv[]) {
 
   WidgetQrc widget_qrc;
   MotionControlQrc motion_control_qrc;
-
-  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
-  if (db_handler->InitialDatabaseAccess("E:\\MyJob\\MotionControl\\tools\\test.db", "123456")) {
-    printf("Initial dabase successfully!");
-  }
-  SystemConfigWidget widget;
-  SystemConfigModel model;
-  widget.setModel(&model);
-  widget.show();
 
   ConsumablesWidget cononsumables_widget;
   QVector<QPair<QString, QString> > info;
@@ -70,6 +62,19 @@ int main(int argc, char *argv[]) {
   ExtendedIOConfigWidget extended_io;
   extended_io.setModel(cutter->GetExtendedBoardModel());
   extended_io.show();
+
+  BoardDiagnoseWidget board_diagnose;
+  board_diagnose.show();
+
+  PlasmaCutDataHandler *db_handler = PlasmaCutDataHandler::GetInstance();
+  QString db_file = cutter->ConfigDirPath() + "//test.db";
+  if (db_handler->InitialDatabaseAccess(db_file.toStdString(), "123456")) {
+    printf("Initial dabase successfully!");
+  }
+  SystemConfigWidget widget;
+  SystemConfigModel model;
+  widget.setModel(&model);
+  widget.show();
 
   return app.exec();
 }

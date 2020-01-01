@@ -11,7 +11,9 @@ KerfTableModel::KerfTableModel(QObject *parent)
 KerfTableModel::~KerfTableModel() {}
 
 void KerfTableModel::initialKerfTableValue(const QVector<double> &initial) {
+  beginResetModel();
   kerf_variable_value_ = initial;
+  endResetModel();
 }
 
 QVector<double> KerfTableModel::GetKerfTableValue() const {
@@ -50,7 +52,7 @@ QVariant KerfTableModel::data(const QModelIndex &index, int role) const {
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    return column == 0 ? row + 1 : correctKerfValue(row);
+    return column == 0 ? row : correctKerfValue(row);
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:

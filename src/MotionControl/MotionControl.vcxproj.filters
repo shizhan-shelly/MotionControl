@@ -109,6 +109,12 @@
     <Filter Include="Pages\Monitor\PPSMonitor\musk">
       <UniqueIdentifier>{b6bc9ae5-c492-48e1-a3bb-6f08baf3ae26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DatabaseView\CodeTransform">
+      <UniqueIdentifier>{a79c6293-c968-41fd-8f61-971d638fdac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DeviceDiagnose\board">
+      <UniqueIdentifier>{cfebc7b9-95b1-4db7-ac7c-ff8795fb7b91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -224,18 +230,6 @@
     </ClCompile>
     <ClCompile Include="Pages\ModbusSetDlg.cpp">
       <Filter>Pages\ModbusSet</Filter>
-    </ClCompile>
-    <ClCompile Include="Pages\KerfTableModel.cpp">
-      <Filter>Pages\KerfTable</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KerfTableModel.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Pages\KerfTableDlg.cpp">
-      <Filter>Pages\KerfTable</Filter>
     </ClCompile>
     <ClCompile Include="Pages\NestingModel.cpp">
       <Filter>Pages\DatabaseModel</Filter>
@@ -372,6 +366,54 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PowermaxMonitorWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Pages\CodeTransformModel.cpp">
+      <Filter>Pages\DatabaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CodeTransformModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CodeTransformModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Pages\CodeTransformWidget.cpp">
+      <Filter>Pages\DatabaseView\CodeTransform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CodeTransformWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CodeTransformWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.cpp">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\board\BoardDiagnoseForm.cpp">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_BoardDiagnoseForm.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_BoardDiagnoseForm.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\kerftable\KerfTableDlg.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\kerftable\KerfTableModel.cpp">
+      <Filter>Pages\KerfTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KerfTableModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -433,20 +475,11 @@
     <ClInclude Include="Communication\Modbus\ModbusProtocol.h">
       <Filter>Communication\Modbus</Filter>
     </ClInclude>
-    <ClInclude Include="Pages\KerfTableDlg.h">
-      <Filter>Pages\KerfTable</Filter>
-    </ClInclude>
     <ClInclude Include="Pages\NestingDlg.h">
       <Filter>Pages\DatabaseView\Nesting</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ProgressCtrl.h">
-      <Filter>Generated Files\Debug</Filter>
-    </ClInclude>
     <ClInclude Include="Controller\DeviceDefine.h">
       <Filter>Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_ExtendedIOConfigWidget.h">
-      <Filter>Generated Files\Debug</Filter>
     </ClInclude>
     <ClInclude Include="Controller\IOBoardManager.h">
       <Filter>Controller</Filter>
@@ -455,9 +488,6 @@
       <Filter>Controller\board</Filter>
     </ClInclude>
     <ClInclude Include="Controller\board\AbstractBoard.h">
-      <Filter>Controller\board</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller\board\LocalBoard.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
     <ClInclude Include="Controller\board\FCB1200PCBoard.h">
@@ -493,32 +523,11 @@
     <ClInclude Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.h">
       <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270ADiagnose.h">
-      <Filter>Generated Files\Debug</Filter>
+    <ClInclude Include="Controller\board\OneCutV21Board.h">
+      <Filter>Controller\board</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxDiagnose.h">
-      <Filter>Generated Files\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSDeviceDiagnoseWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PPSMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_MuskPPSMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LH270AMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_LiuheMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HyperMonitorWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_PowermaxMonitorWidget.h">
-      <Filter>Generated Files</Filter>
+    <ClInclude Include="Widgets\kerftable\KerfTableDlg.h">
+      <Filter>Pages\KerfTable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -555,9 +564,6 @@
     </CustomBuild>
     <CustomBuild Include="Pages\ModbusTCPSet.h">
       <Filter>Pages\ModbusSet</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Pages\KerfTableModel.h">
-      <Filter>Pages\KerfTable</Filter>
     </CustomBuild>
     <CustomBuild Include="Pages\NestingModel.h">
       <Filter>Pages\DatabaseModel</Filter>
@@ -627,6 +633,30 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\monitor\PPSMonitor\hyper\PowermaxMonitorWidget.ui">
       <Filter>Pages\Monitor\PPSMonitor\hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\CodeTransformModel.h">
+      <Filter>Pages\DatabaseModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\CodeTransformWidget.h">
+      <Filter>Pages\DatabaseView\CodeTransform</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pages\CodeTransformWidget.ui">
+      <Filter>Pages\DatabaseView\CodeTransform</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.ui">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseWidget.h">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseForm.ui">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\board\BoardDiagnoseForm.h">
+      <Filter>Pages\DeviceDiagnose\board</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\kerftable\KerfTableModel.h">
+      <Filter>Pages\KerfTable</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

@@ -33,5 +33,5 @@ for row in range (1, work_sheet.nrows):
 
 
 xml_file = codecs.open(sys.argv[3], 'w','utf-8')
-doc.writexml(xml_file, indent = '',newl = '\n', addindent = '  ',encoding='utf-8')
+doc.writexml(xml_file, indent = '', newl = '\n', addindent = '  ',encoding='utf-8')
 xml_file.close()

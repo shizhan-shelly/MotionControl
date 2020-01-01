@@ -45,6 +45,15 @@
     <Filter Include="Delegate">
       <UniqueIdentifier>{507ae3ad-ae54-475f-997f-c0e93e2b36a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Widget\Monitor">
+      <UniqueIdentifier>{35b6b81c-8af4-4907-8f65-822a3abf6d7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widget\Diagnose">
+      <UniqueIdentifier>{bd7a055d-e5d4-4cf3-9310-0bb8fa99f31c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Button">
+      <UniqueIdentifier>{efb64eb4-4fa2-4c47-b7c8-0eddef8775a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -105,6 +114,90 @@
     <ClCompile Include="delegate\ComboBoxDelegate.cpp">
       <Filter>Delegate</Filter>
     </ClCompile>
+    <ClCompile Include="monitor\IOMonitorItem.cpp">
+      <Filter>Widget\Monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IOMonitorItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IOMonitorItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="customwidget\TabBar.cpp">
+      <Filter>Widget\CustomWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_TabBar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_TabBar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="diagnose\DeviceDiagnoseWidget.cpp">
+      <Filter>Widget\Diagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="diagnose\IODiagnoseWidget.cpp">
+      <Filter>Widget\Diagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_IODiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_IODiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="dialog\DeviceDiagnoseDlg.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="buttonbox\ButtonBar.cpp">
+      <Filter>ButtonBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ButtonBar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ButtonBar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="diagnose\ADDiagnoseWidget.cpp">
+      <Filter>Widget\Diagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ADMonitorItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ADMonitorItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\ADMonitorItem.cpp">
+      <Filter>Widget\Monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_ADDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ADDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\DAMonitorItem.cpp">
+      <Filter>Widget\Monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DAMonitorItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DAMonitorItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="diagnose\DADiagnoseWidget.cpp">
+      <Filter>Widget\Diagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DADiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DADiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -129,16 +222,50 @@
     <CustomBuild Include="dialog\BaseDialog.h">
       <Filter>Dialog</Filter>
     </CustomBuild>
+    <CustomBuild Include="monitor\IOMonitorItem.ui">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\IOMonitorItem.h">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="customwidget\TabBar.h">
+      <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="diagnose\DeviceDiagnoseWidget.h">
+      <Filter>Widget\Diagnose</Filter>
+    </CustomBuild>
+    <CustomBuild Include="diagnose\IODiagnoseWidget.h">
+      <Filter>Widget\Diagnose</Filter>
+    </CustomBuild>
+    <CustomBuild Include="buttonbox\ButtonBar.h">
+      <Filter>ButtonBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\ADMonitorItem.ui">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\ADMonitorItem.h">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="diagnose\ADDiagnoseWidget.h">
+      <Filter>Widget\Diagnose</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\DAMonitorItem.ui">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="monitor\DAMonitorItem.h">
+      <Filter>Widget\Monitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="diagnose\DADiagnoseWidget.h">
+      <Filter>Widget\Diagnose</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WidgetQrc.h" />
     <ClInclude Include="delegate\ComboBoxDelegate.h">
       <Filter>Delegate</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resource\edit.png">
-      <Filter>Resource Files</Filter>
-    </None>
+    <ClInclude Include="dialog\DeviceDiagnoseDlg.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BoardDiagnoseForm</class>
+ <widget class="QWidget" name="BoardDiagnoseForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>740</width>
+    <height>573</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>5</number>
+   </property>
+   <property name="margin">
+    <number>10</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="layout_1_">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="input_group_box_">
+       <property name="title">
+        <string>InputPort</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="widget::IODiagnoseWidget" name="input_port_" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="output_group_box_">
+       <property name="title">
+        <string>OutputPort</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="widget::IODiagnoseWidget" name="output_port_" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="layout_2_">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="ad_group_box_">
+       <property name="title">
+        <string>ADPort</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="widget::ADDiagnoseWidget" name="ad_port_" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="da_group_box_">
+       <property name="title">
+        <string>DAPort</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="widget::DADiagnoseWidget" name="da_port_" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>widget::IODiagnoseWidget</class>
+   <extends>QWidget</extends>
+   <header>Widget\diagnose\IODiagnoseWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>widget::ADDiagnoseWidget</class>
+   <extends>QWidget</extends>
+   <header>Widget\diagnose\ADDiagnoseWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>widget::DADiagnoseWidget</class>
+   <extends>QWidget</extends>
+   <header>Widget\diagnose\DADiagnoseWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

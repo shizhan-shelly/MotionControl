@@ -11,7 +11,7 @@
 
 class CutChartSelector {
  public:
-  explicit CutChartSelector(const std::string &cut_chart_selector_file);
+  bool ParseCutChartSelector(const std::string &cut_chart_selector_file);
 
   std::vector<std::string> GetKeywordFieldName() const;
 
@@ -19,6 +19,7 @@ class CutChartSelector {
       const std::vector<std::string> &selected_keywords) const;
 
   std::vector<std::string> GetCurrentSelectedCutChart(std::string &cut_chart_name) const;
+  std::map<std::string, std::string> GetCurrentSelectedCutChart() const;
 
   bool SetCurrentSelectedCutChart(const std::vector<std::string> &keywords,
                                   const std::string &cut_chart_name);
