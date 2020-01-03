@@ -6,15 +6,15 @@
 
 #include "base/singleton/SingletonMaster.h"
 #include "Cutter.h"
-#include "Pages\SystemConfigModel.h"
-#include "Pages\SystemConfigWidget.h"
-#include "Pages\ConsumablesWidget.h"
-#include "Pages/ModbusSetDlg.h"
-#include "Pages/KerfTableDlg.h"
-#include "Widgets\extendedio\ExtendedIOConfigWidget.h"
-#include "Widgets\devicediagnose\board\BoardDiagnoseWidget.h"
-#include "Database\PlasmaCutTechnology\PlasmaCutDataHandler.h"
+#include "Database/PlasmaCutTechnology/PlasmaCutDataHandler.h"
 #include "MotionControlQrc.h"
+#include "Pages/SystemConfigModel.h"
+#include "Pages/SystemConfigWidget.h"
+#include "Pages/ConsumablesWidget.h"
+#include "Pages/ModbusSetDlg.h"
+#include "Widgets/kerftable/KerfTableDlg.h"
+#include "Widgets/extendedio/ExtendedIOConfigWidget.h"
+#include "Widgets/devicediagnose/board/BoardDiagnoseWidget.h"
 #include "Widget/WidgetQrc.h"
 
 int main(int argc, char *argv[]) {

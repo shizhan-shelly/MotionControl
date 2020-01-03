@@ -1,15 +1,15 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef CONTROLLER_BOARD_FCB1200PCPANELBOARD_H__
-#define CONTROLLER_BOARD_FCB1200PCPANELBOARD_H__
+#ifndef CONTROLLER_BOARD_FCBPANELBOARD_H__
+#define CONTROLLER_BOARD_FCBPANELBOARD_H__
 
 #include "MotionControl/controller/board/AbstractBoard.h"
 
-class FCB1200PCPanelBoard : public AbstractBoard {
+class FCBPanelBoard : public AbstractBoard {
  public:
-  FCB1200PCPanelBoard() {}
-  ~FCB1200PCPanelBoard() {}
+  FCBPanelBoard() {}
+  ~FCBPanelBoard() {}
 
   virtual int GetBoardInputSize() const {
     return 21;
@@ -27,6 +27,6 @@ class FCB1200PCPanelBoard : public AbstractBoard {
     return 0;
   }
 
-}; // class FCB1200PCPanelBoard
+}; // class FCBPanelBoard
 
-#endif // CONTROLLER_BOARD_FCB1200PCPANELBOARD_H__
+#endif // CONTROLLER_BOARD_FCBPANELBOARD_H__

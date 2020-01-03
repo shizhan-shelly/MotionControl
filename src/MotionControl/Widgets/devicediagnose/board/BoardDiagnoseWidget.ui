@@ -28,7 +28,8 @@
      <widget class="BoardDiagnoseForm" name="local_"/>
      <widget class="BoardDiagnoseForm" name="fcb1200pc_"/>
      <widget class="BoardDiagnoseForm" name="fcb1200pc_exp_"/>
-     <widget class="BoardDiagnoseForm" name="fcb1200pc_panel_"/>
+     <widget class="BoardDiagnoseForm" name="fcb_panel_"/>
+     <widget class="BoardDiagnoseForm" name="fcb_io_"/>
      <widget class="QWidget" name="none_"/>
     </widget>
    </item>

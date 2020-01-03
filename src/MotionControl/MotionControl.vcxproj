@@ -173,6 +173,7 @@
     <ClCompile Include="Controller\pps\PPSClient.cpp" />
     <ClCompile Include="Controller\thc\THCClient.cpp" />
     <ClCompile Include="Cutter.cpp" />
+    <ClCompile Include="Database\CodeTransform\TransDBAccess.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\AliasTranslation.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\DatabaseSync.cpp" />
     <ClCompile Include="Database\PlasmaCutTechnology\PlasmaCutDataHandler.cpp" />
@@ -233,7 +234,8 @@
     <ClInclude Include="Controller\board\BoardFactory.h" />
     <ClInclude Include="Controller\board\FCB1200PCBoard.h" />
     <ClInclude Include="Controller\board\FCB1200PCExpBoard.h" />
-    <ClInclude Include="Controller\board\FCB1200PCPanelBoard.h" />
+    <ClInclude Include="Controller\board\FCBIOBoard.h" />
+    <ClInclude Include="Controller\board\FCBPanelBoard.h" />
     <ClInclude Include="Controller\board\OneCutV21Board.h" />
     <ClInclude Include="Controller\DeviceDefine.h" />
     <ClInclude Include="Controller\DeviceModel.h" />
@@ -243,6 +245,7 @@
     <ClInclude Include="Controller\thc\THCClient.h" />
     <ClInclude Include="Controller\thc\THCMapAddrDef.h" />
     <ClInclude Include="Cutter.h" />
+    <ClInclude Include="Database\CodeTransform\TransDBAccess.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\AliasTranslation.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\CutChartDefine.h" />
     <ClInclude Include="Database\PlasmaCutTechnology\DatabaseSync.h" />

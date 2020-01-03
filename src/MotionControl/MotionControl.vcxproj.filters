@@ -115,6 +115,9 @@
     <Filter Include="Pages\DeviceDiagnose\board">
       <UniqueIdentifier>{cfebc7b9-95b1-4db7-ac7c-ff8795fb7b91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Database\CodeTransform">
+      <UniqueIdentifier>{a3759a5e-c184-4303-ae0d-c655fa9d2570}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -414,6 +417,9 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KerfTableModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Database\CodeTransform\TransDBAccess.cpp">
+      <Filter>Database\CodeTransform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -496,7 +502,10 @@
     <ClInclude Include="Controller\board\FCB1200PCExpBoard.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
-    <ClInclude Include="Controller\board\FCB1200PCPanelBoard.h">
+    <ClInclude Include="Controller\board\FCBPanelBoard.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\OneCutV21Board.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
     <ClInclude Include="Controller\pps\PPSClient.h">
@@ -523,11 +532,14 @@
     <ClInclude Include="Widgets\devicediagnose\pps\liuhe\LH270ADiagnose.h">
       <Filter>Pages\DeviceDiagnose\pps\Liuhe</Filter>
     </ClInclude>
-    <ClInclude Include="Controller\board\OneCutV21Board.h">
-      <Filter>Controller\board</Filter>
-    </ClInclude>
     <ClInclude Include="Widgets\kerftable\KerfTableDlg.h">
       <Filter>Pages\KerfTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\CodeTransform\TransDBAccess.h">
+      <Filter>Database\CodeTransform</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\FCBIOBoard.h">
+      <Filter>Controller\board</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
