@@ -29,9 +29,6 @@ class TransDBAccess : public SQLiteAccess {
   bool ReplaceAll(const QList<std::map<std::string, std::string> > &new_data,
       const std::string &system);
 
- private:
-  sql::Sqlite3Device *sqlite3_device_;
-
-  }; // class TransDBAccess
+}; // class TransDBAccess
 
 #endif // DATABASE_CODETRANSFORM_TRANSDBACCESS_H__

@@ -5,7 +5,7 @@
 
 #include <assert.h>
 
-#include "cutter/baseclass/codetransform/TransDBAccess.h"
+#include "../database/codetransform/TransDBAccess.h"
 
 static const std::string COLUMN_FIELD[] = {
   "ID",

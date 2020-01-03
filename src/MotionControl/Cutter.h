@@ -10,7 +10,7 @@
 #include "MotionControl/Communication/Modbus/ClientHandlerManager.h"
 #include "MotionControl/controller/pps/PPSClient.h"
 #include "MotionControl/Widgets/extendedio/ExtendedBoardModel.h"
-#include "MotionControl/Pages/KerfTableModel.h"
+#include "MotionControl/Widgets/kerftable/KerfTableModel.h"
 
 class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)

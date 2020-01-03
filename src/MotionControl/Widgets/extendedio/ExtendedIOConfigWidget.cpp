@@ -33,7 +33,7 @@ ExtendedIOConfigWidget::~ExtendedIOConfigWidget() {
 void ExtendedIOConfigWidget::initialConfigWidget() {
   model_delegate_ = new widget::ComboBoxDelegate(this);
   QStringList board_model;
-  board_model << "None" << "FCB1200PC" << "FCB1200PC_EXP" << "FCB1200PC_PANEL";
+  board_model << "None" << "FCB1200PC" << "FCB1200PC_EXP" << "FCB_PANEL" << "FCB_IO";
   model_delegate_->initialDelegate(board_model);
 
   ui_->edit_view_->setSelectionMode(QAbstractItemView::SingleSelection);
