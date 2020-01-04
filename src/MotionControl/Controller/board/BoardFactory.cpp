@@ -7,6 +7,7 @@
 #include "MotionControl/controller/board/FCB1200PCExpBoard.h"
 #include "MotionControl/controller/board/FCBIOBoard.h"
 #include "MotionControl/controller/board/FCBPanelBoard.h"
+#include "MotionControl/controller/board/ICutIOV23Board.h"
 #include "MotionControl/controller/board/OneCutV21Board.h"
 #include "MotionControl/Cutter.h"
 
@@ -14,7 +15,7 @@ AbstractBoard *BoardFactory::CreateBoard(int board_index) {
   BoardItem board_item;
   board_item.group_ = board_index;
   if (board_index == 0) {
-    board_item.model_ = "ONECUTV21";
+    board_item.model_ = "ONECUT_V2.1";
     board_item.addr_ = "";
   } else {
     Cutter *cutter = Cutter::GetInstance();
@@ -40,8 +41,11 @@ AbstractBoard *BoardFactory::CreateBoard(const BoardItem &board_infor) {
   } else if (board_infor.model_.compare("FCB_PANEL") == 0) {
     board = new FCBPanelBoard();
     board->initializeBoard(board_infor);
-  } else if (board_infor.model_.compare("ONECUTV21") == 0) {
+  } else if (board_infor.model_.compare("ONECUT_V2.1") == 0) {
     board = new OneCutV21Board();
+    board->initializeBoard(board_infor);
+  } else if (board_infor.model_.compare("ICUT_V2.3") == 0) {
+    board = new ICutIOV23Board();
     board->initializeBoard(board_infor);
   }
   return board;
