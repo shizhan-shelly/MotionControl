@@ -61,6 +61,10 @@ void IOBoardManager::SaveBoardInfor() {
   }
 }
 
+std::map<int, AbstractBoard *> IOBoardManager::GetBoard() const {
+  return board_items_;
+}
+
 bool IOBoardManager::CheckInputItem(const ConfigItem &item) {
   int group = item.group.toInt();
   int index = item.index.toInt();

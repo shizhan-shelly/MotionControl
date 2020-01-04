@@ -3,6 +3,7 @@
 
 #include "MotionControl/Widgets/devicediagnose/board/BoardDiagnoseForm.h"
 
+#include "MotionControl/controller/IOBoardManager.h"
 #include "MotionControl/Cutter.h"
 #include "ui_BoardDiagnoseForm.h"
 
@@ -13,6 +14,9 @@ BoardDiagnoseForm::BoardDiagnoseForm(QWidget *parent)
   ui_->setupUi(this);
   setStyleSheet("QPushButton, QLabel, QLineEdit { font-size: 11pt; \
                  font-family: SimSun }");
+
+  connect(ui_->output_port_, SIGNAL(stateChanged(int, bool)),
+          this, SLOT(onOutputControl(int, bool)));
 
   connect(ui_->da_port_, SIGNAL(control(int, int)),
           this, SLOT(onDAControl(int, int)));

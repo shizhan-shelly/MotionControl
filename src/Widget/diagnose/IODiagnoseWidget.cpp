@@ -40,11 +40,16 @@ void IODiagnoseWidget::setupPanel(const QVector<QVector<QString> > &infor) {
   for (int i = 0; i < infor.size(); ++i) {
     QVector<IOMonitorItem *> column;
     for (int j = 0; j < infor[i].size(); ++j) {
-      column.push_back(new IOMonitorItem(this));
+      IOMonitorItem *monitor_item = new IOMonitorItem(this);
+      int index = i == 0 ? j : infor[i - 1].size() * i + j;
+      monitor_item->setup(infor[i][j], index);
+      column.push_back(monitor_item);
       connect(column.last(), SIGNAL(selected(int)),
           this, SIGNAL(selected(int)));
 
-      column.last()->setup(infor[i][j], i * 8 + j);
+      connect(column.last(), SIGNAL(stateChanged(int, bool)),
+          this, SIGNAL(stateChanged(int, bool)));
+
     }
     monitor_items_.push_back(column);
   }

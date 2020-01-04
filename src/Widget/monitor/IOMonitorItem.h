@@ -26,11 +26,15 @@ class IOMonitorItem : public QWidget {
 
  signals:
   void selected(int current_index);
+  void stateChanged(int current_index, bool on);
 
  protected:
   void focusInEvent(QFocusEvent *event);
   void focusOutEvent(QFocusEvent *event);
   void mousePressEvent(QMouseEvent *event);
+
+ private slots:
+  void OnStateChanged(bool on);
 
  private:
   bool selected_;

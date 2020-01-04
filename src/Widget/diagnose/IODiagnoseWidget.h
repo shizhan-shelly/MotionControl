@@ -24,6 +24,7 @@ class IODiagnoseWidget : public DeviceDiagnoseWidget {
 
  signals:
   void selected(int current_index);
+  void stateChanged(int current_index, bool on);
 
  protected:
   QVector<QVector<IOMonitorItem *> > monitor_items_;
