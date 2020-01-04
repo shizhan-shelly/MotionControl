@@ -541,6 +541,9 @@
     <ClInclude Include="Controller\board\FCBIOBoard.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
+    <ClInclude Include="Controller\board\ICutIOV23Board.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Pages\SystemConfigModel.h">
