@@ -9,8 +9,8 @@ Cutter::Cutter() {}
 
 Cutter::~Cutter() {}
 
-PPSClient *Cutter::pps_client() {
-  return &pps_client_;
+QString Cutter::ConfigDirPath() const {
+  return QApplication::applicationDirPath() + "//config";
 }
 
 void Cutter::InitPPSClient() {
