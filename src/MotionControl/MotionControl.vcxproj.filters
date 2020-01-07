@@ -282,12 +282,6 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_ExtendedIOConfigWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Controller\IOBoardManager.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="Controller\board\BoardFactory.cpp">
-      <Filter>Controller\board</Filter>
-    </ClCompile>
     <ClCompile Include="Controller\board\AbstractBoard.cpp">
       <Filter>Controller\board</Filter>
     </ClCompile>
@@ -420,6 +414,9 @@
     <ClCompile Include="Database\CodeTransform\TransDBAccess.cpp">
       <Filter>Database\CodeTransform</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\board\IOBoardManager.cpp">
+      <Filter>Controller\board</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -487,12 +484,6 @@
     <ClInclude Include="Controller\DeviceDefine.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="Controller\IOBoardManager.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller\board\BoardFactory.h">
-      <Filter>Controller\board</Filter>
-    </ClInclude>
     <ClInclude Include="Controller\board\AbstractBoard.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
@@ -542,6 +533,9 @@
       <Filter>Controller\board</Filter>
     </ClInclude>
     <ClInclude Include="Controller\board\ICutIOV23Board.h">
+      <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\IOBoardManager.h">
       <Filter>Controller\board</Filter>
     </ClInclude>
   </ItemGroup>

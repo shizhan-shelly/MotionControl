@@ -1,8 +1,8 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#ifndef CONTROLLER_IOBOARDMANAGER_H__
-#define CONTROLLER_IOBOARDMANAGER_H__
+#ifndef CONTROLLER_BOARD_IOBOARDMANAGER_H__
+#define CONTROLLER_BOARD_IOBOARDMANAGER_H__
 
 #include "base/singleton/Singleton.h"
 
@@ -35,6 +35,10 @@ class IOBoardManager : public Singleton {
 
   void ClearBoard();
 
+  AbstractBoard *CreateBoard(int board_index);
+
+  AbstractBoard *CreateBoard(const BoardItem &board_infor);
+
 }; // class IOBoardManager
 
-#endif // CONTROLLER_IOBOARDMANAGER_H__
+#endif // CONTROLLER_BOARD_IOBOARDMANAGER_H__

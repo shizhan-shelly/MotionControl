@@ -168,8 +168,7 @@
     <ClCompile Include="Communication\Modbus\ServerHandler.cpp" />
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp" />
     <ClCompile Include="Controller\board\AbstractBoard.cpp" />
-    <ClCompile Include="Controller\board\BoardFactory.cpp" />
-    <ClCompile Include="Controller\IOBoardManager.cpp" />
+    <ClCompile Include="Controller\board\IOBoardManager.cpp" />
     <ClCompile Include="Controller\pps\PPSClient.cpp" />
     <ClCompile Include="Controller\thc\THCClient.cpp" />
     <ClCompile Include="Cutter.cpp" />
@@ -231,16 +230,15 @@
     <ClInclude Include="Communication\Modbus\ServerHandler.h" />
     <ClInclude Include="Communication\Modbus\SlaveServer.h" />
     <ClInclude Include="Controller\board\AbstractBoard.h" />
-    <ClInclude Include="Controller\board\BoardFactory.h" />
     <ClInclude Include="Controller\board\FCB1200PCBoard.h" />
     <ClInclude Include="Controller\board\FCB1200PCExpBoard.h" />
     <ClInclude Include="Controller\board\FCBIOBoard.h" />
     <ClInclude Include="Controller\board\FCBPanelBoard.h" />
     <ClInclude Include="Controller\board\ICutIOV23Board.h" />
+    <ClInclude Include="Controller\board\IOBoardManager.h" />
     <ClInclude Include="Controller\board\OneCutV21Board.h" />
     <ClInclude Include="Controller\DeviceDefine.h" />
     <ClInclude Include="Controller\DeviceModel.h" />
-    <ClInclude Include="Controller\IOBoardManager.h" />
     <ClInclude Include="Controller\pps\PPSClient.h" />
     <ClInclude Include="Controller\pps\PPSMapAddrDef.h" />
     <ClInclude Include="Controller\thc\THCClient.h" />

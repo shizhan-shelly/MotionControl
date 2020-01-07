@@ -17,7 +17,12 @@ DeviceDiagnoseDlg::DeviceDiagnoseDlg(QWidget *parent)
   // connect signal and slot.
 }
 
-DeviceDiagnoseDlg::~DeviceDiagnoseDlg() {}
+DeviceDiagnoseDlg::~DeviceDiagnoseDlg() {
+  if (widget_) {
+    delete widget_;
+    widget_ = NULL;
+  }
+}
 
 void DeviceDiagnoseDlg::setDiagnoseWidget(DeviceDiagnoseWidget *widget) {
   assert(widget);

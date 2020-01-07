@@ -3,7 +3,7 @@
 
 #include "MotionControl/Widgets/devicediagnose/board/BoardDiagnoseForm.h"
 
-#include "MotionControl/controller/IOBoardManager.h"
+#include "MotionControl/controller/board/IOBoardManager.h"
 #include "MotionControl/Cutter.h"
 #include "ui_BoardDiagnoseForm.h"
 
