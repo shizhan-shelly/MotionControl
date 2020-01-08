@@ -46,22 +46,22 @@ void IOBoardManager::SaveBoardInfor() {
       // input
       for (int j = 0; j < iter->second->GetBoardInputSize(); j++) {
         ConfigItem item;
-        iter->second->GetPhyInput(j, item);
+        iter->second->GetPhyInput(j + 1, item);
       }
       // output
       for (int j = 0; j < iter->second->GetBoardOutputSize(); j++) {
         ConfigItem item;
-        iter->second->GetPhyOutput(j, item);
+        iter->second->GetPhyOutput(j + 1, item);
       }
       // AD
       for (int j = 0; j < iter->second->GetBoardADSize(); j++) {
         ADItem item;
-        iter->second->GetPhyAD(j, item);
+        iter->second->GetPhyAD(j + 1, item);
       }
       // DA
       for (int j = 0; j < iter->second->GetBoardDASize(); j++) {
         DAItem item;
-        iter->second->GetPhyDA(j, item);
+        iter->second->GetPhyDA(j + 1, item);
       }
     }
   }

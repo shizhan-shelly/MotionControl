@@ -9,39 +9,39 @@ AbstractBoard::~AbstractBoard() {}
 
 void AbstractBoard::initializeBoard(BoardItem board_infor) {
   input_.clear();
-  for (int i = 0; i <= GetBoardInputSize(); i++) {
+  for (int i = 0; i < GetBoardInputSize(); i++) {
     ConfigItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
-    item.no_nc = "";
-    input_.insert(std::make_pair(i, item));
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyIn%1").arg(i + 1);
+    item.no_nc = "NC";
+    input_.insert(std::make_pair(i + 1, item));
   }
   output_.clear();
-  for (int i = 0; i <= GetBoardOutputSize(); i++) {
+  for (int i = 0; i < GetBoardOutputSize(); i++) {
     ConfigItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
-    item.no_nc = "";
-    output_.insert(std::make_pair(i, item));
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyOut%1").arg(i + 1);
+    item.no_nc = "NC";
+    output_.insert(std::make_pair(i + 1, item));
   }
   ad_.clear();
-  for (int i = 0; i <= GetBoardADSize(); i++) {
+  for (int i = 0; i < GetBoardADSize(); i++) {
     ADItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
-    ad_.insert(std::make_pair(i, item));
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyAD%1").arg(i + 1);
+    ad_.insert(std::make_pair(i + 1, item));
   }
   da_.clear();
-  for (int i = 0; i <= GetBoardDASize(); i++) {
+  for (int i = 0; i < GetBoardDASize(); i++) {
     DAItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyDA%1").arg(i + 1);
     item.threshold = 0;
-    da_.insert(std::make_pair(i, item));
+    da_.insert(std::make_pair(i + 1, item));
   }
 }
 

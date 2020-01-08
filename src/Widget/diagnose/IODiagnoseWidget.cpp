@@ -25,11 +25,19 @@ IODiagnoseWidget::~IODiagnoseWidget() {
   clearItem();
 }
 
-void IODiagnoseWidget::Update(const std::vector<unsigned char> &io) {
-  for (size_t i = 0; i < io.size(); i++) {
-    for (size_t j = 0; j < 8; j++) {
-      bool status = io[i] & (0x01 << j);
-      monitor_items_[i][j]->Update(status);
+void IODiagnoseWidget::SetClickable(bool clickable) {
+  for (int i = 0; i < monitor_items_.size(); i++) {
+    for (int j = 0; j < monitor_items_[i].size(); j++) {
+    }
+  }
+}
+
+void IODiagnoseWidget::Update(const QVector<unsigned char> &status) {
+  for (int i = 0; i < monitor_items_.size(); i++) {
+    for (int j = 0; j < monitor_items_[i].size(); j++) {
+      int index = i == 0 ? j : monitor_items_[i - 1].size() * i + j;
+      assert(index < status.size());
+      monitor_items_[i][j]->Update(status[index] != 0);
     }
   }
 }
