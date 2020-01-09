@@ -81,50 +81,50 @@ bool AbstractBoard::GetPhyDA(int phy_index, DAItem &item) const {
   return true;
 }
 
-bool AbstractBoard::SetPhyInput(int phy_index, const ConfigItem &item) {
+bool AbstractBoard::SetPhyInput(const ConfigItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, ConfigItem>::iterator it = input_.find(phy_index);
-  if (it == input_.end()) {
-    return false;
+  if (it != input_.end()) {
+    if (it->second.name.indexOf("PhyIn") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }
 
-bool AbstractBoard::SetPhyOutput(int phy_index, const ConfigItem &item) {
+bool AbstractBoard::SetPhyOutput(const ConfigItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, ConfigItem>::iterator it = output_.find(phy_index);
-  if (it == output_.end()) {
-    return false;
+  if (it != output_.end()) {
+    if (it->second.name.indexOf("PhyOut") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }
 
-bool AbstractBoard::SetPhyAD(int phy_index, const ADItem &item) {
+bool AbstractBoard::SetPhyAD(const ADItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, ADItem>::iterator it = ad_.find(phy_index);
-  if (it == ad_.end()) {
-    return false;
+  if (it != ad_.end()) {
+    if (it->second.name.indexOf("PhyAD") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }
 
-bool AbstractBoard::SetPhyDA(int phy_index, const DAItem &item) {
+bool AbstractBoard::SetPhyDA(const DAItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, DAItem>::iterator it = da_.find(phy_index);
-  if (it == da_.end()) {
-    return false;
+  if (it != da_.end()) {
+    if (it->second.name.indexOf("PhyDA") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }

@@ -107,54 +107,53 @@ AbstractBoard *IOBoardManager::CreateBoard(const BoardItem &board_infor) {
   return board;
 }
 
+void IOBoardManager::LoadDeviceConfig() {
+}
+
 std::map<int, AbstractBoard *> IOBoardManager::GetBoard() const {
   return board_items_;
 }
 
 bool IOBoardManager::CheckInputItem(const ConfigItem &item) {
   int group = item.group.toInt();
-  int index = item.index.toInt();
   std::map<int, AbstractBoard *>::const_iterator iter =
       board_items_.find(group);
 
   if (iter != board_items_.end()) {
-    return iter->second->SetPhyInput(index, item);
+    return iter->second->SetPhyInput(item);
   }
   return false;
 }
 
 bool IOBoardManager::CheckOutputItem(const ConfigItem &item) {
   int group = item.group.toInt();
-  int index = item.index.toInt();
   std::map<int, AbstractBoard *>::const_iterator iter =
       board_items_.find(group);
 
   if (iter != board_items_.end()) {
-    return iter->second->SetPhyOutput(index, item);
+    return iter->second->SetPhyOutput(item);
   }
   return false;
 }
 
 bool IOBoardManager::CheckADItem(const ADItem &item) {
   int group = item.group.toInt();
-  int index = item.index.toInt();
   std::map<int, AbstractBoard *>::const_iterator iter =
       board_items_.find(group);
 
   if (iter != board_items_.end()) {
-    return iter->second->SetPhyAD(index, item);
+    return iter->second->SetPhyAD(item);
   }
   return false;
 }
 
 bool IOBoardManager::CheckDAItem(const DAItem &item) {
   int group = item.group.toInt();
-  int index = item.index.toInt();
   std::map<int, AbstractBoard *>::const_iterator iter =
       board_items_.find(group);
 
   if (iter != board_items_.end()) {
-    return iter->second->SetPhyDA(index, item);
+    return iter->second->SetPhyDA(item);
   }
   return false;
 }

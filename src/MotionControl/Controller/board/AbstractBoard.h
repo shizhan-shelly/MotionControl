@@ -25,10 +25,10 @@ class AbstractBoard {
   bool GetPhyAD(int phy_index, ADItem &item) const;
   bool GetPhyDA(int phy_index, DAItem &item) const;
 
-  bool SetPhyInput(int phy_index, const ConfigItem &item);
-  bool SetPhyOutput(int phy_index, const ConfigItem &item);
-  bool SetPhyAD(int phy_index, const ADItem &item);
-  bool SetPhyDA(int phy_index, const DAItem &item);
+  bool SetPhyInput(const ConfigItem &item);
+  bool SetPhyOutput(const ConfigItem &item);
+  bool SetPhyAD(const ADItem &item);
+  bool SetPhyDA(const DAItem &item);
 
  private:
   std::map<int, ConfigItem> input_;

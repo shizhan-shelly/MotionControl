@@ -20,6 +20,8 @@ class IOBoardManager : public Singleton {
 
   void SaveBoardInfor();
 
+  void LoadDeviceConfig();
+
   std::map<int, AbstractBoard *> GetBoard() const;
 
   bool CheckInputItem(const ConfigItem &item);
