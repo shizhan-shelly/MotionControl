@@ -68,13 +68,13 @@ void IOBoardManager::SaveBoardInfor() {
 }
 
 AbstractBoard *IOBoardManager::CreateBoard(int board_index) {
+  Cutter *cutter = Cutter::GetInstance();
   BoardItem board_item;
   board_item.group_ = board_index;
   if (board_index == 0) {
-    board_item.model_ = "ONECUT_V2.1";
+    board_item.model_ = cutter->LocalBoardModel();
     board_item.addr_ = "";
   } else {
-    Cutter *cutter = Cutter::GetInstance();
     QVector<BoardItem> board_items =
         cutter->GetExtendedBoardModel()->GetExtendedBoard();
 
@@ -105,6 +105,9 @@ AbstractBoard *IOBoardManager::CreateBoard(const BoardItem &board_infor) {
     board->initializeBoard(board_infor);
   }
   return board;
+}
+
+void IOBoardManager::LoadMachineryConfig() {
 }
 
 void IOBoardManager::LoadDeviceConfig() {

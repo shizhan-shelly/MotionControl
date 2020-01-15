@@ -16,6 +16,7 @@ class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)
 
  public:
+  QString LocalBoardModel() const;
   QString ConfigDirPath() const;
 
   void InitPPSClient();

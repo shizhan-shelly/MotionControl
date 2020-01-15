@@ -48,9 +48,9 @@ void BoardDiagnoseWidget::onSwitchBoard(int board_index) {
 }
 
 void BoardDiagnoseWidget::showEvent(QShowEvent *event) {
-  QMap<int, QString> board_infor;
-  board_infor.insert(0, "Local_Board");
   Cutter *cutter = Cutter::GetInstance();
+  QMap<int, QString> board_infor;
+  board_infor.insert(0, cutter->LocalBoardModel());
   QVector<BoardItem> ext = cutter->GetExtendedBoardModel()->GetExtendedBoard();
   foreach(BoardItem board, ext) {
     board_infor.insert(board.group_, board.model_);

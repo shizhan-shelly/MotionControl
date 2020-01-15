@@ -20,6 +20,7 @@ class IOBoardManager : public Singleton {
 
   void SaveBoardInfor();
 
+  void LoadMachineryConfig();
   void LoadDeviceConfig();
 
   std::map<int, AbstractBoard *> GetBoard() const;

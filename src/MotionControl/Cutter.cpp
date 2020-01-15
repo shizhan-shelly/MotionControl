@@ -9,6 +9,10 @@ Cutter::Cutter() {}
 
 Cutter::~Cutter() {}
 
+QString Cutter::LocalBoardModel() const {
+  return "ONECUT_V2.1";
+}
+
 QString Cutter::ConfigDirPath() const {
   return QApplication::applicationDirPath() + "//config";
 }
