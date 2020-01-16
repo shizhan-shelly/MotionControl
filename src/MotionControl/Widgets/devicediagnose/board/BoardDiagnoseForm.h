@@ -24,7 +24,7 @@ class BoardDiagnoseForm : public widget::DeviceDiagnoseWidget {
 
  private slots:
   void onOutputControl(int current_id, bool on);
-  void onDAControl(int current_id, int value);
+  void onDAControl(int current_id, float value);
 
  private:
   int board_index_;

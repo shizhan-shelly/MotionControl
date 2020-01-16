@@ -38,7 +38,7 @@ void DADiagnoseWidget::setupPanel(const QVector<QString> &infor) {
   for (int i = 0; i < infor.size(); ++i) {
     DAMonitorItem *item = new DAMonitorItem(this);
     item->setup(infor[i], i);
-    connect(item, SIGNAL(control(int, int)), this, SIGNAL(control(int, int)));
+    connect(item, SIGNAL(control(int, float)), this, SIGNAL(control(int, float)));
     monitor_items_.push_back(item);
   }
   initialWidget();

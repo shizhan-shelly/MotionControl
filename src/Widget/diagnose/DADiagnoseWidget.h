@@ -23,7 +23,7 @@ class DADiagnoseWidget : public DeviceDiagnoseWidget {
   void Update(const QVector<double> &da);
 
  signals:
-  void control(int index, int value);
+  void control(int index, float value);
 
  private:
   QGridLayout *layout_;

@@ -19,8 +19,8 @@ BoardDiagnoseForm::BoardDiagnoseForm(QWidget *parent)
   connect(ui_->output_port_, SIGNAL(stateChanged(int, bool)),
           this, SLOT(onOutputControl(int, bool)));
 
-  connect(ui_->da_port_, SIGNAL(control(int, int)),
-          this, SLOT(onDAControl(int, int)));
+  connect(ui_->da_port_, SIGNAL(control(int, float)),
+          this, SLOT(onDAControl(int, float)));
 
 }
 
@@ -85,5 +85,5 @@ void BoardDiagnoseForm::Update() {
 void BoardDiagnoseForm::onOutputControl(int current_id, bool on) {
 }
 
-void BoardDiagnoseForm::onDAControl(int current_id, int value) {
+void BoardDiagnoseForm::onDAControl(int current_id, float value) {
 }

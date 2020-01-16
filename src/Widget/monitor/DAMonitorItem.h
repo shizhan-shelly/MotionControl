@@ -23,10 +23,11 @@ class DAMonitorItem : public QWidget {
   void Update(double voltage);
 
  signals:
-  void control(int index, int value);
+  void control(int index, float value);
 
  private slots:
   void onControl(int value);
+  void onCalibrate();
 
  private:
   int index_;

@@ -80,6 +80,13 @@
      </item>
     </layout>
    </item>
+   <item>
+    <widget class="QPushButton" name="calibrate_btn_">
+     <property name="text">
+      <string>Calibrate</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

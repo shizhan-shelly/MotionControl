@@ -198,6 +198,18 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DADiagnoseWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CalibrateWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CalibrateWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="customwidget\CalibrateWidget.cpp">
+      <Filter>Widget\CustomWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="dialog\CalibrateDlg.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -258,6 +270,12 @@
     <CustomBuild Include="diagnose\DADiagnoseWidget.h">
       <Filter>Widget\Diagnose</Filter>
     </CustomBuild>
+    <CustomBuild Include="customwidget\CalibrateWidget.ui">
+      <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="customwidget\CalibrateWidget.h">
+      <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WidgetQrc.h" />
@@ -265,6 +283,12 @@
       <Filter>Delegate</Filter>
     </ClInclude>
     <ClInclude Include="dialog\DeviceDiagnoseDlg.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_CalibrateWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dialog\CalibrateDlg.h">
       <Filter>Dialog</Filter>
     </ClInclude>
   </ItemGroup>

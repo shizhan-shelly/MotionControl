@@ -5,6 +5,7 @@
 
 #include <assert.h>
 
+#include "../dialog/CalibrateDlg.h"
 #include "ui_DAMonitorItem.h"
 
 namespace widget {
@@ -17,6 +18,9 @@ DAMonitorItem::DAMonitorItem(QWidget *parent) : QWidget(parent)
 
   connect(ui_->control_, SIGNAL(valueChanged(int)),
       this, SLOT(onControl(int)));
+
+  connect(ui_->calibrate_btn_, SIGNAL(clicked()),
+      this, SLOT(onCalibrate()));
 
 }
 
@@ -35,7 +39,14 @@ void DAMonitorItem::Update(double voltage) {
 }
 
 void DAMonitorItem::onControl(int value) {
-  emit control(index_, value);
+  float da_value = value * 12.17 / 100.0;
+  emit control(index_, da_value);
+}
+
+void DAMonitorItem::onCalibrate() {
+  CalibrateDlg dialog;
+  if (dialog.exec() == QDialog::Accepted) {
+  }
 }
 
 } // namespace widget
