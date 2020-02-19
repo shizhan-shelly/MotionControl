@@ -7,7 +7,6 @@
 
 #include <QtGui/QButtonGroup>
 #include <QtGui/QGridLayout>
-
 #include <QtGui/QPushButton.h>
 
 namespace widget {
