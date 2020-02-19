@@ -417,6 +417,15 @@
     <ClCompile Include="Controller\board\IOBoardManager.cpp">
       <Filter>Controller\board</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_HPRDiagnose.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_HPRDiagnose.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\hyper\HPRDiagnose.cpp">
+      <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -537,6 +546,9 @@
     </ClInclude>
     <ClInclude Include="Controller\board\IOBoardManager.h">
       <Filter>Controller\board</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HPRDiagnose.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -666,6 +678,12 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\kerftable\KerfTableModel.h">
       <Filter>Pages\KerfTable</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\hyper\HPRDiagnose.h">
+      <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\hyper\HPRDiagnose.ui">
+      <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
