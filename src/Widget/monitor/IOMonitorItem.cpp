@@ -33,6 +33,10 @@ void IOMonitorItem::Update(bool status) {
   ui_->status_->setPixmap(status ? QPixmap(OPEN_ICON) : QPixmap(CLOSE_ICON));
 }
 
+void IOMonitorItem::OnStateChanged(bool on) {
+  emit stateChanged(index_, on);
+}
+
 void IOMonitorItem::focusOutEvent(QFocusEvent *event) {
   selected_ = false;
   setStyleSheet(0);

@@ -54,6 +54,9 @@
     <Filter Include="Button">
       <UniqueIdentifier>{efb64eb4-4fa2-4c47-b7c8-0eddef8775a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Widget\Plc">
+      <UniqueIdentifier>{3f87f2d4-92d5-4528-9077-d5e4d9cdfc96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -198,6 +201,36 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DADiagnoseWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_CalibrateWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_CalibrateWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="customwidget\CalibrateWidget.cpp">
+      <Filter>Widget\CustomWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="dialog\CalibrateDlg.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_PLCCoilItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PLCCoilItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="plc\PLCCoilItem.cpp">
+      <Filter>Widget\Plc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_PLCRegisterItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_PLCRegisterItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="plc\PLCRegisterItem.cpp">
+      <Filter>Widget\Plc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -258,6 +291,21 @@
     <CustomBuild Include="diagnose\DADiagnoseWidget.h">
       <Filter>Widget\Diagnose</Filter>
     </CustomBuild>
+    <CustomBuild Include="customwidget\CalibrateWidget.ui">
+      <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="customwidget\CalibrateWidget.h">
+      <Filter>Widget\CustomWidget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plc\PLCCoilItem.ui">
+      <Filter>Widget\Plc</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plc\PLCCoilItem.h">
+      <Filter>Widget\Plc</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plc\PLCRegisterItem.h">
+      <Filter>Widget\Plc</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WidgetQrc.h" />
@@ -265,6 +313,9 @@
       <Filter>Delegate</Filter>
     </ClInclude>
     <ClInclude Include="dialog\DeviceDiagnoseDlg.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="dialog\CalibrateDlg.h">
       <Filter>Dialog</Filter>
     </ClInclude>
   </ItemGroup>

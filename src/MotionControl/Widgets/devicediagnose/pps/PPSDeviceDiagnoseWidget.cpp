@@ -5,6 +5,7 @@
 
 //#include "cutter/baseclass/parameter/ParamModeler.h"
 #include "MotionControl/Widgets/devicediagnose/pps/liuhe/LH270ADiagnose.h"
+#include "MotionControl/Widgets/devicediagnose/pps/hyper/HPRDiagnose.h"
 #include "MotionControl/Widgets/devicediagnose/pps/hyper/PowermaxDiagnose.h"
 #include "ui_PPSDeviceDiagnoseWidget.h"
 
@@ -41,6 +42,8 @@ void PPSDeviceDiagnoseWidget::Update() {
   //  std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
   //  if (pps_model.compare("Powermax") == 0) {
   //    powermax_->Update();
+  //  } else if (pps_model.compare("HPR") == 0) {
+  //    hpr_->Update();
   //  }
   //} else if (pps_vendor.compare("Liuhe") == 0) {
   //  lh_->Update();
@@ -63,6 +66,8 @@ void PPSDeviceDiagnoseWidget::onStationIndex(int index) {
   //  std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
   //  if (pps_model.compare("Powermax") == 0) {
   //    powermax_->setCurrentStation(station_id_);
+  //  } else if (pps_model.compare("HPR") == 0) {
+  //    hpr_->setCurrentStation(station_id_);
   //  }
   //} else if (pps_vendor.compare("Liuhe") == 0) {
   //  lh_->setCurrentStation(station_id_);
@@ -74,6 +79,7 @@ void PPSDeviceDiagnoseWidget::initialDiagnoseWidget() {
       this, SLOT(onStationIndex(int)));
 
   powermax_ = new PowermaxDiagnose();
+  hpr_ = new HPRDiagnose();
   lh_ = new LH270ADiagnose();
   //ParamModeler *modeler = ParamModeler::GetInstance();
   //int station_size = modeler->f7000_->plcconfig_->Station_size();
@@ -86,6 +92,8 @@ void PPSDeviceDiagnoseWidget::initialDiagnoseWidget() {
   //    std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
   //    if (pps_model.compare("Powermax") == 0) {
   //      ui_->pps_tab_->insertTab(i, powermax_, QObject::tr("Hypertherm"));
+  //    } else if (pps_model.compare("HPR") == 0) {
+  //      ui_->pps_tab_->insertTab(i, hpr_, QObject::tr("Hypertherm"));
   //    } else {
   //      QWidget *undefine_ = new QWidget();
   //      ui_->pps_tab_->insertTab(i, undefine_, QObject::tr("Undefine"));

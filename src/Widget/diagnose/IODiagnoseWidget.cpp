@@ -25,11 +25,19 @@ IODiagnoseWidget::~IODiagnoseWidget() {
   clearItem();
 }
 
-void IODiagnoseWidget::Update(const std::vector<unsigned char> &io) {
-  for (size_t i = 0; i < io.size(); i++) {
-    for (size_t j = 0; j < 8; j++) {
-      bool status = io[i] & (0x01 << j);
-      monitor_items_[i][j]->Update(status);
+void IODiagnoseWidget::SetClickable(bool clickable) {
+  for (int i = 0; i < monitor_items_.size(); i++) {
+    for (int j = 0; j < monitor_items_[i].size(); j++) {
+    }
+  }
+}
+
+void IODiagnoseWidget::Update(const QVector<unsigned char> &status) {
+  for (int i = 0; i < monitor_items_.size(); i++) {
+    for (int j = 0; j < monitor_items_[i].size(); j++) {
+      int index = i == 0 ? j : monitor_items_[i - 1].size() * i + j;
+      assert(index < status.size());
+      monitor_items_[i][j]->Update(status[index] != 0);
     }
   }
 }
@@ -40,11 +48,16 @@ void IODiagnoseWidget::setupPanel(const QVector<QVector<QString> > &infor) {
   for (int i = 0; i < infor.size(); ++i) {
     QVector<IOMonitorItem *> column;
     for (int j = 0; j < infor[i].size(); ++j) {
-      column.push_back(new IOMonitorItem(this));
+      IOMonitorItem *monitor_item = new IOMonitorItem(this);
+      int index = i == 0 ? j : infor[i - 1].size() * i + j;
+      monitor_item->setup(infor[i][j], index);
+      column.push_back(monitor_item);
       connect(column.last(), SIGNAL(selected(int)),
           this, SIGNAL(selected(int)));
 
-      column.last()->setup(infor[i][j], i * 8 + j);
+      connect(column.last(), SIGNAL(stateChanged(int, bool)),
+          this, SIGNAL(stateChanged(int, bool)));
+
     }
     monitor_items_.push_back(column);
   }

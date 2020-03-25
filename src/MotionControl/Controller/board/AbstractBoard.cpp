@@ -9,39 +9,39 @@ AbstractBoard::~AbstractBoard() {}
 
 void AbstractBoard::initializeBoard(BoardItem board_infor) {
   input_.clear();
-  for (int i = 0; i <= GetBoardInputSize(); i++) {
+  for (int i = 0; i < GetBoardInputSize(); i++) {
     ConfigItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
-    item.no_nc = "";
-    input_.insert(std::make_pair(i, item));
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyIn%1").arg(i + 1);
+    item.no_nc = "NC";
+    input_.insert(std::make_pair(i + 1, item));
   }
   output_.clear();
-  for (int i = 0; i <= GetBoardOutputSize(); i++) {
+  for (int i = 0; i < GetBoardOutputSize(); i++) {
     ConfigItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
-    item.no_nc = "";
-    output_.insert(std::make_pair(i, item));
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyOut%1").arg(i + 1);
+    item.no_nc = "NC";
+    output_.insert(std::make_pair(i + 1, item));
   }
   ad_.clear();
-  for (int i = 0; i <= GetBoardADSize(); i++) {
+  for (int i = 0; i < GetBoardADSize(); i++) {
     ADItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
-    ad_.insert(std::make_pair(i, item));
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyAD%1").arg(i + 1);
+    ad_.insert(std::make_pair(i + 1, item));
   }
   da_.clear();
-  for (int i = 0; i <= GetBoardDASize(); i++) {
+  for (int i = 0; i < GetBoardDASize(); i++) {
     DAItem item;
     item.group = QString("%1").arg(board_infor.group_);
-    item.index = QString("%1").arg(i);
-    item.name = "";
+    item.index = QString("%1").arg(i + 1);
+    item.name = QString("PhyDA%1").arg(i + 1);
     item.threshold = 0;
-    da_.insert(std::make_pair(i, item));
+    da_.insert(std::make_pair(i + 1, item));
   }
 }
 
@@ -81,50 +81,50 @@ bool AbstractBoard::GetPhyDA(int phy_index, DAItem &item) const {
   return true;
 }
 
-bool AbstractBoard::SetPhyInput(int phy_index, const ConfigItem &item) {
+bool AbstractBoard::SetPhyInput(const ConfigItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, ConfigItem>::iterator it = input_.find(phy_index);
-  if (it == input_.end()) {
-    return false;
+  if (it != input_.end()) {
+    if (it->second.name.indexOf("PhyIn") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }
 
-bool AbstractBoard::SetPhyOutput(int phy_index, const ConfigItem &item) {
+bool AbstractBoard::SetPhyOutput(const ConfigItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, ConfigItem>::iterator it = output_.find(phy_index);
-  if (it == output_.end()) {
-    return false;
+  if (it != output_.end()) {
+    if (it->second.name.indexOf("PhyOut") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }
 
-bool AbstractBoard::SetPhyAD(int phy_index, const ADItem &item) {
+bool AbstractBoard::SetPhyAD(const ADItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, ADItem>::iterator it = ad_.find(phy_index);
-  if (it == ad_.end()) {
-    return false;
+  if (it != ad_.end()) {
+    if (it->second.name.indexOf("PhyAD") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }
 
-bool AbstractBoard::SetPhyDA(int phy_index, const DAItem &item) {
+bool AbstractBoard::SetPhyDA(const DAItem &item) {
+  int phy_index = item.index.toInt();
   std::map<int, DAItem>::iterator it = da_.find(phy_index);
-  if (it == da_.end()) {
-    return false;
+  if (it != da_.end()) {
+    if (it->second.name.indexOf("PhyDA") == -1 && it->second.name.compare(item.name) != 0) {
+      return false;
+    }
+    it->second = item;
   }
-  if (!it->second.name.isEmpty() && it->second.name.compare(item.name) != 0) {
-    return false;
-  }
-  it->second = item;
   return true;
 }

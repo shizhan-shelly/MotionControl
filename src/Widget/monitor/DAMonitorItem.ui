@@ -34,7 +34,11 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="voltage_"/>
+    <widget class="QLineEdit" name="voltage_">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QLabel" name="unit_">
@@ -44,15 +48,42 @@
     </widget>
    </item>
    <item>
-    <widget class="QSlider" name="control_">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
      </property>
-     <property name="tickPosition">
-      <enum>QSlider::TicksAbove</enum>
-     </property>
-     <property name="tickInterval">
-      <number>10</number>
+     <item>
+      <widget class="QLabel" name="percent_">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="control_">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksAbove</enum>
+       </property>
+       <property name="tickInterval">
+        <number>10</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="calibrate_btn_">
+     <property name="text">
+      <string>Calibrate</string>
      </property>
     </widget>
    </item>

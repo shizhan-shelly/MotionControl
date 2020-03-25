@@ -9,8 +9,12 @@ Cutter::Cutter() {}
 
 Cutter::~Cutter() {}
 
-PPSClient *Cutter::pps_client() {
-  return &pps_client_;
+QString Cutter::LocalBoardModel() const {
+  return "ONECUT_V2.1";
+}
+
+QString Cutter::ConfigDirPath() const {
+  return QApplication::applicationDirPath() + "//config";
 }
 
 void Cutter::InitPPSClient() {

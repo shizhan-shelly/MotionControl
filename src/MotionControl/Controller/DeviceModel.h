@@ -33,6 +33,9 @@ typedef enum _DeviceModel {
   F1650 = 0x01005030,
   LH270A = 0x01012001,
 
+  BOARD_ONECUTV21 = 0x04010001,
+  BOARD_ICUTIOV23 = 0x04010002,
+
 } DeviceModel;
 
 #endif // CONTROLLER_DEVICEMODEL_H__

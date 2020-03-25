@@ -19,6 +19,9 @@ class DeviceDiagnoseDlg : public ::widget::BaseDialog {
 
   void setDiagnoseWidget(DeviceDiagnoseWidget *widget);
 
+ protected:
+  void showEvent(QShowEvent *event);
+
  private:
   DeviceDiagnoseWidget *widget_;
   QTimer update_timer_;

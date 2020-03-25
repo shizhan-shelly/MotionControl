@@ -12,19 +12,19 @@ class OneCutV21Board : public AbstractBoard {
   ~OneCutV21Board() {}
 
   virtual int GetBoardInputSize() const {
-    return 64;
+    return 16;
   }
 
   virtual int GetBoardOutputSize() const {
-    return 64;
+    return 16;
   }
 
   virtual int GetBoardADSize() const {
-    return 8;
+    return 2;
   }
 
   virtual int GetBoardDASize() const {
-    return 8;
+    return 2;
   }
 
 }; // class OneCutV21Board

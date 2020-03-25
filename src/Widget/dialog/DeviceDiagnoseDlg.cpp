@@ -13,11 +13,14 @@ DeviceDiagnoseDlg::DeviceDiagnoseDlg(QWidget *parent)
     : widget::BaseDialog(parent) {
 
   update_timer_.setInterval(500);
-
-  // connect signal and slot.
 }
 
-DeviceDiagnoseDlg::~DeviceDiagnoseDlg() {}
+DeviceDiagnoseDlg::~DeviceDiagnoseDlg() {
+  if (widget_) {
+    delete widget_;
+    widget_ = NULL;
+  }
+}
 
 void DeviceDiagnoseDlg::setDiagnoseWidget(DeviceDiagnoseWidget *widget) {
   assert(widget);
@@ -26,6 +29,11 @@ void DeviceDiagnoseDlg::setDiagnoseWidget(DeviceDiagnoseWidget *widget) {
   connect(&update_timer_, SIGNAL(timeout()), widget_, SLOT(Update()));
   ui_->stack_widget_->addWidget(widget_);
   ui_->stack_widget_->setCurrentWidget(widget_);
+}
+
+void DeviceDiagnoseDlg::showEvent(QShowEvent *event) {
+  update_timer_.start();
+  QWidget::showEvent(event);
 }
 
 } // namespace widget

@@ -16,15 +16,16 @@ class Cutter : public Singleton {
   DECLARE_SINGLETON(Cutter)
 
  public:
-  QString ConfigDirPath() {
-    return QApplication::applicationDirPath() + "//config";
-  }
-
-  PPSClient *pps_client();
+  QString LocalBoardModel() const;
+  QString ConfigDirPath() const;
 
   void InitPPSClient();
 
   bool StartupPPSConnect();
+
+  PPSClient *pps_client() {
+    return &pps_client_;
+  }
 
   ExtendedBoardModel *GetExtendedBoardModel() {
     return &extended_board_model_;

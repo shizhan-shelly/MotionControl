@@ -12,6 +12,7 @@ class PPSDeviceDiagnoseWidget;
 
 namespace cutter {
 
+class HPRDiagnose;
 class LH270ADiagnose;
 class PowermaxDiagnose;
 
@@ -30,6 +31,7 @@ class PPSDeviceDiagnoseWidget : public QWidget {
 
  private:
   int station_id_;
+  HPRDiagnose *hpr_;
   LH270ADiagnose *lh_;
   PowermaxDiagnose *powermax_;
   Ui::PPSDeviceDiagnoseWidget *ui_;

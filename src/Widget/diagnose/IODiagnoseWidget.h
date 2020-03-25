@@ -20,10 +20,12 @@ class IODiagnoseWidget : public DeviceDiagnoseWidget {
   virtual ~IODiagnoseWidget();
 
   void setupPanel(const QVector<QVector<QString> > &infor);
-  void Update(const std::vector<unsigned char> &io);
+  void Update(const QVector<unsigned char> &status);
+  void SetClickable(bool clickable);
 
  signals:
   void selected(int current_index);
+  void stateChanged(int current_index, bool on);
 
  protected:
   QVector<QVector<IOMonitorItem *> > monitor_items_;
