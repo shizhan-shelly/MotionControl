@@ -10,10 +10,10 @@ attribute_sheet = work_book.sheet_by_name('Attribute')
 cut_chart_sheet = work_book.sheet_by_name('Cut Chart')
 
 # process configuration information
-config_define = {"Hypertherm" : ("PlasmaPower"),
-                 "Kjellberg" : ("PlasmaPower", "GasBox", "Torch"),
-                 "Liuhe" : ("PlasmaPower"),
-                 "Koike" : ("Tool", "Material", "CuttingSurface", "Factor")}
+config_define = {"Hypertherm" : ["PlasmaPower"],
+                 "Kjellberg" : ["PlasmaPower", "GasBox", "Torch"],
+                 "Liuhe" : ["PlasmaPower"],
+                 "Koike" : ["Tool", "Material", "CuttingSurface", "Factor"]}
 
 config_title = {}
 config_start_row = int(config_sheet.cell_value(0, 0))
