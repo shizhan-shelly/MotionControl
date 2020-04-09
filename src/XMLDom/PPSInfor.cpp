@@ -6,6 +6,15 @@
 #include <QtCore/QFile>
 #include <QtCore/QIODevice>
 
+inline double StringToDouble(QString str) {
+  char *endPtr = NULL;
+  double value = strtod(str.toStdString().c_str(), &endPtr);
+  if (!std::string(endPtr).empty()) {
+    value = 0.0;
+  }
+  return value;
+}
+
 PPSInfor::PPSInfor() {}
 
 PPSInfor::~PPSInfor() {}
@@ -46,6 +55,26 @@ std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
   std::map<int, std::string>::iterator it = key_value.lower_bound(infor_key.second);
   if (it != key_value.end()) {
     return it->second;
+  }
+  return "";
+}
+
+std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
+    const std::map<std::string, std::string> &attr_map,
+    const std::pair<std::string, double> &infor_key,
+    const std::string &infor_prefix) const {
+
+  QDomElement dom = GetTargetNode(pps_item, attr_map);
+  if (!dom.isNull()) {
+    QDomNodeList records = dom.childNodes();
+    for (int i = 0; i < records.size(); i++) {
+      QDomNamedNodeMap node_map = records.item(i).attributes();
+      QString node_value = node_map.namedItem(infor_key.first.c_str()).nodeValue();
+      double compare = StringToDouble(node_value) - infor_key.second;
+      if (fabs(compare) < 0.05) {
+        return node_map.namedItem(infor_prefix.c_str()).nodeValue().toStdString();
+      }
+    }
   }
   return "";
 }

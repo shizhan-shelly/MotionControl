@@ -27,6 +27,11 @@ class PPSInfor {
                           const std::pair<std::string, int> &infor_key,
                           const std::string &infor_prefix) const;
 
+  std::string GetPPSInfor(const std::string &pps_item,
+                          const std::map<std::string, std::string> &attr_map,
+                          const std::pair<std::string, double> &infor_key,
+                          const std::string &infor_prefix) const;
+
   /// This function can get a serial string for same prefix from xml file.
   /// @example: pps_item, -- "FaultCode" / "StateCode";
   ///           attr_map, -- <model="HiFocus130">, <version="3.00">
