@@ -426,6 +426,9 @@
     <ClCompile Include="Widgets\devicediagnose\pps\hyper\HPRDiagnose.cpp">
       <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\board\IOConfigObserver.cpp">
+      <Filter>Controller\board</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -549,6 +552,9 @@
     </ClInclude>
     <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HPRDiagnose.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\board\IOConfigObserver.h">
+      <Filter>Controller\board</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

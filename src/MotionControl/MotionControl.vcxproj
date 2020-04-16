@@ -175,6 +175,7 @@
     <ClCompile Include="Communication\Modbus\SlaveServer.cpp" />
     <ClCompile Include="Controller\board\AbstractBoard.cpp" />
     <ClCompile Include="Controller\board\IOBoardManager.cpp" />
+    <ClCompile Include="Controller\board\IOConfigObserver.cpp" />
     <ClCompile Include="Controller\pps\PPSClient.cpp" />
     <ClCompile Include="Controller\thc\THCClient.cpp" />
     <ClCompile Include="Cutter.cpp" />
@@ -244,6 +245,7 @@
     <ClInclude Include="Controller\board\FCBPanelBoard.h" />
     <ClInclude Include="Controller\board\ICutIOV23Board.h" />
     <ClInclude Include="Controller\board\IOBoardManager.h" />
+    <ClInclude Include="Controller\board\IOConfigObserver.h" />
     <ClInclude Include="Controller\board\OneCutV21Board.h" />
     <ClInclude Include="Controller\DeviceDefine.h" />
     <ClInclude Include="Controller\DeviceModel.h" />
