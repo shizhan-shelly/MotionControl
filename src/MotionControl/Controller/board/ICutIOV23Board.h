@@ -27,6 +27,10 @@ class ICutIOV23Board : public AbstractBoard {
     return 4;
   }
 
+  virtual QStringList GetSerialPortList() const {
+
+  }
+
 }; // class ICutIOV23Board
 
 #endif // CONTROLLER_BOARD_ICUTIOV23BOARD_H__

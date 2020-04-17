@@ -18,6 +18,8 @@ class IOConfigObserver : public Singleton {
   // io_type: 0, input; 1, output; 2, AD; 3, DA
   std::vector<int> GetConfigurableIndex(int group, int io_type) const;
 
+  QStringList GetConfigurableSerialPort(int group) const;
+
   static QStringList TransformQStringList(const std::vector<int> &items);
 
  private:

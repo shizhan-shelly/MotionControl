@@ -5,6 +5,7 @@
 #define CONTROLLER_BOARD_ABSTRACTBOARD_H__
 
 #include <map>
+#include <QStringList>
 
 #include "MotionControl/Controller/DeviceDefine.h"
 
@@ -19,6 +20,7 @@ class AbstractBoard {
   virtual int GetBoardOutputSize() const = 0;
   virtual int GetBoardADSize() const = 0;
   virtual int GetBoardDASize() const = 0;
+  virtual QStringList GetSerialPortList() const = 0;
 
   bool GetPhyInput(int phy_index, ConfigItem &item) const;
   bool GetPhyOutput(int phy_index, ConfigItem &item) const;
@@ -35,6 +37,7 @@ class AbstractBoard {
   std::map<int, ConfigItem> output_;
   std::map<int, ADItem> ad_;
   std::map<int, DAItem> da_;
+  QStringList serial_port_;
 
 }; // class AbstractBoard
 

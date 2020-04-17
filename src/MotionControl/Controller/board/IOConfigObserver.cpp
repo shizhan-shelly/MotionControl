@@ -51,6 +51,17 @@ std::vector<int> IOConfigObserver::GetConfigurableIndex(
   return index;
 }
 
+QStringList IOConfigObserver::GetConfigurableSerialPort(int group) const {
+  QStringList serial_port_list;
+  std::map<int, AbstractBoard *> boards = IOBoardManager::GetInstance()->GetBoard();
+  std::map<int, AbstractBoard *>::iterator it = boards.find(group);
+  AbstractBoard *board = it != boards.end() ? it->second : NULL;
+  if (board) {
+    //
+  }
+  return serial_port_list;
+}
+
 QStringList IOConfigObserver::TransformQStringList(
     const std::vector<int> &items) {
 

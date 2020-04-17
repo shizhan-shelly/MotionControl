@@ -34,4 +34,9 @@ struct BoardItem {
   QString addr_;
 };
 
+struct SerialPortItem {
+  QString name_;
+  QString group_;
+};
+
 #endif // CONTROLLER_DEVICEDEFINE_H__
