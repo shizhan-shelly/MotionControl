@@ -37,6 +37,23 @@ bool PPSInfor::ParsePPSInfor(const std::string &xml_file) {
   return true;
 }
 
+std::string PPSInfor::GetPPSModel(
+    const std::pair<std::string, int> &model_infor) {
+
+  QDomElement dom = doc_.documentElement().firstChildElement("PPSModel");
+  if (!dom.isNull()) {
+    QDomNodeList records = dom.childNodes();
+    for (int i = 0; i < records.size(); i++) {
+      QDomNamedNodeMap node_map = records.item(i).attributes();
+      QString node_value = node_map.namedItem(model_infor.first.c_str()).nodeValue();
+      if (model_infor.second == node_value.toInt()) {
+        return node_map.namedItem("model").nodeValue().toStdString();
+      }
+    }
+  }
+  return "";
+}
+
 std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
     const std::map<std::string, std::string> &attr_map,
     const std::pair<std::string, int> &infor_key,
