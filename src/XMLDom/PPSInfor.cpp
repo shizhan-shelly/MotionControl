@@ -37,17 +37,18 @@ bool PPSInfor::ParsePPSInfor(const std::string &xml_file) {
   return true;
 }
 
-std::string PPSInfor::GetPPSModel(
-    const std::pair<std::string, int> &model_infor) {
+std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
+    const std::pair<std::string, int> &infor_key,
+    const std::string &infor_prefix) const {
 
-  QDomElement dom = doc_.documentElement().firstChildElement("PPSModel");
+  QDomElement dom = doc_.documentElement().firstChildElement(pps_item.c_str());
   if (!dom.isNull()) {
     QDomNodeList records = dom.childNodes();
     for (int i = 0; i < records.size(); i++) {
       QDomNamedNodeMap node_map = records.item(i).attributes();
-      QString node_value = node_map.namedItem(model_infor.first.c_str()).nodeValue();
-      if (model_infor.second == node_value.toInt()) {
-        return node_map.namedItem("model").nodeValue().toStdString();
+      QString node_value = node_map.namedItem(infor_key.first.c_str()).nodeValue();
+      if (infor_key.second == node_value.toInt()) {
+        return node_map.namedItem(infor_prefix.c_str()).nodeValue().toStdString();
       }
     }
   }

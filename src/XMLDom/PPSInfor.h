@@ -16,8 +16,10 @@ class PPSInfor {
 
   bool ParsePPSInfor(const std::string &xml_file);
 
-  /// This Function can get pps model from xml node of PPSModel.
-  std::string GetPPSModel(const std::pair<std::string, int> &model_infor);
+  /// This Function can get pps infor from xml file.
+  std::string GetPPSInfor(const std::string &pps_item,
+                          const std::pair<std::string, int> &infor_key,
+                          const std::string &infor_prefix) const;
 
   /// This function can get pps infor from xml file.
   /// @example: pps_item, -- "FaultCode" / "StateCode";
