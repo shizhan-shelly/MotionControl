@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
   pps_infor.ParsePPSInfor("E:\\MyJob\\MotionControl\\tools\\Kjellberg\\PPSInfor.xml");
   std::map<std::string, std::string> attr_map;
   attr_map.insert(std::make_pair("model", "HiFocus 160i"));
-  QVector<QString> infor_array = pps_infor.GetPPSInfor("DigitalInput2",
+  QVector<QString> infor_array = pps_infor.GetItemValues("DigitalInput2",
       attr_map, "Name");
 
   return a.exec();

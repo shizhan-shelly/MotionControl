@@ -37,13 +37,13 @@ bool PPSInfor::ParsePPSInfor(const std::string &xml_file) {
   return true;
 }
 
-std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
+std::string PPSInfor::GetItemValue(const std::string &pps_item,
     const std::pair<std::string, int> &infor_key,
     const std::string &infor_prefix) const {
 
-  QDomElement dom = doc_.documentElement().firstChildElement(pps_item.c_str());
-  if (!dom.isNull()) {
-    QDomNodeList records = dom.childNodes();
+  QDomElement data_element = doc_.documentElement().firstChildElement(pps_item.c_str());
+  if (!data_element.isNull()) {
+    QDomNodeList records = data_element.childNodes();
     for (int i = 0; i < records.size(); i++) {
       QDomNamedNodeMap node_map = records.item(i).attributes();
       QString node_value = node_map.namedItem(infor_key.first.c_str()).nodeValue();
@@ -80,7 +80,7 @@ std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
 std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
     const std::map<std::string, std::string> &attr_map,
     const std::pair<std::string, double> &infor_key,
-    const std::string &infor_prefix) const {
+    const std::string &infor_prefix, double accuracy) const {
 
   QDomElement dom = GetTargetNode(pps_item, attr_map);
   if (!dom.isNull()) {
@@ -89,7 +89,7 @@ std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
       QDomNamedNodeMap node_map = records.item(i).attributes();
       QString node_value = node_map.namedItem(infor_key.first.c_str()).nodeValue();
       double compare = StringToDouble(node_value) - infor_key.second;
-      if (fabs(compare) < 0.05) {
+      if (fabs(compare) < accuracy) {
         return node_map.namedItem(infor_prefix.c_str()).nodeValue().toStdString();
       }
     }
@@ -97,7 +97,7 @@ std::string PPSInfor::GetPPSInfor(const std::string &pps_item,
   return "";
 }
 
-QVector<QString> PPSInfor::GetPPSInfor(const std::string &pps_item,
+QVector<QString> PPSInfor::GetItemValues(const std::string &pps_item,
     const std::map<std::string, std::string> &attr_map,
     const std::string &infor_prefix) const {
 

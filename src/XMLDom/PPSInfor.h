@@ -17,9 +17,9 @@ class PPSInfor {
   bool ParsePPSInfor(const std::string &xml_file);
 
   /// This Function can get pps infor from xml file.
-  std::string GetPPSInfor(const std::string &pps_item,
-                          const std::pair<std::string, int> &infor_key,
-                          const std::string &infor_prefix) const;
+  std::string GetItemValue(const std::string &pps_item,
+                           const std::pair<std::string, int> &infor_key,
+                           const std::string &infor_prefix) const;
 
   /// This function can get pps infor from xml file.
   /// @example: pps_item, -- "FaultCode" / "StateCode";
@@ -35,14 +35,14 @@ class PPSInfor {
   std::string GetPPSInfor(const std::string &pps_item,
                           const std::map<std::string, std::string> &attr_map,
                           const std::pair<std::string, double> &infor_key,
-                          const std::string &infor_prefix) const;
+                          const std::string &infor_prefix, double accuracy) const;
 
   /// This function can get a serial string for same prefix from xml file.
   /// @example: pps_item, -- "FaultCode" / "StateCode";
   ///           attr_map, -- <model="HiFocus130">, <version="3.00">
   ///           infor_prefix, prefix of pps infor -- "description"
   /// @return: serial strings which user want.
-  QVector<QString> GetPPSInfor(const std::string &pps_item,
+  QVector<QString> GetItemValues(const std::string &pps_item,
       const std::map<std::string, std::string> &attr_map,
       const std::string &infor_prefix) const;
 
