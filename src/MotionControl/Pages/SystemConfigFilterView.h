@@ -10,7 +10,7 @@
 #include <QtGui/QWidget>
 
 #include "../Database/PlasmaCutTechnology/SystemConfigDefine.h"
-#include "../../Widget/customwidget/ComboEditor.h"
+#include "Widget/customwidget/ComboEditor.h"
 
 class SystemConfigFilterView : public QWidget {
   Q_OBJECT

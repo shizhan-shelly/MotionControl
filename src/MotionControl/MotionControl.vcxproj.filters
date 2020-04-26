@@ -432,7 +432,7 @@
     <ClCompile Include="Controller\board\IOConfigObserver.cpp">
       <Filter>Controller\board</Filter>
     </ClCompile>
-    <ClCompile Include="Widgets\cutdatebase\KeywordFilterView.cpp">
+    <ClCompile Include="Widgets\cutdatabase\KeywordFilterView.cpp">
       <Filter>Pages\DatabaseView\CutDatabase</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KeywordFilterView.cpp">
@@ -703,7 +703,7 @@
     <CustomBuild Include="Widgets\devicediagnose\pps\hyper\HPRDiagnose.ui">
       <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
     </CustomBuild>
-    <CustomBuild Include="Widgets\cutdatebase\KeywordFilterView.h">
+    <CustomBuild Include="Widgets\cutdatabase\KeywordFilterView.h">
       <Filter>Pages\DatabaseView\CutDatabase</Filter>
     </CustomBuild>
   </ItemGroup>

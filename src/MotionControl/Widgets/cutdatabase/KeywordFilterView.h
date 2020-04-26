@@ -8,6 +8,8 @@
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
+#include "Widget/customwidget/ComboEditor.h"
+
 class KeywordFilterView : public QWidget {
   Q_OBJECT
 
@@ -16,7 +18,7 @@ class KeywordFilterView : public QWidget {
   ~KeywordFilterView();
 
  signals:
-  void currentKeywordRecord(const std::vector<std::pair<std::string, std::string> > &records);
+  void currentKeyword(const std::vector<std::pair<std::string, std::string> > &records);
 
  private slots:
   void onSelectKeywordFilter(const QString &keyword_value);
