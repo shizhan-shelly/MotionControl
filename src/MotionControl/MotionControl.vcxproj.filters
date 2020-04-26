@@ -118,6 +118,9 @@
     <Filter Include="Database\CodeTransform">
       <UniqueIdentifier>{a3759a5e-c184-4303-ae0d-c655fa9d2570}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages\DatabaseView\CutDatabase">
+      <UniqueIdentifier>{2524e8c4-4c9f-4bbe-bbf6-66e9cdd00045}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -429,6 +432,15 @@
     <ClCompile Include="Controller\board\IOConfigObserver.cpp">
       <Filter>Controller\board</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\cutdatebase\KeywordFilterView.cpp">
+      <Filter>Pages\DatabaseView\CutDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KeywordFilterView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KeywordFilterView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -690,6 +702,9 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\devicediagnose\pps\hyper\HPRDiagnose.ui">
       <Filter>Pages\DeviceDiagnose\pps\Hyper</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\cutdatebase\KeywordFilterView.h">
+      <Filter>Pages\DatabaseView\CutDatabase</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
