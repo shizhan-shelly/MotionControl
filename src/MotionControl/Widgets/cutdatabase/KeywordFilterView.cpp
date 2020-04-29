@@ -14,13 +14,17 @@ KeywordFilterView::KeywordFilterView(QWidget *parent)
   setLayout(view_layout_);
 
   arrangeKeywordFilter();
-  executeKeywordFilter();
+  updateKeywordFilter(0);
 }
 
 KeywordFilterView::~KeywordFilterView() {}
 
-void KeywordFilterView::onSelectKeywordFilter(const QString &keyword_value) {
-  executeKeywordFilter();
+void KeywordFilterView::onSelectKeywordFilter(int index) {
+  if (index == keyword_filter_.count() - 1) {
+    //
+  } else {
+    updateKeywordFilter(index + 1);
+  }
 }
 
 void KeywordFilterView::arrangeKeywordFilter() {
@@ -41,20 +45,18 @@ void KeywordFilterView::arrangeKeywordFilter() {
   }
 
   std::vector<std::pair<std::string, std::string> > keyword_field;
-  std::vector<std::pair<std::string, std::string> >::const_iterator iter = keyword_field.begin();
-  for (; iter != keyword_field.end(); iter++) {
+  for (size_t it = 0; it < keyword_field.size(); it++) {
     keyword_filter_.push_back(new widget::ComboEditor(this));
-
     std::vector<std::string> filed_item;
     QStringList filed_item_list;
     for (size_t i = 0; i < filed_item.size(); i++) {
       filed_item_list << filed_item[i].c_str();
     }
     keyword_filter_.back()->setupWidget(
-        QPair<QString, QList<QString> >(iter->first.c_str(), filed_item_list));
+        QPair<QString, QList<QString> >(keyword_field[it].first.c_str(), filed_item_list));
 
     connect(keyword_filter_.back(), SIGNAL(currentSelect(QString)), this,
-        SLOT(onSelectKeywordFilter(QString)));
+        SLOT(onSelectKeywordFilter(int)));
 
   }
   static const int MAX_COUNT_IN_ROW = 5;
@@ -66,5 +68,5 @@ void KeywordFilterView::arrangeKeywordFilter() {
 
 }
 
-void KeywordFilterView::executeKeywordFilter() {
+void KeywordFilterView::updateKeywordFilter(int inddex) {
 }

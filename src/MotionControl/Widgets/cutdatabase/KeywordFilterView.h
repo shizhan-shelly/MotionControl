@@ -17,20 +17,22 @@ class KeywordFilterView : public QWidget {
   explicit KeywordFilterView(QWidget *parent = NULL);
   ~KeywordFilterView();
 
- signals:
-  void currentKeyword(const std::vector<std::pair<std::string, std::string> > &records);
+signals:
+
+  void keywordFilter(const std::vector<std::pair<std::string, std::string> > &records);
 
  private slots:
-  void onSelectKeywordFilter(const QString &keyword_value);
+  // index, keyword filter's sequence index.
+  void onSelectKeywordFilter(int index);
 
  private:
   void arrangeKeywordFilter();
 
-  void executeKeywordFilter();
+  void updateKeywordFilter(int index);
 
   QGridLayout *keyword_layout_;
   QVBoxLayout *view_layout_;
-  std::vector<widget::ComboEditor *> keyword_filter_;
+  QVector<widget::ComboEditor *> keyword_filter_;
 
 }; // class KeywordFilterView
 
