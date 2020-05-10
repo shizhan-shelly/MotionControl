@@ -18,8 +18,11 @@ class KeywordFilterView : public QWidget {
   ~KeywordFilterView();
 
 signals:
-
+  void KeywordChanged(int index);
   void keywordFilter(const std::vector<std::pair<std::string, std::string> > &records);
+
+ protected:
+  virtual void showEvent(QShowEvent *event);
 
  private slots:
   // index, keyword filter's sequence index.
@@ -29,6 +32,7 @@ signals:
   void arrangeKeywordFilter();
 
   void updateKeywordFilter(int index);
+  void executeKeywordFilter();
 
   QGridLayout *keyword_layout_;
   QVBoxLayout *view_layout_;

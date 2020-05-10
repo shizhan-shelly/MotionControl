@@ -14,14 +14,13 @@ KeywordFilterView::KeywordFilterView(QWidget *parent)
   setLayout(view_layout_);
 
   arrangeKeywordFilter();
-  updateKeywordFilter(0);
 }
 
 KeywordFilterView::~KeywordFilterView() {}
 
 void KeywordFilterView::onSelectKeywordFilter(int index) {
   if (index == keyword_filter_.count() - 1) {
-    //
+    executeKeywordFilter();
   } else {
     updateKeywordFilter(index + 1);
   }
@@ -69,4 +68,12 @@ void KeywordFilterView::arrangeKeywordFilter() {
 }
 
 void KeywordFilterView::updateKeywordFilter(int inddex) {
+}
+
+void KeywordFilterView::executeKeywordFilter() {
+}
+
+void KeywordFilterView::showEvent(QShowEvent *event) {
+  updateKeywordFilter(0);
+  QWidget::showEvent(event);
 }
