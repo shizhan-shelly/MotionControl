@@ -60,4 +60,17 @@ void ComboEditor::arrangeItems() {
 
 }
 
+void ComboEditor::setEditorValues(const QList<QString> &value) {
+  if (combobox_) {
+    combobox_->clear();
+    combobox_->addItems(value);
+  }
+}
+
+void ComboEditor::setCurrentIndex(int index) {
+  if (combobox_) {
+    combobox_->setCurrentIndex(index);
+  }
+}
+
 } // namespace widget

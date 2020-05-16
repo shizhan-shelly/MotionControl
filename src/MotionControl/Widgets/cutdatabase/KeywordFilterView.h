@@ -4,6 +4,7 @@
 #ifndef CUTDATABASE_KEYWORDFILTERVIEW_H__
 #define CUTDATABASE_KEYWORDFILTERVIEW_H__
 
+#include <map>
 #include <QtGui/QGridLayout>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -17,9 +18,11 @@ class KeywordFilterView : public QWidget {
   explicit KeywordFilterView(QWidget *parent = NULL);
   ~KeywordFilterView();
 
-signals:
+  bool Delete();
+
+ signals:
   void KeywordChanged(int index);
-  void keywordFilter(const std::vector<std::pair<std::string, std::string> > &records);
+  void keywordFilter(const std::map<std::string, std::string> &records);
 
  protected:
   virtual void showEvent(QShowEvent *event);
@@ -32,11 +35,15 @@ signals:
   void arrangeKeywordFilter();
 
   void updateKeywordFilter(int index);
+
   void executeKeywordFilter();
+
+  std::map<std::string, std::string> GetSelectedKeywords(int index) const;
 
   QGridLayout *keyword_layout_;
   QVBoxLayout *view_layout_;
   QVector<widget::ComboEditor *> keyword_filter_;
+  std::vector<std::pair<std::string, std::string> > keyword_field_;
 
 }; // class KeywordFilterView
 

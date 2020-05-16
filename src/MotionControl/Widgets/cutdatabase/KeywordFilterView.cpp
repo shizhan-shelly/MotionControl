@@ -43,8 +43,11 @@ void KeywordFilterView::arrangeKeywordFilter() {
     }
   }
 
-  std::vector<std::pair<std::string, std::string> > keyword_field;
-  for (size_t it = 0; it < keyword_field.size(); it++) {
+  // init keyword_field_
+  keyword_field_.push_back(std::make_pair("Material", tr("Material").toStdString()));
+  keyword_field_.push_back(std::make_pair("Thickness", tr("Thickness").toStdString()));
+
+  for (size_t it = 0; it < keyword_field_.size(); it++) {
     keyword_filter_.push_back(new widget::ComboEditor(this));
     std::vector<std::string> filed_item;
     QStringList filed_item_list;
@@ -52,7 +55,7 @@ void KeywordFilterView::arrangeKeywordFilter() {
       filed_item_list << filed_item[i].c_str();
     }
     keyword_filter_.back()->setupWidget(
-        QPair<QString, QList<QString> >(keyword_field[it].first.c_str(), filed_item_list));
+        QPair<QString, QList<QString> >(keyword_field_[it].second.c_str(), filed_item_list));
 
     connect(keyword_filter_.back(), SIGNAL(currentSelect(QString)), this,
         SLOT(onSelectKeywordFilter(int)));
@@ -67,10 +70,36 @@ void KeywordFilterView::arrangeKeywordFilter() {
 
 }
 
-void KeywordFilterView::updateKeywordFilter(int inddex) {
+void KeywordFilterView::updateKeywordFilter(int index) {
+  QList<QString> display_value; // Get keyword values from db.
+  keyword_filter_[index]->setEditorValues(display_value);
+  keyword_filter_[index]->setCurrentIndex(0);
+  emit KeywordChanged(index);
 }
 
 void KeywordFilterView::executeKeywordFilter() {
+  std::map<std::string, std::string> keywords = GetSelectedKeywords(2);
+  // Do database select.
+  emit keywordFilter(keywords);
+}
+
+bool KeywordFilterView::Delete() {
+  // std::map<std::string, std::string> keywords = GetSelectedKeywords(2);
+  int ret = 0; // De databse delete
+  if (ret == 0) {
+    updateKeywordFilter(0);
+  }
+  return ret;
+}
+
+std::map<std::string, std::string> KeywordFilterView::GetSelectedKeywords(int index) const {
+  std::map<std::string, std::string> selected_keywords;
+  for (int i = 0; i < index; i++) {
+    QString display_value = keyword_filter_[i]->currentEditorValue();
+    QString original_value = display_value;
+    selected_keywords[keyword_field_[i].first] = original_value.toStdString();
+  }
+  return selected_keywords;
 }
 
 void KeywordFilterView::showEvent(QShowEvent *event) {

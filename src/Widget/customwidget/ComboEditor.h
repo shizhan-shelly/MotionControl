@@ -23,6 +23,10 @@ class ComboEditor : public BaseWidget {
 
   QString currentEditorValue() const;
 
+  void setEditorValues(const QList<QString> &value);
+
+  void setCurrentIndex(int index);
+
  signals:
   void currentSelect(const QString &text);
 
