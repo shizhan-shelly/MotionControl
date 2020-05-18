@@ -29,6 +29,22 @@ BoardDiagnoseWidget::~BoardDiagnoseWidget() {
 void BoardDiagnoseWidget::Update() {
   if (board_index_ == 0) {
     ui_->local_->Update();
+  } else if (board_index_ > 0) {
+    Cutter *cutter = Cutter::GetInstance();
+    QVector<BoardItem> ext_board =
+        cutter->GetExtendedBoardModel()->GetExtendedBoard();
+
+    BoardItem current_board = ext_board[board_index_ - 1];
+    QString board_model = current_board.model_;
+    if (board_model.compare("FCB1200PC") == 0) {
+      ui_->fcb1200pc_->Update();
+    } else if (board_model.compare("FCB1200PC_EXP") == 0) {
+      ui_->fcb1200pc_exp_->Update();
+    } else if (board_model.compare("FCB_PANEL") == 0) {
+      ui_->fcb_panel_->Update();
+    } else if (board_model.compare("FCB_IO") == 0) {
+      ui_->fcb_io_->Update();
+    }
   }
 }
 
@@ -44,6 +60,21 @@ void BoardDiagnoseWidget::onSwitchBoard(int board_index) {
 
     BoardItem current_board = ext_board[board_index_ - 1];
     QString board_model = current_board.model_;
+    if (board_model.compare("FCB1200PC") == 0) {
+      ui_->board_stack_->setCurrentWidget(ui_->fcb1200pc_);
+      ui_->fcb1200pc_->setCurrentBoard(board_index_);
+    } else if (board_model.compare("FCB1200PC_EXP") == 0) {
+      ui_->board_stack_->setCurrentWidget(ui_->fcb1200pc_exp_);
+      ui_->fcb1200pc_exp_->setCurrentBoard(board_index_);
+    } else if (board_model.compare("FCB_PANEL") == 0) {
+      ui_->board_stack_->setCurrentWidget(ui_->fcb_panel_);
+      ui_->fcb_panel_->setCurrentBoard(board_index_);
+    } else if (board_model.compare("FCB_IO") == 0) {
+      ui_->board_stack_->setCurrentWidget(ui_->fcb_io_);
+      ui_->fcb_io_->setCurrentBoard(board_index_);
+    } else {
+      ui_->board_stack_->setCurrentWidget(ui_->none_);
+    }
   }
 }
 
