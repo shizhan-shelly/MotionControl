@@ -19,7 +19,7 @@ class ComboEditor : public BaseWidget {
   explicit ComboEditor(QWidget *parent = NULL);
   ~ComboEditor();
 
-  void setupWidget(const QPair<QString, QList<QString> > &infor);
+  void setupWidget(const QPair<int, QString> &infor);
 
   QString currentEditorValue() const;
 

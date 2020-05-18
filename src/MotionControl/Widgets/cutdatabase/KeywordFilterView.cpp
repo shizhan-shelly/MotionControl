@@ -55,8 +55,9 @@ void KeywordFilterView::arrangeKeywordFilter() {
       filed_item_list << filed_item[i].c_str();
     }
     keyword_filter_.back()->setupWidget(
-        QPair<QString, QList<QString> >(keyword_field_[it].second.c_str(), filed_item_list));
+        QPair<int, QString>(it, keyword_field_[it].second.c_str()));
 
+    keyword_filter_.back()->setEditorValues(filed_item_list);
     connect(keyword_filter_.back(), SIGNAL(itemChanged(int)), this,
         SIGNAL(KeywordChanged(int)));
 

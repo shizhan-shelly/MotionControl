@@ -25,12 +25,12 @@ QString ComboEditor::currentEditorValue() const {
   return combobox_->currentText();
 }
 
-void ComboEditor::setupWidget(const QPair<QString, QList<QString> > &infor) {
-  assert(!infor.first.isEmpty());
+void ComboEditor::setupWidget(const QPair<int, QString> &infor) {
+  assert(!infor.second.isEmpty());
   clearItems();
-  title_ = new QLabel(infor.first, this);
+  item_index_ = infor.first;
+  title_ = new QLabel(infor.second, this);
   combobox_ = new QComboBox(this);
-  combobox_->addItems(infor.second);
   arrangeItems();
   connect(combobox_, SIGNAL(currentIndexChanged(QString)),
       this, SLOT(onSelectChanged(QString)));
