@@ -11,7 +11,9 @@
 
 namespace widget {
 
-ComboEditor::ComboEditor(QWidget *parent) : BaseWidget(parent) {
+ComboEditor::ComboEditor(QWidget *parent) : BaseWidget(parent)
+                                          , item_index_(0) {
+
   layout_ = new QHBoxLayout(this);
   layout_->setContentsMargins(0, 0, 0, 0);
   setLayout(layout_);
@@ -31,7 +33,7 @@ void ComboEditor::setupWidget(const QPair<QString, QList<QString> > &infor) {
   combobox_->addItems(infor.second);
   arrangeItems();
   connect(combobox_, SIGNAL(currentIndexChanged(QString)),
-      this, SIGNAL(currentSelect(QString)));
+      this, SLOT(onSelectChanged(QString)));
 
 }
 
@@ -71,6 +73,11 @@ void ComboEditor::setCurrentIndex(int index) {
   if (combobox_) {
     combobox_->setCurrentIndex(index);
   }
+}
+
+void ComboEditor::onSelectChanged(const QString &text) {
+  emit currentSelect(text);
+  emit itemChanged(item_index_);
 }
 
 } // namespace widget

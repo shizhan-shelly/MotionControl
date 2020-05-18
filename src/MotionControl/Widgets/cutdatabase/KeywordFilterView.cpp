@@ -57,10 +57,11 @@ void KeywordFilterView::arrangeKeywordFilter() {
     keyword_filter_.back()->setupWidget(
         QPair<QString, QList<QString> >(keyword_field_[it].second.c_str(), filed_item_list));
 
-    connect(keyword_filter_.back(), SIGNAL(currentSelect(QString)), this,
-        SLOT(onSelectKeywordFilter(int)));
+    connect(keyword_filter_.back(), SIGNAL(itemChanged(int)), this,
+        SIGNAL(KeywordChanged(int)));
 
   }
+  connect(this, SIGNAL(KeywordChanged(int)), this, SLOT(onSelectKeywordFilter(int)));
   static const int MAX_COUNT_IN_ROW = 5;
   for (size_t i = 0; i < keyword_filter_.size(); i++) {
     keyword_layout_->addWidget(keyword_filter_[i], i / MAX_COUNT_IN_ROW, i % MAX_COUNT_IN_ROW);

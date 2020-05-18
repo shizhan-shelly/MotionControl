@@ -29,8 +29,13 @@ class ComboEditor : public BaseWidget {
 
  signals:
   void currentSelect(const QString &text);
+  void itemChanged(int item_index);
+
+ public slots:
+  void onSelectChanged(const QString &text);
 
  private:
+  int item_index_;
   QComboBox *combobox_;
   QHBoxLayout *layout_;
   QLabel *title_;
