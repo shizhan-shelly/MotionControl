@@ -21,6 +21,7 @@ NestingModel::NestingModel(QObject *parent) : QAbstractTableModel(parent) {}
 NestingModel::~NestingModel() {}
 
 bool NestingModel::initialNesting() {
+  beginResetModel();
   //OCutter *cutter = OCutter::GetInstance();
   keyword_filed_.clear();
   //cutter->GetCutChart()->GetCurrentSelectedRecord(keyword_filed_);
@@ -36,6 +37,7 @@ bool NestingModel::initialNesting() {
   //      keyword_filed_));
 
   //}
+  endResetModel();
   return !diameters_.isEmpty();
 }
 
@@ -145,6 +147,8 @@ void NestingModel::SetItemValue(const QModelIndex &index, const QString &value) 
     std::map<std::string, std::string>::iterator it =
         interior_profile_items_[row].find(LIST_ITEMS[column]);
 
-    it->second = value.toStdString();
+    if (it != interior_profile_items_[row].end()) {
+      it->second = value.toStdString();
+    }
   }
 }
