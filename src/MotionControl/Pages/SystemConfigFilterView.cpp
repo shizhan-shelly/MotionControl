@@ -44,7 +44,8 @@ void SystemConfigFilterView::initialVendor() {
   for (size_t i = 0; i < vendor_name.size(); i++) {
     vendor_name_list << vendor_name[i].c_str();
   }
-  vendor_->setupWidget(QPair<QString, QList<QString> >("VENDOR", vendor_name_list));
+  vendor_->setupWidget(QPair<int, QString>(0, "VENDOR"));
+  vendor_->setEditorValues(vendor_name_list);
   vendor_layout_->addWidget(vendor_);
   vendor_layout_->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum,
       QSizePolicy::Expanding));
@@ -74,19 +75,19 @@ void SystemConfigFilterView::arrangeKeywordFilter() {
   std::vector<std::pair<std::string, std::string> > keyword_field =
       db_handler->GetSystemConfigKeywordField();
 
-  std::vector<std::pair<std::string, std::string> >::const_iterator iter = keyword_field.begin();
-  for (; iter != keyword_field.end(); iter++) {
+  for (size_t it = 0; it < keyword_field.size(); it++) {
     keyword_filter_.push_back(new widget::ComboEditor(this));
-
     std::vector<std::string> filed_item =
-        db_handler->GetSystemConfigFieldValues(vendor_id_, iter->first);
+        db_handler->GetSystemConfigFieldValues(vendor_id_, keyword_field[it].first);
 
     QStringList filed_item_list;
     for (size_t i = 0; i < filed_item.size(); i++) {
       filed_item_list << filed_item[i].c_str();
     }
     keyword_filter_.back()->setupWidget(
-        QPair<QString, QList<QString> >(iter->first.c_str(), filed_item_list));
+        QPair<int, QString>(it, keyword_field[it].first.c_str()));
+
+    keyword_filter_.back()->setEditorValues(filed_item_list);
 
     connect(keyword_filter_.back(), SIGNAL(currentSelect(QString)), this,
         SLOT(onSelectKeywordFilter(QString)));
