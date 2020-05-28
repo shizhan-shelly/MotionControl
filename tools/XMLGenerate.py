@@ -35,12 +35,14 @@ column = {}
 scale = {}
 offset = {}
 data_type = {}
+display_format = {}
 for row in range(attr_start_row, attribute_sheet.nrows):
   field_name.append(attribute_sheet.cell_value(row, attr_title['Name']))
   column[attribute_sheet.cell_value(row, attr_title['Name'])] = int(attribute_sheet.cell_value(row, attr_title['Column'])) -1
   scale[attribute_sheet.cell_value(row, attr_title['Name'])] = attribute_sheet.cell_value(row, attr_title['Scale'])
   offset[attribute_sheet.cell_value(row, attr_title['Name'])] = attribute_sheet.cell_value(row, attr_title['Offset'])
   data_type[attribute_sheet.cell_value(row, attr_title['Name'])] = attribute_sheet.cell_value(row, attr_title['DataType'])
+  display_format[attribute_sheet.cell_value(row, attr_title['Name'])] = attribute_sheet.cell_value(row, attr_title['DisplayFormat'])
 
 # create document
 doc = Document()
@@ -91,12 +93,12 @@ for row in range (data_start_row - 1, cut_chart_sheet.nrows):
     if data_type[name] == "TEXT":
       record.setAttribute(name, "%s" % cell_value)
     elif data_type[name] == "FLOAT":
-      record.setAttribute(name, "%.3f" % (float(cell_value) * scale[name] + offset[name]))
+      record.setAttribute(name, display_format[name] % (float(cell_value) * scale[name] + offset[name]))
     elif data_type[name] == "INT":
       record.setAttribute(name, "%d" % (int(cell_value) * scale[name] + offset[name]))
     elif data_type[name] == "BOOL":
       record.setAttribute(name, "%s" % cell_value)
 
 xml_file = codecs.open(sys.argv[2], 'w','utf-8')
-doc.writexml(xml_file, indent = '', newl = '\n', addindent = '  ',encoding='utf-8')
+doc.writexml(xml_file, indent = '', newl = '\r\n', addindent = '  ',encoding='utf-8')
 xml_file.close()
