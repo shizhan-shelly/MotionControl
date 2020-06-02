@@ -24,32 +24,29 @@ bool NestingModel::initialNesting() {
   beginResetModel();
   //OCutter *cutter = OCutter::GetInstance();
   keyword_filed_.clear();
-  diameters_.clear();
-  interior_profile_items_.clear();
   //cutter->GetCutChart()->GetCurrentSelectedRecord(keyword_filed_);
-  //std::vector<double> diameter_d =
-  //    cutter->GetNesting()->GetInteriorProfileDiameter(keyword_filed_);
+  //diameters_ = QVector<double>::fromStdVector(
+  //    cutter->GetNesting()->GetInteriorProfileDiameter(keyword_filed_));
 
-  //foreach (double diameter, diameter_d) {
-  //  char buf[100];
+  //interior_profile_items_.clear();
+  //foreach (double diameter, diameters_) {
+  //  char buf[256];
   //  sprintf(buf, "%.1f", diameter);
-  //  diameters_.push_back(buf);
-  //}
-  //diameters_.push_back("*");
-  //foreach (std::string buf, diameters_) {
   //  interior_profile_items_.push_back(
   //      cutter->GetNesting()->GetInteriorProfileItemValue(buf,
   //      keyword_filed_));
 
   //}
   endResetModel();
-  return true;
+  return !diameters_.isEmpty();
 }
 
 bool NestingModel::saveNesting() {
   for (int i = 0; i < diameters_.size(); i++) {
+    char buf[256];
+    sprintf(buf, "%.1f", diameters_[i]);
   //  OCutter *cutter = OCutter::GetInstance();
-  //  cutter->GetNesting()->SetInteriorProfileItemValue(diameters_[i],
+  //  cutter->GetNesting()->SetInteriorProfileItemValue(buf,
   //      interior_profile_items_[i], keyword_filed_);
 
   }
@@ -88,11 +85,7 @@ QVariant NestingModel::data(const QModelIndex &index, int role) const {
   switch (role) {
    case Qt::DisplayRole:
    case Qt::EditRole:
-    if (column == 0) {
-      return diameters_[row].c_str();
-    } else {
-      return atof(GetItemValue(index).c_str());
-    }
+    return column == 0 ? diameters_[row] : atof(GetItemValue(index).c_str());
    case Qt::BackgroundRole:
     return QVariant();
    case Qt::TextAlignmentRole:

@@ -30,7 +30,7 @@ class NestingModel : public QAbstractTableModel {
   bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
  private:
-  QVector<std::string> diameters_;
+  QVector<double> diameters_;
   QVector<std::map<std::string, std::string> > interior_profile_items_;
   std::map<std::string, std::string> keyword_filed_;
 
