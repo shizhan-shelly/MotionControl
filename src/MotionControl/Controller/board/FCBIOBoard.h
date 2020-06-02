@@ -27,6 +27,11 @@ class FCBIOBoard : public AbstractBoard {
     return 0;
   }
 
+  virtual QStringList GetSerialPortList() const {
+    QStringList serial_port = QStringList() << "" << "";
+    return serial_port;
+  }
+
 }; // class FCBIOBoard
 
 #endif // CONTROLLER_BOARD_FCBIOBOARD_H__

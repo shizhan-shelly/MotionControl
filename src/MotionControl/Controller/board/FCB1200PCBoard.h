@@ -27,6 +27,11 @@ class FCB1200PCBoard : public AbstractBoard {
     return 0;
   }
 
+  virtual QStringList GetSerialPortList() const {
+    QStringList serial_port = QStringList() << "" << "";
+    return serial_port;
+  }
+
 }; // class FCB1200PCBoard
 
 #endif // CONTROLLER_BOARD_FCB1200PCBOARD_H__

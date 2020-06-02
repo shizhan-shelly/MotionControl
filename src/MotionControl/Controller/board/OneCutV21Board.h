@@ -27,6 +27,11 @@ class OneCutV21Board : public AbstractBoard {
     return 2;
   }
 
+  virtual QStringList GetSerialPortList() const {
+    QStringList serial_port = QStringList() << "" << "";
+    return serial_port;
+  }
+
 }; // class OneCutV21Board
 
 #endif // CONTROLLER_BOARD_ONECUTV21BOARD_H__

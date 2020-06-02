@@ -28,7 +28,8 @@ class ICutIOV23Board : public AbstractBoard {
   }
 
   virtual QStringList GetSerialPortList() const {
-
+    QStringList serial_port = QStringList() << "" << "";
+    return serial_port;
   }
 
 }; // class ICutIOV23Board

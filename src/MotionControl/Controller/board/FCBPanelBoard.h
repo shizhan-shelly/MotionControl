@@ -27,6 +27,11 @@ class FCBPanelBoard : public AbstractBoard {
     return 0;
   }
 
+  virtual QStringList GetSerialPortList() const {
+    QStringList serial_port = QStringList() << "" << "";
+    return serial_port;
+  }
+
 }; // class FCBPanelBoard
 
 #endif // CONTROLLER_BOARD_FCBPANELBOARD_H__

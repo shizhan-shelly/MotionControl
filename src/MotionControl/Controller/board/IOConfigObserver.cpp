@@ -57,7 +57,7 @@ QStringList IOConfigObserver::GetConfigurableSerialPort(int group) const {
   std::map<int, AbstractBoard *>::iterator it = boards.find(group);
   AbstractBoard *board = it != boards.end() ? it->second : NULL;
   if (board) {
-    //
+    serial_port_list = board->GetSerialPortList();
   }
   return serial_port_list;
 }
