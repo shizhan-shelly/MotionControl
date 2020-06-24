@@ -99,7 +99,8 @@ bool CutChart::SetCurrentSelectedRecord(const std::map<std::string, std::string>
     node_map.namedItem(iter->first.c_str()).setNodeValue(iter->second.c_str());
   }
   InitialKeywordField();
-  return true;
+  QDomNode cur_node = GetCurSelRecord(doc_usr_);
+  return !cur_node.isNull();
 }
 
 bool CutChart::SetCurrentSelectedRecord(const std::vector<std::string> &keyword_value) {
@@ -109,7 +110,8 @@ bool CutChart::SetCurrentSelectedRecord(const std::vector<std::string> &keyword_
     node_map.namedItem(keyword_field_[i].first.c_str()).setNodeValue(keyword_value[i].c_str());
   }
   InitialKeywordField();
-  return true;
+  QDomNode cur_node = GetCurSelRecord(doc_usr_);
+  return !cur_node.isNull();
 }
 
 bool CutChart::GetCurrentSelectedRecord(std::vector<std::string> &keyword_value) const {
