@@ -140,6 +140,17 @@
     <ClCompile Include="monitor\IOMonitorItem.cpp" />
     <ClCompile Include="plc\PLCCoilItem.cpp" />
     <ClCompile Include="plc\PLCRegisterItem.cpp" />
+    <ClCompile Include="shapeview\AuxiliaryWidget.cpp" />
+    <ClCompile Include="shapeview\CircleItem.cpp" />
+    <ClCompile Include="shapeview\CircleWidget.cpp" />
+    <ClCompile Include="shapeview\CursorItem.cpp" />
+    <ClCompile Include="shapeview\CursorView.cpp" />
+    <ClCompile Include="shapeview\ImageWidget.cpp" />
+    <ClCompile Include="shapeview\OptimizePoints.cpp" />
+    <ClCompile Include="shapeview\OutLineItem.cpp" />
+    <ClCompile Include="shapeview\ShapeMonitor.cpp" />
+    <ClCompile Include="shapeview\ShapeView.cpp" />
+    <ClCompile Include="shapeview\SortCircles.cpp" />
     <ClCompile Include="WidgetQrc.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -342,6 +353,17 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DWIDGET_LIB  "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I.\src" "-I.\..\..\tmp\$(ConfigurationName)\GeneratedFiles" "-I.\monitor" "-I.\customwidget" "-I.\plc"</Command>
     </CustomBuild>
+    <ClInclude Include="shapeview\AuxiliaryWidget.h" />
+    <ClInclude Include="shapeview\CircleItem.h" />
+    <ClInclude Include="shapeview\CircleWidget.h" />
+    <ClInclude Include="shapeview\CursorItem.h" />
+    <ClInclude Include="shapeview\CursorView.h" />
+    <ClInclude Include="shapeview\ImageWidget.h" />
+    <ClInclude Include="shapeview\OptimizePoints.h" />
+    <ClInclude Include="shapeview\OutLineItem.h" />
+    <ClInclude Include="shapeview\ShapeMonitor.h" />
+    <ClInclude Include="shapeview\ShapeView.h" />
+    <ClInclude Include="shapeview\SortCircles.h" />
     <ClInclude Include="WidgetQrc.h" />
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +459,9 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shapeview\ShapeMonitor.ui" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E85B1CC1-45DE-477C-B44F-4F4B28EFD502}</ProjectGuid>

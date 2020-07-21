@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ShapeMonitorForm</class>
+ <widget class="QWidget" name="ShapeMonitorForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>545</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PunchWidget</string>
+  </property>
+  <widget class="ShapeMonitor" name="shape_monitor_" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>500</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>500</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>500</width>
+     <height>500</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="x_position_">
+   <property name="geometry">
+    <rect>
+     <x>531</x>
+     <y>121</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="y_position_">
+   <property name="geometry">
+    <rect>
+     <x>531</x>
+     <y>141</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ShapeMonitor</class>
+   <extends>QWidget</extends>
+   <header>shapemonitor.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../Widget.qrc"/>
+ </resources>
+ <connections/>
+</ui>

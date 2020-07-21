@@ -57,6 +57,9 @@
     <Filter Include="Widget\Plc">
       <UniqueIdentifier>{3f87f2d4-92d5-4528-9077-d5e4d9cdfc96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Widget\ShapeView">
+      <UniqueIdentifier>{bdb95c88-ba82-49d9-a0ff-1990c37c9666}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basewidget\BaseWidget.cpp">
@@ -231,6 +234,39 @@
     <ClCompile Include="plc\PLCRegisterItem.cpp">
       <Filter>Widget\Plc</Filter>
     </ClCompile>
+    <ClCompile Include="shapeview\AuxiliaryWidget.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\CircleItem.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\CircleWidget.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\CursorItem.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\CursorView.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\ImageWidget.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\OptimizePoints.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\OutLineItem.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\ShapeMonitor.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\ShapeView.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeview\SortCircles.cpp">
+      <Filter>Widget\ShapeView</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="basewidget\BaseWidget.h">
@@ -318,5 +354,43 @@
     <ClInclude Include="dialog\CalibrateDlg.h">
       <Filter>Dialog</Filter>
     </ClInclude>
+    <ClInclude Include="shapeview\AuxiliaryWidget.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\CircleItem.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\CircleWidget.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\CursorItem.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\CursorView.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\ImageWidget.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\OptimizePoints.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\OutLineItem.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\ShapeMonitor.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\ShapeView.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeview\SortCircles.h">
+      <Filter>Widget\ShapeView</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shapeview\ShapeMonitor.ui">
+      <Filter>Widget\ShapeView</Filter>
+    </None>
   </ItemGroup>
 </Project>
