@@ -18,7 +18,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
-    <number>0</number>
+    <number>5</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -33,14 +33,52 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTabWidget" name="pps_tab_">
-     <property name="currentIndex">
-      <number>-1</number>
-     </property>
+    <widget class="cutter::OTabBar" name="tab_bar_" native="true"/>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stack_">
+     <widget class="QWidget" name="none_"/>
+     <widget class="cutter::HPRDiagnose" name="hpr_"/>
+     <widget class="cutter::PowermaxDiagnose" name="powermax_"/>
+     <widget class="cutter::LH270ADiagnose" name="lh270a_"/>
+     <widget class="cutter::KjellbergDiagnose" name="kjellberg_"/>
+     <widget class="QWidget" name="thermadyne_"/>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>cutter::PowermaxDiagnose</class>
+   <extends>QWidget</extends>
+   <header>cutter/widget/devicediagnose/pps/hyper/PowermaxDiagnose.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>cutter::LH270ADiagnose</class>
+   <extends>QWidget</extends>
+   <header>cutter/widget/devicediagnose/pps/liuhe/LH270ADiagnose.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>cutter::KjellbergDiagnose</class>
+   <extends>QWidget</extends>
+   <header>cutter/widget/devicediagnose/pps/kjellberg/KjellbergDiagnose.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>cutter::HPRDiagnose</class>
+   <extends>QWidget</extends>
+   <header>cutter/widget/devicediagnose/pps/hyper/HPRDiagnose.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>cutter::OTabBar</class>
+   <extends>QWidget</extends>
+   <header>cutter/widget/OTabBar.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

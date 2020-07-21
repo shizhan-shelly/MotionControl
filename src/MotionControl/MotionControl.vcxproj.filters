@@ -40,9 +40,6 @@
     <Filter Include="Pages\DatabaseItem">
       <UniqueIdentifier>{659ba1ee-5a87-43f0-93e1-c393863ae449}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pages\DatabaseView\Consumables">
-      <UniqueIdentifier>{6e97c464-cfbf-4240-86ae-803ac988dce1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Database\PlasmaCutTechnology\Sync">
       <UniqueIdentifier>{678494b7-de60-4133-a85f-1f9f5048a198}</UniqueIdentifier>
     </Filter>
@@ -120,6 +117,12 @@
     </Filter>
     <Filter Include="Pages\DatabaseView\CutDatabase">
       <UniqueIdentifier>{2524e8c4-4c9f-4bbe-bbf6-66e9cdd00045}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DeviceDiagnose\pps\Kjellberg">
+      <UniqueIdentifier>{efab302e-f2a6-4565-a726-2bd65d0b919a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\DatabaseView\Consumables">
+      <UniqueIdentifier>{6e97c464-cfbf-4240-86ae-803ac988dce1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -441,6 +444,42 @@
     <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KeywordFilterView.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\kjellberg\DigitalInputWidget.cpp">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DigitalInputWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DigitalInputWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\kjellberg\DigitalSignalWidget.cpp">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DigitalSignalWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DigitalSignalWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\pps\kjellberg\KjellbergDiagnose.cpp">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_KjellbergDiagnose.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_KjellbergDiagnose.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Widgets\devicediagnose\DeviceDiagnoseWidget.cpp">
+      <Filter>Pages\DeviceDiagnose</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Debug\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\Release\GeneratedFiles\moc_DeviceDiagnoseWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\SQLiteAccess.h">
@@ -561,9 +600,6 @@
     </ClInclude>
     <ClInclude Include="Controller\board\IOBoardManager.h">
       <Filter>Controller\board</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tmp\$(ConfigurationName)\GeneratedFiles\ui_HPRDiagnose.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Controller\board\IOConfigObserver.h">
       <Filter>Controller\board</Filter>
@@ -705,6 +741,21 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\cutdatabase\KeywordFilterView.h">
       <Filter>Pages\DatabaseView\CutDatabase</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\kjellberg\DigitalInputWidget.h">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\kjellberg\DigitalSignalWidget.h">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\kjellberg\KjellbergDiagnose.h">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\pps\kjellberg\KjellbergDiagnose.ui">
+      <Filter>Pages\DeviceDiagnose\pps\Kjellberg</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widgets\devicediagnose\DeviceDiagnoseWidget.h">
+      <Filter>Pages\DeviceDiagnose</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

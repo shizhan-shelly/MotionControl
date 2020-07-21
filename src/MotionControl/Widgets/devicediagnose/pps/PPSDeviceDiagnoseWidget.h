@@ -12,10 +12,6 @@ class PPSDeviceDiagnoseWidget;
 
 namespace cutter {
 
-class HPRDiagnose;
-class LH270ADiagnose;
-class PowermaxDiagnose;
-
 class PPSDeviceDiagnoseWidget : public QWidget {
   Q_OBJECT
 
@@ -26,14 +22,15 @@ class PPSDeviceDiagnoseWidget : public QWidget {
  public slots:
   void Update();
 
+ protected:
+  virtual void showEvent(QShowEvent *event);
+
  private slots:
   void onStationIndex(int index);
+  void onNotify();
 
  private:
   int station_id_;
-  HPRDiagnose *hpr_;
-  LH270ADiagnose *lh_;
-  PowermaxDiagnose *powermax_;
   Ui::PPSDeviceDiagnoseWidget *ui_;
 
   void initialDiagnoseWidget();

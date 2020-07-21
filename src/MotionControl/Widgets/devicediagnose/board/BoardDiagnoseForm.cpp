@@ -4,9 +4,11 @@
 #include "MotionControl/Widgets/devicediagnose/board/BoardDiagnoseForm.h"
 
 #include "MotionControl/Controller/board/AbstractBoard.h"
-#include "MotionControl/controller/board/IOBoardManager.h"
+#include "MotionControl/Controller/board/IOBoardManager.h"
 #include "MotionControl/Cutter.h"
 #include "ui_BoardDiagnoseForm.h"
+//#include "device/api/BoardAPI.h"
+//#include "nmlclient/NmlClient.h"
 
 BoardDiagnoseForm::BoardDiagnoseForm(QWidget *parent)
     : widget::DeviceDiagnoseWidget(parent) {
@@ -63,11 +65,11 @@ void BoardDiagnoseForm::setCurrentBoard(int board_index) {
       da.push_back(item.name);
     }
     QVector<QVector<QString> > display_input;
-    display_input << QVector<QString>::fromStdVector(std::vector<QString>(input.begin(), input.begin() + 10));
-    display_input << QVector<QString>::fromStdVector(std::vector<QString>(input.begin() + 10, input.end()));
+    display_input << QVector<QString>::fromStdVector(std::vector<QString>(input.begin(), input.begin() + in_size / 2));
+    display_input << QVector<QString>::fromStdVector(std::vector<QString>(input.begin() + in_size / 2, input.end()));
     QVector<QVector<QString> > display_output;
-    display_output << QVector<QString>::fromStdVector(std::vector<QString>(output.begin(), output.begin() + 16));
-    display_output << QVector<QString>::fromStdVector(std::vector<QString>(output.begin() + 16, output.end()));
+    display_output << QVector<QString>::fromStdVector(std::vector<QString>(output.begin(), output.begin() + out_size / 2));
+    display_output << QVector<QString>::fromStdVector(std::vector<QString>(output.begin() + out_size / 2, output.end()));
     QVector<QString> display_ad = QVector<QString>::fromStdVector(ad);
     QVector<QString> display_da = QVector<QString>::fromStdVector(da);
     ui_->input_port_->setupPanel(display_input);
@@ -80,10 +82,44 @@ void BoardDiagnoseForm::setCurrentBoard(int board_index) {
 }
 
 void BoardDiagnoseForm::Update() {
+  if (OCutter::GetInstance()->GetController()->dev_comm_->status_ == NULL) {
+    return;
+  }
+  Status_Board status_board = OCutter::GetInstance()->GetController()->
+      dev_comm_->status_->boards_[board_index_];
+
+  std::vector<unsigned char> input = std::vector<unsigned char>(
+      status_board.input_.status_, status_board.input_.status_ +
+      sizeof(status_board.input_.status_) / sizeof(unsigned char));
+
+  std::vector<unsigned char> output = std::vector<unsigned char>(
+      status_board.output_.status_, status_board.output_.status_ +
+      sizeof(status_board.output_.status_) / sizeof(unsigned char));
+
+  std::vector<double> ad = std::vector<double>(
+      status_board.ad_.status_, status_board.ad_.status_ +
+      sizeof(status_board.ad_.status_) / sizeof(float));
+
+  std::vector<double> da = std::vector<double>(
+      status_board.da_.status_, status_board.da_.status_ +
+      sizeof(status_board.da_.status_) / sizeof(float));
+
+  QVector<unsigned char> input_status = QVector<unsigned char>::fromStdVector(input);
+  QVector<unsigned char> output_status = QVector<unsigned char>::fromStdVector(output);
+  QVector<double> ad_status = QVector<double>::fromStdVector(ad);
+  QVector<double> da_status = QVector<double>::fromStdVector(da);
+  ui_->input_port_->Update(input_status);
+  ui_->output_port_->Update(output_status);
+  ui_->ad_port_->Update(ad_status);
+  ui_->da_port_->Update(da_status);
 }
 
 void BoardDiagnoseForm::onOutputControl(int current_id, bool on) {
+  int port_number = current_id + 1;
+  BoardSetOutput(board_index_, port_number, on);
 }
 
 void BoardDiagnoseForm::onDAControl(int current_id, float value) {
+  int port_number = current_id + 1;
+  BoardSetDA(board_index_, port_number, value);
 }

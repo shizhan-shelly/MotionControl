@@ -4,7 +4,7 @@
 #ifndef CUTTER_WIDGET_IOMONITORWIDGET_PPSMONITORWIDGET_H__
 #define CUTTER_WIDGET_IOMONITORWIDGET_PPSMONITORWIDGET_H__
 
-#include "cutter/widget/basepanel/ONotifyActionWidget.h"
+//#include "cutter/widget/basepanel/ONotifyActionWidget.h"
 
 namespace Ui {
   class PPSMonitorWidget;

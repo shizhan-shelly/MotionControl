@@ -6,6 +6,7 @@
 #include "cutter/controller/pps/hyper/PowermaxPPSDev.h"
 #include "cutter/OCutter.h"
 #include "cutter/ui_PowermaxDiagnose.h"
+#include "device/pps/hyper/PowermaxModbusAddr.h"
 #include "nmlclient/NmlClient.h"
 
 namespace cutter {
@@ -35,8 +36,11 @@ void PowermaxDiagnose::setCurrentStation(int station_id) {
 }
 
 void PowermaxDiagnose::Update() {
+  if (OCutter::GetInstance()->GetController()->dev_comm_->status_ == NULL) {
+    return;
+  }
   Status_PPS status_pps = OCutter::GetInstance()->GetController()->dev_comm_->
-      status_->station_manager_.stations_[station_id_].plasma_.pps_;
+      status_->plasma_[station_id_].pps_;
 
   unsigned short cut_mode = status_pps.hyper_.powermax_.cut_mode_;
   unsigned short arc_current = status_pps.hyper_.powermax_.arc_current_;
@@ -51,20 +55,23 @@ void PowermaxDiagnose::Update() {
   ui_->torch_lead_length_->setText(PowermaxPPSDev::TorchLeadLength(status_pps.hyper_.powermax_.torch_index_));
   ui_->arc_on_time_->setText(QString::number(PowermaxPPSDev::ArcOnTime(arc_time_low, arc_time_high), 'f', 1));
   ui_->fault_code_->setText(QString::number(fault_code));
-  ui_->fault_code_description_->setPlainText(OCutter::GetInstance()->GetPPSInfor()->GetPPSInfor(
-      "FaultCode", PowermaxPPSDev::FaultCode(fault_code), "description").c_str());
-  ui_->fault_resolve_->setPlainText(OCutter::GetInstance()->GetPPSInfor()->GetPPSInfor(
-      "FaultCode", PowermaxPPSDev::FaultCode(fault_code), "resolve").c_str());
+  std::map<std::string, std::string> pps_attr;
+  pps_attr.insert(std::make_pair("model", "Powermax105"));
+  ui_->fault_code_description_->setPlainText(
+      OCutter::GetInstance()->GetPPSInfor()->GetPPSInfor(
+      "FaultCode", pps_attr, std::make_pair("code", fault_code), "description").c_str());
+  ui_->fault_resolve_->setPlainText(
+      OCutter::GetInstance()->GetPPSInfor()->GetPPSInfor(
+      "FaultCode", pps_attr, std::make_pair("code", fault_code), "resolve").c_str());
 
 }
 
 void PowermaxDiagnose::onGasTest() {
-  OCutter *cutter = cutter::OCutter::GetInstance();
-  std::map<int, PPSClient *> pps_dev = cutter->pps_factory_.GetPPSDev();
-  std::map<int, PPSClient *>::const_iterator it = pps_dev.find(station_id_);
-  if (it != pps_dev.end()) {
-    it->second->SendCommandToPPS(POWERMAX_GAS_TEST, true);
-  }
+  Status_PPS status_pps = OCutter::GetInstance()->GetController()->dev_comm_->
+      status_->plasma_[station_id_].pps_;
+
+  bool status = status_pps.hyper_.powermax_.gas_test_ == 1;
+  PPSClient::SendCommandToPPS(station_id_, POWERMAX_GAS_TEST, !status);
 }
 
 } // namespace cutter

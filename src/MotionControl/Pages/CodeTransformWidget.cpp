@@ -8,9 +8,9 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QScrollBar>
 
-#include "cutter/OCutter.h"
-#include "cutter/ui_CodeTransformWidget.h"
+#include "../Cutter.h"
 #include "../Pages/CodeTransformModel.h"
+#include "ui_CodeTransformWidget.h"
 
 CodeTransformWidget::CodeTransformWidget(QWidget *parent)
     : QWidget(parent)
@@ -39,7 +39,7 @@ void CodeTransformWidget::initialWidget() {
                                                           border: 1px solid #6c6c6c;} \
                                    QScrollBar: vertical { width: 30px; }");
 
-  model_ = OCutter::GetInstance()->GetCodeTransformModel();
+  model_ = Cutter::GetInstance()->GetCodeTransformModel();
   model_->initial();
   ui_->table_view_->setModel(model_);
   ui_->table_view_->verticalHeader()->setResizeMode(QHeaderView::Fixed);

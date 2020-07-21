@@ -10,26 +10,32 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string/>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
-    <widget class="widget::TabBar" name="tab_bar_" native="true"/>
+    <widget class="cutter::OTabBar" name="tab_bar_" native="true"/>
    </item>
    <item>
     <widget class="QStackedWidget" name="board_stack_">
-     <widget class="BoardDiagnoseForm" name="local_"/>
-     <widget class="BoardDiagnoseForm" name="fcb1200pc_"/>
-     <widget class="BoardDiagnoseForm" name="fcb1200pc_exp_"/>
-     <widget class="BoardDiagnoseForm" name="fcb_panel_"/>
-     <widget class="BoardDiagnoseForm" name="fcb_io_"/>
+     <widget class="cutter::BoardDiagnoseForm" name="local_"/>
+     <widget class="cutter::BoardDiagnoseForm" name="fcb1200pc_"/>
+     <widget class="cutter::BoardDiagnoseForm" name="fcb1200pc_exp_"/>
+     <widget class="cutter::BoardDiagnoseForm" name="fcb_panel_"/>
+     <widget class="cutter::BoardDiagnoseForm" name="fcb_io_"/>
      <widget class="QWidget" name="none_"/>
     </widget>
    </item>
@@ -37,15 +43,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>widget::TabBar</class>
+   <class>cutter::OTabBar</class>
    <extends>QWidget</extends>
-   <header>Widget\customwidget\TabBar.h</header>
+   <header>cutter/widget/OTabBar.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>BoardDiagnoseForm</class>
+   <class>cutter::BoardDiagnoseForm</class>
    <extends>QWidget</extends>
-   <header>BoardDiagnoseForm.h</header>
+   <header>cutter/widget/devicediagnose/board/BoardDiagnoseForm.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

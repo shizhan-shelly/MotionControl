@@ -1,13 +1,12 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#include "MotionControl/Widgets/devicediagnose/pps/PPSDeviceDiagnoseWidget.h"
+#include "cutter/widget/devicediagnose/pps/PPSDeviceDiagnoseWidget.h"
 
-//#include "cutter/baseclass/parameter/ParamModeler.h"
-#include "MotionControl/Widgets/devicediagnose/pps/liuhe/LH270ADiagnose.h"
-#include "MotionControl/Widgets/devicediagnose/pps/hyper/HPRDiagnose.h"
-#include "MotionControl/Widgets/devicediagnose/pps/hyper/PowermaxDiagnose.h"
-#include "ui_PPSDeviceDiagnoseWidget.h"
+#include "cutter/baseclass/parameter/ParamModeler.h"
+#include "cutter/controller/pps/PPSClient.h"
+#include "cutter/OCutter.h"
+#include "cutter/ui_PPSDeviceDiagnoseWidget.h"
 
 namespace cutter {
 
@@ -33,81 +32,105 @@ PPSDeviceDiagnoseWidget::~PPSDeviceDiagnoseWidget() {
 }
 
 void PPSDeviceDiagnoseWidget::Update() {
-  //ParamModeler *modeler = ParamModeler::GetInstance();
-  //parameter::F7000PPSElement *pps = modeler->f7000_->plcconfig_->
-  //    GetStationPtr(station_id_)->stationplasma_->pps_;
+  ParamModeler *modeler = ParamModeler::GetInstance();
+  parameter::F7000PPSElement *pps = modeler->f7000_->plcconfig_->
+      GetStationPtr(station_id_)->stationplasma_->pps_;
 
-  //std::string pps_vendor = pps->ppsvendor_->GetValue();
-  //if (pps_vendor.compare("Hypertherm") == 0) {
-  //  std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
-  //  if (pps_model.compare("Powermax") == 0) {
-  //    powermax_->Update();
-  //  } else if (pps_model.compare("HPR") == 0) {
-  //    hpr_->Update();
-  //  }
-  //} else if (pps_vendor.compare("Liuhe") == 0) {
-  //  lh_->Update();
-  //}
+  std::string pps_vendor = pps->ppsvendor_->GetValue();
+  if (pps_vendor.compare("Hypertherm") == 0) {
+    std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
+    if (pps_model.compare("Powermax") == 0) {
+      ui_->powermax_->Update();
+    } else if (pps_model.compare("HPR") == 0) {
+      ui_->hpr_->Update();
+    }
+  } else if (pps_vendor.compare("Liuhe") == 0) {
+    ui_->lh270a_->Update();
+  } else if (pps_vendor.compare("Kjellberg") == 0) {
+    ui_->kjellberg_->Update();
+  }
 }
 
 void PPSDeviceDiagnoseWidget::onStationIndex(int index) {
   station_id_ = index;
-  if (station_id_ == 0) {
-    powermax_->setCurrentStation(station_id_);
-  } else {
-    lh_->setCurrentStation(station_id_);
-  }
-  //ParamModeler *modeler = ParamModeler::GetInstance();
-  //parameter::F7000PPSElement *pps = modeler->f7000_->plcconfig_->
-  //    GetStationPtr(station_id_)->stationplasma_->pps_;
+  ParamModeler *modeler = ParamModeler::GetInstance();
+  parameter::F7000PPSElement *pps = modeler->f7000_->plcconfig_->
+      GetStationPtr(station_id_)->stationplasma_->pps_;
 
-  //std::string pps_vendor = pps->ppsvendor_->GetValue();
-  //if (pps_vendor.compare("Hypertherm") == 0) {
-  //  std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
-  //  if (pps_model.compare("Powermax") == 0) {
-  //    powermax_->setCurrentStation(station_id_);
-  //  } else if (pps_model.compare("HPR") == 0) {
-  //    hpr_->setCurrentStation(station_id_);
-  //  }
-  //} else if (pps_vendor.compare("Liuhe") == 0) {
-  //  lh_->setCurrentStation(station_id_);
-  //}
+  std::string pps_vendor = pps->ppsvendor_->GetValue();
+  if (pps_vendor.compare("Hypertherm") == 0) {
+    std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
+    if (pps_model.compare("Powermax") == 0) {
+      ui_->stack_->setCurrentWidget(ui_->powermax_);
+      ui_->powermax_->setCurrentStation(station_id_);
+    } else if (pps_model.compare("HPR") == 0) {
+      ui_->stack_->setCurrentWidget(ui_->hpr_);
+      ui_->hpr_->setCurrentStation(station_id_);
+    } else {
+      ui_->stack_->setCurrentWidget(ui_->none_);
+    }
+  } else if (pps_vendor.compare("Liuhe") == 0) {
+    ui_->stack_->setCurrentWidget(ui_->lh270a_);
+    ui_->lh270a_->setCurrentStation(station_id_);
+  } else if (pps_vendor.compare("Kjellberg") == 0) {
+    ui_->stack_->setCurrentWidget(ui_->kjellberg_);
+    ui_->kjellberg_->setCurrentStation(station_id_);
+  } else {
+    ui_->stack_->setCurrentWidget(ui_->none_);
+  }
+}
+
+void PPSDeviceDiagnoseWidget::onNotify() {
+  OCutter *cutter = OCutter::GetInstance();
+  ParamModeler *modeler = ParamModeler::GetInstance();
+  modeler->WriteToXml(cutter->GetXMLConfigPath().toStdString());
+  cutter->SendXmlFileToCnc();
+
+  std::map<int, PPSClient *> pps_dev = cutter->pps_factory_.GetPPSDev();
+  std::map<int, PPSClient *>::const_iterator it = pps_dev.find(station_id_);
+  if (it != pps_dev.end()) {
+    if (it->second) {
+      it->second->NotifyParams();
+    }
+  }
 }
 
 void PPSDeviceDiagnoseWidget::initialDiagnoseWidget() {
-  connect(ui_->pps_tab_, SIGNAL(currentChanged(int)),
+  connect(ui_->tab_bar_, SIGNAL(currentChanged(int)),
       this, SLOT(onStationIndex(int)));
 
-  powermax_ = new PowermaxDiagnose();
-  hpr_ = new HPRDiagnose();
-  lh_ = new LH270ADiagnose();
-  //ParamModeler *modeler = ParamModeler::GetInstance();
-  //int station_size = modeler->f7000_->plcconfig_->Station_size();
-  //for (int i = 0; i < station_size; i++) {
-  //  parameter::F7000PPSElement *pps = modeler->f7000_->plcconfig_->
-  //      GetStationPtr(i)->stationplasma_->pps_;
+  connect(ui_->hpr_, SIGNAL(notify()), this, SLOT(onNotify()));
+  connect(ui_->lh270a_, SIGNAL(notify()), this, SLOT(onNotify()));
+  connect(ui_->kjellberg_, SIGNAL(notify()), this, SLOT(onNotify()));
 
-  //  std::string pps_vendor = pps->ppsvendor_->GetValue();
-  //  if (pps_vendor.compare("Hypertherm") == 0) {
-  //    std::string pps_model = pps->ppshyper_->ppshypertype_->GetValue();
-  //    if (pps_model.compare("Powermax") == 0) {
-  //      ui_->pps_tab_->insertTab(i, powermax_, QObject::tr("Hypertherm"));
-  //    } else if (pps_model.compare("HPR") == 0) {
-  //      ui_->pps_tab_->insertTab(i, hpr_, QObject::tr("Hypertherm"));
-  //    } else {
-  //      QWidget *undefine_ = new QWidget();
-  //      ui_->pps_tab_->insertTab(i, undefine_, QObject::tr("Undefine"));
-  //    }
-  //  } else if (pps_vendor.compare("Liuhe") == 0) {
-  //    ui_->pps_tab_->insertTab(i, lh_, QObject::tr("Liuhe"));
-  //  } else {
-  //    QWidget *undefine_ = new QWidget();
-  //    ui_->pps_tab_->insertTab(i, undefine_, QObject::tr("Undefine"));
-  //  }
-  //}
-  ui_->pps_tab_->insertTab(0, powermax_, QObject::tr("Hypertherm"));
-  ui_->pps_tab_->insertTab(1, lh_, QObject::tr("Liuhe"));
-  ui_->pps_tab_->setCurrentIndex(0);
+  QMap<int, QString> infor;
+  ParamModeler *modeler = ParamModeler::GetInstance();
+  int station_size = modeler->f7000_->plcconfig_->Station_size();
+  for (int i = 0; i < station_size; i++) {
+    parameter::F7000PPSElement *pps = modeler->f7000_->plcconfig_->
+        GetStationPtr(i)->stationplasma_->pps_;
+
+    std::string pps_vendor = pps->ppsvendor_->GetValue();
+    if (pps_vendor.compare("Hypertherm") == 0) {
+      infor.insert(i, pps->ppshyper_->ppshypertype_->GetValue().c_str());
+    } else if (pps_vendor.compare("Liuhe") == 0) {
+      infor.insert(i, pps->ppsliuhe_->ppsliuhetype_->GetValue().c_str());
+    } else if (pps_vendor.compare("Kjellberg") == 0) {
+      infor.insert(i, pps->ppskjellberg_->ppskjellbergtype_->GetValue().c_str());
+    } else {
+      infor.insert(i, QObject::tr("Undefine"));
+    }
+  }
+  ui_->tab_bar_->initBar(infor);
+  ui_->tab_bar_->setCurrentIndex(0);
+}
+
+void PPSDeviceDiagnoseWidget::showEvent(QShowEvent *event) {
+  int id = ui_->tab_bar_->currentIndex();
+  if (id >= 0) {
+    onStationIndex(id);
+  }
+  QWidget::showEvent(event);
 }
 
 } // namespace cutter

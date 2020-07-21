@@ -23,11 +23,16 @@ class HPRDiagnose : public QWidget {
 
   void Update();
 
+ signals:
+  void notify();
+
  private slots:
   void onPreflowGasTest();
   void onCutflowGasTest();
   void onManualPumpCtrl();
+  void onSystemReset();
   void onSetParameter();
+  void onErrorCode();
   void onClearRecord();
 
  private:

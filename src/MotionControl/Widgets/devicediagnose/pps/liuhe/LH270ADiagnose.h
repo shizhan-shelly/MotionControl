@@ -25,10 +25,27 @@ class LH270ADiagnose : public QWidget {
 
   void Update();
 
+ signals:
+  void notify();
+
  private slots:
   void onSwitchMonitor(int monitor_id);
   void onPPSOutputSwitch(int index);
   void onGCOutputSwitch(int index);
+  void onResolve();
+  void onConnect();
+  void onDebugMode();
+  void onRemoteMode();
+  void onManualPumpMode();
+  void onManualPumpOn();
+  void onManualPumpOff();
+  void onPreflowGasSet();
+  void onCutflowGasSet();
+  void onGasLeakTestMode();
+  void onInletLeakTest();
+  void onSystemLeakTest();
+  void onProportionValvesCheck();
+  void onSetting();
 
  private:
   int station_id_;
@@ -39,6 +56,7 @@ class LH270ADiagnose : public QWidget {
 
   void initialDiagnoseWidget();
   void UpdatePPSInfors();
+  void UpdatePPSRecords();
   void UpdatePPSInputs();
   void UpdatePPSOutputs();
   void UpdateGCInputs();
