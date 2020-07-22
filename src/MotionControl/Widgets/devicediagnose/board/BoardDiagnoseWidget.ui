@@ -27,15 +27,15 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="cutter::OTabBar" name="tab_bar_" native="true"/>
+    <widget class="widget::TabBar" name="tab_bar_" native="true"/>
    </item>
    <item>
     <widget class="QStackedWidget" name="board_stack_">
-     <widget class="cutter::BoardDiagnoseForm" name="local_"/>
-     <widget class="cutter::BoardDiagnoseForm" name="fcb1200pc_"/>
-     <widget class="cutter::BoardDiagnoseForm" name="fcb1200pc_exp_"/>
-     <widget class="cutter::BoardDiagnoseForm" name="fcb_panel_"/>
-     <widget class="cutter::BoardDiagnoseForm" name="fcb_io_"/>
+     <widget class="BoardDiagnoseForm" name="local_"/>
+     <widget class="BoardDiagnoseForm" name="fcb1200pc_"/>
+     <widget class="BoardDiagnoseForm" name="fcb1200pc_exp_"/>
+     <widget class="BoardDiagnoseForm" name="fcb_panel_"/>
+     <widget class="BoardDiagnoseForm" name="fcb_io_"/>
      <widget class="QWidget" name="none_"/>
     </widget>
    </item>
@@ -43,15 +43,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>cutter::OTabBar</class>
+   <class>widget::TabBar</class>
    <extends>QWidget</extends>
-   <header>cutter/widget/OTabBar.h</header>
+   <header>Widget/customwidget/TabBar.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>cutter::BoardDiagnoseForm</class>
+   <class>BoardDiagnoseForm</class>
    <extends>QWidget</extends>
-   <header>cutter/widget/devicediagnose/board/BoardDiagnoseForm.h</header>
+   <header>MotionControl/widgets/devicediagnose/board/BoardDiagnoseForm.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

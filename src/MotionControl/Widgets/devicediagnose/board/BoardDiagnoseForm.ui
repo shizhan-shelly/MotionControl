@@ -41,7 +41,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="cutter::IODiagnoseWidget" name="input_port_" native="true"/>
+         <widget class="widget::IODiagnoseWidget" name="input_port_" native="true"/>
         </item>
        </layout>
       </widget>
@@ -71,7 +71,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="cutter::IODiagnoseWidget" name="output_port_" native="true"/>
+         <widget class="widget::IODiagnoseWidget" name="output_port_" native="true"/>
         </item>
        </layout>
       </widget>
@@ -108,7 +108,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="cutter::ADDiagnoseWidget" name="ad_port_" native="true"/>
+         <widget class="widget::ADDiagnoseWidget" name="ad_port_" native="true"/>
         </item>
        </layout>
       </widget>
@@ -138,7 +138,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="cutter::DADiagnoseWidget" name="da_port_" native="true"/>
+         <widget class="widget::DADiagnoseWidget" name="da_port_" native="true"/>
         </item>
        </layout>
       </widget>
@@ -149,21 +149,21 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>cutter::IODiagnoseWidget</class>
+   <class>widget::IODiagnoseWidget</class>
    <extends>QWidget</extends>
-   <header>cutter/widget/devicediagnose/board/IODiagnoseWidget.h</header>
+   <header>Widget/diagnose/IODiagnoseWidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>cutter::ADDiagnoseWidget</class>
+   <class>widget::ADDiagnoseWidget</class>
    <extends>QWidget</extends>
-   <header>cutter/widget/devicediagnose/board/ADDiagnoseWidget.h</header>
+   <header>Widget/diagnose/ADDiagnoseWidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>cutter::DADiagnoseWidget</class>
+   <class>widget::DADiagnoseWidget</class>
    <extends>QWidget</extends>
-   <header>cutter/widget/devicediagnose/board/DADiagnoseWidget.h</header>
+   <header>Widget/diagnose/DADiagnoseWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

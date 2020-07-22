@@ -4,7 +4,7 @@
 #ifndef CUTTER_WIDGET_IOMONITORWIDGET_PPSMONITORWIDGET_H__
 #define CUTTER_WIDGET_IOMONITORWIDGET_PPSMONITORWIDGET_H__
 
-//#include "cutter/widget/basepanel/ONotifyActionWidget.h"
+#include <QtGui/QWidget>
 
 namespace Ui {
   class PPSMonitorWidget;
@@ -12,7 +12,7 @@ namespace Ui {
 
 namespace cutter {
 
-class PPSMonitorWidget : public ONotifyActionWidget {
+class PPSMonitorWidget : public QWidget {
   Q_OBJECT
 
  public:

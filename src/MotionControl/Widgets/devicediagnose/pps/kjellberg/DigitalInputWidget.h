@@ -4,11 +4,11 @@
 #ifndef CUTTER_WIDGET_DEVICEDIAGNOSE_PPS_KJELLBERG_DIGITALINPUTWIDGET_H__
 #define CUTTER_WIDGET_DEVICEDIAGNOSE_PPS_KJELLBERG_DIGITALINPUTWIDGET_H__
 
-#include "cutter/widget/devicediagnose/board/IODiagnoseWidget.h"
+#include "Widget/diagnose/IODiagnoseWidget.h"
 
 namespace cutter {
 
-class DigitalInputWidget : public IODiagnoseWidget {
+class DigitalInputWidget : public ::widget::IODiagnoseWidget {
   Q_OBJECT
 
  public:

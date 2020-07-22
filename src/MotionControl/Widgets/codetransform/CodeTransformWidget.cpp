@@ -1,15 +1,15 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#include "../Pages/CodeTransformWidget.h"
+#include "../codetransform/CodeTransformWidget.h"
 
 #include <assert.h>
 
 #include <QtGui/QHeaderView>
 #include <QtGui/QScrollBar>
 
-#include "../Cutter.h"
-#include "../Pages/CodeTransformModel.h"
+#include "../../Cutter.h"
+#include "../codetransform/CodeTransformModel.h"
 #include "ui_CodeTransformWidget.h"
 
 CodeTransformWidget::CodeTransformWidget(QWidget *parent)

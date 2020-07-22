@@ -1,11 +1,11 @@
 // Copyright 2019 Fangling Software Co., Ltd. All Rights Reserved.
 // Author: shizhan-shelly@hotmail.com (Zhan Shi)
 
-#include "../Pages/CodeTransformModel.h"
+#include "../codetransform/CodeTransformModel.h"
 
 #include <assert.h>
 
-#include "../database/codetransform/TransDBAccess.h"
+#include "../../database/codetransform/TransDBAccess.h"
 
 static const std::string COLUMN_FIELD[] = {
   "ID",

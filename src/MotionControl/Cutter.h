@@ -9,6 +9,7 @@
 #include "base/singleton/Singleton.h"
 #include "MotionControl/Communication/Modbus/ClientHandlerManager.h"
 #include "MotionControl/controller/pps/PPSClient.h"
+#include "MotionControl/Widgets/codetransform/CodeTransformModel.h"
 #include "MotionControl/Widgets/extendedio/ExtendedBoardModel.h"
 #include "MotionControl/Widgets/kerftable/KerfTableModel.h"
 
@@ -35,6 +36,10 @@ class Cutter : public Singleton {
     return &kerf_table_model_;
   }
 
+  CodeTransformModel *GetCodeTransformModel() {
+    return &code_transform_model_;
+  }
+
   void InitKerfTableModel();
 
   void InitExtendedBoardModel();
@@ -45,6 +50,7 @@ class Cutter : public Singleton {
 
   PPSClient pps_client_;
   ClientHandlerManager client_manager_;
+  CodeTransformModel code_transform_model_;
   ExtendedBoardModel extended_board_model_;
   KerfTableModel kerf_table_model_;
 
